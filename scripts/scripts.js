@@ -4,7 +4,7 @@ const dropdown = document.getElementById('dropdown');
 let pages = [];
 
 // Fetch the pages.json
-fetch('/stortrutWebsite/articles/pages.json')
+fetch('/articles/pages.json')
   .then(response => response.json())
   .then(data => {
     pages = data;
