@@ -34,7 +34,8 @@ searchInput.addEventListener('input', () => {
     item.classList.add('dropdown-item');
     item.textContent = page.name;
     item.onclick = () => {
-      window.location.href = page.url;
+      window.location.assign(page.url);
+      //window.location.href = page.url;
     };
     dropdown.appendChild(item);
   });
