@@ -30,7 +30,7 @@ walkDir(articlesFolder, (filePath) => {
 
     pages.push({
       name,
-      url: `/stortrutWebsite/articles/${relativePath.replace(/\\/g, '/')}` // Normalize for web URLs
+      url: `/articles/${relativePath.replace(/\\/g, '/')}` // Normalize for web URLs
     });
   }
 });
