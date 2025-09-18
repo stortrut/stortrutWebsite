@@ -17,12 +17,65 @@
         <button class="home-button" onclick="location.href='http://www.stortrut.com'" type="button">
             HEM
         </button>
+        <button class="home-button" id="random-page-button" type="button">
+            RANDOM SIDA
+        </button>
     </div>
 
     <script src="scripts/scripts.js"></script>
+    <script>
+  document.getElementById('random-page-button').addEventListener('click', function () {
+    fetch('articles/pages.json') // Adjust the path if pages.json is in another location
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch pages.json');
+        }
+        return response.json();
+      })
+      .then(pages => {
+        if (!Array.isArray(pages) || pages.length === 0) {
+          throw new Error('No pages found');
+        }
+        const randomPage = pages[Math.floor(Math.random() * pages.length)];
+        window.location.href = randomPage.url;
+      })
+      .catch(error => {
+        console.error('Error loading random page:', error);
+        alert('Kunde inte ladda en slumpmässig sida.');
+      });
+  });
+</script>
 
 
-    <p>Välkommen... V3 new top bar for mobile</p>
+
+
+    <hr>
+
+
+    <h1>
+        Titel på hemsidan
+    </h1>
+    <p>Välkommen... V5 random sida knapp test</p>
+
+
+
+    <h2>
+        Undertitel
+    </h2>
+    <p>
+        Text under undertiteln! Detta är en ny paragraf.
+    </p>
+    <pre>
+        Ba-sharin... mot ljusår!
+
+        -Odo Orgulas
+    </pre>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
 
     <a href="articles/characters/odo-orgulas.html">
         <p>Odo.</p>
