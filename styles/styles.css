@@ -97,12 +97,29 @@ p{
   padding-bottom: 9px;*/
 
 
-    background-color: rgb(255, 215, 178);
+   /* background-color: rgb(255, 215, 178);
+  cursor: pointer;
+  font-weight: bold;
+  padding: 9px 10px;
+  margin: 0 5px;
+  white-space: nowrap;*/
+
+  border: 1px solid rgb(5, 0, 26); /* Or any color/width you prefer */
+
+  background-color: rgb(255, 215, 178);
   cursor: pointer;
   font-weight: bold;
   padding: 9px 10px;
   margin: 0 5px;
   white-space: nowrap;
+
+  /* ✅ Force correct color and prevent blue link style */
+  color: rgb(5, 0, 26); /* Match your text color */
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 16px;
+  appearance: none;        /* iOS/Safari */
+  -webkit-appearance: none;/* Older Safari */
 }
 
 /* Mobile responsiveness */
