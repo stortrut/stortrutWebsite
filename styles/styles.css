@@ -1,10 +1,10 @@
 #search-container {
-  position: relative;
-  width: 300px;
+    display: inline-block;
+  width: 250px;
 }
 
 #search-input {
-  width: 100%;
+  width: 250px;
   padding: 8px;
   font-size: 16px;
 }
@@ -28,4 +28,11 @@
 
 .dropdown-item:hover {
   background-color: #eee;
+}
+
+.home-button{
+  display: inline-block;
+  background-color: rgb(255, 215, 178);
+  cursor: pointer;
+  margin-left: 20px;
 }
