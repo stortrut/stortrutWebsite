@@ -7,13 +7,24 @@ p{
   color: white;
 }
 
+
+#top-bar {
+  display: flex;
+  align-items: flex-start;
+}
+
 #search-container {
-    display: inline-block;
-  width: 250px;
+  vertical-align: top;
+  display: inline-block;
+  width: 266px;
+
+    margin-bottom: 5px;
+
 }
 
 #search-input {
-  width: 250px;
+  box-sizing: border-box;
+  width: 266px;
   padding: 8px;
   font-size: 16px;
 }
@@ -40,8 +51,19 @@ p{
 }
 
 .home-button{
+  vertical-align: top;
   display: inline-block;
   background-color: rgb(255, 215, 178);
   cursor: pointer;
-  margin-left: 20px;
+  font-weight: bold;
+
+  margin-top: 0px;
+  margin-left: 5px;
+  margin-right: 5px;
+
+  padding-top: 9px;
+  padding-left: 10px;
+  padding-right: 10px;  
+  padding-bottom: 9px;
+
 }
