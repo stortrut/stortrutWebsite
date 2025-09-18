@@ -51,6 +51,8 @@ p{
 }
 
 .home-button{
+  text-decoration: none;
+
   vertical-align: top;
   display: inline-block;
   background-color: rgb(255, 215, 178);
