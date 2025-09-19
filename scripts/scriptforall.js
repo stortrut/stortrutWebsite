@@ -50,3 +50,24 @@ document.addEventListener('click', (e) => {
   }
 });
 
+//Random page button
+document.getElementById('random-page-button').addEventListener('click', function () {
+    fetch('/articles/pages.json') // Adjust the path if pages.json is in another location
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch pages.json');
+            }
+            return response.json();
+        })
+        .then(pages => {
+            if (!Array.isArray(pages) || pages.length === 0) {
+                throw new Error('No pages found');
+            }
+            const randomPage = pages[Math.floor(Math.random() * pages.length)];
+            window.location.href = randomPage.url;
+        })
+        .catch(error => {
+            console.error('Error loading random page:', error);
+            alert('Kunde inte ladda en slumpmässig sida.');
+        });
+});
