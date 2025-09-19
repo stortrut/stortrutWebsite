@@ -3,6 +3,11 @@ fetch('/page-components/top-bar.html')
   .then(html => {
     document.getElementById('top-bar').innerHTML = html;
 
+        // Add the loaded class to show it and let it size naturally
+    topBar.classList.add('loaded');
+
+
+
     // Now that the top bar is loaded, we can safely query its elements
     const searchInput = document.getElementById('search-input');
     const dropdown = document.getElementById('dropdown');

@@ -13,7 +13,25 @@ p{
   flex-wrap: wrap; /* allows items to wrap on small screens */
   align-items: center;
   padding: 10px;
+
+  /*some load bs*/
+  min-height: 60px;        /* Reserve approx height */
+  visibility: hidden;      /* Hide content until loaded */
+  background-color: white; /* Optional: prevents flashing */
+  overflow: hidden;        /* Prevent content overflow while loading */
+  transition: visibility 0s linear 0.3s, opacity 0.3s ease;
+  opacity: 0;
 }
+/* When loaded, show the top bar */
+#top-bar.loaded {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+  min-height: auto;        /* Allow natural height */
+}
+
+
+
 
 #search-container {
   flex: 1 1 auto; /* allow it to grow/shrink */
