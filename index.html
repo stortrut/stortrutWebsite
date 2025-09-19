@@ -24,10 +24,10 @@
         </button>
     </div>
 
-    <script src="scripts/scripts.js"></script>
+    <script src="scripts/allpagesscript.js.js"></script>
     <script>
         document.getElementById('random-page-button').addEventListener('click', function () {
-            fetch('articles/pages.json') // Adjust the path if pages.json is in another location
+            fetch('/articles/pages.json') // Adjust the path if pages.json is in another location
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Failed to fetch pages.json');
@@ -58,7 +58,7 @@
         Titel på hemsidan
     </h1>
     <p>
-        Välkommen... V7 superman poster
+        Välkommen... V8 small superman poster, trying searchbar with / infront
     </p>
 
 
