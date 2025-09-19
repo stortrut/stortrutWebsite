@@ -16,7 +16,6 @@ p{
 
   /*some load bs*/
   min-height: 60px;        /* Reserve approx height */
-  visibility: hidden;      /* Hide content until loaded */
   overflow: hidden;        /* Prevent content overflow while loading */
   transition: visibility 0s linear 0.3s, opacity 0.3s ease;
   opacity: 0;
