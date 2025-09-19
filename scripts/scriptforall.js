@@ -2,15 +2,8 @@ fetch('/page-components/top-bar.html')
   .then(res => res.text())
   .then(html => {
     document.getElementById('top-bar').innerHTML = html;
-
-
-
-    const topBar = document.getElementById('top-bar');  // <-- define here!
-
-    // Add the loaded class to show it and let it size naturally
+    const topBar = document.getElementById('top-bar'); 
     topBar.classList.add('loaded');
-
-
 
     // Now that the top bar is loaded, we can safely query its elements
     const searchInput = document.getElementById('search-input');
