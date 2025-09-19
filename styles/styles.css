@@ -9,12 +9,7 @@ p{
 
 
 #top-bar {
-  /*
   display: flex;
-  align-items: flex-start;
-*/
-
-    display: flex;
   flex-wrap: wrap; /* allows items to wrap on small screens */
   align-items: center;
   padding: 10px;
