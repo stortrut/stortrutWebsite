@@ -1,3 +1,13 @@
+
+fetch('../../page-components/top-bar.html')
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById('top-bar').innerHTML = html;
+  })
+  .catch(err => console.error('Fetch error:', err));
+
+
+
 const searchInput = document.getElementById('search-input');
 const dropdown = document.getElementById('dropdown');
 
@@ -71,3 +81,4 @@ document.getElementById('random-page-button').addEventListener('click', function
             alert('Kunde inte ladda en slumpmässig sida.');
         });
 });
+
