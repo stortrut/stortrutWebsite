@@ -3,7 +3,11 @@ fetch('/page-components/top-bar.html')
   .then(html => {
     document.getElementById('top-bar').innerHTML = html;
 
-        // Add the loaded class to show it and let it size naturally
+
+
+    const topBar = document.getElementById('top-bar');  // <-- define here!
+
+    // Add the loaded class to show it and let it size naturally
     topBar.classList.add('loaded');
 
 
