@@ -1,5 +1,5 @@
 
-fetch('../../page-components/top-bar.html')
+fetch('/page-components/top-bar.html')
   .then(res => res.text())
   .then(html => {
     document.getElementById('top-bar').innerHTML = html;
