@@ -49,7 +49,7 @@ p{
   background-color: #eee;
 }
 
-.home-button{
+.top-bar-button{
   border: 1px solid rgb(5, 0, 26); /* Or any color/width you prefer */
 
   background-color: rgb(255, 215, 178);
@@ -58,6 +58,7 @@ p{
   padding: 9px 10px;
   margin: 0 5px;
   white-space: nowrap;
+  
 
   /* ✅ Force correct color and prevent blue link style */
   color: rgb(5, 0, 26); /* Match your text color */
@@ -66,15 +67,15 @@ p{
   font-size: 16px;
   appearance: none;        /* iOS/Safari */
   -webkit-appearance: none;/* Older Safari */
-
+  letter-spacing: 0.9px;
 
   transition: background-color 0.2s;
 }
 
-.home-button:hover{
+.top-bar-button:hover{
     background-color: rgb(177, 130, 77);
 }
-.home-button:active{
+.top-bar-button:active{
     background-color: rgb(71, 48, 21);
 }
 
@@ -96,7 +97,7 @@ p{
     width: 100%;
   }
 
-  .home-button {
+  .top-bar-button {
     width: 100%;
     text-align: center;
   }
