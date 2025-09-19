@@ -17,7 +17,7 @@ p{
   /*some load bs*/
   min-height: 60px;        /* Reserve approx height */
   overflow: hidden;        /* Prevent content overflow while loading */
-  transition: visibility 0s linear 0.1s, opacity 0.1s ease;
+  transition: visibility 0s linear 0s, opacity 0s ease;
   opacity: 0;
 }
 /* When loaded, show the top bar */
