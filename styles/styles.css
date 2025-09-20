@@ -15,7 +15,7 @@ p{
   padding: 10px;
 
   /*some load bs*/
-  min-height: 60px;        /* Reserve approx height */
+  min-height: 65px;        /* Reserve approx height */
   overflow: hidden;        /* Prevent content overflow while loading */
   transition: visibility 0s linear 0s, opacity 0s ease;
   opacity: 0;
