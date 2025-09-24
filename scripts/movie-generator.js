@@ -1,10 +1,15 @@
-// Fetch the movie data and render everything
+let allMovies = []; // store parsed movies globally
+
 fetch("/movie-data.txt")
   .then(res => res.text())
   .then(text => {
-    const movies = parseMovies(text);
-    renderMovies(movies);
-    renderStars(); // run star renderer after DOM is ready
+    allMovies = parseMovies(text);
+    renderMovies(allMovies);
+
+    // attach sorting
+    document.getElementById("sort-select").addEventListener("change", e => {
+      sortMovies(e.target.value);
+    });
   })
   .catch(err => {
     document.getElementById("reviews").textContent = "Error loading movies.txt";
@@ -20,7 +25,7 @@ function parseMovies(text) {
     lines.forEach(line => {
       if (line.startsWith("Movie:")) movie.title = line.replace("Movie:", "").trim();
       else if (line.startsWith("Poster:")) movie.poster = line.replace("Poster:", "").trim();
-      else if (line.startsWith("Year:")) movie.year = line.replace("Year:", "").trim();
+      else if (line.startsWith("Year:")) movie.year = parseInt(line.replace("Year:", "").trim(), 10);
       else if (line.startsWith("Genre:")) movie.genre = line.replace("Genre:", "").trim();
       else if (line.startsWith("Review:")) {
         const [, review] = line.split("Review:");
@@ -28,6 +33,13 @@ function parseMovies(text) {
         movie.reviews.push({ name, score: parseFloat(score) });
       }
     });
+
+    // calculate average rating
+    if (movie.reviews.length) {
+      movie.avgRating = movie.reviews.reduce((a, r) => a + r.score, 0) / movie.reviews.length;
+    } else {
+      movie.avgRating = 0;
+    }
 
     return movie;
   });
@@ -59,14 +71,15 @@ function renderMovies(movies) {
 
     container.appendChild(movieDiv);
   });
+
+  renderStars(); // re-run star filling
 }
 
-// ★ Star rendering logic (moved here, no extra file needed)
+// star renderer (same as before)
 function renderStars() {
   document.querySelectorAll('.star-rating').forEach(el => {
     const score = parseFloat(el.dataset.score) || 0;
 
-    // Insert star layers if not already present
     if (!el.querySelector('.star-fill')) {
       el.innerHTML = `
         <span class="star-fill">★★★★★</span>
@@ -74,7 +87,6 @@ function renderStars() {
       `;
     }
 
-    // Measure one star width
     const tempSpan = document.createElement('span');
     tempSpan.style.fontFamily = getComputedStyle(el).fontFamily;
     tempSpan.style.fontSize = getComputedStyle(el).fontSize;
@@ -91,4 +103,19 @@ function renderStars() {
 
     el.querySelector('.star-fill').style.width = fillWidth + 'px';
   });
+}
+
+// 🔥 Sort logic
+function sortMovies(criteria) {
+  let sorted = [...allMovies]; // copy
+
+  if (criteria === "title") {
+    sorted.sort((a, b) => a.title.localeCompare(b.title));
+  } else if (criteria === "year") {
+    sorted.sort((a, b) => (b.year || 0) - (a.year || 0));
+  } else if (criteria === "rating") {
+    sorted.sort((a, b) => b.avgRating - a.avgRating);
+  }
+
+  renderMovies(sorted);
 }

@@ -47,6 +47,30 @@ Review: Alvin|4.44
 Review: Diaa|4
 Review: Holger|4
 
+Movie: About Time
+Year: 2013
+Poster: ../images/movie-posters/smiling-friends-season2.webp
+Review: Alvin|3.22
+Review: Diaa|
+
+Movie: 
+Year: 
+Poster: ../images/movie-posters/smiling-friends-season2.webp
+Review: Alvin|
+Review: Diaa|
+
+Movie: 
+Year: 
+Poster: ../images/movie-posters/smiling-friends-season2.webp
+Review: Alvin|
+Review: Diaa|
+
+Movie: 
+Year: 
+Poster: ../images/movie-posters/smiling-friends-season2.webp
+Review: Alvin|
+Review: Diaa|
+
 Movie: 
 Year: 
 Poster: ../images/movie-posters/smiling-friends-season2.webp
