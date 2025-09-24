@@ -127,6 +127,12 @@ function sortMovies(criteria) {
       const db = b.seen_date ? new Date(b.seen_date).getTime() : 0;
       return db - da; // newest → oldest
     });
+  } else if (criteria === "seen-datereverse") {
+    sorted.sort((a, b) => {
+      const da = a.seen_date ? new Date(a.seen_date).getTime() : 0;
+      const db = b.seen_date ? new Date(b.seen_date).getTime() : 0;
+      return da - db;
+    });
   }
 
   renderMovies(sorted);
