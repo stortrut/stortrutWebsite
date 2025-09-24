@@ -397,3 +397,188 @@ Review: Alvin|5.4
 Review: Diaa|5
 Review: Holger|4.86
 Review: Carl|5
+
+Movie: The Shining
+Year: 1980
+Poster: ../images/movie-posters/theshining.jpg
+Seen: 2022-05-07
+Review: Alvin|3.98
+Review: Diaa|4.48
+Review: Holger|4.7
+
+Movie: Chip ‘n Dale Rescue Rangers
+Year: 2022
+Poster: ../images/movie-posters/chipndalerescueranger.jpg
+Seen: 2022-05-22
+Review: Alvin|1.38
+Review: Diaa|1.48
+Review: Holger|1.34
+
+Movie: Fantastic Beasts: The Secrets of Dumbledore
+Year: 2022
+Poster: ../images/movie-posters/secretsofdumbledore.jpg
+Seen: 2022-06-09
+Review: Alvin|1.6
+Review: Diaa|1.44
+Review: Holger|1.64
+
+Movie: Who Framed Roger Rabbit
+Year: 1988
+Poster: ../images/movie-posters/whoframedrogerrabbit.jpg
+Seen: 2022-06-10
+Review: Alvin|3.57
+Review: Diaa|3.68
+Review: Holger|3.66
+
+Movie: The Suicide Squad
+Year: 2021
+Poster: ../images/movie-posters/thesuicidesquad.jpg
+Seen: 2022-06-11
+Review: Alvin|3.838
+Review: Diaa|2.5
+Review: Holger|3.32
+
+Movie: The Batman
+Year: 2022
+Poster: ../images/movie-posters/thebatman.jpg
+Seen: 2022-06-17
+Review: Alvin|3.3876
+Review: Diaa|3
+Review: Holger|3.4
+
+Movie: Back To The Future
+Year: 1985
+Poster: ../images/movie-posters/backtothefuture.jpg
+Seen: 2022-06-23
+Review: Alvin|4.2334
+Review: Diaa|3.9
+Review: Holger|3.82
+
+Movie: Everything Everywhere All At Once
+Year: 2022
+Poster: ../images/movie-posters/everythingeverywhereallatonce.jpg
+Seen: 2022-07-09
+Review: Alvin|4.96
+Review: Diaa|4.7
+Review: Holger|4.88
+
+Movie: The House
+Year: 2022
+Poster: ../images/movie-posters/thehouse.jpg
+Seen: 2022-08-10
+Review: Alvin|3.348
+Review: Diaa|3.7
+Review: Holger|3.2
+
+Movie: Rick & Morty S.6
+Year: 2022
+Poster: ../images/movie-posters/rickandmortys6.jpg
+Seen: 2022-09-11
+Review: Alvin|3.984
+Review: Holger|3.38
+
+Movie: Amélie
+Year: 2001
+Poster: ../images/movie-posters/amélie.jpg
+Seen: 2022-09-13
+Review: Alvin|4.48
+Review: Diaa|3.2
+Review: Holger|4.38
+
+Movie: Rain Man
+Year: 1988
+Poster: ../images/movie-posters/rainman.jpg
+Seen: 2022-09-17
+Review: Alvin|3.96
+Review: Holger|3.54
+
+Movie: Chainsaw Man
+Year: 2022
+Poster: ../images/movie-posters/chainsawman.jpg
+Seen: 2022-10-28
+Review: Alvin|4.454
+Review: Diaa|4.5
+
+Movie: Kopps
+Year: 2003
+Poster: ../images/movie-posters/kopps.jpg
+Seen: 2022-10-28
+Review: Alvin|3.274
+Review: Diaa|2.9
+Review: Holger|2.98
+
+Movie: Thor love and thunder 
+Year: 2022
+Poster: ../images/movie-posters/thorloveandthunder.jpg
+Seen: 2022-11-05
+Review: Alvin|2.494
+Review: Holger|2.34
+
+Movie: Rashomon
+Year: 1950
+Poster: ../images/movie-posters/rashomon.jpg
+Seen: 2022-11-11
+Review: Alvin|3.42
+Review: Diaa|3.3
+Review: Holger|3.54
+
+Movie: Ocean's Eleven
+Year: 2001
+Poster: ../images/movie-posters/oceans11.jpg
+Seen: 2022-11-13
+Review: Alvin|3.482
+Review: Diaa|3.5
+Review: Holger|3.26
+
+Movie: Parasite
+Year: 2019
+Poster: ../images/movie-posters/parasite.jpg
+Seen: 2022-11-20
+Review: Alvin|4.28
+Review: Diaa|4.2
+Review: Holger|4.26
+
+Movie: Men in Black
+Year: 1997
+Poster: ../images/movie-posters/meninblack.jpg
+Seen: 2022-12-05
+Review: Alvin|3.0412
+Review: Holger|2.58
+
+Movie: Guillermo del Toro's Pinocchio
+Year: 2022
+Poster: ../images/movie-posters/guillermodeltorospinocchio.jpg
+Seen: 2022-12-13
+Review: Alvin|3.938
+Review: Holger|3.84
+
+Movie: Love actually
+Year: 2003
+Poster: ../images/movie-posters/loveactually.jpg
+Seen: 2022-12-18
+Review: Alvin|2.96
+Review: Diaa|3.1
+Review: Holger|3.5
+
+Movie: Airplane!
+Year: 1980
+Poster: ../images/movie-posters/airplane.jpg
+Seen: 2023-01-02
+Review: Alvin|2.96
+Review: Holger|2.9
+
+Movie: Space Force S.1
+Year: 2020
+Poster: ../images/movie-posters/spaceforce.jpg
+Seen: 2023-01-17
+Review: Alvin|2.968
+Review: Holger|2.66
+
+Movie: The Legend of Vox Machina S.2
+Year: 2023
+Poster: ../images/movie-posters/tlovms2.jpg
+Seen: 2023-01-20
+Review: Alvin|4.402
+Review: Diaa|3.74
+Review: Holger|4.5
+Review: Carl|4.214
