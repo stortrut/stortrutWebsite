@@ -216,7 +216,6 @@ Seen: 2021-11-17
 Review: Alvin|3,1
 Review: Diaa|4
 Review: Holger|4,06
-Review: Carl| 
 
 Movie: The Visitors
 Year: 1993
@@ -275,7 +274,7 @@ Movie: The Holiday
 Year: 2006
 Poster: ../images/movie-posters/theholiday.jpg
 Seen: 2021-12-22
-Review: Alvin|209
+Review: Alvin|2,9
 Review: Diaa|2,8
 Review: Holger|2,54
 
