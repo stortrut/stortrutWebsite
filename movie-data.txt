@@ -233,3 +233,88 @@ Seen: 2021-11-26
 Review: Alvin|2,524
 Review: Diaa|3,2
 Review: Holger|3,36
+
+Movie: Super Crooks
+Year: 2021
+Poster: ../images/movie-posters/supercrooks.jpg
+Seen: 2021-11-28
+Review: Alvin|3,48
+
+Movie: Jojo: Stone Ocean
+Year: 2021
+Poster: ../images/movie-posters/jojostoneocean.jpg
+Seen: 2021-11-30
+Review: Alvin|3,932
+Review: Diaa|4
+
+Movie: American Psycho
+Year: 2000
+Poster: ../images/movie-posters/americanpsycho.jpg
+Seen: 2021-12-11
+Review: Alvin|4,36
+Review: Diaa|2,6
+Review: Holger|4,14
+
+Movie: Spider Man No Way Home
+Year: 2021
+Poster: ../images/movie-posters/spidermannowayhome.jpg
+Seen: 2021-12-19
+Review: Alvin|3,38
+Review: Diaa|4,9
+Review: Holger|3,94
+
+Movie: Bad santa
+Year: 2003
+Poster: ../images/movie-posters/badsanta.jpg
+Seen: 2021-12-21
+Review: Alvin|3,62
+Review: Diaa|3,2
+Review: Holger|3,4
+
+Movie: The Holiday
+Year: 2006
+Poster: ../images/movie-posters/theholiday.jpg
+Seen: 2021-12-22
+Review: Alvin|209
+Review: Diaa|2,8
+Review: Holger|2,54
+
+Movie: Cowboy Bebop: The Movie
+Year: 2001
+Poster: ../images/movie-posters/cowboybebopthemovie.jpg
+Seen: 2022-01-04
+Review: Alvin|4,192
+Review: Diaa|3,92
+Review: Holger|3,94
+
+Movie: Don’t Look Up
+Year: 2021
+Poster: ../images/movie-posters/dontlookup.jpg
+Seen: 2022-01-05
+Review: Alvin|3,64
+Review: Diaa|3,2
+Review: Holger|3,28
+
+Movie: No Country For Old Men
+Year: 2007
+Poster: ../images/movie-posters/nocountryforoldmen.jpg
+Seen: 2022-01-07
+Review: Alvin|3,952
+Review: Diaa|3,5706
+Review: Holger|3,76
+
+Movie: Taxi driver
+Year: 1976
+Poster: ../images/movie-posters/taxidriver.jpg
+Seen: 2022-01-14
+Review: Alvin|4,426
+Review: Diaa|2,9
+Review: Holger|3,98
+
+Movie: The Legend of Vox Machina S.1
+Year: 2022
+Poster: ../images/movie-posters/tlovm.jpg
+Seen: 2022-01-28
+Review: Alvin|4,7336
+Review: Diaa|3,8
+Review: Holger|4,52
