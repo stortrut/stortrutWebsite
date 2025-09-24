@@ -1,0 +1,17 @@
+Movie: Smiling Friends S.2
+Year: 2024
+Poster: ../images/movie-posters/smiling-friends-season2.webp
+Review: Alvin|4.6
+Review: Holger|3
+
+Movie: Superman
+Year: 2025
+Poster: ../images/movie-posters/superman.jpeg
+Review: Sarah|5
+Review: Mark|4
+
+Movie: Binko
+Year: 2023
+Poster: ../images/movie-posters/smiling-friends-season2.webp
+Review: Sarah|5
+Review: Mark|4
