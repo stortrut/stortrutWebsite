@@ -456,7 +456,7 @@ Review: Holger|3.82
 
 Movie: Everything Everywhere All At Once
 Year: 2022
-Poster: ../images/movie-posters/everythingeverywhereallatonce.jpg
+Poster: ../images/movie-posters/everythingeverywhereallatonce.webp
 Seen: 2022-07-09
 Review: Alvin|4.96
 Review: Diaa|4.7
