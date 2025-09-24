@@ -27,3 +27,28 @@ Year: 2019
 Poster: ../images/movie-posters/smiling-friends-season2.webp
 Review: Alvin|4.17
 Review: Diaa|4.1
+
+Movie: Akira
+Year: 1988 
+Poster: ../images/movie-posters/smiling-friends-season2.webp
+Review: Alvin|4.06
+Review: Diaa|3
+
+Movie: Jungle Cruise
+Year: 2021
+Poster: ../images/movie-posters/smiling-friends-season2.webp
+Review: Alvin|2.3
+Review: Diaa|3.38
+
+Movie: Forrest Gump
+Year: 1994
+Poster: ../images/movie-posters/smiling-friends-season2.webp
+Review: Alvin|4.44
+Review: Diaa|4
+Review: Holger|4
+
+Movie: 
+Year: 
+Poster: ../images/movie-posters/smiling-friends-season2.webp
+Review: Alvin|
+Review: Diaa|
