@@ -1,7 +1,8 @@
-Movie: Smiling Friends S.2
-Year: 2024
+Movie: 
+Year: 
 Poster: ../images/movie-posters/smiling-friends-season2.webp
 Review: Alvin|4.6
+Review: Holger|3
 Review: Holger|3
 
 Movie: Superman

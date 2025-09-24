@@ -1,0 +1,5 @@
+Movie: Binko
+Year: 2023
+Poster: ../images/movie-posters/smiling-friends-season2.webp
+Review: Sarah|5
+Review: Mark|4
