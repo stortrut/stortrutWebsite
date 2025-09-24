@@ -388,3 +388,12 @@ Seen: 2022-04-13
 Review: Alvin|2.95
 Review: Diaa|3.64
 Review: Holger|3.9
+
+Movie: Arcane
+Year: 2021
+Poster: ../images/movie-posters/arcane.jpg
+Seen: 2022-04-14
+Review: Alvin|5.4
+Review: Diaa|5
+Review: Holger|4.86
+Review: Carl|5
