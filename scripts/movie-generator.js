@@ -20,13 +20,13 @@ function parseMovies(text) {
   const blocks = text.trim().split(/\n\s*\n/); // split by blank lines
   return blocks.map(block => {
     const lines = block.split("\n").map(l => l.trim());
-    let movie = { title: "", poster: "", reviews: [], year: "", genre: "" };
+    let movie = { title: "", poster: "", reviews: [], year: "", seen_date: "" };
 
     lines.forEach(line => {
       if (line.startsWith("Movie:")) movie.title = line.replace("Movie:", "").trim();
       else if (line.startsWith("Poster:")) movie.poster = line.replace("Poster:", "").trim();
       else if (line.startsWith("Year:")) movie.year = parseInt(line.replace("Year:", "").trim(), 10);
-      else if (line.startsWith("Genre:")) movie.genre = line.replace("Genre:", "").trim();
+      else if (line.startsWith("Seen:")) movie.seen_date = line.replace("Seen:", "").trim();
       else if (line.startsWith("Review:")) {
         const [, review] = line.split("Review:");
         const [name, score] = review.split("|").map(s => s.trim());
@@ -114,6 +114,8 @@ function sortMovies(criteria) {
   } else if (criteria === "year") {
     sorted.sort((a, b) => (b.year || 0) - (a.year || 0));
   } else if (criteria === "rating") {
+    sorted.sort((a, b) => b.avgRating - a.avgRating);
+  } else if (criteria === "seen-date") {
     sorted.sort((a, b) => b.avgRating - a.avgRating);
   }
 
