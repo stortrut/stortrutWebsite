@@ -53,7 +53,6 @@ Poster: ../images/movie-posters/forestgump.jpg
 Seen: 2021-08-09
 Review: Alvin|4.44
 Review: Diaa|4
-Review: Holger|4
 
 Movie: About Time
 Year: 2013
