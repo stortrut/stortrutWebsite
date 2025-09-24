@@ -1,4 +1,4 @@
-.reviews {
+#reviews {
   display: flex;
   flex-wrap: wrap;        /* allow cards to wrap to new rows on small screens */
   justify-content: center;/* center the row(s) horizontally */
