@@ -1,5 +1,9 @@
 .reviews {
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;        /* allow cards to wrap to new rows on small screens */
+  justify-content: center;/* center the row(s) horizontally */
+  align-items: flex-start;/* align all cards to the top (prevents 'bouncy' heights) */
+  gap: 12px;              /* space between cards (optional) */
 }
 
 .all-review-data-holder{
