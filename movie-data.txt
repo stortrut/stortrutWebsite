@@ -1,5 +1,29 @@
-Movie: Binko
-Year: 2023
+Movie: Mortal Kombat
+Year: 2021
 Poster: ../images/movie-posters/smiling-friends-season2.webp
-Review: Sarah|5
-Review: Mark|4
+Review: Alvin|2.95
+Review: Diaa|3.8
+
+Movie: 13 Assassins
+Year: 2010
+Poster: ../images/movie-posters/smiling-friends-season2.webp
+Review: Alvin|2.7
+Review: Diaa|3.1
+
+Movie: Raya and the last dragon
+Year: 2021
+Poster: ../images/movie-posters/smiling-friends-season2.webp
+Review: Alvin|1.9
+Review: Diaa|3.5
+
+Movie: Luca
+Year: 2021
+Poster: ../images/movie-posters/smiling-friends-season2.webp
+Review: Alvin|3.5
+Review: Diaa|3.5
+
+Movie: Jojo rabbit
+Year: 2019
+Poster: ../images/movie-posters/smiling-friends-season2.webp
+Review: Alvin|4.17
+Review: Diaa|4.1

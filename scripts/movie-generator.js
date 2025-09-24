@@ -1,5 +1,5 @@
 // Fetch the movie data and render everything
-fetch("/movies.txt")
+fetch("/movie-data.txt")
   .then(res => res.text())
   .then(text => {
     const movies = parseMovies(text);
