@@ -372,3 +372,11 @@ Seen: 2022-03-19
 Review: Alvin|3.222
 Review: Diaa|3.14
 Review: Holger|3.4
+
+Movie: Apollo 10 1/2 : A Space Age Childhood
+Year: 2022
+Poster: ../images/movie-posters/apolloaspaceagechildhood.jpg
+Seen: 2022-04-09
+Review: Alvin|4.460201
+Review: Diaa|3.9
+Review: Holger|3.52
