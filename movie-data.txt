@@ -318,3 +318,34 @@ Seen: 2022-01-28
 Review: Alvin|4,7336
 Review: Diaa|3,8
 Review: Holger|4,52
+
+Movie: Encanto
+Year: 2021
+Poster: ../images/movie-posters/encanto.jpg
+Seen: 2022-01-28
+Review: Alvin|3,246
+Review: Diaa|3,4
+Review: Holger|3,38
+
+Movie: Smiling Friends S.1
+Year: 2020
+Poster: ../images/movie-posters/smilingfriends.jpg
+Seen: 2022-01-30
+Review: Alvin|3,8446
+Review: Holger|3,66
+
+Movie: Catch Me If You Can
+Year: 2002
+Poster: ../images/movie-posters/catchmeifyoucan.jpg
+Seen: 2022-02-12
+Review: Alvin|4,7
+Review: Diaa|3,5
+Review: Holger|4,3
+
+Movie: Little Women
+Year: 2019
+Poster: ../images/movie-posters/littlewomen.jpg
+Seen: 2022-03-05
+Review: Alvin|3,578
+Review: Diaa|3,9
+Review: Holger|3,44
