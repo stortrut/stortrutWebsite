@@ -348,3 +348,19 @@ Seen: 2022-03-05
 Review: Alvin|3.578
 Review: Diaa|3.9
 Review: Holger|3.44
+
+Movie: Trainspotting
+Year: 1996
+Poster: ../images/movie-posters/trainspotting.jpg
+Seen: 2022-03-05
+Review: Alvin|3.0788
+Review: Diaa|3
+Review: Holger|3.58
+
+Movie: Redline
+Year: 2009
+Poster: ../images/movie-posters/redline.jpg
+Seen: 2022-03-12
+Review: Alvin|3.7194
+Review: Diaa|4
+Review: Holger|3.436
