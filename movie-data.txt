@@ -364,3 +364,11 @@ Seen: 2022-03-12
 Review: Alvin|3.7194
 Review: Diaa|4
 Review: Holger|3.436
+
+Movie: The Adam Project
+Year: 2022
+Poster: ../images/movie-posters/theadamproject.jpg
+Seen: 2022-03-19
+Review: Alvin|3.222
+Review: Diaa|3.14
+Review: Holger|3.4
