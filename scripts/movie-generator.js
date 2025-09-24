@@ -6,8 +6,12 @@ fetch("/movie-data.txt")
     allMovies = parseMovies(text);
     renderMovies(allMovies);
 
-    // attach sorting
-    document.getElementById("sort-select").addEventListener("change", e => {
+    // get the currently selected sort option
+    const sortSelect = document.getElementById("sort-select");
+    sortMovies(sortSelect.value); // render sorted initially
+
+    // attach sorting event
+    sortSelect.addEventListener("change", e => {
       sortMovies(e.target.value);
     });
   })
