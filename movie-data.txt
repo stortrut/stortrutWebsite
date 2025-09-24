@@ -1,48 +1,56 @@
 Movie: Mortal Kombat
 Year: 2021
 Poster: ../images/movie-posters/smiling-friends-season2.webp
+Seen: 2021-08-01
 Review: Alvin|2.95
 Review: Diaa|3.8
 
 Movie: 13 Assassins
 Year: 2010
 Poster: ../images/movie-posters/smiling-friends-season2.webp
+Seen: 2021-08-02
 Review: Alvin|2.7
 Review: Diaa|3.1
 
 Movie: Raya and the last dragon
 Year: 2021
 Poster: ../images/movie-posters/smiling-friends-season2.webp
+Seen: 2021-08-03
 Review: Alvin|1.9
 Review: Diaa|3.5
 
 Movie: Luca
 Year: 2021
 Poster: ../images/movie-posters/smiling-friends-season2.webp
+Seen: 2021-08-04
 Review: Alvin|3.5
 Review: Diaa|3.5
 
 Movie: Jojo rabbit
 Year: 2019
 Poster: ../images/movie-posters/smiling-friends-season2.webp
+Seen: 2021-08-05
 Review: Alvin|4.17
 Review: Diaa|4.1
 
 Movie: Akira
 Year: 1988 
 Poster: ../images/movie-posters/smiling-friends-season2.webp
+Seen: 2021-08-06
 Review: Alvin|4.06
 Review: Diaa|3
 
 Movie: Jungle Cruise
 Year: 2021
 Poster: ../images/movie-posters/smiling-friends-season2.webp
+Seen: 2021-08-07
 Review: Alvin|2.3
 Review: Diaa|3.38
 
 Movie: Forrest Gump
 Year: 1994
 Poster: ../images/movie-posters/smiling-friends-season2.webp
+Seen: 2021-08-09
 Review: Alvin|4.44
 Review: Diaa|4
 Review: Holger|4
@@ -50,29 +58,6 @@ Review: Holger|4
 Movie: About Time
 Year: 2013
 Poster: ../images/movie-posters/smiling-friends-season2.webp
+Seen: 2021-08-14
 Review: Alvin|3.22
-Review: Diaa|
-
-Movie: 
-Year: 
-Poster: ../images/movie-posters/smiling-friends-season2.webp
-Review: Alvin|
-Review: Diaa|
-
-Movie: 
-Year: 
-Poster: ../images/movie-posters/smiling-friends-season2.webp
-Review: Alvin|
-Review: Diaa|
-
-Movie: 
-Year: 
-Poster: ../images/movie-posters/smiling-friends-season2.webp
-Review: Alvin|
-Review: Diaa|
-
-Movie: 
-Year: 
-Poster: ../images/movie-posters/smiling-friends-season2.webp
-Review: Alvin|
-Review: Diaa|
+Review: Diaa|3

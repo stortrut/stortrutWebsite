@@ -75,7 +75,7 @@ function renderMovies(movies) {
   renderStars(); // re-run star filling
 }
 
-// star renderer (same as before)
+// star renderer
 function renderStars() {
   document.querySelectorAll('.star-rating').forEach(el => {
     const score = parseFloat(el.dataset.score) || 0;
