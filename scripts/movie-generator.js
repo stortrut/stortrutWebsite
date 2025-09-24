@@ -112,7 +112,7 @@ function sortMovies(criteria) {
   if (criteria === "title") {
     sorted.sort((a, b) => a.title.localeCompare(b.title));
   } else if (criteria === "titlereverse") {
-    sorted.sort((b, a) => b.title.localeCompare(a.title));
+    sorted.sort((a, b) => b.title.localeCompare(a.title));
   } else if (criteria === "year") {
     sorted.sort((a, b) => (b.year || 0) - (a.year || 0));
   } else if (criteria === "rating") {
