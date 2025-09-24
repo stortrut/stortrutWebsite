@@ -115,6 +115,8 @@ function sortMovies(criteria) {
     sorted.sort((a, b) => b.title.localeCompare(a.title));
   } else if (criteria === "year") {
     sorted.sort((a, b) => (b.year || 0) - (a.year || 0));
+  } else if (criteria === "yearreverse") {
+    sorted.sort((a, b) => (a.year || 0) - (b.year || 0));
   } else if (criteria === "rating") {
     sorted.sort((a, b) => b.avgRating - a.avgRating);
   } else if (criteria === "seen-date") {
