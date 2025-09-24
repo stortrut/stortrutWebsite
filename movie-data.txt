@@ -60,3 +60,176 @@ Poster: ../images/movie-posters/abouttime.jpg
 Seen: 2021-08-14
 Review: Alvin|3.22
 Review: Diaa|3
+
+Movie: Looper
+Year: 2012
+Poster: ../images/movie-posters/looper.jpg
+Seen: 2021-08-15
+Review: Alvin|2,62
+Review: Diaa|2,6
+
+Movie: Nausicaä of the Valley of the Wind
+Year: 1984
+Poster: ../images/movie-posters/nausicaä.jpg
+Seen: 2021-08-23
+Review: Alvin|3,524
+Review: Diaa|2,5
+Review: Holger|3,54
+
+Movie: Respect
+Year: 2021
+Poster: ../images/movie-posters/respect.jpg
+Seen: 2021-08-29
+Review: Alvin|3,168
+Review: Diaa|3
+
+Movie: Fantastic Mr.Fox
+Year: 2009
+Poster: ../images/movie-posters/fantasticmrfox.jpg
+Seen: 2021-08-30
+Review: Alvin|4,06
+Review: Diaa|3,78
+Review: Holger|3,82
+
+Movie: The Weather Man
+Year: 2005
+Poster: ../images/movie-posters/theweatherman.jpg
+Seen: 2021-09-04
+Review: Alvin|2,9
+Review: Diaa|1,8
+Review: Holger|2,38
+Review: Carl|3,6
+
+Movie: Baby Driver
+Year: 2017
+Poster: ../images/movie-posters/babydriver.jpg
+Seen: 2021-09-10
+Review: Alvin|3,86
+Review: Diaa|4,3
+Review: Holger|3,8
+
+Movie: Rurouni Kenshin Part I: Origins
+Year: 2012
+Poster: ../images/movie-posters/RurouniKenshin.jpg
+Seen: 2021-09-23
+Review: Alvin|2,7
+
+Movie: Promising Young Woman
+Year: 2020
+Poster: ../images/movie-posters/promisingyoungwoman.jpg
+Seen: 2021-09-24
+Review: Alvin|2,56
+Review: Diaa|2,3
+Review: Holger|3,6
+
+Movie: Brain on Fire
+Year: 2016
+Poster: ../images/movie-posters/brainonfire.jpg
+Seen: 2021-09-27
+Review: Alvin|3,0126
+Review: Diaa|3,5
+Review: Holger|3,7
+
+Movie: Kill Bill: Volume 1
+Year: 2003
+Poster: ../images/movie-posters/killbillvol1.jpg
+Seen: 2021-09-29
+Review: Alvin|3,88
+Review: Diaa|3,6
+Review: Holger|3,62
+
+Movie: Squid Game S.1
+Year: 2021
+Poster: ../images/movie-posters/squidgame.jpg
+Seen: 2021-10-2
+Review: Alvin|4,56
+Review: Diaa|4,4
+Review: Holger|4,06
+
+Movie: Kill Bill: Volume 2
+Year: 2004
+Poster: ../images/movie-posters/killbillvol2.jpg
+Seen: 2021-10-02
+Review: Alvin|3,76
+Review: Diaa|3,8
+Review: Holger|4,2
+
+Movie: La La Land
+Year: 2016
+Poster: ../images/movie-posters/lalaland.jpg
+Seen: 2021-10-08
+Review: Alvin|3,94
+Review: Holger|4,3
+
+Movie: Free Guy
+Year: 2021
+Poster: ../images/movie-posters/freeguy.jpg
+Seen: 2021-10-13
+Review: Alvin|2,71428571429
+Review: Diaa|2,4
+Review: Holger|2,58
+
+Movie: Halloween Kills
+Year: 2021
+Poster: ../images/movie-posters/halloweenkills.jpg
+Seen: 2021-10-30
+Review: Alvin|1,06
+Review: Diaa|2,4
+Review: Holger|1,34
+
+Movie: Sällskapsresan
+Year: 1980
+Poster: ../images/movie-posters/sällskapsresan.jpg
+Seen: 2021-11-02
+Review: Alvin|3,13
+Review: Diaa|2
+Review: Holger|2,94
+
+Movie: Paprika
+Year: 2006
+Poster: ../images/movie-posters/paprika.jpg
+Seen: 2021-11-03
+Review: Alvin|4,7
+Review: Diaa|3,6
+Review: Holger|3,96
+
+Movie: Peaky Blinders S.1
+Year: 2013
+Poster: ../images/movie-posters/peakyblinders.jpg
+Seen: 2021-11-05
+Review: Alvin|3,152
+Review: Diaa|3
+Review: Holger|2,52
+
+Movie: Cowboy Bebop
+Year:
+Poster: ../images/movie-posters/cowboybebop.jpg
+Seen: 2021-11-10
+Review: Alvin|4,96
+Review: Diaa|4,3
+Review: Holger|4,6
+
+Movie: Corpse Bride
+Year: 2005
+Poster: ../images/movie-posters/corpsebride.jpg
+Seen: 2021-11-17
+Review: Alvin|3,1
+Review: Diaa|4
+Review: Holger|4,06
+Review: Carl| 
+
+Movie: The Visitors
+Year: 1993
+Poster: ../images/movie-posters/thevisitors.jpg
+Seen: 2021-11-21
+Review: Alvin|3,62
+Review: Diaa|2,6
+Review: Holger|3,08
+
+Movie: The Colour Room
+Year: 2021
+Poster: ../images/movie-posters/thecolourroom.jpg
+Seen: 2021-11-26
+Review: Alvin|2,524
+Review: Diaa|3,2
+Review: Holger|3,36
