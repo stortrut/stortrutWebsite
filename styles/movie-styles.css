@@ -1,5 +1,6 @@
 .all-review-data-holder{
   display: inline-block;
+  vertical-align: top;
   background-color: rgb(235, 235, 235);
   text-align: center;
   border-radius: 2%;
