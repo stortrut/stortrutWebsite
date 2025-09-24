@@ -119,7 +119,7 @@ function sortMovies(criteria) {
     sorted.sort((a, b) => {
       const da = a.seen_date ? a.seen_date.getTime() : 0;
       const db = b.seen_date ? b.seen_date.getTime() : 0;
-      return db - da; // newest → oldest
+      return da - db; // newest → oldest
     });
 
   renderMovies(sorted);
