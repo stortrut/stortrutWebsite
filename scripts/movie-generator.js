@@ -119,6 +119,8 @@ function sortMovies(criteria) {
     sorted.sort((a, b) => (a.year || 0) - (b.year || 0));
   } else if (criteria === "rating") {
     sorted.sort((a, b) => b.avgRating - a.avgRating);
+  } else if (criteria === "ratingreverse") {
+    sorted.sort((a, b) => a.avgRating - b.avgRating);
   } else if (criteria === "seen-date") {
     sorted.sort((a, b) => {
       const da = a.seen_date ? new Date(a.seen_date).getTime() : 0;
