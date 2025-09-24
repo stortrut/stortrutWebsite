@@ -202,7 +202,7 @@ Review: Diaa|3
 Review: Holger|2.52
 
 Movie: Cowboy Bebop
-Year:
+Year: 1998
 Poster: ../images/movie-posters/cowboybebop.jpg
 Seen: 2021-11-10
 Review: Alvin|4.96
