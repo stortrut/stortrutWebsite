@@ -7,7 +7,7 @@ function resizeTitleText() {
     title.style.fontSize = fontSize + 'px';
 
     // Reduce font size until it fits
-    while (title.scrollWidth > title.clientWidth && fontSize > 8) {
+    while (title.scrollWidth > title.clientWidth && fontSize > 5) {
       fontSize -= 1;
       title.style.fontSize = fontSize + 'px';
     }
