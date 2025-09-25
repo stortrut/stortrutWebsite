@@ -96,7 +96,7 @@
 
 
 .star-rating {
-  text-align: center;
+  text-align: left;
   display: inline-block;
 
   --star-size: 24px;
@@ -111,6 +111,9 @@
   height: var(--star-size);
   color: var(--star-color-bg);
   user-select: none;
+
+  justify-content: center;   /* ✅ center stars horizontally */
+
 }
 
 .star-rating .star-fill {
