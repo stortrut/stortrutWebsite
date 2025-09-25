@@ -1134,7 +1134,7 @@ Review: Diaa|3.9
 
 Movie: Superman
 Year: 2025
-Poster: ../images/movie-posters/superman.jpg
+Poster: ../images/movie-posters/superman.jpeg
 Seen: 2025-08-22
 Review: Alvin|4.68
 Review: Diaa|4.5
