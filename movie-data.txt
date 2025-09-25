@@ -582,3 +582,150 @@ Review: Alvin|4.402
 Review: Diaa|3.74
 Review: Holger|4.5
 Review: Carl|4.214
+
+Movie: Ant-man and the Wasp: Quantumania
+Year: 2023
+Poster: ../images/movie-posters/antmanquantumania.jpg
+Seen: 2023-02-23
+Review: Alvin|2.34
+Review: Diaa|2.225
+
+Movie: Puss in Boots: The Last Wish
+Year: 2022
+Poster: ../images/movie-posters/pussinbootsthelastwish.jpg
+Seen: 2023-03-10
+Review: Alvin|3.918
+Review: Holger|4.5
+
+Movie: The Imitation Game
+Year: 2014
+Poster: ../images/movie-posters/theimitationgame.jpg
+Seen: 2023-03-18
+Review: Alvin|3.054
+Review: Holger|3.36
+
+Movie: Amsterdam
+Year: 2022
+Poster: ../images/movie-posters/amsterdam.jpg
+Seen: 2023-03-20
+Review: Alvin|2.696
+Review: Diaa|1.96
+Review: Holger|2.86
+Review: Carl|2.5
+
+Movie: The Last of Us S.1
+Year: 2023
+Poster: ../images/movie-posters/thelastofus.webp
+Seen: 2023-03-21
+Review: Alvin|4.4618
+Review: Holger|4.34
+
+Movie: Weathering With You
+Year: 2019
+Poster: ../images/movie-posters/weatheringwithyou.jpg
+Seen: 2023-03-24
+Review: Alvin|3.698
+Review: Diaa|4.78
+
+Movie: The Da Vinci Code
+Year: 2006
+Poster: ../images/movie-posters/thedavincicode.jpg
+Seen: 2023-03-25
+Review: Alvin|2.65
+Review: Holger|2.04
+
+Movie: Shutter Island
+Year: 2010
+Poster: ../images/movie-posters/shutterisland.jpg
+Seen: 2023-04-01
+Review: Alvin|2.8
+Review: Diaa|2.4
+Review: Holger|3.16
+
+Movie: Million Dollar Baby
+Year: 2004
+Poster: ../images/movie-posters/milliondollarbaby.jpg
+Seen: 2023-04-09
+Review: Alvin|3.1
+Review: Diaa|4.74
+Review: Holger|4.16
+Review: Carl|4.4
+
+Movie: Dungeons & Dragons: Honor Among Thieves
+Year: 2023
+Poster: ../images/movie-posters/dndhonoramongthieves.jpg
+Seen: 2023-04-15
+Review: Alvin|3.65
+Review: Diaa|4.4
+Review: Holger|3.84
+Review: Carl|4.2
+
+Movie: Good Will Hunting
+Year: 1997
+Poster: ../images/movie-posters/goodwillhunting.jpg
+Seen: 2023-04-23
+Review: Alvin|3.94
+Review: Diaa|4.1
+Review: Holger|4.34
+Review: Carl|4.94
+
+Movie: Fight Club
+Year: 1999
+Poster: ../images/movie-posters/fightclub.jpg
+Seen: 2023-05-07
+Review: Alvin|4.118
+Review: Holger|4.64
+
+Movie: Midsommar
+Year: 2019
+Poster: ../images/movie-posters/midsommar.jpg
+Seen: 2023-06-17
+Review: Alvin|1.76
+Review: Diaa|3.52
+Review: Holger|2.26
+Review: Carl|2.8
+
+Movie: Spider-Man: Across the Spider Verse
+Year: 2023
+Poster: ../images/movie-posters/acrossthespiderverse.jpg
+Seen: 2023-06-18
+Review: Alvin|5.42
+Review: Diaa|4.4
+Review: Holger|4.72
+
+Movie: Invincible: Atom Eve
+Year: 2023
+Poster: ../images/movie-posters/atomeve.jpg
+Seen: 2023-07-29
+Review: Alvin|4.226
+Review: Holger|3.96
+
+Movie: Angel’s Egg
+Year: 1985
+Poster: ../images/movie-posters/angelsegg.jpg
+Seen: 2023-08-15
+Review: Alvin|2.938
+Review: Holger|3.16
+
+Movie: One Piece S1
+Year: 2023
+Poster: ../images/movie-posters/onepiece.jpg
+Seen: 2023-09-11
+Review: Alvin|4.08
+Review: Holger|4.24
+Review: Carl|4.625
+
+Movie: Fionna and Cake
+Year: 2023
+Poster: ../images/movie-posters/fionnaandcake.jpg
+Seen: 2023-09-15
+Review: Alvin|4.008
+Review: Holger|3.52
+
+Movie: Loki S.2
+Year: 2023
+Poster: ../images/movie-posters/lokis2.jpg
+Seen: 2023-10-10
+Review: Alvin|2.772
+Review: Holger|2.48
+Review: Carl|3.96
