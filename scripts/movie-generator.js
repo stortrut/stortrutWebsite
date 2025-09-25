@@ -4,7 +4,6 @@ fetch("/movie-data.txt")
   .then(res => res.text())
   .then(text => {
     allMovies = parseMovies(text);
-    renderMovies(allMovies);
 
     // get the currently selected sort option
     const sortSelect = document.getElementById("sort-select");
@@ -13,6 +12,13 @@ fetch("/movie-data.txt")
     // attach sorting event
     sortSelect.addEventListener("change", e => {
       sortMovies(e.target.value);
+    });
+
+    // attach reviewer filter events
+    document.querySelectorAll('#reviewer-filters input').forEach(cb => {
+      cb.addEventListener("change", () => {
+        sortMovies(sortSelect.value); // reapply sort + filter
+      });
     });
   })
   .catch(err => {
@@ -53,9 +59,23 @@ function renderMovies(movies) {
   const container = document.getElementById("reviews");
   container.innerHTML = "";
 
+ // get active reviewers from checkboxes
+ const activeReviewers = Array.from(document.querySelectorAll('#reviewer-filters input:checked'))
+ .map(cb => cb.value);
+
+
   movies.forEach(movie => {
     const movieDiv = document.createElement("div");
     movieDiv.className = "all-review-data-holder";
+
+    // filter reviews if reviewers are checked
+    const reviewsToShow = activeReviewers.length > 0
+    ? movie.reviews.filter(r => activeReviewers.includes(r.name))
+    : movie.reviews; // if none checked → show all
+    // skip movie if no reviews left
+    if (reviewsToShow.length === 0) return;
+
+
 
     movieDiv.innerHTML = `
       <div class="review-data-holder">
