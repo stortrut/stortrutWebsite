@@ -56,78 +56,55 @@ function parseMovies(text) {
 }
 
 function renderMovies(movies) {
-  const container = document.getElementById("reviews");
-  container.innerHTML = "";
-
- // get active reviewers from checkboxes
- const activeReviewers = Array.from(document.querySelectorAll('#reviewer-filters input:checked'))
- .map(cb => cb.value);
-
-
-  movies.forEach(movie => {
-    const movieDiv = document.createElement("div");
-    movieDiv.className = "all-review-data-holder";
-
-    // filter reviews if reviewers are checked
-    const reviewsToShow = activeReviewers.length > 0
-    ? movie.reviews.filter(r => activeReviewers.includes(r.name))
-    : movie.reviews; // if none checked → show all
-    // skip movie if no reviews left
-    if (reviewsToShow.length === 0) return;
-
-
-
-    movieDiv.innerHTML = `
-      <div class="review-data-holder">
-        <p class="movie-title">${movie.title} ${movie.year ? "(" + movie.year + ")" : ""}</p>
-        ${movie.genre ? `<p><em>${movie.genre}</em></p>` : ""}
-        <img class="movie-poster" src="${movie.poster}">
-        <div class="reviews-holder">
-          ${movie.reviews.map(r => `
-            <div class="review-holder">
-              <p class="review-name">${r.name}:</p>
-              <div class="star-rating" data-score="${r.score}"></div>
-            </div>
-          `).join("")}
+    const container = document.getElementById("reviews");
+    container.innerHTML = "";
+  
+    // get active reviewers from checkboxes
+    const activeReviewers = Array.from(document.querySelectorAll('#reviewer-filters input:checked'))
+      .map(cb => cb.value);
+  
+    movies.forEach(movie => {
+      // if reviewers are checked, require ALL of them to exist in this movie
+      if (activeReviewers.length > 0) {
+        const reviewersInMovie = movie.reviews.map(r => r.name);
+        const hasAll = activeReviewers.every(name => reviewersInMovie.includes(name));
+        if (!hasAll) return; // skip this movie completely
+      }
+  
+      // filter reviews to only show the checked ones (if any)
+      const reviewsToShow = activeReviewers.length > 0
+        ? movie.reviews.filter(r => activeReviewers.includes(r.name))
+        : movie.reviews;
+  
+      // skip if somehow no reviews left
+      if (reviewsToShow.length === 0) return;
+  
+      const movieDiv = document.createElement("div");
+      movieDiv.className = "all-review-data-holder";
+  
+      movieDiv.innerHTML = `
+        <div class="review-data-holder">
+          <p class="movie-title">
+            ${movie.title} ${movie.date ? "(" + movie.date.toISOString().split("T")[0] + ")" : ""}
+          </p>
+          ${movie.genre ? `<p><em>${movie.genre}</em></p>` : ""}
+          <img class="movie-poster" src="${movie.poster}">
+          <div class="reviews-holder">
+            ${reviewsToShow.map(r => `
+              <div class="review-holder">
+                <p class="review-name">${r.name}:</p>
+                <div class="star-rating" data-score="${r.score}"></div>
+              </div>
+            `).join("")}
+          </div>
         </div>
-      </div>
-    `;
-
-    container.appendChild(movieDiv);
-  });
-
-  renderStars(); // re-run star filling
-}
-
-// star renderer
-function renderStars() {
-  document.querySelectorAll('.star-rating').forEach(el => {
-    const score = parseFloat(el.dataset.score) || 0;
-
-    if (!el.querySelector('.star-fill')) {
-      el.innerHTML = `
-        <span class="star-fill">★★★★★</span>
-        <span class="star-base">★★★★★</span>
       `;
-    }
-
-    const tempSpan = document.createElement('span');
-    tempSpan.style.fontFamily = getComputedStyle(el).fontFamily;
-    tempSpan.style.fontSize = getComputedStyle(el).fontSize;
-    tempSpan.style.visibility = 'hidden';
-    tempSpan.style.position = 'absolute';
-    tempSpan.textContent = '★';
-    document.body.appendChild(tempSpan);
-
-    const singleStarWidth = tempSpan.getBoundingClientRect().width;
-    document.body.removeChild(tempSpan);
-
-    const totalWidth = singleStarWidth * 5;
-    const fillWidth = (score / 5) * totalWidth;
-
-    el.querySelector('.star-fill').style.width = fillWidth + 'px';
-  });
-}
+  
+      container.appendChild(movieDiv);
+    });
+  
+    renderStars(); // re-run star filling
+  }
 
 // 🔥 Sort logic
 function sortMovies(criteria) {
