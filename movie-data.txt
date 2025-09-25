@@ -965,7 +965,7 @@ Review: Holger|3.4
 
 Movie: The Legend of Vox Machina S.3
 Year: 2024
-Poster: ../images/movie-posters/tlovms3.jpg
+Poster: ../images/movie-posters/tlovms3.JPG
 Seen: 2024-10-03
 Review: Alvin|4.3
 Review: Diaa|
@@ -1027,7 +1027,7 @@ Review: Carl|
 
 Movie: Wallace & Gromit: Vengeance Most Fowl
 Year: 2025
-Poster: ../images/wallaceandgromitvengeancemostfowl.jpg
+Poster: ../images/movie-posters/wallaceandgromitvengeancemostfowl.jpg
 Seen: 2025-01-17
 Review: Alvin|3.46
 Review: Diaa|3.6
@@ -1050,7 +1050,7 @@ Review: Holger|4.18
 
 Movie: Alice in Borderland S.2
 Year: 2022
-Poster: ../images/movie-posters/aliceinborderlands2.jpg
+Poster: ../images/movie-posters/aliveinborderlandss2.jpg
 Seen: 2025-02-05
 Review: Alvin|3.616
 Review: Diaa|
