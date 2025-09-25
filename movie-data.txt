@@ -729,3 +729,32 @@ Seen: 2023-10-10
 Review: Alvin|2.772
 Review: Holger|2.48
 Review: Carl|3.96
+
+Movie: A Fistful of Dollars
+Year: 1964
+Poster: ../images/movie-posters/afistfulofdollars.jpg
+Seen: 2023-10-15
+Review: Alvin|3.956
+Review: Diaa|4.4
+Review: Holger|3.52
+Review: Carl|3.4
+
+Movie: For a Few Dollars More
+Year: 1965
+Poster: ../images/movie-posters/forafewdollarsmore.jpg
+Seen: 2023-10-15
+Review: Alvin|3.562
+Review: Diaa|4,7
+Review: Holger|3.02
+Review: Carl|2.4
+
+
+Movie: The Good, the Bad and the Ugly
+Year: 1966
+Poster: ../images/movie-posters/thegoodthebadandtheugly.jpg
+Seen: 2023-10-15
+Review: Alvin|3.3
+Review: Diaa|4.1
+Review: Holger|3.76
+Review: Carl|3.1
+
