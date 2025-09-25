@@ -1026,7 +1026,7 @@ Review: Holger|4.36
 Review: Carl|
 
 Movie: Wallace & Gromit: Vengeance Most Fowl
-Year: 2025
+Year: 2024
 Poster: ../images/movie-posters/wallaceandgromitvengeancemostfowl.jpg
 Seen: 2025-01-17
 Review: Alvin|3.46
