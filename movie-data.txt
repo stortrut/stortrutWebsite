@@ -856,3 +856,320 @@ Poster: ../images/movie-posters/piper.jpg
 Seen: 2023-12-31
 Review: Alvin|2.6
 Review: Diaa|3
+
+Movie: Last Shadow at First Light
+Year: 2023
+Poster: ../images/movie-posters/last-shadow-at-first-light.jpg
+Seen: 2024-01-11
+Review: Alvin|3.896
+Review: Holger|4.0
+Review: Diaa|2.5
+
+Movie: Hazbin Hotel S.1
+Year: 2024
+Poster: ../images/movie-posters/hazbin-hotel.jpg
+Seen: 2024-02-26
+Review: Alvin|4.7816
+Review: Holger|4.19
+Review: Carl|3.8
+
+Movie: The Hero’s Journey aka My Life aka the Caleb Jhonston Story (I’m Caleb)
+Year: 2023
+Poster: ../images/movie-posters/caleb-jhonston.jpg
+Seen: 2024-02-27
+Review: Alvin|3.688
+Review: Holger|3.48
+
+Movie: The Naked Gun
+Year: 1988
+Poster: ../images/movie-posters/naked-gun.jpg
+Seen: 2024-03-17
+Review: Alvin|1.3
+Review: Diaa|3.6
+Review: Holger|1.5
+
+Movie: Kung Fu Panda 4
+Year: 2024
+Poster: ../images/movie-posters/kung-fu-panda-4.jpg
+Seen: 2024-03-23
+Review: Alvin|4.164
+Review: Diaa|4.14
+Review: Holger|3.46
+Review: Carl|3.4
+
+Movie: Smiling Friends (Season 2)
+Year: 2024
+Poster: ../images/movie-posters/smiling-friends-s2.jpg
+Seen: 2024-04-01
+
+Movie: Poor Things
+Year: 2023
+Poster: ../images/movie-posters/poor-things.jpg
+Seen: 2024-05-10
+Review: Alvin|3.4
+Review: Holger|3.06
+
+Movie: Lost in Translation
+Year: 2003
+Poster: ../images/movie-posters/lost-in-translation.jpg
+Seen: 2024-06-08
+Review: Alvin|3.4
+Review: Holger|3.62
+
+Movie: Jujutsu Kaisen 0
+Year: 2021
+Poster: ../images/movie-posters/jujutsu-kaisen-0.jpg
+Seen: 2024-07-08
+Review: Alvin|2.904
+Review: Holger|3.394
+
+Movie: Fucking Åmål
+Year: 1998
+Poster: ../images/movie-posters/fucking-amal.jpg
+Seen: 2024-08-07
+Review: Alvin|4.1
+Review: Diaa|3.18
+Review: Holger|3.16
+
+Movie: Léon: The Professional
+Year: 1994
+Poster: ../images/movie-posters/leon.jpg
+Seen: 2024-08-07
+Review: Alvin|4.1122
+Review: Diaa|4.1
+Review: Holger|4.0
+
+Movie: Eternal Sunshine of the Spotless Mind
+Year: 2004
+Poster: ../images/movie-posters/eternal-sunshine.jpg
+Seen: 2024-08-15
+Review: Alvin|4.3668
+Review: Diaa|4.1
+Review: Holger|4.46
+
+Movie: Inside Out 2
+Year: 2024
+Poster: ../images/movie-posters/inside-out-2.jpg
+Seen: 2024-09-10
+Review: Alvin|3.76
+Review: Diaa|4.2
+Review: Holger|4.1
+
+Movie: Sällskapsresan 2
+Year: 1985
+Poster: ../images/movie-posters/sallskapsresan-2.jpg
+Seen: 2024-09-12
+Review: Alvin|3.52
+Review: Diaa|3.2
+Review: Holger|3.4
+
+Movie: The Legend of Vox Machina S.3
+Year: 2024
+Poster: ../images/movie-posters/tlovms3.jpg
+Seen: 2024-10-03
+Review: Alvin|4.3
+Review: Diaa|
+Review: Holger|4.48
+Review: Carl|
+
+Movie: Arcane Season 2
+Year: 2024
+Poster: ../images/movie-posters/arcane-s2.jpg
+Seen: 2024-11-09
+Review: Alvin|4.56
+Review: Diaa|4.0
+Review: Holger|
+Review: Carl|
+
+Movie: Look Back
+Year: 2024
+Poster: ../images/movie-posters/look-back.jpg
+Seen: 2024-12-10
+Review: Alvin|4.1
+Review: Diaa|4.7
+
+Movie: Suzume
+Year: 2022
+Poster: ../images/movie-posters/suzume.jpg
+Seen: 2024-12-11
+Review: Alvin|4.168
+Review: Diaa|4.7
+
+Movie: Grave of the Fireflies
+Year: 1988
+Poster: ../images/movie-posters/grave-of-the-fireflies.jpg
+Seen: 2024-12-17
+Review: Alvin|4.56
+Review: Diaa|4.88
+
+Movie: Red One
+Year: 2024
+Poster: ../images/movie-posters/red-one.jpg
+Seen: 2024-12-22
+Review: Alvin|2.46
+Review: Diaa|3.12
+
+Movie: Wednesday S.1
+Year: 2022
+Poster: ../images/movie-posters/wednesday.jpg
+Seen: 2024-12-29
+Review: Alvin|3.884
+Review: Diaa|3.3
+
+Movie: Squid Game S.2
+Year: 2024
+Poster: ../images/movie-posters/squid-game-s2.jpg
+Seen: 2025-01-10
+Review: Alvin|4.622
+Review: Diaa|4.1
+Review: Holger|4.36
+Review: Carl|
+
+Movie: Wallace & Gromit: Vengeance Most Fowl
+Year: 2025
+Poster: ../images/movie-posters/wallace-gromit.jpg
+Seen: 2025-01-17
+Review: Alvin|3.46
+Review: Diaa|3.6
+Review: Holger|3.96
+
+Movie: Alice in Borderland S.1
+Year: 2020
+Poster: ../images/movie-posters/alice-in-borderland-s1.jpg
+Seen: 2025-01-21
+Review: Alvin|3.84
+Review: Diaa|4.0
+
+Movie: Entergalactic
+Year: 2022
+Poster: ../images/movie-posters/entergalactic.jpg
+Seen: 2025-02-02
+Review: Alvin|4.416
+Review: Diaa|3.6
+Review: Holger|4.18
+
+Movie: Alice in Borderland S.2
+Year: 2022
+Poster: ../images/movie-posters/alice-in-borderland-s2.jpg
+Seen: 2025-02-05
+Review: Alvin|3.616
+Review: Diaa|
+
+Movie: Dog Day Afternoon
+Year: 1975
+Poster: ../images/movie-posters/dog-day-afternoon.jpg
+Seen: 2025-02-23
+Review: Alvin|3.98
+Review: Diaa|
+
+Movie: The Shawshank Redemption
+Year: 1994
+Poster: ../images/movie-posters/shawshank-redemption.jpg
+Seen: 2025-03-02
+Review: Alvin|4.52
+Review: Holger|
+
+Movie: Minecraft: The Movie
+Year: 2025
+Poster: ../images/movie-posters/minecraft-movie.jpg
+Seen: 2025
+Review: Alvin|2.1
+Review: Diaa|3
+
+Movie: Lupin III: The First
+Year: 2019
+Poster: ../images/movie-posters/lupin3thefirst.jpg
+Seen: 2025
+Review: Alvin|3.75
+Review: Diaa|3
+
+Movie: Rick and Morty S.8
+Year: 2025
+Poster: ../images/movie-posters/Rick_and_Morty_season_8.jpg
+Seen: 2025-06-18
+Review: Alvin|
+Review: Holger|
+
+Movie: KPop Demon Hunters
+Year: 2025
+Poster: ../images/movie-posters/kpopdemonhunters.jpg
+Seen: 2025-07-15
+Review: Alvin|4.276
+Review: Diaa|4
+
+Movie: Thunderbolts*
+Year: 2025
+Poster: ../images/movie-posters/thunderbolts.jpg
+Seen: 2025-07-21
+Review: Alvin|2.8
+Review: Diaa|3.3
+
+Movie: Karate Kid: Legends
+Year: 2025
+Poster: ../images/movie-posters/karatekidlegends.jpg
+Seen: 2025-07-21
+Review: Alvin|3.8
+Review: Diaa|3.5
+
+Movie: The Wild Robot
+Year: 2024
+Poster: ../images/movie-posters/thewildrobot.jpg
+Seen: 2025-07-22
+Review: Alvin|4.1
+Review: Diaa|4.0
+
+Movie: Transformers One
+Year: 2025
+Poster: ../images/movie-posters/transformersone.jpg
+Seen: 2025-07-22
+Review: Alvin|4.04
+Review: Diaa|4.58
+
+Movie: Transcendence
+Year: 2014
+Poster: ../images/movie-posters/transcendence.jpg
+Seen: 2025-07-31
+Review: Alvin|3.5
+Review: Diaa|3.9
+
+Movie: Superman
+Year: 2025
+Poster: ../images/movie-posters/superman.jpg
+Seen: 2025-08-22
+Review: Alvin|4.68
+Review: Diaa|4.5
+
+Movie: A Good Person
+Year: 2023
+Poster: ../images/movie-posters/agoodperson.jpg
+Seen: 2025-08-28
+Review: Alvin|4.31
+Review: Diaa|4.1
+
+Movie: Coraline
+Year: 2009
+Poster: ../images/movie-posters/coraline.jpg
+Seen: 2025-09-06
+Review: Alvin|4.3
+Review: Diaa|3.8
+
+Movie: Superbad
+Year: 2007
+Poster: ../images/movie-posters/superbad.jpg
+Seen: 2025-09-15
+Review: Alvin|4.0
+Review: Diaa|4.0
+
+Movie: Missing Link
+Year: 2019
+Poster: ../images/movie-posters/missinglink.jpg
+Seen: 2025-09-17
+Review: Alvin|2.6
+Review: Diaa|2.8
+
+Movie: The Menu
+Year: 2022
+Poster: ../images/movie-posters/themenu.jpg
+Seen: 2025-09-21
+Review: Alvin|4.58
+Review: Diaa|5.0
