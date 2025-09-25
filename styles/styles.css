@@ -67,6 +67,7 @@ p{
 
 .top-bar-button{
   border: 1px solid rgb(5, 0, 26); /* Or any color/width you prefer */
+  border-radius: 4px;
 
   background-color: rgb(255, 215, 178);
   cursor: pointer;
