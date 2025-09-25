@@ -81,7 +81,6 @@
 .review-name{
   background-color: rgba(255, 0, 0, 0);
   font-weight: bold;
-  margin-left: 10px;
   display: inline-block;     /* inline-block works fine in Safari */
 
 }
@@ -96,8 +95,7 @@
 
 
 .star-rating {
-  text-align: left;
-  display: inline-block;
+  text-align: center;
 
   --star-size: 24px;
   --star-color-bg: #0c0027;
@@ -107,13 +105,8 @@
   font-family: monospace;
   font-size: var(--star-size);
   line-height: 1;
-  width: calc(var(--star-size) * 5);
-  height: var(--star-size);
   color: var(--star-color-bg);
   user-select: none;
-
-  justify-content: center;   /* ✅ center stars horizontally */
-
 }
 
 .star-rating .star-fill {
@@ -124,6 +117,4 @@
   overflow: hidden;
   white-space: nowrap;
   width: 0;
-  text-align: left; /* keep the fill aligned from the left */
-
 }
