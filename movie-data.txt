@@ -744,12 +744,12 @@ Year: 1965
 Poster: ../images/movie-posters/forafewdollarsmore.jpg
 Seen: 2023-10-15
 Review: Alvin|3.562
-Review: Diaa|4,7
+Review: Diaa|4.7
 Review: Holger|3.02
 Review: Carl|2.4
 
 
-Movie: The Good, the Bad and the Ugly
+Movie: The Good. the Bad and the Ugly
 Year: 1966
 Poster: ../images/movie-posters/thegoodthebadandtheugly.jpg
 Seen: 2023-10-15
@@ -760,14 +760,14 @@ Review: Carl|3.1
 
 Movie: Rick and Morty S.7
 Year: 2023
-Poster: ../images/movie-posters/rickmorty-s7.jpg
+Poster: ../images/movie-posters/Rick_and_Morty_season_7.jpg
 Seen: 2023-10-17
 Review: Alvin|3.8
 Review: Holger|3.7
 
 Movie: The Adventures of Tintin
 Year: 2011
-Poster: ../images/movie-posters/tintin.jpg
+Poster: ../images/movie-posters/theadventuresoftintin.jpg
 Seen: 2023-11-04
 Review: Alvin|3.002
 Review: Diaa|3.8
@@ -775,19 +775,19 @@ Review: Holger|3.56
 
 Movie: Invincible S.2
 Year: 2023
-Poster: ../images/movie-posters/invincible-s2.jpg
+Poster: ../images/movie-posters/Invincible_season_2.jpg
 Seen: 2023-11-06
 
 Movie: Scavengers Reign
 Year: 2023
-Poster: ../images/movie-posters/scavengers-reign.jpg
+Poster: ../images/movie-posters/scavengersreign.jpg
 Seen: 2023-11-16 
 Review: Alvin|4.0904
 Review: Holger|4.28
 
 Movie: Scott Pilgrim Takes Off
 Year: 2023
-Poster: ../images/movie-posters/scott-pilgrim.jpg
+Poster: ../images/movie-posters/scottpilgrimtakesoff.jpg
 Seen: 2023-11-20
 Review: Alvin|3.647
 Review: Holger|3.68
@@ -795,7 +795,64 @@ Review: Carl|4.1
 
 Movie: Die Hard
 Year: 1988
-Poster: ../images/movie-posters/die-hard.jpg
+Poster: ../images/movie-posters/diehard.jpg
 Seen: 2023-12-26
 Review: Alvin|3.6
 Review: Holger|3.4
+
+Movie: On the Twelfth Day…
+Year: 1955
+Poster: ../images/onthetwelfthday.jpg
+Seen: 2023-12-26
+Review: Alvin|2,87
+Review: Diaa|3
+
+Movie: The Boy and the Heron
+Year: 2023
+Poster: ../images/movie-posters/theboyandtheheron.jpg
+Seen: 2023-12-30
+Review: Alvin|3.63
+Review: Diaa|4,5
+Review: Holger|3.3
+
+Movie: Lucy
+Year: 2014
+Poster: ../images/movie-posters/lucy.jpg
+Seen: 2023-12-31
+Review: Alvin|2.86
+Review: Diaa|3,5
+
+Movie: Once Upon a Studio
+Year: 2023
+Poster: ../images/movie-posters/onceuponastudio.jpg
+Seen: 2023-12-31
+Review: Alvin|4.3
+Review: Diaa|3
+
+Movie: If Anything Happens I Love You
+Year: 2020
+Poster: ../images/movie-posters/ifanythinghappensiloveyou.jpg
+Seen: 2023-12-31
+Review: Alvin|4.5
+Review: Diaa|3
+
+Movie: The Boy, the Mole, the Fox and the Horse
+Year: 2022
+Poster: ../images/movie-posters/theboythefoxandthehorse.jpg
+Seen: 2023-12-31
+Review: Alvin|3.45
+Review: Diaa|3
+
+Movie: Lackadaisy
+Year: 2023
+Poster: ../images/movie-posters/lackadaisy.jpg
+Seen: 2023-12-31
+Review: Alvin|3.2
+Review: Diaa|3
+
+Movie: Piper
+Year: 2016
+Poster: ../images/movie-posters/piper.jpg
+Seen: 2023-12-31
+Review: Alvin|2.6
+Review: Diaa|3
