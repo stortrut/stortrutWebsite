@@ -106,6 +106,36 @@ function renderMovies(movies) {
     renderStars(); // re-run star filling
   }
 
+// star renderer
+function renderStars() {
+  document.querySelectorAll('.star-rating').forEach(el => {
+    const score = parseFloat(el.dataset.score) || 0;
+
+    if (!el.querySelector('.star-fill')) {
+      el.innerHTML = `
+        <span class="star-fill">★★★★★</span>
+        <span class="star-base">★★★★★</span>
+      `;
+    }
+
+    const tempSpan = document.createElement('span');
+    tempSpan.style.fontFamily = getComputedStyle(el).fontFamily;
+    tempSpan.style.fontSize = getComputedStyle(el).fontSize;
+    tempSpan.style.visibility = 'hidden';
+    tempSpan.style.position = 'absolute';
+    tempSpan.textContent = '★';
+    document.body.appendChild(tempSpan);
+
+    const singleStarWidth = tempSpan.getBoundingClientRect().width;
+    document.body.removeChild(tempSpan);
+
+    const totalWidth = singleStarWidth * 5;
+    const fillWidth = (score / 5) * totalWidth;
+
+    el.querySelector('.star-fill').style.width = fillWidth + 'px';
+  });
+}
+
 // 🔥 Sort logic
 function sortMovies(criteria) {
   let sorted = [...allMovies]; // copy
