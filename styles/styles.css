@@ -127,3 +127,31 @@ p{
   margin: 10px;         /* Spacing around the line */
   margin-top:20px;
 }
+
+/* Style the label */
+label[for="sort-select"] {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #4f46e5; /* Indigo color */
+  padding: 6px 12px;
+  border-radius: 8px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Hover effect */
+label[for="sort-select"]:hover {
+  background-color: #6366f1;
+  transform: translateY(-2px);
+}
+
+/* Optional: align the select nicely */
+#sort-select {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
