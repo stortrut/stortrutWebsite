@@ -802,7 +802,7 @@ Review: Holger|3.4
 
 Movie: On the Twelfth Day…
 Year: 1955
-Poster: ../images/onthetwelfthday.jpg
+Poster: ../images/movie-posters/onthetwelfthday.jpg
 Seen: 2023-12-26
 Review: Alvin|2,87
 Review: Diaa|3
