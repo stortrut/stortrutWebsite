@@ -118,3 +118,49 @@
   white-space: nowrap;
   width: 0;
 }
+
+
+/* container */
+#reviewer-filters {
+  margin: 1em 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+/* hide default checkbox */
+#reviewer-filters input[type="checkbox"] {
+  display: none;
+}
+
+/* custom label */
+#reviewer-filters label {
+  cursor: pointer;
+  padding: 0.4em 0.8em;
+  border-radius: 20px;
+  border: 2px solid #ccc;
+  background: #f9f9f9;
+  color: #333;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+/* hover effect */
+#reviewer-filters label:hover {
+  border-color: #999;
+  background: #f0f0f0;
+}
+
+/* when checked */
+#reviewer-filters input[type="checkbox"]:checked + label {
+  border-color: #007BFF;
+  background: #007BFF;
+  color: white;
+  font-weight: bold;
+}
+
+/* optional: add a checkmark before text when checked */
+#reviewer-filters input[type="checkbox"]:checked + label::before {
+  content: "✔ ";
+}
