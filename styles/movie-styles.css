@@ -60,11 +60,15 @@
 
 .review-holder{
   display: flex;
-  justify-content: center;  /* ✅ centers name + stars horizontally */
-  align-items: center;      /* ✅ keeps them aligned vertically */
-  gap: 6px;                 /* space between name and stars */
-  margin: 4px 0;            /* small vertical spacing between reviews */
+  justify-content: center;   /* center horizontally */
+  align-items: center;       /* align vertically */
+  margin: 4px 0;
 }
+.review-holder > * {
+  margin: 0 4px;             /* instead of gap (more Safari-safe) */
+}
+
+
 
 
 .review-name,
@@ -78,6 +82,8 @@
   background-color: rgba(255, 0, 0, 0);
   font-weight: bold;
   margin-left: 10px;
+  display: inline-block;     /* inline-block works fine in Safari */
+
 }
 
 .review-score{
