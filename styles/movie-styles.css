@@ -59,8 +59,11 @@
 }
 
 .review-holder{
-  background-color: rgba(128, 128, 128, 0);
-  margin:0;
+  display: flex;
+  justify-content: center;  /* ✅ centers name + stars horizontally */
+  align-items: center;      /* ✅ keeps them aligned vertically */
+  gap: 6px;                 /* space between name and stars */
+  margin: 4px 0;            /* small vertical spacing between reviews */
 }
 
 
@@ -72,14 +75,12 @@
 
 
 .review-name{
-  display: inline-block;
   background-color: rgba(255, 0, 0, 0);
   font-weight: bold;
   margin-left: 10px;
 }
 
 .review-score{
-  display: inline-block;
   background-color: rgba(0, 0, 255, 0);
 }
 
