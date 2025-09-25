@@ -393,7 +393,7 @@ Movie: Arcane
 Year: 2021
 Poster: ../images/movie-posters/arcane.jpg
 Seen: 2022-04-14
-Review: Alvin|5.4
+Review: Alvin|5
 Review: Diaa|5
 Review: Holger|4.86
 Review: Carl|5
@@ -689,7 +689,7 @@ Movie: Spider-Man: Across the Spider Verse
 Year: 2023
 Poster: ../images/movie-posters/acrossthespiderverse.jpg
 Seen: 2023-06-18
-Review: Alvin|5.42
+Review: Alvin|5
 Review: Diaa|4.4
 Review: Holger|4.72
 
