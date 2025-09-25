@@ -859,7 +859,7 @@ Review: Diaa|3
 
 Movie: Last Shadow at First Light
 Year: 2023
-Poster: ../images/movie-posters/last-shadow-at-first-light.jpg
+Poster: ../images/movie-posters/lastshadowatfirstlight.jpg
 Seen: 2024-01-11
 Review: Alvin|3.896
 Review: Holger|4.0
@@ -867,7 +867,7 @@ Review: Diaa|2.5
 
 Movie: Hazbin Hotel S.1
 Year: 2024
-Poster: ../images/movie-posters/hazbin-hotel.jpg
+Poster: ../images/movie-posters/hazbinhotel.jpg
 Seen: 2024-02-26
 Review: Alvin|4.7816
 Review: Holger|4.19
@@ -875,14 +875,14 @@ Review: Carl|3.8
 
 Movie: The Hero’s Journey aka My Life aka the Caleb Jhonston Story (I’m Caleb)
 Year: 2023
-Poster: ../images/movie-posters/caleb-jhonston.jpg
+Poster: ../images/movie-posters/theherosjourney.jpg
 Seen: 2024-02-27
 Review: Alvin|3.688
 Review: Holger|3.48
 
 Movie: The Naked Gun
 Year: 1988
-Poster: ../images/movie-posters/naked-gun.jpg
+Poster: ../images/movie-posters/thenakedgun.jpg
 Seen: 2024-03-17
 Review: Alvin|1.3
 Review: Diaa|3.6
@@ -890,42 +890,42 @@ Review: Holger|1.5
 
 Movie: Kung Fu Panda 4
 Year: 2024
-Poster: ../images/movie-posters/kung-fu-panda-4.jpg
+Poster: ../images/movie-posters/kungfupanda4.jpg
 Seen: 2024-03-23
 Review: Alvin|4.164
 Review: Diaa|4.14
 Review: Holger|3.46
 Review: Carl|3.4
 
-Movie: Smiling Friends (Season 2)
+Movie: Smiling Friends S2
 Year: 2024
-Poster: ../images/movie-posters/smiling-friends-s2.jpg
+Poster: ../images/movie-posters/smilingfriendss2.jpg
 Seen: 2024-04-01
 
 Movie: Poor Things
 Year: 2023
-Poster: ../images/movie-posters/poor-things.jpg
+Poster: ../images/movie-posters/poorthings.jpg
 Seen: 2024-05-10
 Review: Alvin|3.4
 Review: Holger|3.06
 
 Movie: Lost in Translation
 Year: 2003
-Poster: ../images/movie-posters/lost-in-translation.jpg
+Poster: ../images/movie-posters/lostintranslation.jpg
 Seen: 2024-06-08
 Review: Alvin|3.4
 Review: Holger|3.62
 
 Movie: Jujutsu Kaisen 0
 Year: 2021
-Poster: ../images/movie-posters/jujutsu-kaisen-0.jpg
+Poster: ../images/movie-posters/jjk0.jpg
 Seen: 2024-07-08
 Review: Alvin|2.904
 Review: Holger|3.394
 
 Movie: Fucking Åmål
 Year: 1998
-Poster: ../images/movie-posters/fucking-amal.jpg
+Poster: ../images/movie-posters/fuckingåmål.jpg
 Seen: 2024-08-07
 Review: Alvin|4.1
 Review: Diaa|3.18
@@ -933,7 +933,7 @@ Review: Holger|3.16
 
 Movie: Léon: The Professional
 Year: 1994
-Poster: ../images/movie-posters/leon.jpg
+Poster: ../images/movie-posters/leontheprofessional.jpg
 Seen: 2024-08-07
 Review: Alvin|4.1122
 Review: Diaa|4.1
@@ -941,7 +941,7 @@ Review: Holger|4.0
 
 Movie: Eternal Sunshine of the Spotless Mind
 Year: 2004
-Poster: ../images/movie-posters/eternal-sunshine.jpg
+Poster: ../images/movie-posters/eternalsunshineofthespotlessmind.jpg
 Seen: 2024-08-15
 Review: Alvin|4.3668
 Review: Diaa|4.1
@@ -949,7 +949,7 @@ Review: Holger|4.46
 
 Movie: Inside Out 2
 Year: 2024
-Poster: ../images/movie-posters/inside-out-2.jpg
+Poster: ../images/movie-posters/insideout2.jpg
 Seen: 2024-09-10
 Review: Alvin|3.76
 Review: Diaa|4.2
@@ -957,7 +957,7 @@ Review: Holger|4.1
 
 Movie: Sällskapsresan 2
 Year: 1985
-Poster: ../images/movie-posters/sallskapsresan-2.jpg
+Poster: ../images/movie-posters/snowrollersällskapsresan.jpg
 Seen: 2024-09-12
 Review: Alvin|3.52
 Review: Diaa|3.2
@@ -974,7 +974,7 @@ Review: Carl|
 
 Movie: Arcane Season 2
 Year: 2024
-Poster: ../images/movie-posters/arcane-s2.jpg
+Poster: ../images/movie-posters/arcanes2.jpg
 Seen: 2024-11-09
 Review: Alvin|4.56
 Review: Diaa|4.0
@@ -983,7 +983,7 @@ Review: Carl|
 
 Movie: Look Back
 Year: 2024
-Poster: ../images/movie-posters/look-back.jpg
+Poster: ../images/movie-posters/lookback.jpg
 Seen: 2024-12-10
 Review: Alvin|4.1
 Review: Diaa|4.7
@@ -997,14 +997,14 @@ Review: Diaa|4.7
 
 Movie: Grave of the Fireflies
 Year: 1988
-Poster: ../images/movie-posters/grave-of-the-fireflies.jpg
+Poster: ../images/movie-posters/graveofthefireflies.jpg
 Seen: 2024-12-17
 Review: Alvin|4.56
 Review: Diaa|4.88
 
 Movie: Red One
 Year: 2024
-Poster: ../images/movie-posters/red-one.jpg
+Poster: ../images/movie-posters/redone.jpg
 Seen: 2024-12-22
 Review: Alvin|2.46
 Review: Diaa|3.12
@@ -1018,7 +1018,7 @@ Review: Diaa|3.3
 
 Movie: Squid Game S.2
 Year: 2024
-Poster: ../images/movie-posters/squid-game-s2.jpg
+Poster: ../images/movie-posters/squidgames2.jpg
 Seen: 2025-01-10
 Review: Alvin|4.622
 Review: Diaa|4.1
@@ -1027,7 +1027,7 @@ Review: Carl|
 
 Movie: Wallace & Gromit: Vengeance Most Fowl
 Year: 2025
-Poster: ../images/movie-posters/wallace-gromit.jpg
+Poster: ../images/wallaceandgromitvengeancemostfowl.jpg
 Seen: 2025-01-17
 Review: Alvin|3.46
 Review: Diaa|3.6
@@ -1035,7 +1035,7 @@ Review: Holger|3.96
 
 Movie: Alice in Borderland S.1
 Year: 2020
-Poster: ../images/movie-posters/alice-in-borderland-s1.jpg
+Poster: ../images/movie-posters/aliceinborderland.jpg
 Seen: 2025-01-21
 Review: Alvin|3.84
 Review: Diaa|4.0
@@ -1050,28 +1050,28 @@ Review: Holger|4.18
 
 Movie: Alice in Borderland S.2
 Year: 2022
-Poster: ../images/movie-posters/alice-in-borderland-s2.jpg
+Poster: ../images/movie-posters/aliceinborderlands2.jpg
 Seen: 2025-02-05
 Review: Alvin|3.616
 Review: Diaa|
 
 Movie: Dog Day Afternoon
 Year: 1975
-Poster: ../images/movie-posters/dog-day-afternoon.jpg
+Poster: ../images/movie-posters/dogdayafternoon.jpg
 Seen: 2025-02-23
 Review: Alvin|3.98
 Review: Diaa|
 
 Movie: The Shawshank Redemption
 Year: 1994
-Poster: ../images/movie-posters/shawshank-redemption.jpg
+Poster: ../images/movie-posters/theshawshankredemtion.jpg
 Seen: 2025-03-02
 Review: Alvin|4.52
 Review: Holger|
 
 Movie: Minecraft: The Movie
 Year: 2025
-Poster: ../images/movie-posters/minecraft-movie.jpg
+Poster: ../images/movie-posters/aminecraftmovie.jpg
 Seen: 2025
 Review: Alvin|2.1
 Review: Diaa|3
