@@ -758,3 +758,44 @@ Review: Diaa|4.1
 Review: Holger|3.76
 Review: Carl|3.1
 
+Movie: Rick and Morty S.7
+Year: 2023
+Poster: ../images/movie-posters/rickmorty-s7.jpg
+Seen: 2023-10-17
+Review: Alvin|3.8
+Review: Holger|3.7
+
+Movie: The Adventures of Tintin
+Year: 2011
+Poster: ../images/movie-posters/tintin.jpg
+Seen: 2023-11-04
+Review: Alvin|3.002
+Review: Diaa|3.8
+Review: Holger|3.56
+
+Movie: Invincible S.2
+Year: 2023
+Poster: ../images/movie-posters/invincible-s2.jpg
+Seen: 2023-11-06
+
+Movie: Scavengers Reign
+Year: 2023
+Poster: ../images/movie-posters/scavengers-reign.jpg
+Seen: 2023-11-16 
+Review: Alvin|4.0904
+Review: Holger|4.28
+
+Movie: Scott Pilgrim Takes Off
+Year: 2023
+Poster: ../images/movie-posters/scott-pilgrim.jpg
+Seen: 2023-11-20
+Review: Alvin|3.647
+Review: Holger|3.68
+Review: Carl|4.1
+
+Movie: Die Hard
+Year: 1988
+Poster: ../images/movie-posters/die-hard.jpg
+Seen: 2023-12-26
+Review: Alvin|3.6
+Review: Holger|3.4
