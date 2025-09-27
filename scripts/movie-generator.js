@@ -56,55 +56,56 @@ function parseMovies(text) {
 }
 
 function renderMovies(movies) {
-    const container = document.getElementById("reviews");
-    container.innerHTML = "";
-  
-    // get active reviewers from checkboxes
-    const activeReviewers = Array.from(document.querySelectorAll('#reviewer-filters input:checked'))
-      .map(cb => cb.value);
-  
-    movies.forEach(movie => {
-      // if reviewers are checked, require ALL of them to exist in this movie
-      if (activeReviewers.length > 0) {
-        const reviewersInMovie = movie.reviews.map(r => r.name);
-        const hasAll = activeReviewers.every(name => reviewersInMovie.includes(name));
-        if (!hasAll) return; // skip this movie completely
-      }
-  
-      // filter reviews to only show the checked ones (if any)
-      const reviewsToShow = activeReviewers.length > 0
-        ? movie.reviews.filter(r => activeReviewers.includes(r.name))
-        : movie.reviews;
-  
-      // skip if somehow no reviews left
-      if (reviewsToShow.length === 0) return;
-  
-      const movieDiv = document.createElement("div");
-      movieDiv.className = "all-review-data-holder";
-  
-      movieDiv.innerHTML = `
-        <div class="review-data-holder">
-         <p class="movie-title"> 
-            ${movie.title} ${movie.year ? "(" + movie.year.toISOString().split("T")[0] + ")" : ""} 
-         </p>
-          ${movie.genre ? `<p><em>${movie.genre}</em></p>` : ""}
-          <img class="movie-poster" src="${movie.poster}">
-          <div class="reviews-holder">
-            ${reviewsToShow.map(r => `
-              <div class="review-holder">
-                <p class="review-name">${r.name}:</p>
-                <div class="star-rating" data-score="${r.score}"></div>
-              </div>
-            `).join("")}
-          </div>
+  const container = document.getElementById("reviews");
+  container.innerHTML = "";
+
+  // get active reviewers from checkboxes
+  const activeReviewers = Array.from(document.querySelectorAll('#reviewer-filters input:checked'))
+    .map(cb => cb.value);
+
+  movies.forEach(movie => {
+    // if reviewers are checked, require ALL of them to exist in this movie
+    if (activeReviewers.length > 0) {
+      const reviewersInMovie = movie.reviews.map(r => r.name);
+      const hasAll = activeReviewers.every(name => reviewersInMovie.includes(name));
+      if (!hasAll) return; // skip this movie completely
+    }
+
+    // filter reviews to only show the checked ones (if any)
+    const reviewsToShow = activeReviewers.length > 0
+      ? movie.reviews.filter(r => activeReviewers.includes(r.name))
+      : movie.reviews;
+
+    // skip if somehow no reviews left
+    if (reviewsToShow.length === 0) return;
+
+    const movieDiv = document.createElement("div");
+    movieDiv.className = "all-review-data-holder";
+
+    movieDiv.innerHTML = `
+      <div class="review-data-holder">
+        <p class="movie-title">
+          ${movie.title} ${movie.year ? `(${movie.year})` : ""}
+        </p>
+        ${movie.genre ? `<p><em>${movie.genre}</em></p>` : ""}
+        <img class="movie-poster" src="${movie.poster}">
+        <div class="reviews-holder">
+          ${reviewsToShow.map(r => `
+            <div class="review-holder">
+              <p class="review-name">${r.name}:</p>
+              <div class="star-rating" data-score="${r.score}"></div>
+            </div>
+          `).join("")}
         </div>
-      `;
-  
-      container.appendChild(movieDiv);
-    });
-  
-    renderStars(); // re-run star filling
-  }
+      </div>
+    `;
+
+    container.appendChild(movieDiv);
+  });
+
+  renderStars(); // re-run star filling
+}
+
 
 // star renderer
 function renderStars() {
