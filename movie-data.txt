@@ -1173,3 +1173,11 @@ Poster: ../images/movie-posters/themenu.jpg
 Seen: 2025-09-21
 Review: Alvin|4.58
 Review: Diaa|5.0
+
+Movie: Dead Poets Society
+Year: 1989
+Poster: ../images/movie-posters/deadpoetssociety.jpg
+Seen: 2025-09-27
+Review: Alvin|3.75
+Review: Diaa|3.5
+Review: Carl|
