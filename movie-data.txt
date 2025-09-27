@@ -1180,4 +1180,4 @@ Poster: ../images/movie-posters/deadpoetssociety.jpg
 Seen: 2025-09-27
 Review: Alvin|3.75
 Review: Diaa|3.5
-Review: Carl|
+Review: Carl|4.5
