@@ -84,9 +84,9 @@ function renderMovies(movies) {
   
       movieDiv.innerHTML = `
         <div class="review-data-holder">
-          <p class="movie-title">
-            ${movie.title} ${movie.date ? "(" + movie.date.toISOString().split("T")[0] + ")" : ""}
-          </p>
+         <p class="movie-title"> 
+            ${movie.title} ${movie.year ? "(" + movie.year.toISOString().split("T")[0] + ")" : ""} 
+         </p>
           ${movie.genre ? `<p><em>${movie.genre}</em></p>` : ""}
           <img class="movie-poster" src="${movie.poster}">
           <div class="reviews-holder">
