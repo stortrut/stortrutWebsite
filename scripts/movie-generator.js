@@ -139,8 +139,30 @@ function renderStars() {
 
 // 🔥 Sort logic
 function sortMovies(criteria) {
-  let sorted = [...allMovies]; // copy
+  const activeReviewers = Array.from(document.querySelectorAll('#reviewer-filters input:checked'))
+    .map(cb => cb.value);
 
+  let sorted = [...allMovies];
+
+  // Only calculate filtered average rating when sorting by score
+  if (criteria === "rating" || criteria === "ratingreverse") {
+    sorted = sorted.map(movie => {
+      const relevantReviews = activeReviewers.length > 0
+        ? movie.reviews.filter(r => activeReviewers.includes(r.name))
+        : movie.reviews;
+
+      const filteredAvg = relevantReviews.length
+        ? relevantReviews.reduce((sum, r) => sum + r.score, 0) / relevantReviews.length
+        : 0;
+
+      return {
+        ...movie,
+        filteredAvgRating: filteredAvg
+      };
+    });
+  }
+
+  // Apply sorting
   if (criteria === "title") {
     sorted.sort((a, b) => a.title.localeCompare(b.title));
   } else if (criteria === "titlereverse") {
@@ -150,22 +172,23 @@ function sortMovies(criteria) {
   } else if (criteria === "yearreverse") {
     sorted.sort((a, b) => (a.year || 0) - (b.year || 0));
   } else if (criteria === "rating") {
-    sorted.sort((a, b) => b.avgRating - a.avgRating);
+    sorted.sort((a, b) => b.filteredAvgRating - a.filteredAvgRating);
   } else if (criteria === "ratingreverse") {
-    sorted.sort((a, b) => a.avgRating - b.avgRating);
+    sorted.sort((a, b) => a.filteredAvgRating - b.filteredAvgRating);
   } else if (criteria === "seen-date") {
     sorted.sort((a, b) => {
       const da = a.seen_date ? new Date(a.seen_date).getTime() : 0;
       const db = b.seen_date ? new Date(b.seen_date).getTime() : 0;
-      return db - da; // newest → oldest
+      return db - da; // newest first
     });
   } else if (criteria === "seen-datereverse") {
     sorted.sort((a, b) => {
       const da = a.seen_date ? new Date(a.seen_date).getTime() : 0;
       const db = b.seen_date ? new Date(b.seen_date).getTime() : 0;
-      return da - db;
+      return da - db; // oldest first
     });
   }
 
   renderMovies(sorted);
 }
+
