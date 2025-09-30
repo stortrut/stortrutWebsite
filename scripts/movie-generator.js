@@ -119,6 +119,14 @@ function renderStars() {
       `;
     }
 
+    // If no rating or zero, apply "unrated" class
+    if (!score) {
+      el.classList.add('unrated');
+      return; // Don't calculate fill width
+    } else {
+      el.classList.remove('unrated');
+    }
+
     const tempSpan = document.createElement('span');
     tempSpan.style.fontFamily = getComputedStyle(el).fontFamily;
     tempSpan.style.fontSize = getComputedStyle(el).fontSize;
