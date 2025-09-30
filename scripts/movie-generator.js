@@ -1,5 +1,5 @@
 let allMovies = []; // store parsed movies globally
-let currentSort = "title"; // default sort
+let currentSort = "title"; // default sort criteria
 let currentDirection = 1; // 1 = ascending, -1 = descending
 
 fetch("/movie-data.txt")
@@ -7,37 +7,39 @@ fetch("/movie-data.txt")
   .then(text => {
     allMovies = parseMovies(text);
 
-    // ✅ Count how many movies are in the data
+    // Show total movies count (optional)
     const totalWatched = allMovies.length;
     const countElem = document.getElementById("movie-count");
     if (countElem) {
       countElem.textContent = `Total movies watched: ${totalWatched}`;
     }
 
-    // ✅ Initial sort render
+    // Initial render
     sortMovies(currentSort);
 
-    // ✅ Attach sorting button events
-    document.querySelectorAll('#sort-buttons button').forEach(button => {
-      button.addEventListener('click', () => {
-        const criteria = button.dataset.sort;
-
-        // Toggle sort direction if same button clicked
-        if (criteria === currentSort) {
-          currentDirection *= -1;
-        } else {
-          currentSort = criteria;
-          currentDirection = 1;
-        }
-
-        sortMovies(currentSort);
-      });
+    // Attach dropdown change event
+    const sortSelect = document.getElementById("sort-select");
+    sortSelect.value = currentSort; // set initial dropdown value
+    sortSelect.addEventListener("change", e => {
+      currentSort = e.target.value;
+      sortMovies(currentSort);
     });
 
-    // ✅ Attach reviewer filter events
+    // Attach toggle button event
+    const toggleBtn = document.getElementById("sort-direction-toggle");
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", () => {
+        currentDirection *= -1; // flip direction
+        sortMovies(currentSort);
+        updateToggleButtonLabel();
+      });
+      updateToggleButtonLabel();
+    }
+
+    // Attach reviewer filter events
     document.querySelectorAll('#reviewer-filters input').forEach(cb => {
       cb.addEventListener("change", () => {
-        sortMovies(currentSort); // reapply sort with new filters
+        sortMovies(currentSort); // reapply sort + filters
       });
     });
   })
@@ -46,8 +48,14 @@ fetch("/movie-data.txt")
     console.error(err);
   });
 
+function updateToggleButtonLabel() {
+  const toggleBtn = document.getElementById("sort-direction-toggle");
+  if (!toggleBtn) return;
+  toggleBtn.textContent = currentDirection === 1 ? "Asc ↑" : "Desc ↓";
+}
+
 function parseMovies(text) {
-  const blocks = text.trim().split(/\n\s*\n/); // split by blank lines
+  const blocks = text.trim().split(/\n\s*\n/);
   return blocks.map(block => {
     const lines = block.split("\n").map(l => l.trim());
     let movie = { title: "", poster: "", reviews: [], year: "", seen_date: "" };
@@ -177,41 +185,22 @@ function sortMovies(criteria) {
   }
 
   sorted.sort((a, b) => {
-    let aVal, bVal;
-
     if (criteria === "title") {
       return a.title.localeCompare(b.title) * currentDirection;
     }
-
     if (criteria === "year") {
       return ((a.year || 0) - (b.year || 0)) * currentDirection;
     }
-
     if (criteria === "rating") {
       return ((a.filteredAvgRating || 0) - (b.filteredAvgRating || 0)) * currentDirection;
     }
-
     if (criteria === "seen-date") {
       const da = a.seen_date ? new Date(a.seen_date).getTime() : 0;
       const db = b.seen_date ? new Date(b.seen_date).getTime() : 0;
       return (da - db) * currentDirection;
     }
-
     return 0;
   });
 
   renderMovies(sorted);
-
-  // ✅ Update sort label
-  const sortLabel = document.getElementById("sort-label");
-  if (sortLabel) {
-    const arrow = currentDirection === 1 ? "⬆️" : "⬇️";
-    let labelText = criteria
-      .replace("seen-date", "Date Seen")
-      .replace("rating", "Rating")
-      .replace("year", "Year")
-      .replace("title", "Title");
-
-    sortLabel.textContent = `Sorted by: ${labelText} ${arrow}`;
-  }
 }

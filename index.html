@@ -23,112 +23,28 @@
     <div id="movie-count" style="margin-bottom: 1em; font-weight: bold;"></div>
 
 
-    <label for="sort-select">Sort by:</label>
     <select id="sort-select">
-        <option value="title">Titel (A–Ö)</option>
-        <option value="year">Release-år (Senast först)</option>
-        <option value="rating">Betyg (Högst → Lägst)</option>
-        <option value="seen-date">Datum Sedd (Senast först)</option>
+    <option value="title">Title</option>
+    <option value="year">Year</option>
+    <option value="rating">Rating</option>
+    <option value="seen-date">Date Seen</option>
     </select>
 
-<!-- Buttons for sorting -->
-<div id="sort-buttons">
-  <button data-sort="title">Title</button>
-  <button data-sort="year">Year</button>
-  <button data-sort="rating">Rating</button>
-  <button data-sort="seen-date">Date Seen</button>
-</div>
+    <button id="sort-direction-toggle" style="margin-left: 8px;">Asc ↑</button>
 
-<!-- Where sort direction shows -->
-<div id="sort-label" style="margin-top: 0.5em; font-weight: bold;"></div>
+    <div id="movie-count" style="margin-top: 1em; font-style: italic;"></div>
+    <div id="reviews"></div>
+    <!-- Optional movie count -->
+    <div id="movie-count" style="margin-top: 1em; font-style: italic;"></div>
 
-<!-- Optional movie count -->
-<div id="movie-count" style="margin-top: 1em; font-style: italic;"></div>
-
-<!-- This is where movies go -->
-<div id="reviews"></div>
-
-
-
-
-
-    <div id="reviewer-filters">
-        <input type="checkbox" id="Alvin" value="Alvin">
-        <label for="Alvin">Alvin</label>
-      
-        <input type="checkbox" id="Diaa" value="Diaa">
-        <label for="Diaa">Diaa</label>
-
-        <input type="checkbox" id="Holger" value="Holger">
-        <label for="Holger">Holger</label>
-      
-        <input type="checkbox" id="Carl" value="Carl">
-        <label for="Carl">Carl</label>
-    </div>
-    <hr>
-    <br>
-
-    <div id="reviews">Loading reviews...</div>
-    <script src="/scripts/movie-generator.js"></script>
+    <!-- This is where movies go -->
+    <div id="reviews"></div>
 
 
 
 
 
 
-
-
-    <!--
-    <div class="all-review-data-holder">
-        <div class="review-data-holder">
-            <p class="movie-title">
-                Superman (2025)
-            </p>
-            <img class="movie-poster" src="images/superman.jpeg">
-            <div class="reviews-holder">
-                <div class="review-holder">
-                    <p class="review-name">
-                        Alvin:
-                    </p>
-                    <div class="star-rating" data-score="4.5">
-                        <span class="star-fill">★★★★★</span>
-                        ★★★★★
-                        </div>
-                    </div>
-                            <div class="review-holder">
-                    <p class="review-name">
-                        Diaa:
-                    </p>
-                   <div class="star-rating" data-score="3">
-                        <span class="star-fill">★★★★★</span>
-                        ★★★★★
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-
-    <p>
-        V.28 fixed positions now
-    </p>
 
 </body>
 
