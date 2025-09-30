@@ -176,11 +176,12 @@
   background-color: #444d66;
   color: #ffa600;
   border: 2px solid #ffa600;
-  border-radius: 12px;
+  border-radius: 10px;
   padding: 16px 24px;
   font-family: 'monospace';
   box-shadow: 0 0 10px rgba(255, 166, 0, 0.3);
   margin-bottom: 20px;
+  padding-left: 200px;
 }
 
 #movie-count-box .label {
@@ -196,6 +197,5 @@
 
 .sort-holder-wrapper {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
