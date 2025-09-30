@@ -5,6 +5,17 @@ fetch("/movie-data.txt")
   .then(text => {
     allMovies = parseMovies(text);
 
+      // ✅ NEW: Count how many movies are in the data
+    const totalWatched = allMovies.length;
+
+    // ✅ Optional: Show it somewhere on the page
+    const countElem = document.getElementById("movie-count");
+    if (countElem) {
+      countElem.textContent = `Total movies watched: ${totalWatched}`;
+    }
+
+
+
     // get the currently selected sort option
     const sortSelect = document.getElementById("sort-select");
     sortMovies(sortSelect.value); // render sorted initially
