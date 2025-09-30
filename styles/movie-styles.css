@@ -168,3 +168,28 @@
 #reviewer-filters input[type="checkbox"]:checked + label::before {
   content: "✔ ";
 }
+
+
+#movie-count-box {
+  display: inline-block;
+  text-align: center;
+  background-color: #1a1a2e;
+  color: #ffa600;
+  border: 2px solid #ffa600;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-family: 'monospace';
+  box-shadow: 0 0 10px rgba(255, 166, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+#movie-count-box .label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+#movie-count-box .number {
+  font-size: 32px;
+  font-weight: bold;
+}

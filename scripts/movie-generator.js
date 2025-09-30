@@ -11,7 +11,7 @@ fetch("/movie-data.txt")
     const totalWatched = allMovies.length;
     const countElem = document.getElementById("movie-count");
     if (countElem) {
-      countElem.textContent = `Total movies watched: ${totalWatched}`;
+      countElem.textContent = `${totalWatched}`;
     }
 
     // Initial render
