@@ -1,3 +1,6 @@
+let currentSort = null;
+let currentDirection = 1; // 1 = ascending, -1 = descending
+
 let allMovies = []; // store parsed movies globally
 
 fetch("/movie-data.txt")
@@ -156,15 +159,22 @@ function renderStars() {
   });
 }
 
-// 🔥 Sort logic
 function sortMovies(criteria) {
   const activeReviewers = Array.from(document.querySelectorAll('#reviewer-filters input:checked'))
     .map(cb => cb.value);
 
+  // Toggle sort direction if same criteria is selected again
+  if (currentSort === criteria) {
+    currentDirection *= -1; // flip direction
+  } else {
+    currentSort = criteria;
+    currentDirection = 1; // reset to ascending
+  }
+
   let sorted = [...allMovies];
 
-  // Only calculate filtered average rating when sorting by score
-  if (criteria === "rating" || criteria === "ratingreverse") {
+  // Handle filtered average rating
+  if (criteria === "rating") {
     sorted = sorted.map(movie => {
       const relevantReviews = activeReviewers.length > 0
         ? movie.reviews.filter(r => activeReviewers.includes(r.name))
@@ -181,33 +191,43 @@ function sortMovies(criteria) {
     });
   }
 
-  // Apply sorting
-  if (criteria === "title") {
-    sorted.sort((a, b) => a.title.localeCompare(b.title));
-  } else if (criteria === "titlereverse") {
-    sorted.sort((a, b) => b.title.localeCompare(a.title));
-  } else if (criteria === "year") {
-    sorted.sort((a, b) => (b.year || 0) - (a.year || 0));
-  } else if (criteria === "yearreverse") {
-    sorted.sort((a, b) => (a.year || 0) - (b.year || 0));
-  } else if (criteria === "rating") {
-    sorted.sort((a, b) => b.filteredAvgRating - a.filteredAvgRating);
-  } else if (criteria === "ratingreverse") {
-    sorted.sort((a, b) => a.filteredAvgRating - b.filteredAvgRating);
-  } else if (criteria === "seen-date") {
-    sorted.sort((a, b) => {
+  // Sorting logic
+  sorted.sort((a, b) => {
+    let aVal, bVal;
+
+    if (criteria === "title") {
+      aVal = a.title;
+      bVal = b.title;
+      return aVal.localeCompare(bVal) * currentDirection;
+    }
+
+    if (criteria === "year") {
+      aVal = a.year || 0;
+      bVal = b.year || 0;
+      return (aVal - bVal) * currentDirection;
+    }
+
+    if (criteria === "rating") {
+      aVal = a.filteredAvgRating || 0;
+      bVal = b.filteredAvgRating || 0;
+      return (aVal - bVal) * currentDirection;
+    }
+
+    if (criteria === "seen-date") {
       const da = a.seen_date ? new Date(a.seen_date).getTime() : 0;
       const db = b.seen_date ? new Date(b.seen_date).getTime() : 0;
-      return db - da; // newest first
-    });
-  } else if (criteria === "seen-datereverse") {
-    sorted.sort((a, b) => {
-      const da = a.seen_date ? new Date(a.seen_date).getTime() : 0;
-      const db = b.seen_date ? new Date(b.seen_date).getTime() : 0;
-      return da - db; // oldest first
-    });
-  }
+      return (da - db) * currentDirection;
+    }
+
+    return 0;
+  });
 
   renderMovies(sorted);
-}
 
+    const sortLabel = document.getElementById("sort-label");
+  if (sortLabel) {
+    const arrow = currentDirection === 1 ? "⬆️" : "⬇️";
+    sortLabel.textContent = `${criteria} ${arrow}`;
+  }
+
+}
