@@ -173,7 +173,7 @@
 #movie-count-box {
   display: inline-block;
   text-align: center;
-  background-color: #444d66;
+  background-color: rgb(203, 172, 133);
   color: #ffa600;
   border: 2px solid #ffa600;
   border-radius: 10px;
