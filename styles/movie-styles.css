@@ -173,15 +173,14 @@
 #movie-count-box {
   display: inline-block;
   text-align: center;
-  background-color: rgb(203, 172, 133);
+  background-color: rgb(255 215 178);
   color: #0e0030;
-  border: 2px solid #0a004c;
+  border: 2px solid #ffffff;
   border-radius: 10px;
   padding: 16px 24px;
   font-family: 'monospace';
-  box-shadow: 0 0 5px rgba(255, 166, 0, 0.3);
   margin-bottom: 20px;
-  margin-left: 200px;
+  margin-left: 50px;
 }
 
 #movie-count-box .label {
