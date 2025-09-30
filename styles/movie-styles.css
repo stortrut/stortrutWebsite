@@ -190,11 +190,12 @@
 }
 
 #movie-count-box .number {
-  font-size: 32px;
+  font-size: 60px;
   font-weight: bold;
 }
 
 .sort-holder-wrapper {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
