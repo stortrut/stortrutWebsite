@@ -3,6 +3,23 @@ let currentDirection = 1; // 1 = ascending, -1 = descending
 
 let allMovies = []; // store parsed movies globally
 
+const sortSelect = document.getElementById("sort-select");
+const toggleBtn = document.getElementById("toggle-sort");
+
+sortSelect.addEventListener("change", e => {
+  currentSort = e.target.value;
+  currentDirection = 1; // reset to ascending when changing sort type
+  sortMovies(currentSort);
+});
+
+toggleBtn.addEventListener("click", () => {
+  currentDirection *= -1;
+  sortMovies(currentSort);
+});
+
+
+
+
 fetch("/movie-data.txt")
   .then(res => res.text())
   .then(text => {
@@ -231,3 +248,12 @@ function sortMovies(criteria) {
   }
 
 }
+
+
+// Attach events to buttons
+document.querySelectorAll('#sort-buttons button').forEach(button => {
+  button.addEventListener('click', () => {
+    const criteria = button.dataset.sort;
+    sortMovies(criteria); // this handles toggle logic inside
+  });
+});
