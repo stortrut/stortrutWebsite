@@ -31,8 +31,25 @@
         <option value="seen-date">Datum Sedd (Senast först)</option>
     </select>
 
-    <button id="toggle-sort">Toggle ↑/↓</button>
-    <div id="sort-label"></div>
+<!-- Buttons for sorting -->
+<div id="sort-buttons">
+  <button data-sort="title">Title</button>
+  <button data-sort="year">Year</button>
+  <button data-sort="rating">Rating</button>
+  <button data-sort="seen-date">Date Seen</button>
+</div>
+
+<!-- Where sort direction shows -->
+<div id="sort-label" style="margin-top: 0.5em; font-weight: bold;"></div>
+
+<!-- Optional movie count -->
+<div id="movie-count" style="margin-top: 1em; font-style: italic;"></div>
+
+<!-- This is where movies go -->
+<div id="reviews"></div>
+
+
+
 
 
     <div id="reviewer-filters">
