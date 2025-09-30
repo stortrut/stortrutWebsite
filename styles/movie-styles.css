@@ -119,7 +119,7 @@
   width: 0;
 }
 .star-rating.unrated .star-base {
-  color: rgba(115, 115, 133, 0.908); /* Or any "unrated" color you want */
+  color: rgb(115, 115, 133); /* Or any "unrated" color you want */
 }
 
 
