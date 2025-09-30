@@ -51,7 +51,7 @@ fetch("/movie-data.txt")
 function updateToggleButtonLabel() {
   const toggleBtn = document.getElementById("sort-direction-toggle");
   if (!toggleBtn) return;
-  toggleBtn.textContent = currentDirection === 1 ? "Asc ↑" : "Desc ↓";
+  toggleBtn.textContent = currentDirection === 1 ? "↑" : "↓";
 }
 
 function parseMovies(text) {
