@@ -7,11 +7,10 @@ fetch("/movie-data.txt")
   .then(text => {
     allMovies = parseMovies(text);
 
-    // Show total movies count (optional)
     const totalWatched = allMovies.length;
-    const countElem = document.getElementById("movie-count");
+    const countElem = document.getElementById("movie-count-number");
     if (countElem) {
-      countElem.textContent = `${totalWatched}`;
+      countElem.textContent = totalWatched;
     }
 
     // Initial render
