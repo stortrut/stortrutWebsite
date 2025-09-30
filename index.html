@@ -20,9 +20,10 @@
         Filmrecensioner
     </h1>
 
-    <div id="movie-count" style="margin-bottom: 1em; font-weight: bold;"></div>
 
-
+    <div class="sort-holder-wrapper">
+    <!--Sort holder-->
+    <div class="sort-holder">
     <select id="sort-select">
         <option value="title">Titel</option>
         <option value="year">Release År</option>
@@ -32,9 +33,7 @@
 
     <button id="sort-direction-toggle" style="margin-left: 8px;">Asc ↑</button>
 
-    <div id="movie-count" style="margin-top: 1em; font-style: italic;"></div>
-
-    <div id="reviewer-filters">
+   <div id="reviewer-filters">
         <input type="checkbox" id="Alvin" value="Alvin">
         <label for="Alvin">Alvin</label>
       
@@ -47,14 +46,20 @@
         <input type="checkbox" id="Carl" value="Carl">
         <label for="Carl">Carl</label>
     </div>
-    <hr>
+    </div>
+ 
+    <div id="movie-count-box">
+        <div class="label">Filmer kollad:</div>
+        <div class="number" id="movie-count-number">0</div>
+    </div>
+
+    </div>
+
+
     <br>
 
 
-    <div id="movie-count-box">
-    <div class="label">Filmer kollad:</div>
-    <div class="number" id="movie-count-number">0</div>
-    </div>
+
 
     <!-- This is where movies go -->
     <div id="reviews"></div>

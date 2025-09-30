@@ -193,3 +193,9 @@
   font-size: 32px;
   font-weight: bold;
 }
+
+.sort-holder-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
