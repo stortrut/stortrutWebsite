@@ -73,7 +73,7 @@ Review: Diaa|3
 Movie: Looper  
 Release: 2012‑09‑28  
 Poster: ../images/movie-posters/looper.jpg  
-Genre: Action, Sci-Fi
+Genre: Action, Sci-Fi, Time Travel
 Seen: 2021-08-15  
 Review: Alvin|2.62  
 Review: Diaa|2.6  
@@ -267,7 +267,7 @@ Review: Holger|3.36
 Movie: Super Crooks
 Release: 2021-11-25
 Poster: ../images/movie-posters/supercrooks.jpg
-Genre: Animation, Anime, Heist
+Genre: Animation, Anime, Heist, Super Hero
 Seen: 2021-11-28
 Review: Alvin|3.48
 Review: Diaa|
@@ -490,7 +490,7 @@ Review: Holger|3.66
 Movie: The Suicide Squad
 Release: 2021-08-06
 Poster: ../images/movie-posters/thesuicidesquad.jpg
-Genre: Action, Comedy, Kaiju
+Genre: Action, Comedy, Kaiju, Super Hero
 Seen: 2022-06-11
 Review: Alvin|3.838
 Review: Diaa|2.5
@@ -499,7 +499,7 @@ Review: Holger|3.32
 Movie: The Batman
 Release: 2022-03-04
 Poster: ../images/movie-posters/thebatman.jpg
-Genre:
+Genre: Super Hero, Action
 Seen: 2022-06-17
 Review: Alvin|3.3876
 Review: Diaa|3
@@ -508,6 +508,7 @@ Review: Holger|3.4
 Movie: Back To The Future
 Release: 1985-07-03
 Poster: ../images/movie-posters/backtothefuture.jpg
+Genre: Time Travel, Comedy, Adventure, Sci-Fi
 Seen: 2022-06-23
 Review: Alvin|4.2334
 Review: Diaa|3.9
@@ -516,6 +517,7 @@ Review: Holger|3.82
 Movie: Everything Everywhere All At Once
 Release: 2022-03-11
 Poster: ../images/movie-posters/everythingeverywhereallatonce.webp
+Genre: Sci-Fi, Comedy, Action
 Seen: 2022-07-09
 Review: Alvin|4.96
 Review: Diaa|4.7
@@ -524,6 +526,7 @@ Review: Holger|4.88
 Movie: The House
 Release: 2022-07-21
 Poster: ../images/movie-posters/thehouse.jpg
+Genre: Animation, Stop Motion, Drama
 Seen: 2022-08-10
 Review: Alvin|3.348
 Review: Diaa|3.7
