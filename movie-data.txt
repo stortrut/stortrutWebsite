@@ -435,7 +435,7 @@ Review: Holger|3.52
 Movie: The Mitchells vs the Machines
 Release: 2021-04-30
 Poster: ../images/movie-posters/themitchellsvsthemachines.jpg
-Genre: Animation, Comedy
+Genre: Animation, Comedy, Road Trip
 Seen: 2022-04-13
 Review: Alvin|2.95
 Review: Diaa|3.64
@@ -535,7 +535,7 @@ Review: Holger|3.2
 Movie: Rick & Morty S.6
 Release: 2022-09-04
 Poster: ../images/movie-posters/rickandmortys6.jpg
-Genre: Animation, Comedy,
+Genre: Animation, Comedy, Sci-Fi
 Seen: 2022-09-11
 Review: Alvin|3.984
 Review: Holger|3.38
@@ -543,6 +543,7 @@ Review: Holger|3.38
 Movie: Amélie
 Release: 2001-04-25
 Poster: ../images/movie-posters/amélie.jpg
+Genre: Comedy, Romance
 Seen: 2022-09-13
 Review: Alvin|4.48
 Review: Diaa|3.2
@@ -551,6 +552,7 @@ Review: Holger|4.38
 Movie: Rain Man
 Release: 1988-12-16
 Poster: ../images/movie-posters/rainman.jpg
+Genre: Road Trip, Drama
 Seen: 2022-09-17
 Review: Alvin|3.96
 Review: Holger|3.54
@@ -558,6 +560,7 @@ Review: Holger|3.54
 Movie: Chainsaw Man
 Release: 2022-10-11
 Poster: ../images/movie-posters/chainsawman.jpg
+Genre: 
 Seen: 2022-10-28
 Review: Alvin|4.454
 Review: Diaa|4.5
