@@ -54,24 +54,35 @@ function updateToggleButtonLabel() {
 }
 
 function parseMovies(text) {
-  const blocks = text.trim().split(/\n\s*\n/);
+  const blocks = text.trim().split(/\n\s*\n/); // split movie blocks
   return blocks.map(block => {
     const lines = block.split("\n").map(l => l.trim());
-    let movie = { title: "", poster: "", reviews: [], release: "", seen_date: "" };
+    let movie = { title: "", poster: "", reviews: [], release: null, seen_date: "" };
 
     lines.forEach(line => {
-      if (line.startsWith("Movie:")) movie.title = line.replace("Movie:", "").trim();
-      else if (line.startsWith("Poster:")) movie.poster = line.replace("Poster:", "").trim();
-      else if (line.startsWith("Release:")) {
-        const dateStr = line.replace("Release:", "").trim();
-        const releaseDate = new Date(dateStr);
-        movie.release = releaseDate;
-        movie.releaseYear = releaseDate.getFullYear();
-      }
-      else if (line.startsWith("Review:")) {
-        const [, review] = line.split("Review:");
-        const [name, score] = review.split("|").map(s => s.trim());
-        movie.reviews.push({ name, score: parseFloat(score) });
+      const [field, ...rest] = line.split(":");
+      if (!field || rest.length === 0) return; // skip invalid lines
+
+      const value = rest.join(":").trim(); // in case value has a colon
+
+      switch (field.trim().toLowerCase()) {
+        case "Movie":
+          movie.title = value;
+          break;
+        case "Poster":
+          movie.poster = value;
+          break;
+        case "Release":
+          const date = new Date(value);
+          movie.release = isNaN(date.getTime()) ? null : date;
+          break;
+        case "Seen":
+          movie.seen_date = value;
+          break;
+        case "Review":
+          const [name, score] = value.split("|").map(s => s.trim());
+          movie.reviews.push({ name, score: parseFloat(score) });
+          break;
       }
     });
 
@@ -82,6 +93,7 @@ function parseMovies(text) {
     return movie;
   });
 }
+
 
 function renderMovies(movies) {
   const container = document.getElementById("reviews");
