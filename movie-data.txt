@@ -1,5 +1,5 @@
 Movie: Mortal Kombat  
-Release: 2021‑04‑23  
+Release: 2021-04-23  
 Poster: ../images/movie-posters/mortalkombat.jpg  
 Genre: Action
 Seen: 2021-08-01  
@@ -7,7 +7,7 @@ Review: Alvin|2.95
 Review: Diaa|3.8  
 
 Movie: 13 Assassins  
-Release: 2010‑11‑13  
+Release: 2010-11-13  
 Poster: ../images/movie-posters/13assassins.jpg  
 Genre: Action
 Seen: 2021-08-02  
@@ -15,7 +15,7 @@ Review: Alvin|2.7
 Review: Diaa|3.1  
 
 Movie: Raya and the last dragon  
-Release: 2021‑03‑05  
+Release: 2021-03-05  
 Poster: ../images/movie-posters/rayaandthelastdragon.jpg  
 Genre: Animation
 Seen: 2021-08-03  
@@ -23,7 +23,7 @@ Review: Alvin|1.9
 Review: Diaa|3.5  
 
 Movie: Luca  
-Release: 2021‑06‑18  
+Release: 2021-06-18  
 Poster: ../images/movie-posters/luca.jpg  
 Genre: Animation
 Seen: 2021-08-04  
@@ -31,7 +31,7 @@ Review: Alvin|3.5
 Review: Diaa|3.5  
 
 Movie: Jojo rabbit  
-Release: 2019‑10‑18  
+Release: 2019-10-18  
 Poster: ../images/movie-posters/jojorabbit.jpg  
 Genre: Comedy
 Seen: 2021-08-05  
@@ -39,7 +39,7 @@ Review: Alvin|4.17
 Review: Diaa|4.1  
 
 Movie: Akira  
-Release: 1988‑07‑16  
+Release: 1988-07-16  
 Poster: ../images/movie-posters/akira.jpg  
 Genre: Animation, Anime
 Seen: 2021-08-06  
@@ -47,7 +47,7 @@ Review: Alvin|4.06
 Review: Diaa|3  
 
 Movie: Jungle Cruise  
-Release: 2021‑07‑30  
+Release: 2021-07-30  
 Poster: ../images/movie-posters/junglecruise.jpg  
 Genre: Action
 Seen: 2021-08-07  
@@ -55,7 +55,7 @@ Review: Alvin|2.3
 Review: Diaa|3.38  
 
 Movie: Forrest Gump  
-Release: 1994‑07‑06  
+Release: 1994-07-06  
 Poster: ../images/movie-posters/forestgump.jpg  
 Genre: Comedy, Drama
 Seen: 2021-08-09  
@@ -63,7 +63,7 @@ Review: Alvin|4.44
 Review: Diaa|4  
 
 Movie: About Time  
-Release: 2013‑08‑07  
+Release: 2013-08-07  
 Poster: ../images/movie-posters/abouttime.jpg  
 Genre: Drama
 Seen: 2021-08-14  
@@ -71,7 +71,7 @@ Review: Alvin|3.22
 Review: Diaa|3  
 
 Movie: Looper  
-Release: 2012‑09‑28  
+Release: 2012-09-28  
 Poster: ../images/movie-posters/looper.jpg  
 Genre: Action, Sci-Fi, Time Travel
 Seen: 2021-08-15  
@@ -79,7 +79,7 @@ Review: Alvin|2.62
 Review: Diaa|2.6  
 
 Movie: Nausicaä of the Valley of the Wind  
-Release: 1984‑03‑11  
+Release: 1984-03-11  
 Poster: ../images/movie-posters/nausicaä.jpg  
 Genre: Animation, Anime
 Seen: 2021-08-23  
@@ -88,7 +88,7 @@ Review: Diaa|2.5
 Review: Holger|3.54  
 
 Movie: Respect  
-Release: 2021‑08‑13  
+Release: 2021-08-13  
 Poster: ../images/movie-posters/respect.jpg  
 Genre: Drama
 Seen: 2021-08-29  
@@ -96,7 +96,7 @@ Review: Alvin|3.168
 Review: Diaa|3  
 
 Movie: Fantastic Mr.Fox  
-Release: 2009‑11‑13  
+Release: 2009-11-13  
 Poster: ../images/movie-posters/fantasticmrfox.jpg  
 Genre: Animation, Comedy, Stop Motion
 Seen: 2021-08-30  
@@ -105,7 +105,7 @@ Review: Diaa|3.78
 Review: Holger|3.82  
 
 Movie: The Weather Man  
-Release: 2005‑10‑28  
+Release: 2005-10-28  
 Poster: ../images/movie-posters/theweatherman.jpg  
 Genre: Drama
 Seen: 2021-09-04  
@@ -115,7 +115,7 @@ Review: Holger|2.38
 Review: Carl|3.6  
 
 Movie: Baby Driver  
-Release: 2017‑06‑28  
+Release: 2017-06-28  
 Poster: ../images/movie-posters/babydriver.jpg
 Genre: Action, Heist  
 Seen: 2021-09-10  
@@ -124,14 +124,14 @@ Review: Diaa|4.3
 Review: Holger|3.8  
 
 Movie: Rurouni Kenshin Part I: Origins  
-Release: 2012‑08‑25  
+Release: 2012-08-25  
 Poster: ../images/movie-posters/RurouniKenshin.jpg  
 Genre: Action
 Seen: 2021-09-23  
 Review: Alvin|2.7  
 
 Movie: Promising Young Woman  
-Release: 2020‑12‑25  
+Release: 2020-12-25  
 Poster: ../images/movie-posters/promisingyoungwoman.jpg  
 Genre: Drama
 Seen: 2021-09-24  
@@ -140,7 +140,7 @@ Review: Diaa|2.3
 Review: Holger|3.6  
 
 Movie: Brain on Fire  
-Release: 2016‑06‑17  
+Release: 2016-06-17  
 Poster: ../images/movie-posters/brainonfire.jpg  
 Genre: Drama
 Seen: 2021-09-27  
@@ -149,7 +149,7 @@ Review: Diaa|3.5
 Review: Holger|3.7  
 
 Movie: Kill Bill: Volume 1  
-Release: 2003‑10‑10  
+Release: 2003-10-10  
 Poster: ../images/movie-posters/killbillvol1.jpg  
 Genre: Action
 Seen: 2021-09-29  
@@ -158,7 +158,7 @@ Review: Diaa|3.6
 Review: Holger|3.62  
 
 Movie: Squid Game S.1  
-Release: 2021‑09‑17  
+Release: 2021-09-17  
 Poster: ../images/movie-posters/squidgame.jpg  
 Genre: Drama, Action
 Seen: 2021-10-2  
@@ -167,7 +167,7 @@ Review: Diaa|4.4
 Review: Holger|4.06  
 
 Movie: Kill Bill: Volume 2  
-Release: 2004‑04‑16  
+Release: 2004-04-16  
 Poster: ../images/movie-posters/killbillvol2.jpg  
 Genre: Action
 Seen: 2021-10-02  
@@ -176,7 +176,7 @@ Review: Diaa|3.8
 Review: Holger|4.2  
 
 Movie: La La Land  
-Release: 2016‑12‑09  
+Release: 2016-12-09  
 Poster: ../images/movie-posters/lalaland.jpg  
 Genre: Musical, Romance, Drama
 Seen: 2021-10-08  
@@ -184,7 +184,7 @@ Review: Alvin|3.94
 Review: Holger|4.3  
 
 Movie: Free Guy  
-Release: 2021‑08‑11  
+Release: 2021-08-11  
 Poster: ../images/movie-posters/freeguy.jpg  
 Genre: Comedy, Action
 Seen: 2021-10-13  
@@ -193,7 +193,7 @@ Review: Diaa|2.4
 Review: Holger|2.58  
 
 Movie: Halloween Kills  
-Release: 2021‑10‑15  
+Release: 2021-10-15  
 Poster: ../images/movie-posters/halloweenkills.jpg  
 Genre: Horror
 Seen: 2021-10-30  
@@ -202,7 +202,7 @@ Review: Diaa|2.4
 Review: Holger|1.34  
 
 Movie: Sällskapsresan  
-Release: 1980‑12‑26  
+Release: 1980-12-26  
 Poster: ../images/movie-posters/sällskapsresan.jpg  
 Genre: Comedy
 Seen: 2021-11-02  
@@ -568,6 +568,7 @@ Review: Diaa|4.5
 Movie: Kopps
 Release: 2003-10-03
 Poster: ../images/movie-posters/kopps.jpg
+Genre:
 Seen: 2022-10-28
 Review: Alvin|3.274
 Review: Diaa|2.9
@@ -576,6 +577,7 @@ Review: Holger|2.98
 Movie: Thor love and thunder 
 Release: 2022-07-08
 Poster: ../images/movie-posters/thorloveandthunder.jpg
+Genre:
 Seen: 2022-11-05
 Review: Alvin|2.494
 Review: Holger|2.34
@@ -583,6 +585,7 @@ Review: Holger|2.34
 Movie: Rashomon
 Release: 1950-08-26
 Poster: ../images/movie-posters/rashomon.jpg
+Genre:
 Seen: 2022-11-11
 Review: Alvin|3.42
 Review: Diaa|3.3
@@ -591,6 +594,7 @@ Review: Holger|3.54
 Movie: Ocean's Eleven
 Release: 2001-12-07
 Poster: ../images/movie-posters/oceans11.jpg
+Genre:
 Seen: 2022-11-13
 Review: Alvin|3.482
 Review: Diaa|3.5
@@ -599,6 +603,7 @@ Review: Holger|3.26
 Movie: Parasite
 Release: 2019-05-30
 Poster: ../images/movie-posters/parasite.jpg
+Genre:
 Seen: 2022-11-20
 Review: Alvin|4.28
 Review: Diaa|4.2
@@ -607,6 +612,7 @@ Review: Holger|4.26
 Movie: Men in Black
 Release: 1997-07-02
 Poster: ../images/movie-posters/meninblack.jpg
+Genre:
 Seen: 2022-12-05
 Review: Alvin|3.0412
 Review: Holger|2.58
@@ -614,6 +620,7 @@ Review: Holger|2.58
 Movie: Guillermo del Toro's Pinocchio
 Release: 2022-11-09
 Poster: ../images/movie-posters/guillermodeltorospinocchio.jpg
+Genre:
 Seen: 2022-12-13
 Review: Alvin|3.938
 Review: Holger|3.84
@@ -621,6 +628,7 @@ Review: Holger|3.84
 Movie: Love actually
 Release: 2003-11-14
 Poster: ../images/movie-posters/loveactually.jpg
+Genre:
 Seen: 2022-12-18
 Review: Alvin|2.96
 Review: Diaa|3.1
@@ -629,6 +637,7 @@ Review: Holger|3.5
 Movie: Airplane!
 Release: 1980-07-02
 Poster: ../images/movie-posters/airplane.jpg
+Genre:
 Seen: 2023-01-02
 Review: Alvin|2.96
 Review: Holger|2.9
@@ -636,6 +645,7 @@ Review: Holger|2.9
 Movie: Space Force S.1
 Release: 2020-05-29
 Poster: ../images/movie-posters/spaceforce.jpg
+Genre:
 Seen: 2023-01-17
 Review: Alvin|2.968
 Review: Holger|2.66
@@ -643,6 +653,7 @@ Review: Holger|2.66
 Movie: The Legend of Vox Machina S.2
 Release: 2023-01-20
 Poster: ../images/movie-posters/tlovms2.jpg
+Genre:
 Seen: 2023-01-20
 Review: Alvin|4.402
 Review: Diaa|3.74
@@ -652,6 +663,7 @@ Review: Carl|4.214
 Movie: Ant-man and the Wasp: Quantumania
 Release: 2023-02-17
 Poster: ../images/movie-posters/antmanquantumania.jpg
+Genre:
 Seen: 2023-02-23
 Review: Alvin|2.34
 Review: Diaa|2.225
@@ -659,6 +671,7 @@ Review: Diaa|2.225
 Movie: Puss in Boots: The Last Wish
 Release: 2022-12-21
 Poster: ../images/movie-posters/pussinbootsthelastwish.jpg
+Genre:
 Seen: 2023-03-10
 Review: Alvin|3.918
 Review: Holger|4.5
@@ -666,6 +679,7 @@ Review: Holger|4.5
 Movie: The Imitation Game
 Release: 2014-11-28
 Poster: ../images/movie-posters/theimitationgame.jpg
+Genre:
 Seen: 2023-03-18
 Review: Alvin|3.054
 Review: Holger|3.36
@@ -673,6 +687,7 @@ Review: Holger|3.36
 Movie: Amsterdam
 Release: 2022-10-07
 Poster: ../images/movie-posters/amsterdam.jpg
+Genre:
 Seen: 2023-03-20
 Review: Alvin|2.696
 Review: Diaa|1.96
@@ -682,6 +697,7 @@ Review: Carl|2.5
 Movie: The Last of Us S.1
 Release: 2023-01-15
 Poster: ../images/movie-posters/thelastofus.webp
+Genre:
 Seen: 2023-03-21
 Review: Alvin|4.4618
 Review: Holger|4.34
@@ -689,6 +705,7 @@ Review: Holger|4.34
 Movie: Weathering With You
 Release: 2019-07-19
 Poster: ../images/movie-posters/weatheringwithyou.jpg
+Genre:
 Seen: 2023-03-24
 Review: Alvin|3.698
 Review: Diaa|4.78
@@ -696,6 +713,7 @@ Review: Diaa|4.78
 Movie: The Da Vinci Code
 Release: 2006-05-19
 Poster: ../images/movie-posters/thedavincicode.jpg
+Genre:
 Seen: 2023-03-25
 Review: Alvin|2.65
 Review: Holger|2.04
@@ -703,6 +721,7 @@ Review: Holger|2.04
 Movie: Shutter Island
 Release: 2010-02-19
 Poster: ../images/movie-posters/shutterisland.jpg
+Genre:
 Seen: 2023-04-01
 Review: Alvin|2.8
 Review: Diaa|2.4
@@ -711,6 +730,7 @@ Review: Holger|3.16
 Movie: Million Dollar Baby
 Release: 2004-12-15
 Poster: ../images/movie-posters/milliondollarbaby.jpg
+Genre:
 Seen: 2023-04-09
 Review: Alvin|3.1
 Review: Diaa|4.74
@@ -720,6 +740,7 @@ Review: Carl|4.4
 Movie: Dungeons & Dragons: Honor Among Thieves
 Release: 2023-03-31
 Poster: ../images/movie-posters/dndhonoramongthieves.jpg
+Genre:
 Seen: 2023-04-15
 Review: Alvin|3.65
 Review: Diaa|4.4
@@ -729,6 +750,7 @@ Review: Carl|4.2
 Movie: Good Will Hunting
 Release: 1997-12-05
 Poster: ../images/movie-posters/goodwillhunting.jpg
+Genre:
 Seen: 2023-04-23
 Review: Alvin|3.94
 Review: Diaa|4.1
@@ -738,6 +760,7 @@ Review: Carl|4.94
 Movie: Fight Club
 Release: 1999-10-15
 Poster: ../images/movie-posters/fightclub.jpg
+Genre:
 Seen: 2023-05-07
 Review: Alvin|4.118
 Review: Holger|4.64
@@ -745,6 +768,7 @@ Review: Holger|4.64
 Movie: Midsommar
 Release: 2019-06-14
 Poster: ../images/movie-posters/midsommar.jpg
+Genre:
 Seen: 2023-06-17
 Review: Alvin|1.76
 Review: Diaa|3.52
@@ -754,6 +778,7 @@ Review: Carl|2.8
 Movie: Spider-Man: Across the Spider Verse  
 Release: 2023-06-02  
 Poster: ../images/movie-posters/acrossthespiderverse.jpg  
+Genre:
 Seen: 2023-06-18  
 Review: Alvin|5  
 Review: Diaa|4.4  
@@ -762,6 +787,7 @@ Review: Holger|4.72
 Movie: Invincible: Atom Eve  
 Release: 2023-08-25  
 Poster: ../images/movie-posters/atomeve.jpg  
+Genre:
 Seen: 2023-07-29  
 Review: Alvin|4.226  
 Review: Holger|3.96  
@@ -769,6 +795,7 @@ Review: Holger|3.96
 Movie: Angel’s Egg  
 Release: 1985-01-01  
 Poster: ../images/movie-posters/angelsegg.jpg  
+Genre:
 Seen: 2023-08-15  
 Review: Alvin|2.938  
 Review: Holger|3.16  
@@ -776,6 +803,7 @@ Review: Holger|3.16
 Movie: One Piece S1  
 Release: 2023-08-20  
 Poster: ../images/movie-posters/onepiece.jpg  
+Genre:
 Seen: 2023-09-11  
 Review: Alvin|4.08  
 Review: Holger|4.24  
@@ -784,6 +812,7 @@ Review: Carl|4.625
 Movie: Fionna and Cake  
 Release: 2023-08-31  
 Poster: ../images/movie-posters/fionnaandcake.jpg  
+Genre:
 Seen: 2023-09-15  
 Review: Alvin|4.008  
 Review: Holger|3.52  
@@ -791,6 +820,7 @@ Review: Holger|3.52
 Movie: Loki S.2  
 Release: 2023-10-06  
 Poster: ../images/movie-posters/lokis2.jpg  
+Genre:
 Seen: 2023-10-10  
 Review: Alvin|2.772  
 Review: Holger|2.48  
@@ -799,6 +829,7 @@ Review: Carl|3.96
 Movie: A Fistful of Dollars  
 Release: 1964-12-29  
 Poster: ../images/movie-posters/afistfulofdollars.jpg  
+Genre:
 Seen: 2023-10-15  
 Review: Alvin|3.956  
 Review: Diaa|4.4  
@@ -808,6 +839,7 @@ Review: Carl|3.4
 Movie: For a Few Dollars More  
 Release: 1965-12-18  
 Poster: ../images/movie-posters/forafewdollarsmore.jpg  
+Genre:
 Seen: 2023-10-15  
 Review: Alvin|3.562  
 Review: Diaa|4.7  
@@ -816,7 +848,8 @@ Review: Carl|2.4
 
 Movie: The Good, the Bad and the Ugly  
 Release: 1966-12-23  
-Poster: ../images/movie-posters/thegoodthebadandtheugly.jpg  
+Poster: ../images/movie-posters/thegoodthebadandtheugly.jpg
+Genre:  
 Seen: 2023-10-15  
 Review: Alvin|3.3  
 Review: Diaa|4.1  
@@ -825,14 +858,16 @@ Review: Carl|3.1
 
 Movie: Rick and Morty S.7  
 Release: 2023-10-15  
-Poster: ../images/movie-posters/Rick_and_Morty_season_7.jpg  
+Poster: ../images/movie-posters/Rick_and_Morty_season_7.jpg
+Genre:  
 Seen: 2023-10-17  
 Review: Alvin|3.8  
 Review: Holger|3.7  
 
 Movie: The Adventures of Tintin  
 Release: 2011-10-23  
-Poster: ../images/movie-posters/theadventuresoftintin.jpg  
+Poster: ../images/movie-posters/theadventuresoftintin.jpg 
+Genre: 
 Seen: 2023-11-04  
 Review: Alvin|3.002  
 Review: Diaa|3.8  
@@ -841,11 +876,13 @@ Review: Holger|3.56
 Movie: Invincible S.2  
 Release: 2023-06-01  
 Poster: ../images/movie-posters/Invincible_season_2.jpg  
+Genre:
 Seen: 2023-11-06  
 
 Movie: Scavengers Reign  
 Release: 2023-11-17  
 Poster: ../images/movie-posters/scavengersreign.jpg  
+Genre:
 Seen: 2023-11-16  
 Review: Alvin|4.0904  
 Review: Holger|4.28  
@@ -853,6 +890,7 @@ Review: Holger|4.28
 Movie: Scott Pilgrim Takes Off  
 Release: 2023-11-24  
 Poster: ../images/movie-posters/scottpilgrimtakesoff.jpg  
+Genre:
 Seen: 2023-11-20  
 Review: Alvin|3.647  
 Review: Holger|3.68  
@@ -861,6 +899,7 @@ Review: Carl|4.1
 Movie: Die Hard  
 Release: 1988-07-20  
 Poster: ../images/movie-posters/diehard.jpg  
+Genre:
 Seen: 2023-12-26  
 Review: Alvin|3.6  
 Review: Holger|3.4  
@@ -868,6 +907,7 @@ Review: Holger|3.4
 Movie: On the Twelfth Day…  
 Release: 1955-12-17  
 Poster: ../images/movie-posters/onthetwelfthday.jpg  
+Genre:
 Seen: 2023-12-26  
 Review: Alvin|2.87  
 Review: Diaa|3  
@@ -875,6 +915,7 @@ Review: Diaa|3
 Movie: The Boy and the Heron  
 Release: 2023-07-14  
 Poster: ../images/movie-posters/theboyandtheheron.jpg  
+Genre:
 Seen: 2023-12-30  
 Review: Alvin|3.63  
 Review: Diaa|4.5  
@@ -883,13 +924,15 @@ Review: Holger|3.3
 Movie: Lucy  
 Release: 2014-07-25  
 Poster: ../images/movie-posters/lucy.jpg  
+Genre:
 Seen: 2023-12-31  
 Review: Alvin|2.86  
 Review: Diaa|3.5  
 
 Movie: Once Upon a Studio  
 Release: 2023-11-22  
-Poster: ../images/movie-posters/onceuponastudio.jpg  
+Poster: ../images/movie-posters/onceuponastudio.jpg 
+Genre: 
 Seen: 2023-12-31  
 Review: Alvin|4.3  
 Review: Diaa|3  
@@ -897,13 +940,15 @@ Review: Diaa|3
 Movie: If Anything Happens I Love You  
 Release: 2020-11-20  
 Poster: ../images/movie-posters/ifanythinghappensiloveyou.jpg  
+Genre:
 Seen: 2023-12-31  
 Review: Alvin|4.5  
 Review: Diaa|3  
 
 Movie: The Boy, the Mole, the Fox and the Horse  
 Release: 2022-12-25  
-Poster: ../images/movie-posters/theboythefoxandthehorse.jpg  
+Poster: ../images/movie-posters/theboythefoxandthehorse.jpg
+Genre:  
 Seen: 2023-12-31  
 Review: Alvin|3.45  
 Review: Diaa|3  
@@ -911,6 +956,7 @@ Review: Diaa|3
 Movie: Lackadaisy  
 Release: 2023-11-10  
 Poster: ../images/movie-posters/lackadaisy.jpg  
+Genre:
 Seen: 2023-12-31  
 Review: Alvin|3.2  
 Review: Diaa|3  
@@ -918,13 +964,15 @@ Review: Diaa|3
 Movie: Piper  
 Release: 2016-11-18  
 Poster: ../images/movie-posters/piper.jpg  
+Genre:
 Seen: 2023-12-31  
 Review: Alvin|2.6  
 Review: Diaa|3  
 
 Movie: Last Shadow at First Light  
 Release: 2023-10-05  
-Poster: ../images/movie-posters/lastshadowatfirstlight.jpg  
+Poster: ../images/movie-posters/lastshadowatfirstlight.jpg 
+Genre: 
 Seen: 2024-01-11  
 Review: Alvin|3.896  
 Review: Holger|4.0  
@@ -933,6 +981,7 @@ Review: Diaa|2.5
 Movie: Hazbin Hotel S.1  
 Release: 2024-01-31  
 Poster: ../images/movie-posters/hazbinhotel.jpg  
+Genre:
 Seen: 2024-02-26  
 Review: Alvin|4.7816  
 Review: Holger|4.19  
@@ -941,6 +990,7 @@ Review: Carl|3.8
 Movie: The Hero’s Journey aka My Life aka the Caleb Jhonston Story (I’m Caleb)  
 Release: 2023-07-10  
 Poster: ../images/movie-posters/theherosjourney.jpg  
+Genre:
 Seen: 2024-02-27  
 Review: Alvin|3.688  
 Review: Holger|3.48  
@@ -948,6 +998,7 @@ Review: Holger|3.48
 Movie: The Naked Gun  
 Release: 1988-12-16  
 Poster: ../images/movie-posters/thenakedgun.jpg  
+Genre:
 Seen: 2024-03-17  
 Review: Alvin|1.3  
 Review: Diaa|3.6  
@@ -956,6 +1007,7 @@ Review: Holger|1.5
 Movie: Kung Fu Panda 4  
 Release: 2024-03-08  
 Poster: ../images/movie-posters/kungfupanda4.jpg  
+Genre:
 Seen: 2024-03-23  
 Review: Alvin|4.164  
 Review: Diaa|4.14  
@@ -965,11 +1017,13 @@ Review: Carl|3.4
 Movie: Smiling Friends S2  
 Release: 2024-04-01  
 Poster: ../images/movie-posters/smilingfriendss2.jpg  
+Genre:
 Seen: 2024-04-01  
 
 Movie: Poor Things  
 Release: 2023-09-08  
 Poster: ../images/movie-posters/poorthings.jpg  
+Genre:
 Seen: 2024-05-10  
 Review: Alvin|3.4  
 Review: Holger|3.06  
@@ -977,6 +1031,7 @@ Review: Holger|3.06
 Movie: Lost in Translation  
 Release: 2003-09-18  
 Poster: ../images/movie-posters/lostintranslation.jpg  
+Genre:
 Seen: 2024-06-08  
 Review: Alvin|3.4  
 Review: Holger|3.62  
@@ -984,6 +1039,7 @@ Review: Holger|3.62
 Movie: Jujutsu Kaisen 0  
 Release: 2021-12-24  
 Poster: ../images/movie-posters/jjk0.jpg  
+Genre:
 Seen: 2024-07-08  
 Review: Alvin|2.904  
 Review: Holger|3.394  
@@ -991,6 +1047,7 @@ Review: Holger|3.394
 Movie: Fucking Åmål  
 Release: 1998-08-14  
 Poster: ../images/movie-posters/fuckingåmål.jpg  
+Genre:
 Seen: 2024-08-07  
 Review: Alvin|4.1  
 Review: Diaa|3.18  
@@ -998,7 +1055,8 @@ Review: Holger|3.16
 
 Movie: Léon: The Professional  
 Release: 1994-09-14  
-Poster: ../images/movie-posters/leontheprofessional.jpg  
+Poster: ../images/movie-posters/leontheprofessional.jpg 
+Genre: 
 Seen: 2024-08-07  
 Review: Alvin|4.1122  
 Review: Diaa|4.1  
@@ -1007,6 +1065,7 @@ Review: Holger|4.0
 Movie: Eternal Sunshine of the Spotless Mind  
 Release: 2004-03-19  
 Poster: ../images/movie-posters/eternalsunshineofthespotlessmind.jpg  
+Genre:
 Seen: 2024-08-15  
 Review: Alvin|4.3668  
 Review: Diaa|4.1  
@@ -1015,6 +1074,7 @@ Review: Holger|4.46
 Movie: Inside Out 2  
 Release: 2024-06-14  
 Poster: ../images/movie-posters/insideout2.jpg  
+Genre:
 Seen: 2024-09-10  
 Review: Alvin|3.76  
 Review: Diaa|4.2  
@@ -1023,6 +1083,7 @@ Review: Holger|4.1
 Movie: Sällskapsresan 2  
 Release: 1985-12-20  
 Poster: ../images/movie-posters/snowrollersällskapsresan.jpg  
+Genre:
 Seen: 2024-09-12  
 Review: Alvin|3.52  
 Review: Diaa|3.2  
@@ -1031,6 +1092,7 @@ Review: Holger|3.4
 Movie: The Legend of Vox Machina S.3  
 Release: 2024-10-12  
 Poster: ../images/movie-posters/tlovms3.JPG  
+Genre:
 Seen: 2024-10-03  
 Review: Alvin|4.3  
 Review: Diaa|  
@@ -1040,6 +1102,7 @@ Review: Carl|
 Movie: Arcane Season 2  
 Release: 2024-11-15  
 Poster: ../images/movie-posters/arcanes2.jpg  
+Genre:
 Seen: 2024-11-09  
 Review: Alvin|4.56  
 Review: Diaa|4.0  
@@ -1049,6 +1112,7 @@ Review: Carl|
 Movie: Look Back  
 Release: 2024-12-10  
 Poster: ../images/movie-posters/lookback.jpg  
+Genre:
 Seen: 2024-12-10  
 Review: Alvin|4.1  
 Review: Diaa|4.7  
@@ -1056,6 +1120,7 @@ Review: Diaa|4.7
 Movie: Suzume  
 Release: 2022-11-11  
 Poster: ../images/movie-posters/suzume.jpg  
+Genre:
 Seen: 2024-12-11  
 Review: Alvin|4.168  
 Review: Diaa|4.7  
@@ -1063,6 +1128,7 @@ Review: Diaa|4.7
 Movie: Grave of the Fireflies  
 Release: 1988-04-16  
 Poster: ../images/movie-posters/graveofthefireflies.jpg  
+Genre:
 Seen: 2024-12-17  
 Review: Alvin|4.56  
 Review: Diaa|4.88  
@@ -1070,6 +1136,7 @@ Review: Diaa|4.88
 Movie: Red One  
 Release: 2024-11-08  
 Poster: ../images/movie-posters/redone.jpg  
+Genre:
 Seen: 2024-12-22  
 Review: Alvin|2.46  
 Review: Diaa|3.12  
@@ -1077,6 +1144,7 @@ Review: Diaa|3.12
 Movie: Wednesday S.1  
 Release: 2022-12-23  
 Poster: ../images/movie-posters/wednesday.jpg  
+Genre:
 Seen: 2024-12-29  
 Review: Alvin|3.884  
 Review: Diaa|3.3  
@@ -1084,6 +1152,7 @@ Review: Diaa|3.3
 Movie: Squid Game S.2  
 Release: 2024-09-15  
 Poster: ../images/movie-posters/squidgames2.jpg  
+Genre:
 Seen: 2025-01-10  
 Review: Alvin|4.622  
 Review: Diaa|4.1  
@@ -1093,6 +1162,7 @@ Review: Carl|
 Movie: Wallace & Gromit: Vengeance Most Fowl  
 Release: 2024-02-17  
 Poster: ../images/movie-posters/wallaceandgromitvengeancemostfowl.jpg  
+Genre:
 Seen: 2025-01-17  
 Review: Alvin|3.46  
 Review: Diaa|3.6  
@@ -1101,6 +1171,7 @@ Review: Holger|3.96
 Movie: Alice in Borderland S.1  
 Release: 2020-12-10  
 Poster: ../images/movie-posters/aliceinborderland.jpg  
+Genre:
 Seen: 2025-01-21  
 Review: Alvin|3.84  
 Review: Diaa|4.0  
@@ -1108,6 +1179,7 @@ Review: Diaa|4.0
 Movie: Entergalactic  
 Release: 2022-09-30  
 Poster: ../images/movie-posters/entergalactic.jpg  
+Genre:
 Seen: 2025-02-02  
 Review: Alvin|4.416  
 Review: Diaa|3.6  
@@ -1116,6 +1188,7 @@ Review: Holger|4.18
 Movie: Alice in Borderland S.2  
 Release: 2022-12-22  
 Poster: ../images/movie-posters/aliveinborderlandss2.jpg  
+Genre:
 Seen: 2025-02-05  
 Review: Alvin|3.616  
 Review: Diaa|  
@@ -1123,13 +1196,15 @@ Review: Diaa|
 Movie: Dog Day Afternoon  
 Release: 1975-09-21  
 Poster: ../images/movie-posters/dogdayafternoon.jpg  
+Genre:
 Seen: 2025-02-23  
 Review: Alvin|3.98  
 Review: Diaa|  
 
 Movie: The Shawshank Redemption  
 Release: 1994-09-23  
-Poster: ../images/movie-posters/theshawshankredemtion.jpg  
+Poster: ../images/movie-posters/theshawshankredemtion.jpg 
+Genre: 
 Seen: 2025-03-02  
 Review: Alvin|4.52  
 Review: Holger|  
@@ -1137,6 +1212,7 @@ Review: Holger|
 Movie: Minecraft: The Movie  
 Release: 2025-04-04  
 Poster: ../images/movie-posters/aminecraftmovie.jpg  
+Genre:
 Seen: 2025  
 Review: Alvin|2.1  
 Review: Diaa|3  
@@ -1144,6 +1220,7 @@ Review: Diaa|3
 Movie: Lupin III: The First  
 Release: 2019-12-06  
 Poster: ../images/movie-posters/lupin3thefirst.jpg  
+Genre:
 Seen: 2025  
 Review: Alvin|3.75  
 Review: Diaa|3  
@@ -1151,6 +1228,7 @@ Review: Diaa|3
 Movie: Rick and Morty S.8  
 Release: 2025-07-21  
 Poster: ../images/movie-posters/Rick_and_Morty_season_8.jpg  
+Genre:
 Seen: 2025-06-18  
 Review: Alvin|  
 Review: Holger|  
@@ -1158,6 +1236,7 @@ Review: Holger|
 Movie: KPop Demon Hunters  
 Release: 2025-07-15  
 Poster: ../images/movie-posters/kpopdemonhunters.jpg  
+Genre:
 Seen: 2025-07-15  
 Review: Alvin|4.276  
 Review: Diaa|4  
@@ -1165,6 +1244,7 @@ Review: Diaa|4
 Movie: Thunderbolts*  
 Release: 2025-07-26  
 Poster: ../images/movie-posters/thunderbolts.jpg  
+Genre:
 Seen: 2025-07-21  
 Review: Alvin|2.8  
 Review: Diaa|3.3  
@@ -1172,6 +1252,7 @@ Review: Diaa|3.3
 Movie: Karate Kid: Legends  
 Release: 2025-07-26  
 Poster: ../images/movie-posters/karatekidlegends.jpg  
+Genre:
 Seen: 2025-07-21  
 Review: Alvin|3.8  
 Review: Diaa|3.5  
@@ -1179,6 +1260,7 @@ Review: Diaa|3.5
 Movie: The Wild Robot  
 Release: 2024-01-15  
 Poster: ../images/movie-posters/thewildrobot.jpg  
+Genre:
 Seen: 2025-07-22  
 Review: Alvin|4.1  
 Review: Diaa|4.0  
@@ -1186,6 +1268,7 @@ Review: Diaa|4.0
 Movie: Transformers One  
 Release: 2024-06-28  
 Poster: ../images/movie-posters/transformersone.jpg  
+Genre:
 Seen: 2025-07-22  
 Review: Alvin|4.04  
 Review: Diaa|4.58  
@@ -1193,6 +1276,7 @@ Review: Diaa|4.58
 Movie: Transcendence  
 Release: 2014-04-18  
 Poster: ../images/movie-posters/transcendence.jpg  
+Genre:
 Seen: 2025-07-31  
 Review: Alvin|3.5  
 Review: Diaa|3.9  
@@ -1200,6 +1284,7 @@ Review: Diaa|3.9
 Movie: Superman  
 Release: 2025-08-22  
 Poster: ../images/movie-posters/superman.jpeg  
+Genre:
 Seen: 2025-08-22  
 Review: Alvin|4.68  
 Review: Diaa|4.5  
@@ -1207,6 +1292,7 @@ Review: Diaa|4.5
 Movie: A Good Person  
 Release: 2023-06-30  
 Poster: ../images/movie-posters/agoodperson.jpg  
+Genre:
 Seen: 2025-08-28  
 Review: Alvin|4.31  
 Review: Diaa|4.1  
@@ -1214,6 +1300,7 @@ Review: Diaa|4.1
 Movie: Coraline  
 Release: 2009-02-06  
 Poster: ../images/movie-posters/coraline.jpg  
+Genre:
 Seen: 2025-09-06  
 Review: Alvin|4.3  
 Review: Diaa|3.8  
@@ -1221,6 +1308,7 @@ Review: Diaa|3.8
 Movie: Superbad  
 Release: 2007-08-17  
 Poster: ../images/movie-posters/superbad.jpg  
+Genre:
 Seen: 2025-09-15  
 Review: Alvin|4.0  
 Review: Diaa|4.0  
@@ -1228,6 +1316,7 @@ Review: Diaa|4.0
 Movie: Missing Link  
 Release: 2019-04-12  
 Poster: ../images/movie-posters/missinglink.jpg  
+Genre:
 Seen: 2025-09-17  
 Review: Alvin|2.6  
 Review: Diaa|2.8  
@@ -1235,6 +1324,7 @@ Review: Diaa|2.8
 Movie: The Menu  
 Release: 2022-09-09  
 Poster: ../images/movie-posters/themenu.jpg  
+Genre:
 Seen: 2025-09-21  
 Review: Alvin|4.58  
 Review: Diaa|5.0  
@@ -1242,6 +1332,7 @@ Review: Diaa|5.0
 Movie: Dead Poets Society  
 Release: 1989-06-02  
 Poster: ../images/movie-posters/deadpoetssociety.jpg  
+Genre:
 Seen: 2025-09-27  
 Review: Alvin|3.75  
 Review: Diaa|3.5  
