@@ -62,8 +62,12 @@ function parseMovies(text) {
     lines.forEach(line => {
       if (line.startsWith("Movie:")) movie.title = line.replace("Movie:", "").trim();
       else if (line.startsWith("Poster:")) movie.poster = line.replace("Poster:", "").trim();
-      else if (line.startsWith("Release:")) movie.release = parseInt(line.replace("Release:", "").trim(), 10);
-      else if (line.startsWith("Seen:")) movie.seen_date = line.replace("Seen:", "").trim();
+      else if (line.startsWith("Release:")) {
+        const dateStr = line.replace("Release:", "").trim();
+        const releaseDate = new Date(dateStr);
+        movie.release = releaseDate;
+        movie.releaseYear = releaseDate.getFullYear();
+      }
       else if (line.startsWith("Review:")) {
         const [, review] = line.split("Review:");
         const [name, score] = review.split("|").map(s => s.trim());
@@ -103,7 +107,7 @@ function renderMovies(movies) {
     movieDiv.innerHTML = `
       <div class="review-data-holder">
         <p class="movie-title">
-          ${movie.title} ${movie.release ? `(${movie.release})` : ""}
+          ${movie.title} ${movie.releaseYear ? `(${movie.releaseYear})` : ""}
         </p>
         ${movie.genre ? `<p><em>${movie.genre}</em></p>` : ""}
         <img class="movie-poster" src="${movie.poster}">
@@ -188,9 +192,10 @@ function sortMovies(criteria) {
       return a.title.localeCompare(b.title) * currentDirection;
     }
     if (criteria === "release") {
-      return ((a.release || 0) - (b.release || 0)) * currentDirection;
-    }
-    if (criteria === "rating") {
+      const aDate = a.release instanceof Date ? a.release.getTime() : 0;
+      const bDate = b.release instanceof Date ? b.release.getTime() : 0;
+      return (aDate - bDate) * currentDirection;
+    } if (criteria === "rating") {
       return ((a.filteredAvgRating || 0) - (b.filteredAvgRating || 0)) * currentDirection;
     }
     if (criteria === "seen-date") {
