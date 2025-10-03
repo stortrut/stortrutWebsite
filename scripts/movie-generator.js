@@ -60,12 +60,14 @@ function parseMovies(text) {
     let movie = { title: "", poster: "", reviews: [], release: null, seen_date: "" };
 
     lines.forEach(line => {
-      const [field, ...rest] = line.split(":");
-      if (!field || rest.length === 0) return; // skip invalid lines
+      // Use regex to split on the first colon, ignoring spacing issues
+      const match = line.match(/^([^:]+):\s*(.*)$/);
+      if (!match) return;
 
-      const value = rest.join(":").trim(); // in case value has a colon
+      const field = match[1].trim().toLowerCase();
+      const value = match[2].trim();
 
-      switch (field.trim().toLowerCase()) {
+      switch (field) {
         case "movie":
           movie.title = value;
           break;
@@ -73,15 +75,14 @@ function parseMovies(text) {
           movie.poster = value;
           break;
         case "release":
-          const cleaned = value.trim();
-          const date = new Date(cleaned);
+          const date = new Date(value);
           if (!isNaN(date.getTime())) {
             movie.release = date;
             movie.releaseYear = date.getFullYear();
           } else {
             movie.release = null;
             movie.releaseYear = null;
-            console.warn("Invalid release date:", cleaned);
+            console.warn(`Invalid release date: "${value}"`);
           }
           break;
         case "seen":
@@ -89,7 +90,9 @@ function parseMovies(text) {
           break;
         case "review":
           const [name, score] = value.split("|").map(s => s.trim());
-          movie.reviews.push({ name, score: parseFloat(score) });
+          if (name && !isNaN(parseFloat(score))) {
+            movie.reviews.push({ name, score: parseFloat(score) });
+          }
           break;
       }
     });
