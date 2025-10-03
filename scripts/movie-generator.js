@@ -66,20 +66,20 @@ function parseMovies(text) {
       const value = rest.join(":").trim(); // in case value has a colon
 
       switch (field.trim().toLowerCase()) {
-        case "Movie":
+        case "movie":
           movie.title = value;
           break;
-        case "Poster":
+        case "poster":
           movie.poster = value;
           break;
-        case "Release":
+        case "release":
           const date = new Date(value);
           movie.release = isNaN(date.getTime()) ? null : date;
           break;
-        case "Seen":
+        case "seen":
           movie.seen_date = value;
           break;
-        case "Review":
+        case "review":
           const [name, score] = value.split("|").map(s => s.trim());
           movie.reviews.push({ name, score: parseFloat(score) });
           break;
