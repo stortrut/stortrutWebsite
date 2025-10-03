@@ -73,10 +73,11 @@ function parseMovies(text) {
           movie.poster = value;
           break;
         case "release":
-          const date = new Date(value);
+          const cleaned = value.trim(); // <-- strip leading/trailing spaces
+          const date = new Date(cleaned);
           if (!isNaN(date.getTime())) {
             movie.release = date;
-            movie.releaseYear = date.getFullYear(); // 👈 Add this line
+            movie.releaseYear = date.getFullYear();
           } else {
             movie.release = null;
             movie.releaseYear = null;

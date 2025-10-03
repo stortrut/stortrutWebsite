@@ -535,6 +535,7 @@ Review: Holger|3.2
 Movie: Rick & Morty S.6
 Release: 2022-09-04
 Poster: ../images/movie-posters/rickandmortys6.jpg
+Genre: Animation, Comedy,
 Seen: 2022-09-11
 Review: Alvin|3.984
 Review: Holger|3.38
