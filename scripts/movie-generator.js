@@ -57,12 +57,12 @@ function parseMovies(text) {
   const blocks = text.trim().split(/\n\s*\n/);
   return blocks.map(block => {
     const lines = block.split("\n").map(l => l.trim());
-    let movie = { title: "", poster: "", reviews: [], year: "", seen_date: "" };
+    let movie = { title: "", poster: "", reviews: [], release: "", seen_date: "" };
 
     lines.forEach(line => {
       if (line.startsWith("Movie:")) movie.title = line.replace("Movie:", "").trim();
       else if (line.startsWith("Poster:")) movie.poster = line.replace("Poster:", "").trim();
-      else if (line.startsWith("Year:")) movie.year = parseInt(line.replace("Year:", "").trim(), 10);
+      else if (line.startsWith("Release:")) movie.release = parseInt(line.replace("Release:", "").trim(), 10);
       else if (line.startsWith("Seen:")) movie.seen_date = line.replace("Seen:", "").trim();
       else if (line.startsWith("Review:")) {
         const [, review] = line.split("Review:");
@@ -103,7 +103,7 @@ function renderMovies(movies) {
     movieDiv.innerHTML = `
       <div class="review-data-holder">
         <p class="movie-title">
-          ${movie.title} ${movie.year ? `(${movie.year})` : ""}
+          ${movie.title} ${movie.release ? `(${movie.release})` : ""}
         </p>
         ${movie.genre ? `<p><em>${movie.genre}</em></p>` : ""}
         <img class="movie-poster" src="${movie.poster}">
@@ -187,8 +187,8 @@ function sortMovies(criteria) {
     if (criteria === "title") {
       return a.title.localeCompare(b.title) * currentDirection;
     }
-    if (criteria === "year") {
-      return ((a.year || 0) - (b.year || 0)) * currentDirection;
+    if (criteria === "release") {
+      return ((a.release || 0) - (b.release || 0)) * currentDirection;
     }
     if (criteria === "rating") {
       return ((a.filteredAvgRating || 0) - (b.filteredAvgRating || 0)) * currentDirection;
