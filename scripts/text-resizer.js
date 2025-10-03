@@ -2,20 +2,31 @@ function resizeTitleText() {
   const titles = document.querySelectorAll('.movie-title');
 
   titles.forEach(title => {
-    let fontSize = 24; // Try a higher starting size
-    title.style.fontSize = fontSize + 'px';
-
     const parent = title.parentElement;
     if (!parent) return;
 
-    // Shrink only if overflowing container
+    let fontSize = 24;
+    title.style.fontSize = fontSize + 'px';
+
+    const maxHeight = parent.clientHeight;
+    const maxWidth = parent.clientWidth;
+
+    // Temporarily set styles to allow wrapping and measure overflow
+    title.style.whiteSpace = 'normal';
+    title.style.display = 'inline-block';
+    title.style.lineHeight = '1.2';
+
+    // Shrink until it fits both height and width
     while (
-      (title.scrollWidth > parent.clientWidth || title.scrollHeight > parent.clientHeight) &&
+      (title.scrollHeight > maxHeight || title.scrollWidth > maxWidth) &&
       fontSize > 10
     ) {
       fontSize -= 1;
       title.style.fontSize = fontSize + 'px';
     }
+
+    // Optional: Reset any temporary styles
+    title.style.display = '';
   });
 }
 

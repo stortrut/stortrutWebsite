@@ -653,7 +653,7 @@ Review: Holger|2.66
 Movie: The Legend of Vox Machina S.2
 Release: 2023-01-20
 Poster: ../images/movie-posters/tlovms2.jpg
-Genre:
+Genre: Comedy, Animation, Fantasy
 Seen: 2023-01-20
 Review: Alvin|4.402
 Review: Diaa|3.74
@@ -998,7 +998,7 @@ Review: Holger|3.48
 Movie: The Naked Gun  
 Release: 1988-12-16  
 Poster: ../images/movie-posters/thenakedgun.jpg  
-Genre:
+Genre: Comedy, Crime
 Seen: 2024-03-17  
 Review: Alvin|1.3  
 Review: Diaa|3.6  
@@ -1007,7 +1007,7 @@ Review: Holger|1.5
 Movie: Kung Fu Panda 4  
 Release: 2024-03-08  
 Poster: ../images/movie-posters/kungfupanda4.jpg  
-Genre:
+Genre: Animation, Comedy, Action, Adventure
 Seen: 2024-03-23  
 Review: Alvin|4.164  
 Review: Diaa|4.14  
@@ -1017,13 +1017,13 @@ Review: Carl|3.4
 Movie: Smiling Friends S2  
 Release: 2024-04-01  
 Poster: ../images/movie-posters/smilingfriendss2.jpg  
-Genre:
+Genre: Animation, Comedy
 Seen: 2024-04-01  
 
 Movie: Poor Things  
 Release: 2023-09-08  
 Poster: ../images/movie-posters/poorthings.jpg  
-Genre:
+Genre: Comedy, Drama, Romance, Sci-Fi
 Seen: 2024-05-10  
 Review: Alvin|3.4  
 Review: Holger|3.06  
@@ -1031,7 +1031,7 @@ Review: Holger|3.06
 Movie: Lost in Translation  
 Release: 2003-09-18  
 Poster: ../images/movie-posters/lostintranslation.jpg  
-Genre:
+Genre: Drama, Comedy
 Seen: 2024-06-08  
 Review: Alvin|3.4  
 Review: Holger|3.62  
@@ -1039,7 +1039,7 @@ Review: Holger|3.62
 Movie: Jujutsu Kaisen 0  
 Release: 2021-12-24  
 Poster: ../images/movie-posters/jjk0.jpg  
-Genre:
+Genre: Animation, Anime, Romance, Action
 Seen: 2024-07-08  
 Review: Alvin|2.904  
 Review: Holger|3.394  
@@ -1047,7 +1047,7 @@ Review: Holger|3.394
 Movie: Fucking Åmål  
 Release: 1998-08-14  
 Poster: ../images/movie-posters/fuckingåmål.jpg  
-Genre:
+Genre: Coming-of-Age, Comedy, Romance, Drama
 Seen: 2024-08-07  
 Review: Alvin|4.1  
 Review: Diaa|3.18  
@@ -1056,7 +1056,7 @@ Review: Holger|3.16
 Movie: Léon: The Professional  
 Release: 1994-09-14  
 Poster: ../images/movie-posters/leontheprofessional.jpg 
-Genre: 
+Genre: Drama, Action, Crime
 Seen: 2024-08-07  
 Review: Alvin|4.1122  
 Review: Diaa|4.1  
@@ -1065,7 +1065,7 @@ Review: Holger|4.0
 Movie: Eternal Sunshine of the Spotless Mind  
 Release: 2004-03-19  
 Poster: ../images/movie-posters/eternalsunshineofthespotlessmind.jpg  
-Genre:
+Genre: Romance, Drama, Sci-Fi, Psychological
 Seen: 2024-08-15  
 Review: Alvin|4.3668  
 Review: Diaa|4.1  
@@ -1074,7 +1074,7 @@ Review: Holger|4.46
 Movie: Inside Out 2  
 Release: 2024-06-14  
 Poster: ../images/movie-posters/insideout2.jpg  
-Genre:
+Genre: Coming-of-Age, Psychological, Animation, Comedy, Drama
 Seen: 2024-09-10  
 Review: Alvin|3.76  
 Review: Diaa|4.2  
@@ -1083,7 +1083,7 @@ Review: Holger|4.1
 Movie: Sällskapsresan 2  
 Release: 1985-12-20  
 Poster: ../images/movie-posters/snowrollersällskapsresan.jpg  
-Genre:
+Genre: Comedy, Romance
 Seen: 2024-09-12  
 Review: Alvin|3.52  
 Review: Diaa|3.2  
@@ -1092,7 +1092,7 @@ Review: Holger|3.4
 Movie: The Legend of Vox Machina S.3  
 Release: 2024-10-12  
 Poster: ../images/movie-posters/tlovms3.JPG  
-Genre:
+Genre: Comedy, Animation, Fantasy
 Seen: 2024-10-03  
 Review: Alvin|4.3  
 Review: Diaa|  
