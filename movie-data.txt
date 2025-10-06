@@ -560,7 +560,7 @@ Review: Holger|3.54
 Movie: Chainsaw Man
 Release: 2022-10-11
 Poster: ../images/movie-posters/chainsawman.jpg
-Genre: 
+Genre: Animation, Anime, Action
 Seen: 2022-10-28
 Review: Alvin|4.454
 Review: Diaa|4.5
@@ -568,7 +568,7 @@ Review: Diaa|4.5
 Movie: Kopps
 Release: 2003-10-03
 Poster: ../images/movie-posters/kopps.jpg
-Genre:
+Genre: Comedy
 Seen: 2022-10-28
 Review: Alvin|3.274
 Review: Diaa|2.9
@@ -577,7 +577,7 @@ Review: Holger|2.98
 Movie: Thor love and thunder 
 Release: 2022-07-08
 Poster: ../images/movie-posters/thorloveandthunder.jpg
-Genre:
+Genre: Superhero, Action, Comedy
 Seen: 2022-11-05
 Review: Alvin|2.494
 Review: Holger|2.34
@@ -585,7 +585,7 @@ Review: Holger|2.34
 Movie: Rashomon
 Release: 1950-08-26
 Poster: ../images/movie-posters/rashomon.jpg
-Genre:
+Genre: Crime, Drama, Mystery
 Seen: 2022-11-11
 Review: Alvin|3.42
 Review: Diaa|3.3
@@ -594,7 +594,7 @@ Review: Holger|3.54
 Movie: Ocean's Eleven
 Release: 2001-12-07
 Poster: ../images/movie-posters/oceans11.jpg
-Genre:
+Genre: Heist, Crime, Thriller
 Seen: 2022-11-13
 Review: Alvin|3.482
 Review: Diaa|3.5
@@ -603,7 +603,7 @@ Review: Holger|3.26
 Movie: Parasite
 Release: 2019-05-30
 Poster: ../images/movie-posters/parasite.jpg
-Genre:
+Genre: Thriller, Tragedy, Drama, Psychological, Comedy
 Seen: 2022-11-20
 Review: Alvin|4.28
 Review: Diaa|4.2
@@ -612,7 +612,7 @@ Review: Holger|4.26
 Movie: Men in Black
 Release: 1997-07-02
 Poster: ../images/movie-posters/meninblack.jpg
-Genre:
+Genre: Buddy Comedy, Sci-Fi, Comedy, Adventure
 Seen: 2022-12-05
 Review: Alvin|3.0412
 Review: Holger|2.58
@@ -620,7 +620,7 @@ Review: Holger|2.58
 Movie: Guillermo del Toro's Pinocchio
 Release: 2022-11-09
 Poster: ../images/movie-posters/guillermodeltorospinocchio.jpg
-Genre:
+Genre: Stop Motion, Animation, Musical
 Seen: 2022-12-13
 Review: Alvin|3.938
 Review: Holger|3.84
@@ -628,7 +628,7 @@ Review: Holger|3.84
 Movie: Love actually
 Release: 2003-11-14
 Poster: ../images/movie-posters/loveactually.jpg
-Genre:
+Genre: Christmas, Comedy, Drama, Romance
 Seen: 2022-12-18
 Review: Alvin|2.96
 Review: Diaa|3.1
@@ -637,7 +637,7 @@ Review: Holger|3.5
 Movie: Airplane!
 Release: 1980-07-02
 Poster: ../images/movie-posters/airplane.jpg
-Genre:
+Genre: Comedy, Satire, Slapstick
 Seen: 2023-01-02
 Review: Alvin|2.96
 Review: Holger|2.9
@@ -645,7 +645,7 @@ Review: Holger|2.9
 Movie: Space Force S.1
 Release: 2020-05-29
 Poster: ../images/movie-posters/spaceforce.jpg
-Genre:
+Genre: Comedy, Satire
 Seen: 2023-01-17
 Review: Alvin|2.968
 Review: Holger|2.66
@@ -663,7 +663,7 @@ Review: Carl|4.214
 Movie: Ant-man and the Wasp: Quantumania
 Release: 2023-02-17
 Poster: ../images/movie-posters/antmanquantumania.jpg
-Genre:
+Genre: Superhero, Action, Comedy, Sci-FI
 Seen: 2023-02-23
 Review: Alvin|2.34
 Review: Diaa|2.225
@@ -671,7 +671,7 @@ Review: Diaa|2.225
 Movie: Puss in Boots: The Last Wish
 Release: 2022-12-21
 Poster: ../images/movie-posters/pussinbootsthelastwish.jpg
-Genre:
+Genre: Animation, Action
 Seen: 2023-03-10
 Review: Alvin|3.918
 Review: Holger|4.5
@@ -679,7 +679,7 @@ Review: Holger|4.5
 Movie: The Imitation Game
 Release: 2014-11-28
 Poster: ../images/movie-posters/theimitationgame.jpg
-Genre:
+Genre: Drama, Thriller, Tragedy
 Seen: 2023-03-18
 Review: Alvin|3.054
 Review: Holger|3.36
@@ -687,7 +687,7 @@ Review: Holger|3.36
 Movie: Amsterdam
 Release: 2022-10-07
 Poster: ../images/movie-posters/amsterdam.jpg
-Genre:
+Genre: Comedy, Drama, Thriller
 Seen: 2023-03-20
 Review: Alvin|2.696
 Review: Diaa|1.96
@@ -697,7 +697,7 @@ Review: Carl|2.5
 Movie: The Last of Us S.1
 Release: 2023-01-15
 Poster: ../images/movie-posters/thelastofus.webp
-Genre:
+Genre: Action, Horror, Drama
 Seen: 2023-03-21
 Review: Alvin|4.4618
 Review: Holger|4.34
@@ -705,7 +705,7 @@ Review: Holger|4.34
 Movie: Weathering With You
 Release: 2019-07-19
 Poster: ../images/movie-posters/weatheringwithyou.jpg
-Genre:
+Genre: Animation, Anime, Romance
 Seen: 2023-03-24
 Review: Alvin|3.698
 Review: Diaa|4.78
@@ -713,7 +713,7 @@ Review: Diaa|4.78
 Movie: The Da Vinci Code
 Release: 2006-05-19
 Poster: ../images/movie-posters/thedavincicode.jpg
-Genre:
+Genre: Mystery, Thriller
 Seen: 2023-03-25
 Review: Alvin|2.65
 Review: Holger|2.04
@@ -721,7 +721,7 @@ Review: Holger|2.04
 Movie: Shutter Island
 Release: 2010-02-19
 Poster: ../images/movie-posters/shutterisland.jpg
-Genre:
+Genre: Drama, Mystery, Psychological, Thriller
 Seen: 2023-04-01
 Review: Alvin|2.8
 Review: Diaa|2.4
@@ -730,7 +730,7 @@ Review: Holger|3.16
 Movie: Million Dollar Baby
 Release: 2004-12-15
 Poster: ../images/movie-posters/milliondollarbaby.jpg
-Genre:
+Genre: Drama, Tragedy
 Seen: 2023-04-09
 Review: Alvin|3.1
 Review: Diaa|4.74
@@ -740,7 +740,7 @@ Review: Carl|4.4
 Movie: Dungeons & Dragons: Honor Among Thieves
 Release: 2023-03-31
 Poster: ../images/movie-posters/dndhonoramongthieves.jpg
-Genre:
+Genre: Action, Fantasy, Comedy, Adventure
 Seen: 2023-04-15
 Review: Alvin|3.65
 Review: Diaa|4.4
@@ -750,7 +750,7 @@ Review: Carl|4.2
 Movie: Good Will Hunting
 Release: 1997-12-05
 Poster: ../images/movie-posters/goodwillhunting.jpg
-Genre:
+Genre: Coming-of-Age, Drama, Romance
 Seen: 2023-04-23
 Review: Alvin|3.94
 Review: Diaa|4.1
@@ -760,7 +760,7 @@ Review: Carl|4.94
 Movie: Fight Club
 Release: 1999-10-15
 Poster: ../images/movie-posters/fightclub.jpg
-Genre:
+Genre: Psychological, Crime, Drama, Thriller
 Seen: 2023-05-07
 Review: Alvin|4.118
 Review: Holger|4.64
@@ -768,7 +768,7 @@ Review: Holger|4.64
 Movie: Midsommar
 Release: 2019-06-14
 Poster: ../images/movie-posters/midsommar.jpg
-Genre:
+Genre: Psychological, Horror, Drama, Mystery, Thriller
 Seen: 2023-06-17
 Review: Alvin|1.76
 Review: Diaa|3.52
@@ -778,7 +778,7 @@ Review: Carl|2.8
 Movie: Spider-Man: Across the Spider Verse  
 Release: 2023-06-02  
 Poster: ../images/movie-posters/acrossthespiderverse.jpg  
-Genre:
+Genre: Superhero, Animation, Action
 Seen: 2023-06-18  
 Review: Alvin|5  
 Review: Diaa|4.4  
@@ -787,7 +787,7 @@ Review: Holger|4.72
 Movie: Invincible: Atom Eve  
 Release: 2023-08-25  
 Poster: ../images/movie-posters/atomeve.jpg  
-Genre:
+Genre: Superhero, Action, Animation
 Seen: 2023-07-29  
 Review: Alvin|4.226  
 Review: Holger|3.96  
@@ -795,7 +795,7 @@ Review: Holger|3.96
 Movie: Angel’s Egg  
 Release: 1985-01-01  
 Poster: ../images/movie-posters/angelsegg.jpg  
-Genre:
+Genre: Anime, Animation, Fantasy, Mystery
 Seen: 2023-08-15  
 Review: Alvin|2.938  
 Review: Holger|3.16  
@@ -803,7 +803,7 @@ Review: Holger|3.16
 Movie: One Piece S1  
 Release: 2023-08-20  
 Poster: ../images/movie-posters/onepiece.jpg  
-Genre:
+Genre: Action, Adventure
 Seen: 2023-09-11  
 Review: Alvin|4.08  
 Review: Holger|4.24  
@@ -812,7 +812,7 @@ Review: Carl|4.625
 Movie: Fionna and Cake  
 Release: 2023-08-31  
 Poster: ../images/movie-posters/fionnaandcake.jpg  
-Genre:
+Genre: Animation, Action, Adventure, Drama, Fantastic, Comedy
 Seen: 2023-09-15  
 Review: Alvin|4.008  
 Review: Holger|3.52  
@@ -820,7 +820,7 @@ Review: Holger|3.52
 Movie: Loki S.2  
 Release: 2023-10-06  
 Poster: ../images/movie-posters/lokis2.jpg  
-Genre:
+Genre: Time Travel, Superhero, Sci-Fi, Action, Adventure
 Seen: 2023-10-10  
 Review: Alvin|2.772  
 Review: Holger|2.48  
@@ -829,7 +829,7 @@ Review: Carl|3.96
 Movie: A Fistful of Dollars  
 Release: 1964-12-29  
 Poster: ../images/movie-posters/afistfulofdollars.jpg  
-Genre:
+Genre: Western, Drama, Action
 Seen: 2023-10-15  
 Review: Alvin|3.956  
 Review: Diaa|4.4  
@@ -839,7 +839,7 @@ Review: Carl|3.4
 Movie: For a Few Dollars More  
 Release: 1965-12-18  
 Poster: ../images/movie-posters/forafewdollarsmore.jpg  
-Genre:
+Genre: Western, Drama, Action
 Seen: 2023-10-15  
 Review: Alvin|3.562  
 Review: Diaa|4.7  
@@ -849,7 +849,7 @@ Review: Carl|2.4
 Movie: The Good, the Bad and the Ugly  
 Release: 1966-12-23  
 Poster: ../images/movie-posters/thegoodthebadandtheugly.jpg
-Genre:  
+Genre: Western, Drama, Action
 Seen: 2023-10-15  
 Review: Alvin|3.3  
 Review: Diaa|4.1  
@@ -859,7 +859,7 @@ Review: Carl|3.1
 Movie: Rick and Morty S.7  
 Release: 2023-10-15  
 Poster: ../images/movie-posters/Rick_and_Morty_season_7.jpg
-Genre:  
+Genre: Sci-Fi, Animation
 Seen: 2023-10-17  
 Review: Alvin|3.8  
 Review: Holger|3.7  
