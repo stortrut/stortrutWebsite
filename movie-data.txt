@@ -213,7 +213,7 @@ Review: Holger|2.94
 Movie: Paprika
 Release: 2006-11-25
 Poster: ../images/movie-posters/paprika.jpg
-Genre: Animatio, Anime, Psychological
+Genre: Animation, Anime, Psychological
 Seen: 2021-11-03
 Review: Alvin|4.7
 Review: Diaa|3.6
@@ -867,7 +867,7 @@ Review: Holger|3.7
 Movie: The Adventures of Tintin  
 Release: 2011-10-23  
 Poster: ../images/movie-posters/theadventuresoftintin.jpg 
-Genre: 
+Genre: Animation, Adventure, Action, Mystery
 Seen: 2023-11-04  
 Review: Alvin|3.002  
 Review: Diaa|3.8  
@@ -876,13 +876,13 @@ Review: Holger|3.56
 Movie: Invincible S.2  
 Release: 2023-06-01  
 Poster: ../images/movie-posters/Invincible_season_2.jpg  
-Genre:
+Genre: Superhero, Action, Animation, 
 Seen: 2023-11-06  
 
-Movie: Scavengers Reign  
+Movie: Scavengers Reign
 Release: 2023-11-17  
 Poster: ../images/movie-posters/scavengersreign.jpg  
-Genre:
+Genre: Animation, Sci-Fi, Adventure, Drama
 Seen: 2023-11-16  
 Review: Alvin|4.0904  
 Review: Holger|4.28  
@@ -890,7 +890,7 @@ Review: Holger|4.28
 Movie: Scott Pilgrim Takes Off  
 Release: 2023-11-24  
 Poster: ../images/movie-posters/scottpilgrimtakesoff.jpg  
-Genre:
+Genre: Animation, Action, Anime, Comedy, Whodunnit, Comedy
 Seen: 2023-11-20  
 Review: Alvin|3.647  
 Review: Holger|3.68  
@@ -899,7 +899,7 @@ Review: Carl|4.1
 Movie: Die Hard  
 Release: 1988-07-20  
 Poster: ../images/movie-posters/diehard.jpg  
-Genre:
+Genre: Comedy, Action, Thriller, Christmas
 Seen: 2023-12-26  
 Review: Alvin|3.6  
 Review: Holger|3.4  
@@ -907,7 +907,7 @@ Review: Holger|3.4
 Movie: On the Twelfth Day…  
 Release: 1955-12-17  
 Poster: ../images/movie-posters/onthetwelfthday.jpg  
-Genre:
+Genre: Christmas, Comedy
 Seen: 2023-12-26  
 Review: Alvin|2.87  
 Review: Diaa|3  
@@ -915,7 +915,7 @@ Review: Diaa|3
 Movie: The Boy and the Heron  
 Release: 2023-07-14  
 Poster: ../images/movie-posters/theboyandtheheron.jpg  
-Genre:
+Genre: Animation, Anime, Adventure, Drama
 Seen: 2023-12-30  
 Review: Alvin|3.63  
 Review: Diaa|4.5  
@@ -924,7 +924,7 @@ Review: Holger|3.3
 Movie: Lucy  
 Release: 2014-07-25  
 Poster: ../images/movie-posters/lucy.jpg  
-Genre:
+Genre: Thriller, Sci-Fi, Action
 Seen: 2023-12-31  
 Review: Alvin|2.86  
 Review: Diaa|3.5  
@@ -932,7 +932,7 @@ Review: Diaa|3.5
 Movie: Once Upon a Studio  
 Release: 2023-11-22  
 Poster: ../images/movie-posters/onceuponastudio.jpg 
-Genre: 
+Genre: Animation
 Seen: 2023-12-31  
 Review: Alvin|4.3  
 Review: Diaa|3  
@@ -940,7 +940,7 @@ Review: Diaa|3
 Movie: If Anything Happens I Love You  
 Release: 2020-11-20  
 Poster: ../images/movie-posters/ifanythinghappensiloveyou.jpg  
-Genre:
+Genre: Animation, Drama
 Seen: 2023-12-31  
 Review: Alvin|4.5  
 Review: Diaa|3  
@@ -948,7 +948,7 @@ Review: Diaa|3
 Movie: The Boy, the Mole, the Fox and the Horse  
 Release: 2022-12-25  
 Poster: ../images/movie-posters/theboythefoxandthehorse.jpg
-Genre:  
+Genre: Animation
 Seen: 2023-12-31  
 Review: Alvin|3.45  
 Review: Diaa|3  
@@ -956,7 +956,7 @@ Review: Diaa|3
 Movie: Lackadaisy  
 Release: 2023-11-10  
 Poster: ../images/movie-posters/lackadaisy.jpg  
-Genre:
+Genre: Animation, Comedy, Crime
 Seen: 2023-12-31  
 Review: Alvin|3.2  
 Review: Diaa|3  
@@ -964,7 +964,7 @@ Review: Diaa|3
 Movie: Piper  
 Release: 2016-11-18  
 Poster: ../images/movie-posters/piper.jpg  
-Genre:
+Genre: Animation
 Seen: 2023-12-31  
 Review: Alvin|2.6  
 Review: Diaa|3  
@@ -972,7 +972,7 @@ Review: Diaa|3
 Movie: Last Shadow at First Light  
 Release: 2023-10-05  
 Poster: ../images/movie-posters/lastshadowatfirstlight.jpg 
-Genre: 
+Genre: Drama
 Seen: 2024-01-11  
 Review: Alvin|3.896  
 Review: Holger|4.0  
@@ -981,7 +981,7 @@ Review: Diaa|2.5
 Movie: Hazbin Hotel S.1  
 Release: 2024-01-31  
 Poster: ../images/movie-posters/hazbinhotel.jpg  
-Genre:
+Genre: Animation, Action, Drama, Comedy
 Seen: 2024-02-26  
 Review: Alvin|4.7816  
 Review: Holger|4.19  
@@ -990,7 +990,7 @@ Review: Carl|3.8
 Movie: The Hero’s Journey aka My Life aka the Caleb Jhonston Story (I’m Caleb)  
 Release: 2023-07-10  
 Poster: ../images/movie-posters/theherosjourney.jpg  
-Genre:
+Genre: Drama, Comedy
 Seen: 2024-02-27  
 Review: Alvin|3.688  
 Review: Holger|3.48  
