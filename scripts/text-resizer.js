@@ -5,18 +5,20 @@ function resizeTitleText() {
     const parent = title.parentElement;
     if (!parent) return;
 
-    let fontSize = 24;
-    title.style.fontSize = fontSize + 'px';
-
     const maxHeight = parent.clientHeight;
     const maxWidth = parent.clientWidth;
 
-    // Temporarily set styles to allow wrapping and measure overflow
+    // Get original font size from computed style
+    const originalFontSize = parseFloat(getComputedStyle(title).fontSize);
+    let fontSize = originalFontSize;
+
+    // Reset to original font size before measuring
+    title.style.fontSize = fontSize + 'px';
     title.style.whiteSpace = 'normal';
     title.style.display = 'inline-block';
     title.style.lineHeight = '1.2';
 
-    // Shrink until it fits both height and width
+    // Shrink until it fits
     while (
       (title.scrollHeight > maxHeight || title.scrollWidth > maxWidth) &&
       fontSize > 10
@@ -25,10 +27,31 @@ function resizeTitleText() {
       title.style.fontSize = fontSize + 'px';
     }
 
-    // Optional: Reset any temporary styles
+    // Optional: Grow back up if space allows
+    while (
+      title.scrollHeight < maxHeight &&
+      title.scrollWidth < maxWidth &&
+      fontSize < originalFontSize
+    ) {
+      fontSize += 1;
+      title.style.fontSize = fontSize + 'px';
+      if (title.scrollHeight > maxHeight || title.scrollWidth > maxWidth) {
+        fontSize -= 1; // back off
+        title.style.fontSize = fontSize + 'px';
+        break;
+      }
+    }
+
+    // Cleanup
     title.style.display = '';
   });
 }
 
+// Debounce resize calls
+let resizeTimeout;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(resizeTitleText, 150);
+});
+
 window.addEventListener('load', resizeTitleText);
-window.addEventListener('resize', resizeTitleText);
