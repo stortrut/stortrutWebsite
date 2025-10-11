@@ -16,6 +16,9 @@
     <div id="top-bar"></div>
     <script src="/scripts/scriptforall.js"></script>
 
+    <p>The great hero @Odo Orgulas once fought alongside @Hektor Kostos in the old wars.</p>
+
+
     <h1>
         Filmrecensioner
     </h1>
@@ -62,6 +65,34 @@
     <div id="reviews"></div>
     <script src="/scripts/movie-generator.js"></script>
 
-</body>
 
+
+<script>
+fetch('/articles/pages.json')
+  .then(res => res.json())
+  .then(pages => {
+    // Make a quick lookup map for faster matching
+    const pageMap = {};
+    for (const page of pages) {
+      pageMap[page.name.toLowerCase()] = page.url;
+    }
+
+    // Replace @Mentions in the entire document body
+    document.body.innerHTML = document.body.innerHTML.replace(
+      /@([A-Za-z0-9_\-\s]+)/g,
+      (match, name) => {
+        const key = name.trim().toLowerCase();
+        if (pageMap[key]) {
+          return `<a href="${pageMap[key]}">${name.trim()}</a>`;
+        }
+        return match; // leave as-is if not found
+      }
+    );
+  })
+  .catch(err => console.error('Error loading pages.json', err));
+</script>
+
+
+
+</body>
 </html>
