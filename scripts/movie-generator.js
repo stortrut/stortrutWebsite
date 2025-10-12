@@ -12,27 +12,32 @@ const countElem = document.getElementById("movie-count-number");
 
 if (countElem) {
   let current = 0;
-  const duration = 1000;
+  const duration = 1000; // total time in ms
   const frameRate = 60;
   const totalFrames = Math.round((duration / 1000) * frameRate);
   const increment = totalWatched / totalFrames;
+  let lastDisplayed = -1;
 
   const counter = setInterval(() => {
     current += increment;
+    const displayNumber = Math.floor(current);
+
+    if (displayNumber !== lastDisplayed) {
+      countElem.textContent = displayNumber;
+      lastDisplayed = displayNumber;
+
+      // Trigger grow animation
+      countElem.classList.remove("scale-grow"); // reset animation
+      void countElem.offsetWidth; // force reflow
+      countElem.classList.add("scale-grow");
+    }
+
     if (current >= totalWatched) {
       countElem.textContent = totalWatched;
       clearInterval(counter);
-    } else {
-      countElem.textContent = Math.floor(current);
     }
-
-    // Add bounce effect
-    countElem.classList.remove("scale-bounce"); // reset animation
-    void countElem.offsetWidth; // trigger reflow
-    countElem.classList.add("scale-bounce");
   }, 1000 / frameRate);
 }
-
 
     
 
