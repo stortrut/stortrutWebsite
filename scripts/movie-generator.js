@@ -12,7 +12,7 @@ const countElem = document.getElementById("movie-count-number");
 
 if (countElem) {
   let current = 0;
-  const duration = 1000; // total time in ms
+  const duration = 1000; // ms
   const frameRate = 60;
   const totalFrames = Math.round((duration / 1000) * frameRate);
   const increment = totalWatched / totalFrames;
@@ -25,15 +25,19 @@ if (countElem) {
     if (displayNumber !== lastDisplayed) {
       countElem.textContent = displayNumber;
       lastDisplayed = displayNumber;
-
-      // Trigger grow animation
-      countElem.classList.remove("scale-grow"); // reset animation
-      void countElem.offsetWidth; // force reflow
-      countElem.classList.add("scale-grow");
     }
+
+    // Calculate progress (0 to 1)
+    let progress = current / totalWatched;
+    if (progress > 1) progress = 1;
+
+    // Scale from 0.5 (start) to 1 (end)
+    const scale = 0.5 + 0.5 * progress;
+    countElem.style.transform = `scale(${scale})`;
 
     if (current >= totalWatched) {
       countElem.textContent = totalWatched;
+      countElem.style.transform = "scale(1)";
       clearInterval(counter);
     }
   }, 1000 / frameRate);
