@@ -5,7 +5,7 @@ let isDragging = false;
 let startX, startY;
 let currentX = 0, currentY = 0;
 
-let scale = 2;
+let scale = 1;  // Start fully zoomed out
 const minScale = 1;
 const maxScale = 10;
 
@@ -13,12 +13,12 @@ function updateTransform() {
   wrapper.style.transform = `translate(${currentX}px, ${currentY}px) scale(${scale})`;
 }
 
-// Optional: Center the map visually on load (uncomment if you want this)
-// const rect = viewport.getBoundingClientRect();
-// currentX = (rect.width - rect.width * scale) / 2;
-// currentY = (rect.height - rect.height * scale) / 2;
+// Center the map visually on load
+const rect = viewport.getBoundingClientRect();
+currentX = (rect.width - rect.width * scale) / 2;
+currentY = (rect.height - rect.height * scale) / 2;
 
-updateTransform();  // Sync initial transform with currentX, currentY, and scale
+updateTransform();
 
 // DRAGGING ----------------------
 
