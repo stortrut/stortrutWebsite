@@ -45,25 +45,27 @@ viewport.addEventListener('wheel', (e) => {
   e.preventDefault();
 
   const zoomFactor = 0.1;
-  const mouseX = e.clientX;
-  const mouseY = e.clientY;
-
-  const rect = wrapper.getBoundingClientRect();
-
-  const offsetX = mouseX - rect.left;
-  const offsetY = mouseY - rect.top;
-
   const oldScale = scale;
 
+  // Calculate new scale
   if (e.deltaY < 0) {
     scale = Math.min(scale + zoomFactor, maxScale);
   } else {
     scale = Math.max(scale - zoomFactor, minScale);
   }
 
-  // Adjust pan to keep mouse position stable relative to zoom
-  currentX -= offsetX * (scale - oldScale) / oldScale;
-  currentY -= offsetY * (scale - oldScale) / oldScale;
+  // Calculate mouse position relative to map-wrapper's top-left corner
+  const rect = wrapper.getBoundingClientRect();
+  const mouseX = e.clientX - rect.left;
+  const mouseY = e.clientY - rect.top;
+
+  // Ratio of mouse position to current scale
+  const ratioX = mouseX / oldScale;
+  const ratioY = mouseY / oldScale;
+
+  // Adjust pan to keep the zoom centered on cursor
+  currentX -= (scale - oldScale) * ratioX;
+  currentY -= (scale - oldScale) * ratioY;
 
   updateTransform();
 }, { passive: false });
@@ -75,14 +77,31 @@ function cityClicked(cityName) {
 }
 
 // For buttons
+function zoomAtViewportCenter(deltaScale) {
+  const oldScale = scale;
+  const newScale = Math.max(minScale, Math.min(maxScale, scale + deltaScale));
+
+  const rect = viewport.getBoundingClientRect();
+  const centerX = rect.width / 2;
+  const centerY = rect.height / 2;
+
+  const ratioX = (centerX - wrapper.getBoundingClientRect().left) / oldScale;
+  const ratioY = (centerY - wrapper.getBoundingClientRect().top) / oldScale;
+
+  scale = newScale;
+
+  currentX -= (scale - oldScale) * ratioX;
+  currentY -= (scale - oldScale) * ratioY;
+
+  updateTransform();
+}
+
 function zoomIn() {
-  const fakeWheelEvent = { deltaY: -100, clientX: window.innerWidth/2, clientY: window.innerHeight/2 };
-  viewport.dispatchEvent(new WheelEvent('wheel', fakeWheelEvent));
+  zoomAtViewportCenter(0.1);
 }
 
 function zoomOut() {
-  const fakeWheelEvent = { deltaY: 100, clientX: window.innerWidth/2, clientY: window.innerHeight/2 };
-  viewport.dispatchEvent(new WheelEvent('wheel', fakeWheelEvent));
+  zoomAtViewportCenter(-0.1);
 }
 
 // Debug for map making --------------------------------------
