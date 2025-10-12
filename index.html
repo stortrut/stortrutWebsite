@@ -73,7 +73,16 @@
     <script src="/scripts/movie-generator.js"></script>
 
 
-
+    <!--Info Panel-->
+    <div id="movie-info-modal"
+        style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:1000; justify-content:center; align-items:center;">
+        <div
+            style="background:#fff; max-width:600px; width:90%; max-height:80vh; overflow-y:auto; border-radius:8px; padding:20px; position:relative;">
+            <button id="modal-close-btn"
+                style="position:absolute; top:10px; right:10px; font-size:1.5em; background:none; border:none; cursor:pointer;">&times;</button>
+            <div id="movie-info-content"></div>
+        </div>
+    </div>
 
 </body>
 

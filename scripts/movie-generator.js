@@ -204,7 +204,6 @@ function renderMovies(movies) {
         <p class="movie-title">
           ${movie.title} ${movie.releaseYear ? `(${movie.releaseYear})` : ""}
         </p>
-        ${movie.genre ? `<p><em>${movie.genre}</em></p>` : ""}
         <img class="movie-poster" src="${movie.poster}">
         <div class="reviews-holder">
           ${reviewsToShow.map(r => `
