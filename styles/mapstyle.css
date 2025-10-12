@@ -36,3 +36,16 @@ body, html {
   box-shadow: 0 0 5px rgba(0,0,0,0.5);
   z-index: 10;
 }
+
+#zoom-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+#zoom-controls button {
+  font-size: 20px;
+  margin: 5px;
+  padding: 5px 10px;
+}
