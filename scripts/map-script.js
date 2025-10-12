@@ -5,9 +5,9 @@ let isDragging = false;
 let startX, startY;
 let currentX = 0, currentY = 0;
 
-let scale = 1;
-const minScale = 0.5;
-const maxScale = 3;
+let scale = 2;
+const minScale = 1;
+const maxScale = 5;
 
 function updateTransform() {
   wrapper.style.transform = `translate(${currentX}px, ${currentY}px) scale(${scale})`;
@@ -84,3 +84,13 @@ function zoomOut() {
   const fakeWheelEvent = { deltaY: 100, clientX: window.innerWidth/2, clientY: window.innerHeight/2 };
   viewport.dispatchEvent(new WheelEvent('wheel', fakeWheelEvent));
 }
+
+// Debug for map making --------------------------------------
+viewport.addEventListener('click', (e) => {
+  // Get the position of the click relative to the map
+  const rect = wrapper.getBoundingClientRect();
+  const x = (e.clientX - rect.left) / scale;
+  const y = (e.clientY - rect.top) / scale;
+
+  console.log(`Clicked coordinates: top: ${Math.round(y)}px; left: ${Math.round(x)}px`);
+});
