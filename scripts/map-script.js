@@ -7,7 +7,7 @@ let currentX = 0, currentY = 0;
 
 let scale = 2;
 const minScale = 1;
-const maxScale = 5;
+const maxScale = 10;
 
 function updateTransform() {
   wrapper.style.transform = `translate(${currentX}px, ${currentY}px) scale(${scale})`;
