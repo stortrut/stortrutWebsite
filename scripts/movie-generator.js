@@ -12,8 +12,8 @@ const countElem = document.getElementById("movie-count-number");
 
 if (countElem) {
   let current = 0;
-  const duration = 1000; // Total animation time in ms
-  const frameRate = 60;  // Frames per second
+  const duration = 1000;
+  const frameRate = 60;
   const totalFrames = Math.round((duration / 1000) * frameRate);
   const increment = totalWatched / totalFrames;
 
@@ -25,8 +25,14 @@ if (countElem) {
     } else {
       countElem.textContent = Math.floor(current);
     }
+
+    // Add bounce effect
+    countElem.classList.remove("scale-bounce"); // reset animation
+    void countElem.offsetWidth; // trigger reflow
+    countElem.classList.add("scale-bounce");
   }, 1000 / frameRate);
 }
+
 
     
 
