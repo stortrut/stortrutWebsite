@@ -1,0 +1,33 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#map-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+#map {
+  width: 100%;
+  height: auto;
+  position: absolute;
+}
+
+.marker {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.3s;
+}
+
+.marker:hover {
+  background-color: blue;
+}
