@@ -21,8 +21,10 @@ body, html {
 }
 
 #map-image {
-  display: block;
-  max-width: none; /* So it can be larger than viewport */
+  width: 100%;
+  height: auto; /* keep aspect ratio */
+  max-width: none; /* important so it can overflow */
+  user-select: none;
 }
 
 .marker {
