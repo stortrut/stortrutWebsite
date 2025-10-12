@@ -7,7 +7,7 @@ Review: Alvin|2.95
 Review: Diaa|3.8  
 
 Movie: 13 Assassins  
-Release: 2010-11-13  
+Release: 2010-09-25  
 Poster: ../images/movie-posters/13assassins.jpg  
 Genre: Action
 Seen: 2021-08-02  
@@ -96,7 +96,7 @@ Review: Alvin|3.168
 Review: Diaa|3  
 
 Movie: Fantastic Mr.Fox  
-Release: 2009-11-13  
+Release: 2009-11-25  
 Poster: ../images/movie-posters/fantasticmrfox.jpg  
 Genre: Animation, Comedy, Stop Motion
 Seen: 2021-08-30  
