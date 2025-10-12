@@ -1,42 +1,35 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
-}
-
 #map-viewport {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   position: relative;
   cursor: grab;
+  user-select: none;
 }
 
 #map-wrapper {
   position: absolute;
-  top: 0;
-  left: 0;
-  will-change: transform;
+  top: 0; left: 0;
+  transform-origin: top left;
 }
 
 #map-image {
-  width: 100%;
-  height: auto; /* keep aspect ratio */
-  max-width: none; /* important so it can overflow */
+  display: block;
   user-select: none;
+  pointer-events: none;
+  width: 1200px; /* Or your image’s natural size */
+  height: auto;
 }
 
 .marker {
-  width: 16px;
-  height: 16px;
-  background-color: red;
+  width: 15px;
+  height: 15px;
+  background: red;
   border-radius: 50%;
   position: absolute;
-  transform: translate(-50%, -50%);
   cursor: pointer;
-  box-shadow: 0 0 5px rgba(0,0,0,0.5);
-  z-index: 10;
+  transform: translate(-50%, -50%);
+  border: 2px solid white;
 }
 
 #zoom-controls {
@@ -50,4 +43,5 @@ body, html {
   font-size: 20px;
   margin: 5px;
   padding: 5px 10px;
+  cursor: pointer;
 }
