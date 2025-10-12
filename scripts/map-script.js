@@ -1,35 +1,35 @@
-let mapContainer = document.getElementById('map-container');
-let map = document.getElementById('map');
+const wrapper = document.getElementById('map-wrapper');
+const viewport = document.getElementById('map-viewport');
+
 let isDragging = false;
 let startX, startY;
+let currentX = 0, currentY = 0;
 
-mapContainer.addEventListener('mousedown', (e) => {
+viewport.addEventListener('mousedown', (e) => {
   isDragging = true;
-  startX = e.clientX - map.offsetLeft;
-  startY = e.clientY - map.offsetTop;
-  mapContainer.style.cursor = 'grabbing';
+  startX = e.clientX - currentX;
+  startY = e.clientY - currentY;
+  viewport.style.cursor = 'grabbing';
 });
 
-mapContainer.addEventListener('mousemove', (e) => {
-  if (isDragging) {
-    let x = e.clientX - startX;
-    let y = e.clientY - startY;
-    map.style.left = `${x}px`;
-    map.style.top = `${y}px`;
-  }
+viewport.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+  currentX = e.clientX - startX;
+  currentY = e.clientY - startY;
+  wrapper.style.transform = `translate(${currentX}px, ${currentY}px)`;
 });
 
-mapContainer.addEventListener('mouseup', () => {
+viewport.addEventListener('mouseup', () => {
   isDragging = false;
-  mapContainer.style.cursor = 'grab';
+  viewport.style.cursor = 'grab';
 });
 
-mapContainer.addEventListener('mouseleave', () => {
+viewport.addEventListener('mouseleave', () => {
   isDragging = false;
-  mapContainer.style.cursor = 'grab';
+  viewport.style.cursor = 'grab';
 });
 
 function cityClicked(cityName) {
   alert(`You clicked on ${cityName}`);
-  // You can redirect, show more info, etc. here.
 }

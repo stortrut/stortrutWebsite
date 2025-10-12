@@ -2,32 +2,37 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
+  overflow: hidden;
 }
 
-#map-container {
-  width: 100%;
+#map-viewport {
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
   position: relative;
+  cursor: grab;
 }
 
-#map {
-  width: 100%;
-  height: auto;
+#map-wrapper {
   position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+#map-image {
+  display: block;
+  max-width: none; /* So it can be larger than viewport */
 }
 
 .marker {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   background-color: red;
   border-radius: 50%;
   position: absolute;
-  cursor: pointer;
   transform: translate(-50%, -50%);
-  transition: background-color 0.3s;
-}
-
-.marker:hover {
-  background-color: blue;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  z-index: 10;
 }
