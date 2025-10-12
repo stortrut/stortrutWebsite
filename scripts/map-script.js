@@ -47,25 +47,25 @@ viewport.addEventListener('wheel', (e) => {
   const zoomFactor = 0.1;
   const oldScale = scale;
 
-  // Calculate new scale
+  // Calculate new scale with limits
   if (e.deltaY < 0) {
     scale = Math.min(scale + zoomFactor, maxScale);
   } else {
     scale = Math.max(scale - zoomFactor, minScale);
   }
 
-  // Calculate mouse position relative to map-wrapper's top-left corner
-  const rect = wrapper.getBoundingClientRect();
+  // Mouse position relative to viewport
+  const rect = viewport.getBoundingClientRect();
   const mouseX = e.clientX - rect.left;
   const mouseY = e.clientY - rect.top;
 
-  // Ratio of mouse position to current scale
-  const ratioX = mouseX / oldScale;
-  const ratioY = mouseY / oldScale;
+  // Map coordinates before transform
+  const mapX = (mouseX - currentX) / oldScale;
+  const mapY = (mouseY - currentY) / oldScale;
 
-  // Adjust pan to keep the zoom centered on cursor
-  currentX -= (scale - oldScale) * ratioX;
-  currentY -= (scale - oldScale) * ratioY;
+  // Adjust pan to zoom centered on mouse
+  currentX -= (scale - oldScale) * mapX;
+  currentY -= (scale - oldScale) * mapY;
 
   updateTransform();
 }, { passive: false });
@@ -76,7 +76,8 @@ function cityClicked(cityName) {
   alert(`You clicked on ${cityName}`);
 }
 
-// For buttons
+// BUTTON ZOOM (centered on viewport center)
+
 function zoomAtViewportCenter(deltaScale) {
   const oldScale = scale;
   const newScale = Math.max(minScale, Math.min(maxScale, scale + deltaScale));
@@ -85,13 +86,13 @@ function zoomAtViewportCenter(deltaScale) {
   const centerX = rect.width / 2;
   const centerY = rect.height / 2;
 
-  const ratioX = (centerX - wrapper.getBoundingClientRect().left) / oldScale;
-  const ratioY = (centerY - wrapper.getBoundingClientRect().top) / oldScale;
+  const mapX = (centerX - currentX) / oldScale;
+  const mapY = (centerY - currentY) / oldScale;
 
   scale = newScale;
 
-  currentX -= (scale - oldScale) * ratioX;
-  currentY -= (scale - oldScale) * ratioY;
+  currentX -= (scale - oldScale) * mapX;
+  currentY -= (scale - oldScale) * mapY;
 
   updateTransform();
 }
@@ -104,12 +105,16 @@ function zoomOut() {
   zoomAtViewportCenter(-0.1);
 }
 
-// Debug for map making --------------------------------------
+// CLICK TO GET COORDINATES --------
+
 viewport.addEventListener('click', (e) => {
-  // Get the position of the click relative to the map
-  const rect = wrapper.getBoundingClientRect();
-  const x = (e.clientX - rect.left) / scale;
-  const y = (e.clientY - rect.top) / scale;
+  const rect = viewport.getBoundingClientRect();
+  const mouseX = e.clientX - rect.left;
+  const mouseY = e.clientY - rect.top;
+
+  // Convert to map coords (taking current pan & zoom into account)
+  const x = (mouseX - currentX) / scale;
+  const y = (mouseY - currentY) / scale;
 
   console.log(`Clicked coordinates: top: ${Math.round(y)}px; left: ${Math.round(x)}px`);
 });
