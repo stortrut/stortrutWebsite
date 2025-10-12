@@ -7,11 +7,29 @@ fetch("/movie-data.txt")
   .then(text => {
     allMovies = parseMovies(text);
 
-    const totalWatched = allMovies.length;
-    const countElem = document.getElementById("movie-count-number");
-    if (countElem) {
+const totalWatched = allMovies.length;
+const countElem = document.getElementById("movie-count-number");
+
+if (countElem) {
+  let current = 0;
+  const duration = 1000; // Total animation time in ms
+  const frameRate = 60;  // Frames per second
+  const totalFrames = Math.round((duration / 1000) * frameRate);
+  const increment = totalWatched / totalFrames;
+
+  const counter = setInterval(() => {
+    current += increment;
+    if (current >= totalWatched) {
       countElem.textContent = totalWatched;
+      clearInterval(counter);
+    } else {
+      countElem.textContent = Math.floor(current);
     }
+  }, 1000 / frameRate);
+}
+
+    
+
 
     // Initial render
     sortMovies(currentSort);
