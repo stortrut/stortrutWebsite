@@ -50,9 +50,69 @@ fetch('/articles/pages.json')
         node.parentNode.replaceChild(span, node);
       }
     }
+
+    // ======= ADD HOVER PREVIEW EVENT LISTENERS HERE =======
+
+    // Simple tooltip show/hide functions (customize these)
+    function showTooltip(link, preview) {
+      let tooltip = document.getElementById('link-preview-tooltip');
+      if (!tooltip) {
+        tooltip = document.createElement('div');
+        tooltip.id = 'link-preview-tooltip';
+        tooltip.style.position = 'absolute';
+        tooltip.style.padding = '8px 12px';
+        tooltip.style.background = 'rgba(0,0,0,0.75)';
+        tooltip.style.color = '#fff';
+        tooltip.style.borderRadius = '4px';
+        tooltip.style.pointerEvents = 'none';
+        tooltip.style.transition = 'opacity 0.2s ease';
+        tooltip.style.opacity = '0';
+        tooltip.style.zIndex = '9999';
+        document.body.appendChild(tooltip);
+      }
+
+      tooltip.textContent = preview;
+      const rect = link.getBoundingClientRect();
+      tooltip.style.top = `${rect.bottom + window.scrollY + 8}px`;
+      tooltip.style.left = `${rect.left + window.scrollX}px`;
+      tooltip.style.opacity = '1';
+    }
+
+    function hideTooltip() {
+      const tooltip = document.getElementById('link-preview-tooltip');
+      if (tooltip) {
+        tooltip.style.opacity = '0';
+      }
+    }
+
+    // Add event listeners to all inserted links
+    document.querySelectorAll('a').forEach(link => {
+      link.addEventListener('mouseenter', async () => {
+        if (!link.dataset.preview) {
+          try {
+            const res = await fetch(link.href);
+            const text = await res.text();
+
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'text/html');
+            const metaDesc = doc.querySelector('meta[name="description"]');
+            const preview = metaDesc ? metaDesc.getAttribute('content') : 'No preview available';
+
+            link.dataset.preview = preview;
+          } catch {
+            link.dataset.preview = 'Failed to load preview';
+          }
+        }
+        showTooltip(link, link.dataset.preview);
+      });
+
+      link.addEventListener('mouseleave', () => {
+        hideTooltip();
+      });
+    });
+
   })
   .catch(err => console.error('Error loading pages.json', err));
-
 
 //Top-bar
 fetch('/page-components/top-bar.html')
