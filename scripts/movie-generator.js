@@ -41,10 +41,28 @@ fetch("/movie-data.txt")
       }, 1000 / frameRate);
     }
 
+    // Extract all genres from all movies and split by commas, trim, dedupe and sort
+    const genreSet = new Set();
+    allMovies.forEach(movie => {
+      if (movie.genre) {
+        movie.genre.split(",").forEach(g => {
+          const trimmed = g.trim();
+          if (trimmed) genreSet.add(trimmed);
+        });
+      }
+    });
+
+    const genres = Array.from(genreSet).sort();
+
     // Populate genre filter dropdown
-    const genres = [...new Set(allMovies.map(m => m.genre).filter(Boolean))].sort();
     const genreSelect = document.getElementById("genre-select");
     if (genreSelect) {
+      // Add "All" option
+      const allOption = document.createElement("option");
+      allOption.value = "all";
+      allOption.textContent = "All Genres";
+      genreSelect.appendChild(allOption);
+
       genres.forEach(genre => {
         const option = document.createElement("option");
         option.value = genre;
@@ -161,11 +179,16 @@ function renderMovies(movies) {
   const selectedGenre = document.getElementById("genre-select")?.value || "all";
 
   movies.forEach(movie => {
+    // Check if movie matches all selected reviewers
     const reviewersInMovie = movie.reviews.map(r => r.name);
     const hasAll = activeReviewers.every(name => reviewersInMovie.includes(name));
     if (activeReviewers.length > 0 && !hasAll) return;
 
-    if (selectedGenre !== "all" && movie.genre !== selectedGenre) return;
+    // Genre filtering: split movie.genre string into array, check if selected genre is included
+    if (selectedGenre !== "all") {
+      const movieGenres = movie.genre ? movie.genre.split(",").map(g => g.trim()) : [];
+      if (!movieGenres.includes(selectedGenre)) return;
+    }
 
     const reviewsToShow = activeReviewers.length > 0
       ? movie.reviews.filter(r => activeReviewers.includes(r.name))
