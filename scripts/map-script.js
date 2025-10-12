@@ -13,6 +13,13 @@ function updateTransform() {
   wrapper.style.transform = `translate(${currentX}px, ${currentY}px) scale(${scale})`;
 }
 
+// Optional: Center the map visually on load (uncomment if you want this)
+// const rect = viewport.getBoundingClientRect();
+// currentX = (rect.width - rect.width * scale) / 2;
+// currentY = (rect.height - rect.height * scale) / 2;
+
+updateTransform();  // Sync initial transform with currentX, currentY, and scale
+
 // DRAGGING ----------------------
 
 viewport.addEventListener('mousedown', (e) => {
@@ -47,23 +54,19 @@ viewport.addEventListener('wheel', (e) => {
   const zoomFactor = 0.1;
   const oldScale = scale;
 
-  // Calculate new scale with limits
   if (e.deltaY < 0) {
     scale = Math.min(scale + zoomFactor, maxScale);
   } else {
     scale = Math.max(scale - zoomFactor, minScale);
   }
 
-  // Mouse position relative to viewport
   const rect = viewport.getBoundingClientRect();
   const mouseX = e.clientX - rect.left;
   const mouseY = e.clientY - rect.top;
 
-  // Map coordinates before transform
   const mapX = (mouseX - currentX) / oldScale;
   const mapY = (mouseY - currentY) / oldScale;
 
-  // Adjust pan to zoom centered on mouse
   currentX -= (scale - oldScale) * mapX;
   currentY -= (scale - oldScale) * mapY;
 
@@ -112,7 +115,6 @@ viewport.addEventListener('click', (e) => {
   const mouseX = e.clientX - rect.left;
   const mouseY = e.clientY - rect.top;
 
-  // Convert to map coords (taking current pan & zoom into account)
   const x = (mouseX - currentX) / scale;
   const y = (mouseY - currentY) / scale;
 
