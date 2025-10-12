@@ -4,7 +4,7 @@ fetch('/articles/pages.json')
   .then(pages => {
     const pageMap = {};
 
-    // Map both full names and all shorthands to URLs
+    // Map full names and shorthands to URLs
     for (const page of pages) {
       const url = page.url;
       pageMap[page.name.toLowerCase()] = url;
@@ -20,7 +20,7 @@ fetch('/articles/pages.json')
     const nodes = [];
     while (walker.nextNode()) nodes.push(walker.currentNode);
 
-    // Regex: optional space (\s*) before @ for all patterns
+    // Match various @() link patterns
     const pattern = /\(([^\)]+)\)\s*@\(([^\)]+)\)|(\b[A-Za-z0-9_\-]+)\s*@\(([^\)]+)\)|(\b[A-Za-z0-9_\-]+)\s*@([A-Za-z0-9_\-]+)|(\b[A-Za-z0-9_\-]+)@([A-Za-z0-9_\-]+)/g;
 
     for (const node of nodes) {
@@ -34,7 +34,6 @@ fetch('/articles/pages.json')
         dispWordSingle, targetSingle1,
         dispWordSingleNoSpace, targetSingle2
       ) => {
-        // Determine the target name after @
         const targetName = (targetParen1 || targetParen2 || targetSingle1 || targetSingle2 || '').trim();
         const key = targetName.toLowerCase();
         const url = pageMap[key];
@@ -51,9 +50,7 @@ fetch('/articles/pages.json')
       }
     }
 
-    // ======= ADD HOVER PREVIEW EVENT LISTENERS HERE =======
-
-    // Simple tooltip show/hide functions (customize these)
+    // ====== Tooltip Functions ======
     function showTooltip(link, preview) {
       let tooltip = document.getElementById('link-preview-tooltip');
       if (!tooltip) {
@@ -67,14 +64,32 @@ fetch('/articles/pages.json')
         tooltip.style.pointerEvents = 'none';
         tooltip.style.transition = 'opacity 0.2s ease';
         tooltip.style.opacity = '0';
+        tooltip.style.maxWidth = '300px';
+        tooltip.style.whiteSpace = 'normal';
         tooltip.style.zIndex = '9999';
         document.body.appendChild(tooltip);
       }
 
       tooltip.textContent = preview;
+
+      // Positioning
       const rect = link.getBoundingClientRect();
-      tooltip.style.top = `${rect.bottom + window.scrollY + 8}px`;
-      tooltip.style.left = `${rect.left + window.scrollX}px`;
+      const tooltipWidth = 300;
+      const padding = 10;
+      const top = rect.bottom + window.scrollY + 8;
+
+      let left = rect.left + window.scrollX;
+
+      const viewportWidth = document.documentElement.clientWidth;
+      if (left + tooltipWidth + padding > viewportWidth) {
+        left = viewportWidth - tooltipWidth - padding;
+      }
+      if (left < padding) {
+        left = padding;
+      }
+
+      tooltip.style.left = `${left}px`;
+      tooltip.style.top = `${top}px`;
       tooltip.style.opacity = '1';
     }
 
@@ -85,19 +100,17 @@ fetch('/articles/pages.json')
       }
     }
 
-    // Add event listeners to all inserted links
+    // ====== Add Hover Listeners to All Links ======
     document.querySelectorAll('a').forEach(link => {
       link.addEventListener('mouseenter', async () => {
         if (!link.dataset.preview) {
           try {
             const res = await fetch(link.href);
             const text = await res.text();
-
             const parser = new DOMParser();
             const doc = parser.parseFromString(text, 'text/html');
             const metaDesc = doc.querySelector('meta[name="description"]');
             const preview = metaDesc ? metaDesc.getAttribute('content') : 'No preview available';
-
             link.dataset.preview = preview;
           } catch {
             link.dataset.preview = 'Failed to load preview';
@@ -110,7 +123,6 @@ fetch('/articles/pages.json')
         hideTooltip();
       });
     });
-
   })
   .catch(err => console.error('Error loading pages.json', err));
 
