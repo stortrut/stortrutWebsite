@@ -178,13 +178,15 @@ function renderMovies(movies) {
 
   const selectedGenre = document.getElementById("genre-select")?.value || "all";
 
+  const template = document.getElementById("movie-template");
+
   movies.forEach(movie => {
-    // Check if movie matches all selected reviewers
+    // Reviewer filter
     const reviewersInMovie = movie.reviews.map(r => r.name);
     const hasAll = activeReviewers.every(name => reviewersInMovie.includes(name));
     if (activeReviewers.length > 0 && !hasAll) return;
 
-    // Genre filtering: split movie.genre string into array, check if selected genre is included
+    // Genre filter
     if (selectedGenre !== "all") {
       const movieGenres = movie.genre ? movie.genre.split(",").map(g => g.trim()) : [];
       if (!movieGenres.includes(selectedGenre)) return;
@@ -196,31 +198,33 @@ function renderMovies(movies) {
 
     if (reviewsToShow.length === 0) return;
 
-    const movieDiv = document.createElement("div");
-    movieDiv.className = "all-review-data-holder";
+    // Clone the template
+    const clone = template.content.cloneNode(true);
+    const titleElem = clone.querySelector(".movie-title");
+    const posterElem = clone.querySelector(".movie-poster");
+    const reviewsHolder = clone.querySelector(".reviews-holder");
 
-    movieDiv.innerHTML = `
-      <div class="review-data-holder">
-        <p class="movie-title">
-          ${movie.title} ${movie.releaseYear ? `(${movie.releaseYear})` : ""}
-        </p>
-        <img class="movie-poster" src="${movie.poster}">
-        <div class="reviews-holder">
-          ${reviewsToShow.map(r => `
-            <div class="review-holder">
-              <p class="review-name">${r.name}:</p>
-              <div class="star-rating" data-score="${r.score}"></div>
-            </div>
-          `).join("")}
-        </div>
-      </div>
-    `;
+    titleElem.textContent = `${movie.title} ${movie.releaseYear ? `(${movie.releaseYear})` : ""}`;
+    posterElem.src = movie.poster;
+    posterElem.alt = movie.title;
 
-    movieDiv.addEventListener("click", () => {
-  showMovieModal(movie);
-});        
+    reviewsHolder.innerHTML = ""; // Clear any old reviews if reused
 
-    container.appendChild(movieDiv);
+    reviewsToShow.forEach(r => {
+      const reviewDiv = document.createElement("div");
+      reviewDiv.className = "review-holder";
+      reviewDiv.innerHTML = `
+        <p class="review-name">${r.name}:</p>
+        <div class="star-rating" data-score="${r.score}"></div>
+      `;
+      reviewsHolder.appendChild(reviewDiv);
+    });
+
+    // Add click to show modal
+    const wrapper = clone.querySelector(".all-review-data-holder");
+    wrapper.addEventListener("click", () => showMovieModal(movie));
+
+    container.appendChild(clone);
   });
 
   renderStars();
