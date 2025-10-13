@@ -216,6 +216,10 @@ function renderMovies(movies) {
       </div>
     `;
 
+    movieDiv.addEventListener("click", () => {
+  showMovieModal(movie);
+});        
+
     container.appendChild(movieDiv);
   });
 
@@ -303,3 +307,37 @@ function sortMovies(criteria) {
 
   renderMovies(sorted);
 }
+
+
+
+function showMovieModal(movie) {
+  const modal = document.getElementById("movie-modal");
+  const modalDetails = document.getElementById("modal-details");
+
+  // Build modal content (you can customize this as much as you like)
+  modalDetails.innerHTML = `
+    <h2>${movie.title} ${movie.releaseYear ? `(${movie.releaseYear})` : ""}</h2>
+    <img src="${movie.poster}" alt="${movie.title}" style="max-width: 200px; float: left; margin-right: 1em;">
+    <p><strong>Genres:</strong> ${movie.genre || "N/A"}</p>
+    <p><strong>Seen on:</strong> ${movie.seen_date || "N/A"}</p>
+    <p><strong>Average Rating:</strong> ${movie.avgRating.toFixed(1)}</p>
+    <h3>Reviews:</h3>
+    <ul>
+      ${movie.reviews.map(r => `<li>${r.name}: ${r.score}</li>`).join("")}
+    </ul>
+    <div style="clear: both;"></div>
+  `;
+
+  modal.classList.remove("hidden");
+}
+
+document.querySelector(".close-button").addEventListener("click", () => {
+  document.getElementById("movie-modal").classList.add("hidden");
+});
+
+// Optional: close modal when clicking outside the modal content
+document.getElementById("movie-modal").addEventListener("click", (e) => {
+  if (e.target.id === "movie-modal") {
+    document.getElementById("movie-modal").classList.add("hidden");
+  }
+});
