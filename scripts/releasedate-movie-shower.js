@@ -132,7 +132,7 @@ function startRotation(movieList) {
     progressBar.offsetWidth;
 
     // Animate progress bar to full width over 2 seconds
-    progressBar.style.transition = 'width 8s linear';
+    progressBar.style.transition = 'width 7s linear';
     progressBar.style.width = '100%';
   }
 
@@ -143,7 +143,7 @@ function startRotation(movieList) {
     setInterval(() => {
       index = (index + 1) % movieList.length;
       showMovie(movieList[index]);
-    }, 8100); // Slightly longer than animation duration
+    }, 7000); // Slightly longer than animation duration
   }
     
 
