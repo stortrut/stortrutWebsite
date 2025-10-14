@@ -1,134 +1,134 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('/movie-data.txt')
-    .then(response => {
-      if (!response.ok) throw new Error('Failed to load movie data');
-      return response.text();
-    })
-    .then(text => {
-      const movies = parseMovies(text);
-      const today = new Date();
-      const todayMonth = today.getMonth(); // 0-11
-      const todayDate = today.getDate();   // 1-31
+    fetch('/movie-data.txt')
+        .then(response => {
+            if (!response.ok) throw new Error('Failed to load movie data');
+            return response.text();
+        })
+        .then(text => {
+            const movies = parseMovies(text);
+            const today = new Date();
+            const todayMonth = today.getMonth(); // 0-11
+            const todayDate = today.getDate();   // 1-31
 
-      const exactMatches = [];
-      const upcomingMatches = [];
+            const exactMatches = [];
+            const upcomingMatches = [];
 
-      let soonestDiff = Infinity;
+            let soonestDiff = Infinity;
 
-      for (const movie of movies) {
-        let releaseDate;
+            for (const movie of movies) {
+                let releaseDate;
 
-if (typeof movie.release === 'string' && movie.release.includes('-')) {
-  const [year, month, day] = movie.release.split('-').map(Number);
-  releaseDate = new Date(year, month - 1, day);
-} else if (movie.release instanceof Date && !isNaN(movie.release)) {
-  releaseDate = movie.release;
-} else {
-  console.warn('Invalid release date format, skipping movie:', movie);
-  continue;
-}
+                if (typeof movie.release === 'string' && movie.release.includes('-')) {
+                    const [year, month, day] = movie.release.split('-').map(Number);
+                    releaseDate = new Date(year, month - 1, day);
+                } else if (movie.release instanceof Date && !isNaN(movie.release)) {
+                    releaseDate = movie.release;
+                } else {
+                    console.warn('Invalid release date format, skipping movie:', movie);
+                    continue;
+                }
 
-const year = releaseDate.getFullYear();
-const month = releaseDate.getMonth() + 1; // 1-12
-const day = releaseDate.getDate();
+                const year = releaseDate.getFullYear();
+                const month = releaseDate.getMonth() + 1; // 1-12
+                const day = releaseDate.getDate();
 
-        
-        if (!year || !month || !day) continue;
 
-        // Check for same day/month in past years
-        if (month - 1 === todayMonth && day === todayDate && year < today.getFullYear()) {
-          const yearsAgo = today.getFullYear() - year;
-          exactMatches.push({
-            ...movie,
-            message: `${movie.title} released today ${yearsAgo} year${yearsAgo !== 1 ? 's' : ''} ago! 🎉`,
-          });
-        } else {
-          // Calculate days until this movie’s mm-dd
-          const thisYear = new Date(today.getFullYear(), month - 1, day);
-          let dayDiff = Math.ceil((thisYear - today) / (1000 * 60 * 60 * 24));
+                if (!year || !month || !day) continue;
 
-          if (dayDiff < 0) {
-            const nextYear = new Date(today.getFullYear() + 1, month - 1, day);
-            dayDiff = Math.ceil((nextYear - today) / (1000 * 60 * 60 * 24));
-          }
+                // Check for same day/month in past years
+                if (month - 1 === todayMonth && day === todayDate && year < today.getFullYear()) {
+                    const yearsAgo = today.getFullYear() - year;
+                    exactMatches.push({
+                        ...movie,
+                        message: `${movie.title} released today ${yearsAgo} year${yearsAgo !== 1 ? 's' : ''} ago! 🎉`,
+                    });
+                } else {
+                    // Calculate days until this movie’s mm-dd
+                    const thisYear = new Date(today.getFullYear(), month - 1, day);
+                    let dayDiff = Math.ceil((thisYear - today) / (1000 * 60 * 60 * 24));
 
-          if (dayDiff < soonestDiff) {
-            soonestDiff = dayDiff;
-            upcomingMatches.length = 0;
-            upcomingMatches.push({
-              ...movie,
-              message: `In ${dayDiff} day${dayDiff !== 1 ? 's' : ''} ${movie.title} released ${today.getFullYear() - year} year${(today.getFullYear() - year) !== 1 ? 's' : ''} ago`,
-            });
-          } else if (dayDiff === soonestDiff) {
-            upcomingMatches.push({
-              ...movie,
-              message: `In ${dayDiff} day${dayDiff !== 1 ? 's' : ''} ${movie.title} released ${today.getFullYear() - year} year${(today.getFullYear() - year) !== 1 ? 's' : ''} ago`,
-            });
-          }
-        }
-      }
+                    if (dayDiff < 0) {
+                        const nextYear = new Date(today.getFullYear() + 1, month - 1, day);
+                        dayDiff = Math.ceil((nextYear - today) / (1000 * 60 * 60 * 24));
+                    }
 
-      const displayList = exactMatches.length > 0 ? exactMatches : upcomingMatches;
+                    if (dayDiff < soonestDiff) {
+                        soonestDiff = dayDiff;
+                        upcomingMatches.length = 0;
+                        upcomingMatches.push({
+                            ...movie,
+                            message: `In ${dayDiff} day${dayDiff !== 1 ? 's' : ''} ${movie.title} released ${today.getFullYear() - year} year${(today.getFullYear() - year) !== 1 ? 's' : ''} ago`,
+                        });
+                    } else if (dayDiff === soonestDiff) {
+                        upcomingMatches.push({
+                            ...movie,
+                            message: `In ${dayDiff} day${dayDiff !== 1 ? 's' : ''} ${movie.title} released ${today.getFullYear() - year} year${(today.getFullYear() - year) !== 1 ? 's' : ''} ago`,
+                        });
+                    }
+                }
+            }
 
-      if (displayList.length > 0) {
-        startRotation(displayList);
-      } else {
-        document.getElementById('release-message').textContent = 'No matching movie found.';
-        document.getElementById('release-description').textContent = '';
-        document.getElementById('release-poster').src = '';
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
+            const displayList = exactMatches.length > 0 ? exactMatches : upcomingMatches;
+
+            if (displayList.length > 0) {
+                startRotation(displayList);
+            } else {
+                document.getElementById('release-message').textContent = 'No matching movie found.';
+                document.getElementById('release-description').textContent = '';
+                document.getElementById('release-poster').src = '';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 });
 
 // Parses valid movie entries only
 function parseMovies(data) {
-  const movies = [];
-  const entries = data.trim().split('\n\n');
+    const movies = [];
+    const entries = data.trim().split('\n\n');
 
-  for (const entry of entries) {
-    const movie = {};
-    const lines = entry.trim().split('\n');
+    for (const entry of entries) {
+        const movie = {};
+        const lines = entry.trim().split('\n');
 
-    for (const line of lines) {
-      const [key, ...rest] = line.split(': ');
-      const value = rest.join(': ').trim();
+        for (const line of lines) {
+            const [key, ...rest] = line.split(': ');
+            const value = rest.join(': ').trim();
 
-      if (key === 'Movie') movie.title = value;
-      else if (key === 'Release') movie.release = value;
-      else if (key === 'Poster') movie.poster = value;
+            if (key === 'Movie') movie.title = value;
+            else if (key === 'Release') movie.release = value;
+            else if (key === 'Poster') movie.poster = value;
+        }
+
+        if (movie.title && movie.release && movie.poster) {
+            movies.push(movie);
+        } else {
+            console.warn('Skipping movie due to missing fields:', movie);
+        }
     }
 
-    if (movie.title && movie.release && movie.poster) {
-      movies.push(movie);
-    } else {
-      console.warn('Skipping movie due to missing fields:', movie);
-    }
-  }
-
-  return movies;
+    return movies;
 }
 
 // Cycles through matching movies every 2 seconds
 function startRotation(movieList) {
-  let index = 0;
+    let index = 0;
 
-  function showMovie(movie) {
-    document.getElementById('release-message').textContent = movie.message;
-    document.getElementById('release-description').textContent = '';
-    document.getElementById('release-poster').src = movie.poster;
-    document.getElementById('release-poster').alt = `Poster for ${movie.title}`;
-  }
+    function showMovie(movie) {
+        document.getElementById('release-message').textContent = movie.message;
+        document.getElementById('release-description').textContent = '';
+        document.getElementById('release-poster').src = movie.poster;
+        document.getElementById('release-poster').alt = `Poster for ${movie.title}`;
+    }
 
-  showMovie(movieList[index]);
+    showMovie(movieList[index]);
 
-  if (movieList.length > 1) {
-    setInterval(() => {
-      index = (index + 1) % movieList.length;
-      showMovie(movieList[index]);
-    }, 2000);
-  }
+    if (movieList.length > 1) {
+        setInterval(() => {
+            index = (index + 1) % movieList.length;
+            showMovie(movieList[index]);
+        }, 2000);
+    }
 }
