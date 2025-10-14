@@ -339,7 +339,7 @@
   margin-left: 50px;
 
   /* 👇 Keep the box a consistent size */
-  width: 400px;
+  width: 300px;
   min-height: 180px;
 
   font-family: 'monospace';
