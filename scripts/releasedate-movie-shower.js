@@ -1,4 +1,4 @@
->
+
 document.addEventListener('DOMContentLoaded', () => {
   fetch('/movie-data.txt')
     .then(response => {
