@@ -2,7 +2,9 @@
   {
     "name": "Hektor Kostos",
     "url": "/articles/characters/frihetskämparna/hektor-kostos.html",
-    "shorthands": []
+    "shorthands": [
+      "Hektor"
+    ]
   },
   {
     "name": "Odo Orgulas",
@@ -11,5 +13,10 @@
       "Odo",
       "Big B"
     ]
+  },
+  {
+    "name": "Väggmossens Munkkloster",
+    "url": "/articles/geografi/farnesh/väggmossens-munkkloster.html",
+    "shorthands": []
   }
 ]

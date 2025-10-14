@@ -1,78 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>D&D Horizontal Timeline</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #1e1e2f;
-      color: #fff;
-      font-family: Arial, sans-serif;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>D&D Horizontal Timeline</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background-color: #1e1e2f;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+  }
 
-    #timeline-container {
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      position: relative;
-      cursor: grab;
-    }
+  #timeline-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    #timeline {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(1);
-      transform-origin: center;
-      display: flex;
-      align-items: center;
-      height: 4px;
-      background-color: #888;
-    }
+  #timeline {
+    position: relative;
+    height: 6px;
+    background-color: #888;
+    /* width will be set dynamically */
+    user-select: none;
+  }
 
-    .event-marker {
-      position: absolute;
-      background: #4caf50;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-    }
+  .year-marker {
+    position: absolute;
+    top: -15px;
+    width: 2px;
+    height: 30px;
+    background: #ccc;
+  }
 
-    .event-marker:hover::after {
-      content: attr(data-title) " - " attr(data-description);
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #333;
-      color: #fff;
-      padding: 6px 10px;
-      font-size: 14px;
-      border-radius: 6px;
-      white-space: nowrap;
-    }
+  .year-label {
+    position: absolute;
+    top: 20px;
+    font-size: 12px;
+    color: #aaa;
+    white-space: nowrap;
+    transform: translateX(-50%);
+    user-select: none;
+  }
 
-    .year-marker {
-      position: absolute;
-      top: -10px;
-      width: 1px;
-      height: 20px;
-      background: #ccc;
-    }
+  .event-marker {
+    position: absolute;
+    top: -20px;
+    width: 14px;
+    height: 14px;
+    background: #4caf50;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    cursor: pointer;
+    user-select: none;
+  }
 
-    .year-label {
-      position: absolute;
-      top: 15px;
-      font-size: 12px;
-      color: #aaa;
-      white-space: nowrap;
-      transform: translateX(-50%);
-    }
-  </style>
+  .event-marker:hover::after {
+    content: attr(data-title) " - " attr(data-description);
+    position: absolute;
+    bottom: 150%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #222;
+    padding: 6px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 1;
+  }
+</style>
 </head>
 <body>
 
@@ -84,18 +89,18 @@
   const timeline = document.getElementById('timeline');
   const container = document.getElementById('timeline-container');
 
-  // Settings
-  const scaleFactor = 100; // pixels per 100 years
-  const markerSpacing = 100; // every 100 years
+  // Pixels per 100 years
+  const PIXELS_PER_100_YEARS = 150;
 
-  // Panning and zooming variables
+  // Variables for panning and zooming
   let isDragging = false;
-  let lastMouse = { x: 0, y: 0 };
+  let lastMouseX = 0;
+  let lastMouseY = 0;
   let offsetX = 0;
   let offsetY = 0;
   let scale = 1;
 
-  // Event loading
+  // Load and parse events
   fetch('events.txt')
     .then(res => res.text())
     .then(text => {
@@ -105,51 +110,73 @@
         return { year: parseInt(yearStr), title, desc };
       });
 
-      renderTimeline(events);
+      buildTimeline(events);
+    })
+    .catch(err => {
+      timeline.innerHTML = '<p style="color:#f44;">Error loading events.txt</p>';
+      console.error(err);
     });
 
-  function renderTimeline(events) {
+  function buildTimeline(events) {
+    if (events.length === 0) return;
+
+    // Determine range of years with some padding
     const years = events.map(e => e.year);
     const minYear = Math.floor(Math.min(...years) / 100) * 100 - 200;
     const maxYear = Math.ceil(Math.max(...years) / 100) * 100 + 200;
 
-    const timelineWidth = ((maxYear - minYear) / 100) * scaleFactor;
+    // Calculate timeline width based on range
+    const yearRange = maxYear - minYear;
+    const timelineWidth = (yearRange / 100) * PIXELS_PER_100_YEARS;
 
-    timeline.style.width = `${timelineWidth}px`;
+    timeline.style.width = timelineWidth + 'px';
+    timeline.style.height = '6px';
 
-    // Year markers
-    for (let year = minYear; year <= maxYear; year += markerSpacing) {
-      const x = ((year - minYear) / 100) * scaleFactor;
+    // Clear old markers if any
+    timeline.innerHTML = '';
 
-      const yearLine = document.createElement('div');
-      yearLine.className = 'year-marker';
-      yearLine.style.left = `${x}px`;
-      timeline.appendChild(yearLine);
+    // Add year markers and labels every 100 years
+    for (let year = minYear; year <= maxYear; year += 100) {
+      const posX = ((year - minYear) / 100) * PIXELS_PER_100_YEARS;
 
+      // Year tick
+      const yearMark = document.createElement('div');
+      yearMark.className = 'year-marker';
+      yearMark.style.left = posX + 'px';
+      timeline.appendChild(yearMark);
+
+      // Year label
       const yearLabel = document.createElement('div');
       yearLabel.className = 'year-label';
-      yearLabel.style.left = `${x}px`;
-      yearLabel.textContent = `${year} DR`;
+      yearLabel.style.left = posX + 'px';
+      yearLabel.textContent = year + ' DR';
       timeline.appendChild(yearLabel);
     }
 
-    // Event markers
+    // Add event markers
     for (const event of events) {
-      const x = ((event.year - minYear) / 100) * scaleFactor;
+      const posX = ((event.year - minYear) / 100) * PIXELS_PER_100_YEARS;
+
       const marker = document.createElement('div');
       marker.className = 'event-marker';
-      marker.style.left = `${x}px`;
+      marker.style.left = posX + 'px';
       marker.dataset.title = event.title;
       marker.dataset.description = event.desc;
       timeline.appendChild(marker);
     }
+
+    // Reset pan and zoom to center timeline in view
+    offsetX = (container.clientWidth / 2) - (timelineWidth / 2);
+    offsetY = 0;
+    scale = 1;
+    updateTransform();
   }
 
-  // Drag (pan) functionality
+  // Panning drag events
   container.addEventListener('mousedown', e => {
     isDragging = true;
-    lastMouse.x = e.clientX;
-    lastMouse.y = e.clientY;
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
     container.style.cursor = 'grabbing';
   });
 
@@ -160,11 +187,10 @@
 
   window.addEventListener('mousemove', e => {
     if (!isDragging) return;
-
-    const dx = e.clientX - lastMouse.x;
-    const dy = e.clientY - lastMouse.y;
-    lastMouse.x = e.clientX;
-    lastMouse.y = e.clientY;
+    const dx = e.clientX - lastMouseX;
+    const dy = e.clientY - lastMouseY;
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
 
     offsetX += dx;
     offsetY += dy;
@@ -172,19 +198,27 @@
     updateTransform();
   });
 
-  // Zoom with scroll (no Ctrl needed)
+  // Zoom on wheel (no Ctrl needed), zoom centered on mouse position
   container.addEventListener('wheel', e => {
     e.preventDefault();
-    const zoomSpeed = 0.001;
-    const delta = e.deltaY;
-    scale -= delta * zoomSpeed;
-    scale = Math.max(0.2, Math.min(scale, 5)); // clamp
+
+    const zoomSpeed = 0.0015;
+    const oldScale = scale;
+    scale -= e.deltaY * zoomSpeed;
+    scale = Math.min(Math.max(scale, 0.2), 5);
+
+    // Calculate mouse position relative to timeline left edge
+    const rect = timeline.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+
+    // Adjust offset to zoom towards mouse pointer
+    offsetX -= (mouseX) * (scale - oldScale);
 
     updateTransform();
-  });
+  }, { passive: false });
 
   function updateTransform() {
-    timeline.style.transform = `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px)) scale(${scale})`;
+    timeline.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
   }
 </script>
 

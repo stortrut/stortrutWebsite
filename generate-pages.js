@@ -39,8 +39,10 @@ walkDir(articlesFolder, (filePath) => {
     path.basename(filePath) !== 'index.html'
   ) {
     const name = path.basename(filePath, '.html')
-      .replace(/[-_]/g, ' ')
-      .replace(/\b\w/g, c => c.toUpperCase());
+  .replace(/[-_]/g, ' ')
+  .split(' ')
+  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+  .join(' ');
 
     const url = `/articles/${relativePath.replace(/\\/g, '/')}`;
 
