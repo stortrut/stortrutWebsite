@@ -389,7 +389,7 @@
   left: 0;
   height: 4px;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.1); /* light gray background */
+  background-color: rgba(0, 0, 0, 0.253); /* light gray background */
   overflow: hidden;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
