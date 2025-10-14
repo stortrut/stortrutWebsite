@@ -132,7 +132,7 @@ function startRotation(movieList) {
     progressBar.offsetWidth;
 
     // Animate progress bar to full width over 2 seconds
-    progressBar.style.transition = 'width 2s linear';
+    progressBar.style.transition = 'width 8s linear';
     progressBar.style.width = '100%';
   }
 
