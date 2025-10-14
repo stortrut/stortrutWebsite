@@ -328,8 +328,7 @@
 
 
 #image-text-box {
-    position: relative;
-
+  position: relative;
   display: flex;
   align-items: center;
   background-color: rgb(255 215 178);
