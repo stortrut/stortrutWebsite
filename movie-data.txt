@@ -1426,15 +1426,15 @@ Movie: A Good Person
 Release: 2023-06-30  
 Poster: ../images/movie-posters/agoodperson.jpg  
 Genre: Drama, Psychological Drama
-Director: 
-Writer: 
-Actors: 
-Composer:
+Director: Zach Braff
+Writer: Zach Braff
+Actors: Florence Pugh, Morgan Freeman, Celeste O'Connor, Molly Shannon, Chinaza Uche
+Composer: Bryce Dessner
 Runtime: 2h 8m
 Budget: 
-Gross Worldwide:
-Taglines:
-Production companies:
+Gross Worldwide: $2,688,568
+Taglines: Sometimes we find Hope where we least expect it.
+Production companies: Killer Films, Metro-Goldwyn-Mayer (MGM), Elevation Films, Elevation Pictures, Killer Films
 Seen: 2025-08-28  
 Review: Alvin|4.31  
 Review: Diaa|4.1  
