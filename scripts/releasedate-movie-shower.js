@@ -143,7 +143,7 @@ function startRotation(movieList) {
     setInterval(() => {
       index = (index + 1) % movieList.length;
       showMovie(movieList[index]);
-    }, 4200); // Slightly longer than animation duration
+    }, 8100); // Slightly longer than animation duration
   }
     
 
