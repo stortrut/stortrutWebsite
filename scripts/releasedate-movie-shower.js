@@ -1,3 +1,4 @@
+>
 document.addEventListener('DOMContentLoaded', () => {
   fetch('/movie-data.txt')
     .then(response => {
@@ -7,8 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(text => {
       const movies = parseMovies(text);
       const today = new Date();
-      const todayMonth = today.getMonth();
-      const todayDate = today.getDate();
+      const todayMonth = today.getMonth(); // 0-11
+      const todayDate = today.getDate();   // 1-31
 
       const exactMatches = [];
       const upcomingMatches = [];
@@ -16,8 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
       let soonestDiff = Infinity;
 
       for (const movie of movies) {
+        if (typeof movie.release !== 'string' || !movie.release.includes('-')) {
+          console.warn('Invalid release date format, skipping movie:', movie);
+          continue;
+        }
+
         const [year, month, day] = movie.release.split('-').map(Number);
-        const releaseDate = new Date(year, month - 1, day);
+        if (!year || !month || !day) continue;
 
         // Check for same day/month in past years
         if (month - 1 === todayMonth && day === todayDate && year < today.getFullYear()) {
@@ -25,36 +31,28 @@ document.addEventListener('DOMContentLoaded', () => {
           exactMatches.push({
             ...movie,
             message: `${movie.title} released today ${yearsAgo} year${yearsAgo !== 1 ? 's' : ''} ago! 🎉`,
-            poster: movie.poster
           });
         } else {
-          // Calculate how many days until this movie’s mm-dd
+          // Calculate days until this movie’s mm-dd
           const thisYear = new Date(today.getFullYear(), month - 1, day);
           let dayDiff = Math.ceil((thisYear - today) / (1000 * 60 * 60 * 24));
 
           if (dayDiff < 0) {
-            // Already passed this year, check next year
             const nextYear = new Date(today.getFullYear() + 1, month - 1, day);
             dayDiff = Math.ceil((nextYear - today) / (1000 * 60 * 60 * 24));
           }
 
           if (dayDiff < soonestDiff) {
             soonestDiff = dayDiff;
-            upcomingMatches.length = 0; // Clear previous
+            upcomingMatches.length = 0;
             upcomingMatches.push({
               ...movie,
-              daysUntil: dayDiff,
-              yearsAgo: today.getFullYear() - year,
               message: `In ${dayDiff} day${dayDiff !== 1 ? 's' : ''} ${movie.title} released ${today.getFullYear() - year} year${(today.getFullYear() - year) !== 1 ? 's' : ''} ago`,
-              poster: movie.poster
             });
           } else if (dayDiff === soonestDiff) {
             upcomingMatches.push({
               ...movie,
-              daysUntil: dayDiff,
-              yearsAgo: today.getFullYear() - year,
               message: `In ${dayDiff} day${dayDiff !== 1 ? 's' : ''} ${movie.title} released ${today.getFullYear() - year} year${(today.getFullYear() - year) !== 1 ? 's' : ''} ago`,
-              poster: movie.poster
             });
           }
         }
@@ -65,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (displayList.length > 0) {
         startRotation(displayList);
       } else {
-        // Optional: fallback if no matches found
         document.getElementById('release-message').textContent = 'No matching movie found.';
         document.getElementById('release-description').textContent = '';
         document.getElementById('release-poster').src = '';
@@ -76,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Parse movie data
+// Parses valid movie entries only
 function parseMovies(data) {
   const movies = [];
   const entries = data.trim().split('\n\n');
@@ -84,19 +81,27 @@ function parseMovies(data) {
   for (const entry of entries) {
     const movie = {};
     const lines = entry.trim().split('\n');
+
     for (const line of lines) {
       const [key, ...rest] = line.split(': ');
       const value = rest.join(': ').trim();
+
       if (key === 'Movie') movie.title = value;
       else if (key === 'Release') movie.release = value;
       else if (key === 'Poster') movie.poster = value;
     }
-    movies.push(movie);
+
+    if (movie.title && movie.release && movie.poster) {
+      movies.push(movie);
+    } else {
+      console.warn('Skipping movie due to missing fields:', movie);
+    }
   }
+
   return movies;
 }
 
-// Rotates through a list of movies every 2 seconds
+// Cycles through matching movies every 2 seconds
 function startRotation(movieList) {
   let index = 0;
 
@@ -113,6 +118,6 @@ function startRotation(movieList) {
     setInterval(() => {
       index = (index + 1) % movieList.length;
       showMovie(movieList[index]);
-    }, 2000); // every 2 seconds
+    }, 2000);
   }
 }
