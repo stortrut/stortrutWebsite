@@ -1,0 +1,3 @@
+1342 DR|The Ruins Discovered|Adventurers stumbled upon the ancient ruins of Arkon'Thal.
+1344 DR|The War of Broken Chains|A major battle erupted between orc clans and humans.
+1346 DR|Rise of the Dragon Queen|The cult begins summoning their draconic matron.

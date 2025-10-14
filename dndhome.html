@@ -2,140 +2,149 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>D&D Campaign Timeline</title>
+  <title>D&D Horizontal Timeline</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #1e1e2f;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #1e1e2f;
       color: #f0f0f0;
-      padding: 20px;
+      overflow: hidden;
     }
 
     h1 {
       text-align: center;
+      margin: 20px 0;
+    }
+
+    #timeline-container {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+      border-top: 2px solid #444;
+      border-bottom: 2px solid #444;
+      margin: 20px;
+      cursor: grab;
     }
 
     #timeline {
-      max-width: 600px;
-      margin: 0 auto;
-      border-left: 3px solid #888;
-      padding-left: 20px;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      transition: transform 0.1s;
+      transform-origin: left center;
     }
 
     .event {
-      margin-bottom: 20px;
       position: relative;
-    }
-
-    .event::before {
-      content: '';
-      position: absolute;
-      left: -11px;
-      top: 0;
-      width: 20px;
-      height: 20px;
-      background-color: #4caf50;
-      border-radius: 50%;
-      border: 2px solid #fff;
+      background: #333;
+      border: 1px solid #666;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 10px;
+      min-width: 200px;
+      max-width: 300px;
+      flex-shrink: 0;
     }
 
     .event h3 {
       margin: 0;
-      font-size: 18px;
+      font-size: 16px;
+      color: #4caf50;
     }
 
     .event p {
-      margin: 5px 0 0;
+      font-size: 14px;
+      margin-top: 5px;
     }
 
-    #addEventForm {
-      max-width: 600px;
-      margin: 30px auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    input, textarea, button {
-      padding: 10px;
-      font-size: 16px;
-    }
-
-    button {
-      background-color: #4caf50;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #45a049;
+    .event::before {
+      content: attr(data-date);
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #222;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #ccc;
     }
   </style>
 </head>
 <body>
 
-  <h1>D&D Campaign Timeline</h1>
-
+<h1>D&D Campaign Timeline</h1>
+<div id="timeline-container">
   <div id="timeline"></div>
+</div>
 
-  <form id="addEventForm">
-    <input type="text" id="eventTitle" placeholder="Event Title" required>
-    <input type="text" id="eventDate" placeholder="Year or Date (e.g., 1342 DR)" required>
-    <textarea id="eventDescription" placeholder="Event Description" rows="3" required></textarea>
-    <button type="submit">Add Event</button>
-  </form>
+<script>
+  const timeline = document.getElementById('timeline');
+  const container = document.getElementById('timeline-container');
 
-  <script>
-    const timeline = document.getElementById('timeline');
-    const form = document.getElementById('addEventForm');
+  // Load events from text file
+  fetch('events.txt')
+    .then(response => response.text())
+    .then(text => {
+      const lines = text.trim().split('\n');
+      const events = lines.map(line => {
+        const [date, title, description] = line.split('|');
+        return { date, title, description };
+      });
 
-    // Example initial events
-    const events = [
-      {
-        date: '1342 DR',
-        title: 'The Ruins Discovered',
-        description: 'Adventurers stumbled upon the ancient ruins of Arkon\'Thal.'
-      },
-      {
-        date: '1344 DR',
-        title: 'The War of Broken Chains',
-        description: 'A major battle erupted between the orc clans and human settlements.'
+      events.sort((a, b) => a.date.localeCompare(b.date)); // Optional
+
+      for (const event of events) {
+        const div = document.createElement('div');
+        div.className = 'event';
+        div.dataset.date = event.date;
+        div.innerHTML = `<h3>${event.title}</h3><p>${event.description}</p>`;
+        timeline.appendChild(div);
       }
-    ];
-
-    // Render the timeline
-    function renderTimeline() {
-      timeline.innerHTML = ''; // Clear previous
-      events
-        .sort((a, b) => a.date.localeCompare(b.date)) // Sort by date
-        .forEach(event => {
-          const el = document.createElement('div');
-          el.className = 'event';
-          el.innerHTML = `
-            <h3>${event.date} — ${event.title}</h3>
-            <p>${event.description}</p>
-          `;
-          timeline.appendChild(el);
-        });
-    }
-
-    // Handle form submission
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const newEvent = {
-        date: document.getElementById('eventDate').value,
-        title: document.getElementById('eventTitle').value,
-        description: document.getElementById('eventDescription').value,
-      };
-      events.push(newEvent);
-      renderTimeline();
-      form.reset();
     });
 
-    // Initial render
-    renderTimeline();
-  </script>
+  // Drag to scroll
+  let isDown = false;
+  let startX;
+  let scrollX = 0;
+  let scale = 1;
+
+  container.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.clientX;
+    container.style.cursor = 'grabbing';
+  });
+
+  window.addEventListener('mouseup', () => {
+    isDown = false;
+    container.style.cursor = 'grab';
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    const dx = e.clientX - startX;
+    startX = e.clientX;
+    scrollX += dx;
+    updateTransform();
+  });
+
+  // Zoom with scroll wheel
+  container.addEventListener('wheel', (e) => {
+    if (e.ctrlKey) {
+      e.preventDefault();
+      const zoomIntensity = 0.1;
+      scale += e.deltaY * -zoomIntensity / 100;
+      scale = Math.min(Math.max(scale, 0.3), 3); // Clamp
+      updateTransform();
+    }
+  }, { passive: false });
+
+  function updateTransform() {
+    timeline.style.transform = `translateX(${scrollX}px) scale(${scale})`;
+  }
+</script>
 
 </body>
 </html>
