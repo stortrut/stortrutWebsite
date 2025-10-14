@@ -1304,35 +1304,35 @@ Review: Alvin|
 Review: Holger|  
 
 Movie: KPop Demon Hunters  
-Release: 2025-07-15  
+Release: 2025-06-20  
 Poster: ../images/movie-posters/kpopdemonhunters.jpg  
-Genre: Animation, Action, Musical
-Director: 
-Writer: 
-Actors: 
-Composer:
-Runtime: 
-Budget: 
-Gross Worldwide:
-Taglines:
-Production companies:
+Genre: Animation, Action, Musical, Computer Animation, Comedy, Family, Music
+Director: Maggie Kang, Chris Appelhans
+Writer: Danya Jimenez, Hannah McMechan, Maggie Kang, Chris Appelhans
+Actors: Arden Cho, Ahn Hyo‑seop, May Hong, Ji‑young Yoo, Yunjin Kim, Daniel Dae Kim, Ken Jeong, Lee Byung‑hun
+Composer: Marcelo Zarvos
+Runtime: 1h 35m
+Budget: $100,000,000 (estimated)
+Gross Worldwide: $18,000,000
+Taglines: They sing. They dance. They battle demons.
+Production companies: Creative BC, Netflix, Sony Pictures Animation
 Seen: 2025-07-15  
 Review: Alvin|4.276  
 Review: Diaa|4  
 
 Movie: Thunderbolts*  
-Release: 2025-07-26  
+Release: 2025-05-02 
 Poster: ../images/movie-posters/thunderbolts.jpg  
-Genre: Superhero, Action, Drama
-Director: 
-Writer: 
-Actors: 
-Composer:
-Runtime: 
-Budget: 
-Gross Worldwide:
-Taglines:
-Production companies:
+Genre: Superhero, Action, Drama, Political Drama, Adventure, Crime
+Director: Jake Schreier
+Writer: Eric Pearson, Joanna Calo, Kurt Busiek
+Actors: Florence Pugh, Sebastian Stan, Wyatt Russell, Olga Kurylenko, Lewis Pullman, Geraldine Viswanathan, Chris Bauer, Wendell Pierce, David Harbour, Hannah John‑Kamen, Julia Louis‑Dreyfus
+Composer: Son Lux
+Runtime: 2h 7m
+Budget: $180,000,000 (estimated)
+Gross Worldwide: $382,436,917
+Taglines: Be careful who you assemble.
+Production companies: Marvel Studios, Kevin Feige Productions
 Seen: 2025-07-21  
 Review: Alvin|2.8  
 Review: Diaa|3.3  
@@ -1357,7 +1357,7 @@ Review: Diaa|3.5
 Movie: The Wild Robot  
 Release: 2024-09-27 
 Poster: ../images/movie-posters/thewildrobot.jpg  
-Genre: Animation, Adventure, Family, Artificial Intelligence
+Genre: Animation, Adventure, Family, Artificial Intelligence, Computer Animation
 Director: Chris Sanders
 Writer: Chris Sanders, Peter Brown
 Actors: Lupita Nyong’o, Pedro Pascal, Kit Connor, Bill Nighy, Stephanie Hsu, Matt Berry, Ving Rhames, Mark Hamill, Catherine O’Hara

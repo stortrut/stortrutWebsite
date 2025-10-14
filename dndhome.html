@@ -1,12 +1,141 @@
 <!DOCTYPE html>
-<html>
-    <head>
-            <title>DnD Hem</title>
-        
-            <link rel="stylesheet" href="styles/styles.css">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>D&D Campaign Timeline</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #1e1e2f;
+      color: #f0f0f0;
+      padding: 20px;
+    }
 
-    </head>
-    <body>
+    h1 {
+      text-align: center;
+    }
 
-    </body>
+    #timeline {
+      max-width: 600px;
+      margin: 0 auto;
+      border-left: 3px solid #888;
+      padding-left: 20px;
+    }
+
+    .event {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .event::before {
+      content: '';
+      position: absolute;
+      left: -11px;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background-color: #4caf50;
+      border-radius: 50%;
+      border: 2px solid #fff;
+    }
+
+    .event h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .event p {
+      margin: 5px 0 0;
+    }
+
+    #addEventForm {
+      max-width: 600px;
+      margin: 30px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input, textarea, button {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>D&D Campaign Timeline</h1>
+
+  <div id="timeline"></div>
+
+  <form id="addEventForm">
+    <input type="text" id="eventTitle" placeholder="Event Title" required>
+    <input type="text" id="eventDate" placeholder="Year or Date (e.g., 1342 DR)" required>
+    <textarea id="eventDescription" placeholder="Event Description" rows="3" required></textarea>
+    <button type="submit">Add Event</button>
+  </form>
+
+  <script>
+    const timeline = document.getElementById('timeline');
+    const form = document.getElementById('addEventForm');
+
+    // Example initial events
+    const events = [
+      {
+        date: '1342 DR',
+        title: 'The Ruins Discovered',
+        description: 'Adventurers stumbled upon the ancient ruins of Arkon\'Thal.'
+      },
+      {
+        date: '1344 DR',
+        title: 'The War of Broken Chains',
+        description: 'A major battle erupted between the orc clans and human settlements.'
+      }
+    ];
+
+    // Render the timeline
+    function renderTimeline() {
+      timeline.innerHTML = ''; // Clear previous
+      events
+        .sort((a, b) => a.date.localeCompare(b.date)) // Sort by date
+        .forEach(event => {
+          const el = document.createElement('div');
+          el.className = 'event';
+          el.innerHTML = `
+            <h3>${event.date} — ${event.title}</h3>
+            <p>${event.description}</p>
+          `;
+          timeline.appendChild(el);
+        });
+    }
+
+    // Handle form submission
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const newEvent = {
+        date: document.getElementById('eventDate').value,
+        title: document.getElementById('eventTitle').value,
+        description: document.getElementById('eventDescription').value,
+      };
+      events.push(newEvent);
+      renderTimeline();
+      form.reset();
+    });
+
+    // Initial render
+    renderTimeline();
+  </script>
+
+</body>
 </html>
