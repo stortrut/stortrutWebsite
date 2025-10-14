@@ -307,9 +307,23 @@
 #modal-details ul {
   margin-top: 10px;
   padding-left: 20px;
+  clear: both; /* Ensures reviews start below the floated image */
 }
+
 
 #modal-details ul li {
   margin-bottom: 6px;
   font-size: 0.95em;
+}
+
+
+
+
+/* Modal image */
+#modal-details img {
+  max-width: 180px;
+  float: left;
+  margin-right: 25px; /* Increased spacing */
+  border-radius: 6px; /* Slightly rounded edges */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
