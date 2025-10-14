@@ -358,7 +358,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 100px; /* Consistent text height */
+  min-height: 100px;
+
+  /* 👇 Prevent it from stretching the parent */
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 #release-message {
