@@ -1269,7 +1269,7 @@ Writer:
 Actors: 
 Runtime: 
 Budget: 
-Seen: 2025  
+Seen: 2025-04-10
 Review: Alvin|2.1  
 Review: Diaa|3  
 
@@ -1338,52 +1338,52 @@ Review: Alvin|2.8
 Review: Diaa|3.3  
 
 Movie: Karate Kid: Legends  
-Release: 2025-07-26  
+Release: 2025-05-30
 Poster: ../images/movie-posters/karatekidlegends.jpg  
-Genre: Coming-of-Age, Action
-Director: 
-Writer: 
-Actors: 
-Composer:
-Runtime: 
-Budget: 
-Gross Worldwide:
-Taglines:
-Production companies:
+Genre: Coming-of-Age, Action, Martial Arts, Teen Drama, Family, Sports
+Director: Jonathan Entwistle
+Writer: Rob Lieber, Robert Mark Kamen
+Actors: Jackie Chan, Ralph Macchio, Ben Wang, Joshua Jackson, Sadie Stanley, Ming-Na Wen
+Composer: Dominic Lewis
+Runtime: 1h 34m
+Budget: $45,000,000 (estimated)
+Gross Worldwide: $116,845,487
+Taglines: When masters unite a new legacy begins.
+Production companies: Columbia Pictures, Sunswept Entertainment
 Seen: 2025-07-21  
 Review: Alvin|3.8  
 Review: Diaa|3.5  
 
 Movie: The Wild Robot  
-Release: 2024-01-15  
+Release: 2024-09-27 
 Poster: ../images/movie-posters/thewildrobot.jpg  
-Genre: Animation, Adventure
-Director: 
-Writer: 
-Actors: 
-Composer:
-Runtime: 
-Budget: 
-Gross Worldwide:
-Taglines:
-Production companies:
+Genre: Animation, Adventure, Family, Artificial Intelligence
+Director: Chris Sanders
+Writer: Chris Sanders, Peter Brown
+Actors: Lupita Nyong’o, Pedro Pascal, Kit Connor, Bill Nighy, Stephanie Hsu, Matt Berry, Ving Rhames, Mark Hamill, Catherine O’Hara
+Composer: Kris Bowers
+Runtime: 1h 42m
+Budget: $78,000,000 (estimated)
+Gross Worldwide: $334,537,187
+Taglines: Sometimes, to survive, you must become more than you were programmed to be.
+Production companies: DreamWorks Animation, Dentsu
 Seen: 2025-07-22  
 Review: Alvin|4.1  
 Review: Diaa|4.0  
 
 Movie: Transformers One  
-Release: 2024-06-28  
+Release: 2024-09-20  
 Poster: ../images/movie-posters/transformersone.jpg  
-Genre: Animation, Action
-Director: 
-Writer: 
-Actors: 
-Composer:
-Runtime: 
-Budget: 
-Gross Worldwide:
-Taglines:
-Production companies:
+Genre: Animation, Action, Adventure, Computer Animation, Family
+Director: Josh Cooley
+Writer: Eric Pearson, Andrew Barrer, Gabriel Ferrari
+Actors: Chris Hemsworth, Brian Tyree Henry, Scarlett Johansson, Keegan-Michael Key
+Composer: Brian Tyler
+Runtime: 1h 44m
+Budget: $75,000,000 (estimated)
+Gross Worldwide: $129,408,392
+Taglines: Witness the origin.
+Production companies: Paramount Animation, Hasbro Entertainment, New Republic Pictures
 Seen: 2025-07-22  
 Review: Alvin|4.04  
 Review: Diaa|4.58  
@@ -1391,33 +1391,33 @@ Review: Diaa|4.58
 Movie: Transcendence  
 Release: 2014-04-18  
 Poster: ../images/movie-posters/transcendence.jpg  
-Genre: Drama, Sci-Fi, Thriller
-Director: 
-Writer: 
-Actors: 
-Composer:
-Runtime: 
-Budget: 
-Gross Worldwide:
-Taglines:
-Production companies:
+Genre: Drama, Sci-Fi, Thriller, Artificial Intelligence
+Director: Wally Pfister
+Writer: Jack Paglen
+Actors: Johnny Depp, Rebecca Hall, Morgan Freeman
+Composer: Mychael Danna
+Runtime: 1h 59m
+Budget: $100,000,000 (estimated)
+Gross Worldwide: $103,039,258
+Taglines: What if a new intelligence was born?
+Production companies: Alcon Entertainment, DMG Entertainment, Straight Up Films
 Seen: 2025-07-31  
 Review: Alvin|3.5  
 Review: Diaa|3.9  
 
 Movie: Superman  
-Release: 2025-08-22  
+Release: 2025-07-11  
 Poster: ../images/movie-posters/superman.jpeg  
-Genre: Action, Superhero
-Director: 
-Writer: 
-Actors: 
-Composer:
-Runtime: 
-Budget: 
-Gross Worldwide:
-Taglines:
-Production companies:
+Genre: Action, Superhero, Sci-Fi, Adventure
+Director: James Gunn
+Writer: James Gunn, Jerry Siegel, Joe Shuster
+Actors: David Corenswet, Alan Tudyk, Grace Chan, Alan Tudyk
+Composer: David Fleming, John Murphy
+Runtime: 2h 9m
+Budget: $225,000,000 (estimated)
+Gross Worldwide: $615,984,465
+Taglines: Look Up.
+Production companies: DC Studios, Domain Entertainment (II), Troll Court Entertainment
 Seen: 2025-08-22  
 Review: Alvin|4.68  
 Review: Diaa|4.5  
@@ -1431,7 +1431,7 @@ Writer: Zach Braff
 Actors: Florence Pugh, Morgan Freeman, Celeste O'Connor, Molly Shannon, Chinaza Uche
 Composer: Bryce Dessner
 Runtime: 2h 8m
-Budget: 
+Budget: -
 Gross Worldwide: $2,688,568
 Taglines: Sometimes we find Hope where we least expect it.
 Production companies: Killer Films, Metro-Goldwyn-Mayer (MGM), Elevation Films, Elevation Pictures, Killer Films
