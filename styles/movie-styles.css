@@ -370,11 +370,13 @@
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 6px;
-  min-height: 24px; /* Prevent jumpy text */
+  min-height: 24px;
+  white-space: normal;
 }
 
 #release-description {
   font-size: 14px;
   color: #333;
-  min-height: 20px; /* Optional if you use a second line */
+  min-height: 20px;
+  white-space: normal;
 }
