@@ -1,6 +1,6 @@
 // Fetch and process the movie data file
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('movie.data.txt')
+  fetch('/movie.data.txt')
     .then(response => {
       if (!response.ok) throw new Error('Failed to load movie data');
       return response.text();
