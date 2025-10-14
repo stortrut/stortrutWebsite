@@ -85,13 +85,23 @@
   </div>
 </template>
 
-<!-- MOVIE MODAL (this should NOT be inside a <template>) -->
-<div id="movie-modal" class="modal hidden">
+<!-- MOVIE MODAL -->
+<template id="movie-modal-template">
   <div class="modal-content">
     <span class="close-button">&times;</span>
-    <div id="modal-details"></div>
+    <h2 class="modal-title"></h2>
+    <img class="modal-poster" src="" alt="" style="max-width: 200px; float: left; margin-right: 1em;">
+    <p><strong>Genres:</strong> <span class="modal-genres"></span></p>
+    <p><strong>Seen on:</strong> <span class="modal-seen-date"></span></p>
+    <p><strong>Average Rating:</strong> <span class="modal-average-rating"></span></p>
+    <h3>Reviews:</h3>
+    <ul class="modal-reviews-list"></ul>
+    <div style="clear: both;"></div>
   </div>
-</div>
+</template>
+
+<div id="movie-modal" class="modal hidden"></div>
+
 </body>
 
 </html>

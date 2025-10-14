@@ -316,24 +316,38 @@ function sortMovies(criteria) {
 
 function showMovieModal(movie) {
   const modal = document.getElementById("movie-modal");
-  const modalDetails = document.getElementById("modal-details");
+  const template = document.getElementById("movie-modal-template");
+  
+  // Clear previous modal content
+  modal.innerHTML = "";
 
-  // Build modal content (you can customize this as much as you like)
-  modalDetails.innerHTML = `
-    <h2>${movie.title} ${movie.releaseYear ? `(${movie.releaseYear})` : ""}</h2>
-    <img src="${movie.poster}" alt="${movie.title}" style="max-width: 200px; float: left; margin-right: 1em;">
-    <p><strong>Genres:</strong> ${movie.genre || "N/A"}</p>
-    <p><strong>Seen on:</strong> ${movie.seen_date || "N/A"}</p>
-    <p><strong>Average Rating:</strong> ${movie.avgRating.toFixed(1)}</p>
-    <h3>Reviews:</h3>
-    <ul>
-      ${movie.reviews.map(r => `<li>${r.name}: ${r.score}</li>`).join("")}
-    </ul>
-    <div style="clear: both;"></div>
-  `;
+  // Clone template content
+  const clone = template.content.cloneNode(true);
 
+  // Fill in data
+  clone.querySelector(".modal-title").textContent = `${movie.title} ${movie.releaseYear ? `(${movie.releaseYear})` : ""}`;
+  clone.querySelector(".modal-poster").src = movie.poster;
+  clone.querySelector(".modal-poster").alt = movie.title;
+  clone.querySelector(".modal-genres").textContent = movie.genre || "N/A";
+  clone.querySelector(".modal-seen-date").textContent = movie.seen_date || "N/A";
+  clone.querySelector(".modal-average-rating").textContent = movie.avgRating.toFixed(1);
+  
+  const reviewsList = clone.querySelector(".modal-reviews-list");
+  reviewsList.innerHTML = movie.reviews.map(r => `<li>${r.name}: ${r.score}</li>`).join("");
+
+  // Append to modal
+  modal.appendChild(clone);
+
+  // Show modal
   modal.classList.remove("hidden");
+
+  // Add close event to close button inside the cloned content
+  const closeBtn = modal.querySelector(".close-button");
+  closeBtn.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
 }
+
 
 document.querySelector(".close-button").addEventListener("click", () => {
   document.getElementById("movie-modal").classList.add("hidden");
