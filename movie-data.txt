@@ -663,7 +663,7 @@ Review: Carl|4.214
 Movie: Ant-man and the Wasp: Quantumania
 Release: 2023-02-17
 Poster: ../images/movie-posters/antmanquantumania.jpg
-Genre: Superhero, Action, Comedy, Sci-FI
+Genre: Superhero, Action, Comedy, Sci-Fi
 Seen: 2023-02-23
 Review: Alvin|2.34
 Review: Diaa|2.225
