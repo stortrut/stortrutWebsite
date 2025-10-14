@@ -45,6 +45,7 @@
   height: 300px;
   object-fit: cover;
   margin: 0 auto;
+  
 }
 
 
@@ -220,36 +221,95 @@
 
 
  /* Info Box */
-.modal {
+/* Modal backdrop */
+#movie-modal {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.7);
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); /* semi-transparent black */
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   z-index: 1000;
+  transition: opacity 0.3s ease;
 }
 
-.modal.hidden {
-  display: none;
+/* Hide modal by default */
+#movie-modal.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
+/* Modal content box */
 .modal-content {
-  background: #fff;
-  padding: 1.5em;
+  background-color: #fff;
   border-radius: 8px;
-  width: 90%;
   max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 20px 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
   position: relative;
+  font-family: Arial, sans-serif;
+  color: #333;
 }
 
+/* Close button */
 .close-button {
   position: absolute;
-  top: 0.5em;
-  right: 1em;
-  font-size: 1.5em;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #888;
   cursor: pointer;
+  transition: color 0.2s ease;
+  user-select: none;
+}
+
+.close-button:hover {
+  color: #555;
+}
+
+/* Modal title */
+#modal-details h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.8em;
+  font-weight: 700;
+}
+
+/* Modal image */
+#modal-details img {
+  max-width: 180px;
+  float: left;
+  margin-right: 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Clear floats after image */
+#modal-details div[style*="clear: both;"] {
+  clear: both;
+}
+
+/* Modal text paragraphs */
+#modal-details p {
+  margin: 0.4em 0;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+/* Reviews list */
+#modal-details ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+#modal-details ul li {
+  margin-bottom: 6px;
+  font-size: 0.95em;
 }
