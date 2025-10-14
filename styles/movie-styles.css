@@ -339,7 +339,7 @@
   margin-left: 50px;
 
   /* 👇 Keep the box a consistent size */
-  width: 600px;
+  width: 400px;
   min-height: 180px;
 
   font-family: 'monospace';
@@ -389,15 +389,16 @@
   left: 0;
   height: 4px;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.1); /* light gray background */
   overflow: hidden;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
+
 #movie-swap-bar {
   height: 100%;
   width: 0%;
-  background-color: #0e0030;
+  background-color: #0e0030; /* dark purple/blue color */
   transition: width 2s linear;
 }
