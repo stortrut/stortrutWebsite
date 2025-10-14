@@ -335,14 +335,16 @@
   border-radius: 10px;
   padding: 16px 24px;
   margin-left: 50px;
-  max-width: 600px;
-  min-height: 180px; /* Ensures the box stays tall enough */
+
+  /* 👇 Keep the box a consistent size */
+  width: 600px;
+  min-height: 180px;
+
   font-family: 'monospace';
   color: #0e0030;
   box-sizing: border-box;
   gap: 16px;
 }
-
 #release-poster {
   width: 100px;
   height: auto;
