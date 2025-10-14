@@ -788,6 +788,7 @@ Movie: Invincible: Atom Eve
 Release: 2023-08-25  
 Poster: ../images/movie-posters/atomeve.jpg  
 Genre: Superhero, Action, Animation
+Director:
 Seen: 2023-07-29  
 Review: Alvin|4.226  
 Review: Holger|3.96  
@@ -796,6 +797,7 @@ Movie: Angel’s Egg
 Release: 1985-01-01  
 Poster: ../images/movie-posters/angelsegg.jpg  
 Genre: Anime, Animation, Fantasy, Mystery
+Director:
 Seen: 2023-08-15  
 Review: Alvin|2.938  
 Review: Holger|3.16  
@@ -804,6 +806,7 @@ Movie: One Piece S1
 Release: 2023-08-20  
 Poster: ../images/movie-posters/onepiece.jpg  
 Genre: Action, Adventure
+Director:
 Seen: 2023-09-11  
 Review: Alvin|4.08  
 Review: Holger|4.24  
@@ -813,6 +816,7 @@ Movie: Fionna and Cake
 Release: 2023-08-31  
 Poster: ../images/movie-posters/fionnaandcake.jpg  
 Genre: Animation, Action, Adventure, Drama, Fantastic, Comedy
+Director:
 Seen: 2023-09-15  
 Review: Alvin|4.008  
 Review: Holger|3.52  
@@ -821,6 +825,7 @@ Movie: Loki S.2
 Release: 2023-10-06  
 Poster: ../images/movie-posters/lokis2.jpg  
 Genre: Time Travel, Superhero, Sci-Fi, Action, Adventure
+Director:
 Seen: 2023-10-10  
 Review: Alvin|2.772  
 Review: Holger|2.48  
@@ -830,6 +835,7 @@ Movie: A Fistful of Dollars
 Release: 1964-12-29  
 Poster: ../images/movie-posters/afistfulofdollars.jpg  
 Genre: Western, Drama, Action
+Director:
 Seen: 2023-10-15  
 Review: Alvin|3.956  
 Review: Diaa|4.4  
@@ -840,6 +846,7 @@ Movie: For a Few Dollars More
 Release: 1965-12-18  
 Poster: ../images/movie-posters/forafewdollarsmore.jpg  
 Genre: Western, Drama, Action
+Director:
 Seen: 2023-10-15  
 Review: Alvin|3.562  
 Review: Diaa|4.7  
@@ -850,6 +857,7 @@ Movie: The Good, the Bad and the Ugly
 Release: 1966-12-23  
 Poster: ../images/movie-posters/thegoodthebadandtheugly.jpg
 Genre: Western, Drama, Action
+Director:
 Seen: 2023-10-15  
 Review: Alvin|3.3  
 Review: Diaa|4.1  
@@ -860,6 +868,7 @@ Movie: Rick and Morty S.7
 Release: 2023-10-15  
 Poster: ../images/movie-posters/Rick_and_Morty_season_7.jpg
 Genre: Sci-Fi, Animation
+Director:
 Seen: 2023-10-17  
 Review: Alvin|3.8  
 Review: Holger|3.7  
@@ -868,6 +877,7 @@ Movie: The Adventures of Tintin
 Release: 2011-10-23  
 Poster: ../images/movie-posters/theadventuresoftintin.jpg 
 Genre: Animation, Adventure, Action, Mystery
+Director:
 Seen: 2023-11-04  
 Review: Alvin|3.002  
 Review: Diaa|3.8  
@@ -877,12 +887,14 @@ Movie: Invincible S.2
 Release: 2023-06-01  
 Poster: ../images/movie-posters/Invincible_season_2.jpg  
 Genre: Superhero, Action, Animation, 
+Director:
 Seen: 2023-11-06  
 
 Movie: Scavengers Reign
 Release: 2023-11-17  
 Poster: ../images/movie-posters/scavengersreign.jpg  
 Genre: Animation, Sci-Fi, Adventure, Drama
+Director:
 Seen: 2023-11-16  
 Review: Alvin|4.0904  
 Review: Holger|4.28  
@@ -891,6 +903,7 @@ Movie: Scott Pilgrim Takes Off
 Release: 2023-11-24  
 Poster: ../images/movie-posters/scottpilgrimtakesoff.jpg  
 Genre: Animation, Action, Anime, Comedy, Whodunnit, Comedy
+Director:
 Seen: 2023-11-20  
 Review: Alvin|3.647  
 Review: Holger|3.68  
@@ -900,6 +913,7 @@ Movie: Die Hard
 Release: 1988-07-20  
 Poster: ../images/movie-posters/diehard.jpg  
 Genre: Comedy, Action, Thriller, Christmas
+Director:
 Seen: 2023-12-26  
 Review: Alvin|3.6  
 Review: Holger|3.4  
@@ -908,6 +922,7 @@ Movie: On the Twelfth Day…
 Release: 1955-12-17  
 Poster: ../images/movie-posters/onthetwelfthday.jpg  
 Genre: Christmas, Comedy
+Director:
 Seen: 2023-12-26  
 Review: Alvin|2.87  
 Review: Diaa|3  
@@ -916,6 +931,7 @@ Movie: The Boy and the Heron
 Release: 2023-07-14  
 Poster: ../images/movie-posters/theboyandtheheron.jpg  
 Genre: Animation, Anime, Adventure, Drama
+Director:
 Seen: 2023-12-30  
 Review: Alvin|3.63  
 Review: Diaa|4.5  
@@ -925,6 +941,7 @@ Movie: Lucy
 Release: 2014-07-25  
 Poster: ../images/movie-posters/lucy.jpg  
 Genre: Thriller, Sci-Fi, Action
+Director:
 Seen: 2023-12-31  
 Review: Alvin|2.86  
 Review: Diaa|3.5  
@@ -933,6 +950,7 @@ Movie: Once Upon a Studio
 Release: 2023-11-22  
 Poster: ../images/movie-posters/onceuponastudio.jpg 
 Genre: Animation
+Director:
 Seen: 2023-12-31  
 Review: Alvin|4.3  
 Review: Diaa|3  
@@ -941,6 +959,7 @@ Movie: If Anything Happens I Love You
 Release: 2020-11-20  
 Poster: ../images/movie-posters/ifanythinghappensiloveyou.jpg  
 Genre: Animation, Drama
+Director:
 Seen: 2023-12-31  
 Review: Alvin|4.5  
 Review: Diaa|3  
@@ -949,6 +968,7 @@ Movie: The Boy, the Mole, the Fox and the Horse
 Release: 2022-12-25  
 Poster: ../images/movie-posters/theboythefoxandthehorse.jpg
 Genre: Animation
+Director:
 Seen: 2023-12-31  
 Review: Alvin|3.45  
 Review: Diaa|3  
@@ -957,6 +977,7 @@ Movie: Lackadaisy
 Release: 2023-11-10  
 Poster: ../images/movie-posters/lackadaisy.jpg  
 Genre: Animation, Comedy, Crime
+Director:
 Seen: 2023-12-31  
 Review: Alvin|3.2  
 Review: Diaa|3  
@@ -965,6 +986,7 @@ Movie: Piper
 Release: 2016-11-18  
 Poster: ../images/movie-posters/piper.jpg  
 Genre: Animation
+Director:
 Seen: 2023-12-31  
 Review: Alvin|2.6  
 Review: Diaa|3  
@@ -973,6 +995,7 @@ Movie: Last Shadow at First Light
 Release: 2023-10-05  
 Poster: ../images/movie-posters/lastshadowatfirstlight.jpg 
 Genre: Drama
+Director:
 Seen: 2024-01-11  
 Review: Alvin|3.896  
 Review: Holger|4.0  
@@ -982,6 +1005,7 @@ Movie: Hazbin Hotel S.1
 Release: 2024-01-31  
 Poster: ../images/movie-posters/hazbinhotel.jpg  
 Genre: Animation, Action, Drama, Comedy
+Director:
 Seen: 2024-02-26  
 Review: Alvin|4.7816  
 Review: Holger|4.19  
@@ -991,6 +1015,7 @@ Movie: The Hero’s Journey aka My Life aka the Caleb Jhonston Story (I’m Cale
 Release: 2023-07-10  
 Poster: ../images/movie-posters/theherosjourney.jpg  
 Genre: Drama, Comedy
+Director:
 Seen: 2024-02-27  
 Review: Alvin|3.688  
 Review: Holger|3.48  
@@ -999,6 +1024,7 @@ Movie: The Naked Gun
 Release: 1988-12-16  
 Poster: ../images/movie-posters/thenakedgun.jpg  
 Genre: Comedy, Crime
+Director:
 Seen: 2024-03-17  
 Review: Alvin|1.3  
 Review: Diaa|3.6  
@@ -1008,6 +1034,7 @@ Movie: Kung Fu Panda 4
 Release: 2024-03-08  
 Poster: ../images/movie-posters/kungfupanda4.jpg  
 Genre: Animation, Comedy, Action, Adventure
+Director:
 Seen: 2024-03-23  
 Review: Alvin|4.164  
 Review: Diaa|4.14  
@@ -1018,12 +1045,16 @@ Movie: Smiling Friends S2
 Release: 2024-04-01  
 Poster: ../images/movie-posters/smilingfriendss2.jpg  
 Genre: Animation, Comedy
+Director:
 Seen: 2024-04-01  
+Review: Alvin|  
+Review: Holger|
 
 Movie: Poor Things  
 Release: 2023-09-08  
 Poster: ../images/movie-posters/poorthings.jpg  
 Genre: Comedy, Drama, Romance, Sci-Fi
+Director:
 Seen: 2024-05-10  
 Review: Alvin|3.4  
 Review: Holger|3.06  
@@ -1032,6 +1063,7 @@ Movie: Lost in Translation
 Release: 2003-09-18  
 Poster: ../images/movie-posters/lostintranslation.jpg  
 Genre: Drama, Comedy
+Director:
 Seen: 2024-06-08  
 Review: Alvin|3.4  
 Review: Holger|3.62  
@@ -1040,6 +1072,7 @@ Movie: Jujutsu Kaisen 0
 Release: 2021-12-24  
 Poster: ../images/movie-posters/jjk0.jpg  
 Genre: Animation, Anime, Romance, Action
+Director:
 Seen: 2024-07-08  
 Review: Alvin|2.904  
 Review: Holger|3.394  
@@ -1048,6 +1081,7 @@ Movie: Fucking Åmål
 Release: 1998-08-14  
 Poster: ../images/movie-posters/fuckingåmål.jpg  
 Genre: Coming-of-Age, Comedy, Romance, Drama
+Director:
 Seen: 2024-08-07  
 Review: Alvin|4.1  
 Review: Diaa|3.18  
@@ -1057,6 +1091,7 @@ Movie: Léon: The Professional
 Release: 1994-09-14  
 Poster: ../images/movie-posters/leontheprofessional.jpg 
 Genre: Drama, Action, Crime
+Director:
 Seen: 2024-08-07  
 Review: Alvin|4.1122  
 Review: Diaa|4.1  
@@ -1066,6 +1101,7 @@ Movie: Eternal Sunshine of the Spotless Mind
 Release: 2004-03-19  
 Poster: ../images/movie-posters/eternalsunshineofthespotlessmind.jpg  
 Genre: Romance, Drama, Sci-Fi, Psychological
+Director:
 Seen: 2024-08-15  
 Review: Alvin|4.3668  
 Review: Diaa|4.1  
@@ -1075,6 +1111,7 @@ Movie: Inside Out 2
 Release: 2024-06-14  
 Poster: ../images/movie-posters/insideout2.jpg  
 Genre: Coming-of-Age, Psychological, Animation, Comedy, Drama
+Director:
 Seen: 2024-09-10  
 Review: Alvin|3.76  
 Review: Diaa|4.2  
@@ -1084,6 +1121,7 @@ Movie: Sällskapsresan 2
 Release: 1985-12-20  
 Poster: ../images/movie-posters/snowrollersällskapsresan.jpg  
 Genre: Comedy, Romance
+Director:
 Seen: 2024-09-12  
 Review: Alvin|3.52  
 Review: Diaa|3.2  
@@ -1093,6 +1131,7 @@ Movie: The Legend of Vox Machina S.3
 Release: 2024-10-12  
 Poster: ../images/movie-posters/tlovms3.JPG  
 Genre: Comedy, Animation, Fantasy
+Director:
 Seen: 2024-10-03  
 Review: Alvin|4.3  
 Review: Diaa|  
@@ -1103,6 +1142,7 @@ Movie: Arcane Season 2
 Release: 2024-11-15  
 Poster: ../images/movie-posters/arcanes2.jpg  
 Genre: Animation, Drama, Action
+Director:
 Seen: 2024-11-09  
 Review: Alvin|4.56  
 Review: Diaa|4.0  
@@ -1113,6 +1153,7 @@ Movie: Look Back
 Release: 2024-12-10  
 Poster: ../images/movie-posters/lookback.jpg  
 Genre: Animation, Anime, Drama, Coming-of-Age
+Director:
 Seen: 2024-12-10  
 Review: Alvin|4.1  
 Review: Diaa|4.7  
@@ -1121,6 +1162,7 @@ Movie: Suzume
 Release: 2022-11-11  
 Poster: ../images/movie-posters/suzume.jpg  
 Genre: Animation, Anime, Drama
+Director:
 Seen: 2024-12-11  
 Review: Alvin|4.168  
 Review: Diaa|4.7  
@@ -1129,6 +1171,7 @@ Movie: Grave of the Fireflies
 Release: 1988-04-16  
 Poster: ../images/movie-posters/graveofthefireflies.jpg  
 Genre: Animation, Anime, Tragedy, Drama
+Director:
 Seen: 2024-12-17  
 Review: Alvin|4.56  
 Review: Diaa|4.88  
@@ -1145,6 +1188,7 @@ Movie: Wednesday S.1
 Release: 2022-12-23  
 Poster: ../images/movie-posters/wednesday.jpg  
 Genre: Coming-of-Age, Comedy
+Director:
 Seen: 2024-12-29  
 Review: Alvin|3.884  
 Review: Diaa|3.3  
@@ -1153,6 +1197,7 @@ Movie: Squid Game S.2
 Release: 2024-09-15  
 Poster: ../images/movie-posters/squidgames2.jpg  
 Genre: Action, Thriller, Drama
+Director:
 Seen: 2025-01-10  
 Review: Alvin|4.622  
 Review: Diaa|4.1  
@@ -1163,6 +1208,7 @@ Movie: Wallace & Gromit: Vengeance Most Fowl
 Release: 2024-02-17  
 Poster: ../images/movie-posters/wallaceandgromitvengeancemostfowl.jpg  
 Genre: Animation, Stop Motion, Comedy
+Director:
 Seen: 2025-01-17  
 Review: Alvin|3.46  
 Review: Diaa|3.6  
@@ -1172,6 +1218,7 @@ Movie: Alice in Borderland S.1
 Release: 2020-12-10  
 Poster: ../images/movie-posters/aliceinborderland.jpg  
 Genre: Action, Drama, Sci-Fi, Psychological
+Director:
 Seen: 2025-01-21  
 Review: Alvin|3.84  
 Review: Diaa|4.0  
@@ -1180,6 +1227,7 @@ Movie: Entergalactic
 Release: 2022-09-30  
 Poster: ../images/movie-posters/entergalactic.jpg  
 Genre: Animation, Comedy, Romance
+Director:
 Seen: 2025-02-02  
 Review: Alvin|4.416  
 Review: Diaa|3.6  
@@ -1189,6 +1237,7 @@ Movie: Alice in Borderland S.2
 Release: 2022-12-22  
 Poster: ../images/movie-posters/aliveinborderlandss2.jpg  
 Genre: Action, Drama, Sci-Fi, Psychological
+Director:
 Seen: 2025-02-05  
 Review: Alvin|3.616  
 Review: Diaa|  
@@ -1197,6 +1246,7 @@ Movie: Dog Day Afternoon
 Release: 1975-09-21  
 Poster: ../images/movie-posters/dogdayafternoon.jpg  
 Genre: Crime, Thriller, Heist, Drama
+Director:
 Seen: 2025-02-23  
 Review: Alvin|3.98  
 Review: Diaa|  
@@ -1205,6 +1255,7 @@ Movie: The Shawshank Redemption
 Release: 1994-09-23  
 Poster: ../images/movie-posters/theshawshankredemtion.jpg 
 Genre: Drama
+Director:
 Seen: 2025-03-02  
 Review: Alvin|4.52  
 Review: Holger|  
@@ -1213,6 +1264,11 @@ Movie: A Minecraft Movie
 Release: 2025-04-04  
 Poster: ../images/movie-posters/aminecraftmovie.jpg  
 Genre: Action, Adventure, Comedy
+Director: 
+Writer: 
+Actors: 
+Runtime: 
+Budget: 
 Seen: 2025  
 Review: Alvin|2.1  
 Review: Diaa|3  
@@ -1221,6 +1277,11 @@ Movie: Lupin III: The First
 Release: 2019-12-06  
 Poster: ../images/movie-posters/lupin3thefirst.jpg  
 Genre: Anime, Animation, Action, Crime, Adventure
+Director: 
+Writer: 
+Actors: 
+Runtime: 
+Budget: 
 Seen: 2025  
 Review: Alvin|3.75  
 Review: Diaa|3  
@@ -1229,6 +1290,11 @@ Movie: Rick and Morty S.8
 Release: 2025-07-21  
 Poster: ../images/movie-posters/Rick_and_Morty_season_8.jpg  
 Genre: Sci-Fi, Animation
+Director: 
+Writer: 
+Actors: 
+Runtime: 
+Budget: 
 Seen: 2025-06-18  
 Review: Alvin|  
 Review: Holger|  
@@ -1237,6 +1303,11 @@ Movie: KPop Demon Hunters
 Release: 2025-07-15  
 Poster: ../images/movie-posters/kpopdemonhunters.jpg  
 Genre: Animation, Action, Musical
+Director: 
+Writer: 
+Actors: 
+Runtime: 
+Budget: 
 Seen: 2025-07-15  
 Review: Alvin|4.276  
 Review: Diaa|4  
@@ -1245,6 +1316,11 @@ Movie: Thunderbolts*
 Release: 2025-07-26  
 Poster: ../images/movie-posters/thunderbolts.jpg  
 Genre: Superhero, Action, Drama
+Director: 
+Writer: 
+Actors: 
+Runtime: 
+Budget: 
 Seen: 2025-07-21  
 Review: Alvin|2.8  
 Review: Diaa|3.3  
@@ -1253,6 +1329,11 @@ Movie: Karate Kid: Legends
 Release: 2025-07-26  
 Poster: ../images/movie-posters/karatekidlegends.jpg  
 Genre: Coming-of-Age, Action
+Director: 
+Writer: 
+Actors: 
+Runtime: 
+Budget: 
 Seen: 2025-07-21  
 Review: Alvin|3.8  
 Review: Diaa|3.5  
@@ -1261,6 +1342,11 @@ Movie: The Wild Robot
 Release: 2024-01-15  
 Poster: ../images/movie-posters/thewildrobot.jpg  
 Genre: Animation, Adventure
+Director: 
+Writer: 
+Actors: 
+Runtime: 
+Budget: 
 Seen: 2025-07-22  
 Review: Alvin|4.1  
 Review: Diaa|4.0  
@@ -1269,6 +1355,11 @@ Movie: Transformers One
 Release: 2024-06-28  
 Poster: ../images/movie-posters/transformersone.jpg  
 Genre: Animation, Action
+Director: 
+Writer: 
+Actors: 
+Runtime: 
+Budget: 
 Seen: 2025-07-22  
 Review: Alvin|4.04  
 Review: Diaa|4.58  
@@ -1277,6 +1368,11 @@ Movie: Transcendence
 Release: 2014-04-18  
 Poster: ../images/movie-posters/transcendence.jpg  
 Genre: Drama, Sci-Fi, Thriller
+Director: 
+Writer: 
+Actors: 
+Runtime: 
+Budget: 
 Seen: 2025-07-31  
 Review: Alvin|3.5  
 Review: Diaa|3.9  
@@ -1285,6 +1381,11 @@ Movie: Superman
 Release: 2025-08-22  
 Poster: ../images/movie-posters/superman.jpeg  
 Genre: Action, Superhero
+Director: 
+Writer: 
+Actors: 
+Runtime: 
+Budget: 
 Seen: 2025-08-22  
 Review: Alvin|4.68  
 Review: Diaa|4.5  
@@ -1293,6 +1394,11 @@ Movie: A Good Person
 Release: 2023-06-30  
 Poster: ../images/movie-posters/agoodperson.jpg  
 Genre: Drama
+Director: 
+Writer: 
+Actors: 
+Runtime: 
+Budget: 
 Seen: 2025-08-28  
 Review: Alvin|4.31  
 Review: Diaa|4.1  
@@ -1301,6 +1407,11 @@ Movie: Coraline
 Release: 2009-02-06  
 Poster: ../images/movie-posters/coraline.jpg  
 Genre: Stop Motion, Animation, Drama
+Director: 
+Writer: 
+Actors: 
+Runtime: 
+Budget: 
 Seen: 2025-09-06  
 Review: Alvin|4.3  
 Review: Diaa|3.8  
@@ -1309,6 +1420,11 @@ Movie: Superbad
 Release: 2007-08-17  
 Poster: ../images/movie-posters/superbad.jpg  
 Genre: Buddy Comedy, Coming-of-Age, Comedy
+Director: 
+Writer: 
+Actors: 
+Runtime: 
+Budget: 
 Seen: 2025-09-15  
 Review: Alvin|4.0  
 Review: Diaa|4.0  
@@ -1317,6 +1433,11 @@ Movie: Missing Link
 Release: 2019-04-12  
 Poster: ../images/movie-posters/missinglink.jpg  
 Genre: Buddy Comedy, Stop Motion, Adventure, Comedy, Animation
+Director: 
+Writer: 
+Actors: 
+Runtime: 
+Budget: 
 Seen: 2025-09-17  
 Review: Alvin|2.6  
 Review: Diaa|2.8  
@@ -1324,7 +1445,13 @@ Review: Diaa|2.8
 Movie: The Menu  
 Release: 2022-09-09  
 Poster: ../images/movie-posters/themenu.jpg  
-Genre: Satire, Thriller, Comedy
+Genre: Satire, Thriller, Comedy, Dark Comedy, Horror, Psychological Horror
+Director: Mark Mylod
+Writer: Seth Reiss, Will Tracy
+Actors: Ralph Fiennes, Anya Taylor-Joy, Nicholas Hoult, Hong Chau, Janet McTeer, Paul Adelstein, John Leguizamo
+Runtime: 1h 47m
+Budget: 
+Gross Worldwide: 
 Seen: 2025-09-21  
 Review: Alvin|4.58  
 Review: Diaa|5.0  
@@ -1332,8 +1459,16 @@ Review: Diaa|5.0
 Movie: Dead Poets Society  
 Release: 1989-06-02  
 Poster: ../images/movie-posters/deadpoetssociety.jpg  
-Genre: Coming-of-Age, Comedy, Drama
+Genre: Coming-of-Age, Comedy, Drama, Teen Drama
+Director: Peter Weir
+Writer: Tom Schulman
+Actors: Robin Williams, Robert Sean Leonard, Ethan Hawke
+Runtime: 2h 8m
+Budget: $16,400,000 (estimated)
+Gross Worldwide: $235,860,116
 Seen: 2025-09-27  
 Review: Alvin|3.75  
 Review: Diaa|3.5  
 Review: Carl|4.5  
+
+

@@ -220,8 +220,7 @@
 
 
 
- /* Info Box */
-/* Modal backdrop */
+/* === Modal Backdrop === */
 #movie-modal {
   position: fixed;
   top: 0;
@@ -242,11 +241,11 @@
   pointer-events: none;
 }
 
-/* Modal content box */
+/* === Modal Content Box === */
 .modal-content {
   background-color: #fff;
   border-radius: 8px;
-  max-width: 600px;
+  max-width: 650px;
   width: 90%;
   max-height: 80vh;
   overflow-y: auto;
@@ -257,7 +256,7 @@
   color: #333;
 }
 
-/* Close button */
+/* === Close Button === */
 .close-button {
   position: absolute;
   top: 15px;
@@ -274,7 +273,7 @@
   color: #555;
 }
 
-/* Modal title */
+/* === Modal Title === */
 #modal-details h2 {
   margin-top: 0;
   margin-bottom: 15px;
@@ -282,48 +281,46 @@
   font-weight: 700;
 }
 
-/* Modal image */
+/* === Layout Container === */
+#modal-details {
+  display: flex;
+  gap: 1.5em;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
 #modal-details img {
   max-width: 180px;
-  float: left;
-  margin-right: 20px;
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+  margin-bottom: 1em; /* Helps when wrapping */
 }
 
-/* Clear floats after image */
-#modal-details div[style*="clear: both;"] {
-  clear: both;
+
+#modal-details-content {
+  flex: 1;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Modal text paragraphs */
-#modal-details p {
+
+/* === Modal Paragraphs === */
+#modal-details-content p {
   margin: 0.4em 0;
   font-size: 1em;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
-/* Reviews list */
-#modal-details ul {
-  margin-top: 10px;
-  padding-left: 20px;
-  clear: both; /* Ensures reviews start below the floated image */
+/* === Review List === */
+#modal-details-content ul {
+  margin-top: 0.6em;
+  padding-left: 1.2em;
 }
 
-
-#modal-details ul li {
+#modal-details-content ul li {
   margin-bottom: 6px;
   font-size: 0.95em;
 }
 
-
-
-
-/* Modal image */
-#modal-details img {
-  max-width: 180px;
-  float: left;
-  margin-right: 25px; /* Increased spacing */
-  border-radius: 6px; /* Slightly rounded edges */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
