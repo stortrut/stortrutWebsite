@@ -131,4 +131,36 @@ function startRotation(movieList) {
             showMovie(movieList[index]);
         }, 2000);
     }
+
+    function startRotation(movieList) {
+  let index = 0;
+
+  function showMovie(movie) {
+    document.getElementById('release-message').textContent = movie.message;
+    document.getElementById('release-description').textContent = '';
+    document.getElementById('release-poster').src = movie.poster;
+    document.getElementById('release-poster').alt = `Poster for ${movie.title}`;
+
+    // Reset and animate progress bar
+    const progressBar = document.getElementById('movie-swap-bar');
+    progressBar.style.transition = 'none';
+    progressBar.style.width = '0%';
+    requestAnimationFrame(() => {
+      // Trigger reflow so transition restarts
+      void progressBar.offsetWidth;
+      progressBar.style.transition = 'width 2s linear';
+      progressBar.style.width = '100%';
+    });
+  }
+
+  showMovie(movieList[index]);
+
+  if (movieList.length > 1) {
+    setInterval(() => {
+      index = (index + 1) % movieList.length;
+      showMovie(movieList[index]);
+    }, 2000);
+  }
+}
+
 }

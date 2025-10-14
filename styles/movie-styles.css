@@ -328,6 +328,8 @@
 
 
 #image-text-box {
+    position: relative;
+
   display: flex;
   align-items: center;
   background-color: rgb(255 215 178);
@@ -379,4 +381,23 @@
   color: #333;
   min-height: 20px;
   white-space: normal;
+}
+
+#movie-swap-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#movie-swap-bar {
+  height: 100%;
+  width: 0%;
+  background-color: #0e0030;
+  transition: width 2s linear;
 }
