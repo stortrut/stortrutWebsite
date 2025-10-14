@@ -1,4 +1,3 @@
-// Fetch and process the movie data file
 document.addEventListener('DOMContentLoaded', () => {
   fetch('/movie-data.txt')
     .then(response => {
@@ -8,63 +7,76 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(text => {
       const movies = parseMovies(text);
       const today = new Date();
-      const todayMonth = today.getMonth(); // 0-11
-      const todayDate = today.getDate();   // 1-31
+      const todayMonth = today.getMonth();
+      const todayDate = today.getDate();
 
-      let exactMatch = null;
-      let soonest = null;
-      let minDayDiff = Infinity;
+      const exactMatches = [];
+      const upcomingMatches = [];
+
+      let soonestDiff = Infinity;
 
       for (const movie of movies) {
         const [year, month, day] = movie.release.split('-').map(Number);
         const releaseDate = new Date(year, month - 1, day);
 
-        // Case 1: Released on this month/day in any past year
+        // Check for same day/month in past years
         if (month - 1 === todayMonth && day === todayDate && year < today.getFullYear()) {
           const yearsAgo = today.getFullYear() - year;
-          exactMatch = {
+          exactMatches.push({
             ...movie,
-            yearsAgo,
-            message: `${movie.title} released today ${yearsAgo} year${yearsAgo !== 1 ? 's' : ''} ago! 🎉`
-          };
-          break; // Highest priority
-        }
+            message: `${movie.title} released today ${yearsAgo} year${yearsAgo !== 1 ? 's' : ''} ago! 🎉`,
+            poster: movie.poster
+          });
+        } else {
+          // Calculate how many days until this movie’s mm-dd
+          const thisYear = new Date(today.getFullYear(), month - 1, day);
+          let dayDiff = Math.ceil((thisYear - today) / (1000 * 60 * 60 * 24));
 
-        // Case 2: Find the soonest upcoming release by month/day
-        const thisYearRelease = new Date(today.getFullYear(), month - 1, day);
-        let diffDays = Math.ceil((thisYearRelease - today) / (1000 * 60 * 60 * 24));
+          if (dayDiff < 0) {
+            // Already passed this year, check next year
+            const nextYear = new Date(today.getFullYear() + 1, month - 1, day);
+            dayDiff = Math.ceil((nextYear - today) / (1000 * 60 * 60 * 24));
+          }
 
-        if (diffDays < 0) {
-          // Release date already passed this year — calculate for next year
-          const nextYearRelease = new Date(today.getFullYear() + 1, month - 1, day);
-          diffDays = Math.ceil((nextYearRelease - today) / (1000 * 60 * 60 * 24));
-        }
-
-        if (diffDays < minDayDiff) {
-          minDayDiff = diffDays;
-          const yearsAgo = today.getFullYear() - year;
-          soonest = {
-            ...movie,
-            daysUntil: diffDays,
-            yearsAgo,
-            message: `In ${diffDays} day${diffDays !== 1 ? 's' : ''} ${movie.title} released ${yearsAgo} year${yearsAgo !== 1 ? 's' : ''} ago`
-          };
+          if (dayDiff < soonestDiff) {
+            soonestDiff = dayDiff;
+            upcomingMatches.length = 0; // Clear previous
+            upcomingMatches.push({
+              ...movie,
+              daysUntil: dayDiff,
+              yearsAgo: today.getFullYear() - year,
+              message: `In ${dayDiff} day${dayDiff !== 1 ? 's' : ''} ${movie.title} released ${today.getFullYear() - year} year${(today.getFullYear() - year) !== 1 ? 's' : ''} ago`,
+              poster: movie.poster
+            });
+          } else if (dayDiff === soonestDiff) {
+            upcomingMatches.push({
+              ...movie,
+              daysUntil: dayDiff,
+              yearsAgo: today.getFullYear() - year,
+              message: `In ${dayDiff} day${dayDiff !== 1 ? 's' : ''} ${movie.title} released ${today.getFullYear() - year} year${(today.getFullYear() - year) !== 1 ? 's' : ''} ago`,
+              poster: movie.poster
+            });
+          }
         }
       }
 
-      const chosen = exactMatch || soonest;
+      const displayList = exactMatches.length > 0 ? exactMatches : upcomingMatches;
 
-      // Update DOM
-      document.getElementById('release-poster').src = chosen.poster;
-      document.getElementById('release-message').textContent = chosen.message;
-      document.getElementById('release-description').textContent = '';
+      if (displayList.length > 0) {
+        startRotation(displayList);
+      } else {
+        // Optional: fallback if no matches found
+        document.getElementById('release-message').textContent = 'No matching movie found.';
+        document.getElementById('release-description').textContent = '';
+        document.getElementById('release-poster').src = '';
+      }
     })
     .catch(error => {
       console.error('Error:', error);
     });
 });
 
-// Parse the movie data from .txt
+// Parse movie data
 function parseMovies(data) {
   const movies = [];
   const entries = data.trim().split('\n\n');
@@ -82,4 +94,25 @@ function parseMovies(data) {
     movies.push(movie);
   }
   return movies;
+}
+
+// Rotates through a list of movies every 2 seconds
+function startRotation(movieList) {
+  let index = 0;
+
+  function showMovie(movie) {
+    document.getElementById('release-message').textContent = movie.message;
+    document.getElementById('release-description').textContent = '';
+    document.getElementById('release-poster').src = movie.poster;
+    document.getElementById('release-poster').alt = `Poster for ${movie.title}`;
+  }
+
+  showMovie(movieList[index]);
+
+  if (movieList.length > 1) {
+    setInterval(() => {
+      index = (index + 1) % movieList.length;
+      showMovie(movieList[index]);
+    }, 2000); // every 2 seconds
+  }
 }
