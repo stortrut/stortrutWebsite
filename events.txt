@@ -1,3 +1,6 @@
-1342 DR|The Ruins Discovered|Adventurers stumbled upon the ancient ruins of Arkon'Thal.
-1344 DR|The War of Broken Chains|A major battle erupted between orc clans and humans.
-1346 DR|Rise of the Dragon Queen|The cult begins summoning their draconic matron.
+-500 DR|Fall of Myth Drannor|The elven city falls to dark forces.
+0 DR|The Time of Troubles|Gods walk the earth.
+100 DR|The Rise of Waterdeep|Waterdeep becomes a major trade city.
+400 DR|The Orc Wars|Massive battles rage across the north.
+900 DR|Spellplague Begins|Magic becomes unstable.
+1350 DR|Return of the Netherese|The floating cities return.

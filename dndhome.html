@@ -4,78 +4,78 @@
   <meta charset="UTF-8">
   <title>D&D Horizontal Timeline</title>
   <style>
-    body {
+    html, body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #1e1e2f;
-      color: #f0f0f0;
+      padding: 0;
       overflow: hidden;
-    }
-
-    h1 {
-      text-align: center;
-      margin: 20px 0;
+      background-color: #1e1e2f;
+      color: #fff;
+      font-family: Arial, sans-serif;
     }
 
     #timeline-container {
-      position: relative;
-      height: 300px;
+      width: 100vw;
+      height: 100vh;
       overflow: hidden;
-      border-top: 2px solid #444;
-      border-bottom: 2px solid #444;
-      margin: 20px;
+      position: relative;
       cursor: grab;
     }
 
     #timeline {
       position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      transform-origin: center;
       display: flex;
       align-items: center;
-      height: 100%;
-      transition: transform 0.1s;
-      transform-origin: left center;
+      height: 4px;
+      background-color: #888;
     }
 
-    .event {
-      position: relative;
-      background: #333;
-      border: 1px solid #666;
-      border-radius: 8px;
-      padding: 10px;
-      margin: 10px;
-      min-width: 200px;
-      max-width: 300px;
-      flex-shrink: 0;
-    }
-
-    .event h3 {
-      margin: 0;
-      font-size: 16px;
-      color: #4caf50;
-    }
-
-    .event p {
-      font-size: 14px;
-      margin-top: 5px;
-    }
-
-    .event::before {
-      content: attr(data-date);
+    .event-marker {
       position: absolute;
-      top: -25px;
+      background: #4caf50;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .event-marker:hover::after {
+      content: attr(data-title) " - " attr(data-description);
+      position: absolute;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      background: #222;
-      padding: 3px 6px;
-      border-radius: 4px;
-      font-size: 13px;
-      color: #ccc;
+      background: #333;
+      color: #fff;
+      padding: 6px 10px;
+      font-size: 14px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .year-marker {
+      position: absolute;
+      top: -10px;
+      width: 1px;
+      height: 20px;
+      background: #ccc;
+    }
+
+    .year-label {
+      position: absolute;
+      top: 15px;
+      font-size: 12px;
+      color: #aaa;
+      white-space: nowrap;
+      transform: translateX(-50%);
     }
   </style>
 </head>
 <body>
 
-<h1>D&D Campaign Timeline</h1>
 <div id="timeline-container">
   <div id="timeline"></div>
 </div>
@@ -84,65 +84,107 @@
   const timeline = document.getElementById('timeline');
   const container = document.getElementById('timeline-container');
 
-  // Load events from text file
+  // Settings
+  const scaleFactor = 100; // pixels per 100 years
+  const markerSpacing = 100; // every 100 years
+
+  // Panning and zooming variables
+  let isDragging = false;
+  let lastMouse = { x: 0, y: 0 };
+  let offsetX = 0;
+  let offsetY = 0;
+  let scale = 1;
+
+  // Event loading
   fetch('events.txt')
-    .then(response => response.text())
+    .then(res => res.text())
     .then(text => {
       const lines = text.trim().split('\n');
       const events = lines.map(line => {
-        const [date, title, description] = line.split('|');
-        return { date, title, description };
+        const [yearStr, title, desc] = line.split('|');
+        return { year: parseInt(yearStr), title, desc };
       });
 
-      events.sort((a, b) => a.date.localeCompare(b.date)); // Optional
-
-      for (const event of events) {
-        const div = document.createElement('div');
-        div.className = 'event';
-        div.dataset.date = event.date;
-        div.innerHTML = `<h3>${event.title}</h3><p>${event.description}</p>`;
-        timeline.appendChild(div);
-      }
+      renderTimeline(events);
     });
 
-  // Drag to scroll
-  let isDown = false;
-  let startX;
-  let scrollX = 0;
-  let scale = 1;
+  function renderTimeline(events) {
+    const years = events.map(e => e.year);
+    const minYear = Math.floor(Math.min(...years) / 100) * 100 - 200;
+    const maxYear = Math.ceil(Math.max(...years) / 100) * 100 + 200;
 
-  container.addEventListener('mousedown', (e) => {
-    isDown = true;
-    startX = e.clientX;
+    const timelineWidth = ((maxYear - minYear) / 100) * scaleFactor;
+
+    timeline.style.width = `${timelineWidth}px`;
+
+    // Year markers
+    for (let year = minYear; year <= maxYear; year += markerSpacing) {
+      const x = ((year - minYear) / 100) * scaleFactor;
+
+      const yearLine = document.createElement('div');
+      yearLine.className = 'year-marker';
+      yearLine.style.left = `${x}px`;
+      timeline.appendChild(yearLine);
+
+      const yearLabel = document.createElement('div');
+      yearLabel.className = 'year-label';
+      yearLabel.style.left = `${x}px`;
+      yearLabel.textContent = `${year} DR`;
+      timeline.appendChild(yearLabel);
+    }
+
+    // Event markers
+    for (const event of events) {
+      const x = ((event.year - minYear) / 100) * scaleFactor;
+      const marker = document.createElement('div');
+      marker.className = 'event-marker';
+      marker.style.left = `${x}px`;
+      marker.dataset.title = event.title;
+      marker.dataset.description = event.desc;
+      timeline.appendChild(marker);
+    }
+  }
+
+  // Drag (pan) functionality
+  container.addEventListener('mousedown', e => {
+    isDragging = true;
+    lastMouse.x = e.clientX;
+    lastMouse.y = e.clientY;
     container.style.cursor = 'grabbing';
   });
 
   window.addEventListener('mouseup', () => {
-    isDown = false;
+    isDragging = false;
     container.style.cursor = 'grab';
   });
 
-  window.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    const dx = e.clientX - startX;
-    startX = e.clientX;
-    scrollX += dx;
+  window.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+
+    const dx = e.clientX - lastMouse.x;
+    const dy = e.clientY - lastMouse.y;
+    lastMouse.x = e.clientX;
+    lastMouse.y = e.clientY;
+
+    offsetX += dx;
+    offsetY += dy;
+
     updateTransform();
   });
 
-  // Zoom with scroll wheel
-  container.addEventListener('wheel', (e) => {
-    if (e.ctrlKey) {
-      e.preventDefault();
-      const zoomIntensity = 0.1;
-      scale += e.deltaY * -zoomIntensity / 100;
-      scale = Math.min(Math.max(scale, 0.3), 3); // Clamp
-      updateTransform();
-    }
-  }, { passive: false });
+  // Zoom with scroll (no Ctrl needed)
+  container.addEventListener('wheel', e => {
+    e.preventDefault();
+    const zoomSpeed = 0.001;
+    const delta = e.deltaY;
+    scale -= delta * zoomSpeed;
+    scale = Math.max(0.2, Math.min(scale, 5)); // clamp
+
+    updateTransform();
+  });
 
   function updateTransform() {
-    timeline.style.transform = `translateX(${scrollX}px) scale(${scale})`;
+    timeline.style.transform = `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px)) scale(${scale})`;
   }
 </script>
 
