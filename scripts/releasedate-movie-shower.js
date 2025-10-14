@@ -17,12 +17,23 @@ document.addEventListener('DOMContentLoaded', () => {
       let soonestDiff = Infinity;
 
       for (const movie of movies) {
-        if (typeof movie.release !== 'string' || !movie.release.includes('-')) {
-          console.warn('Invalid release date format, skipping movie:', movie);
-          continue;
-        }
+        let releaseDate;
 
-        const [year, month, day] = movie.release.split('-').map(Number);
+if (typeof movie.release === 'string' && movie.release.includes('-')) {
+  const [year, month, day] = movie.release.split('-').map(Number);
+  releaseDate = new Date(year, month - 1, day);
+} else if (movie.release instanceof Date && !isNaN(movie.release)) {
+  releaseDate = movie.release;
+} else {
+  console.warn('Invalid release date format, skipping movie:', movie);
+  continue;
+}
+
+const year = releaseDate.getFullYear();
+const month = releaseDate.getMonth() + 1; // 1-12
+const day = releaseDate.getDate();
+
+        
         if (!year || !month || !day) continue;
 
         // Check for same day/month in past years
