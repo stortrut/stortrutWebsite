@@ -1293,8 +1293,12 @@ Genre: Sci-Fi, Animation
 Director: 
 Writer: 
 Actors: 
+Composer:
 Runtime: 
 Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2025-06-18  
 Review: Alvin|  
 Review: Holger|  
@@ -1306,8 +1310,12 @@ Genre: Animation, Action, Musical
 Director: 
 Writer: 
 Actors: 
+Composer:
 Runtime: 
 Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2025-07-15  
 Review: Alvin|4.276  
 Review: Diaa|4  
@@ -1319,8 +1327,12 @@ Genre: Superhero, Action, Drama
 Director: 
 Writer: 
 Actors: 
+Composer:
 Runtime: 
 Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2025-07-21  
 Review: Alvin|2.8  
 Review: Diaa|3.3  
@@ -1332,8 +1344,12 @@ Genre: Coming-of-Age, Action
 Director: 
 Writer: 
 Actors: 
+Composer:
 Runtime: 
 Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2025-07-21  
 Review: Alvin|3.8  
 Review: Diaa|3.5  
@@ -1345,8 +1361,12 @@ Genre: Animation, Adventure
 Director: 
 Writer: 
 Actors: 
+Composer:
 Runtime: 
 Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2025-07-22  
 Review: Alvin|4.1  
 Review: Diaa|4.0  
@@ -1358,8 +1378,12 @@ Genre: Animation, Action
 Director: 
 Writer: 
 Actors: 
+Composer:
 Runtime: 
 Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2025-07-22  
 Review: Alvin|4.04  
 Review: Diaa|4.58  
@@ -1371,8 +1395,12 @@ Genre: Drama, Sci-Fi, Thriller
 Director: 
 Writer: 
 Actors: 
+Composer:
 Runtime: 
 Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2025-07-31  
 Review: Alvin|3.5  
 Review: Diaa|3.9  
@@ -1384,8 +1412,12 @@ Genre: Action, Superhero
 Director: 
 Writer: 
 Actors: 
+Composer:
 Runtime: 
 Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2025-08-22  
 Review: Alvin|4.68  
 Review: Diaa|4.5  
@@ -1393,12 +1425,16 @@ Review: Diaa|4.5
 Movie: A Good Person  
 Release: 2023-06-30  
 Poster: ../images/movie-posters/agoodperson.jpg  
-Genre: Drama
+Genre: Drama, Psychological Drama
 Director: 
 Writer: 
 Actors: 
-Runtime: 
+Composer:
+Runtime: 2h 8m
 Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2025-08-28  
 Review: Alvin|4.31  
 Review: Diaa|4.1  
@@ -1406,12 +1442,16 @@ Review: Diaa|4.1
 Movie: Coraline  
 Release: 2009-02-06  
 Poster: ../images/movie-posters/coraline.jpg  
-Genre: Stop Motion, Animation, Drama
-Director: 
-Writer: 
-Actors: 
-Runtime: 
-Budget: 
+Genre: Stop Motion, Animation, Drama, Dark Fantasy
+Director: Henry Selick
+Writer: Henry Selick, Neil Gaiman
+Actors: Dakota Fanning, Teri Hatcher, John Hodgman, Keith David, Dawn French
+Composer: Bruno Coulais
+Runtime: 1h 40m
+Budget: $60,000,000 (estimated)
+Gross Worldwide: $185,860,104
+Taglines: Be careful what you wish for.
+Production companies: Focus Features, Laika Entertainment, Pandemonium
 Seen: 2025-09-06  
 Review: Alvin|4.3  
 Review: Diaa|3.8  
@@ -1419,12 +1459,16 @@ Review: Diaa|3.8
 Movie: Superbad  
 Release: 2007-08-17  
 Poster: ../images/movie-posters/superbad.jpg  
-Genre: Buddy Comedy, Coming-of-Age, Comedy
-Director: 
-Writer: 
-Actors: 
-Runtime: 
-Budget: 
+Genre: Buddy Comedy, Coming-of-Age, Comedy, Raunchy Comedy, Teen Comedy
+Director: Greg Mottola
+Writer: Seth Rogen, Evan Goldberg
+Actors: Jonah Hill, Michael Cera, Christopher Mintz-Plasse, Bill Hader, Seth Rogen, Martha MacIsaac, Emma Stone, Joe Lo Truglio
+Composer: Lyle Workman
+Runtime: 1h 53m
+Budget: $20,000,000 (estimated)
+Gross Worldwide: $170,065,055
+Taglines: Come and Get Some
+Production companies: Columbia Pictures, Apatow Productions
 Seen: 2025-09-15  
 Review: Alvin|4.0  
 Review: Diaa|4.0  
@@ -1432,12 +1476,16 @@ Review: Diaa|4.0
 Movie: Missing Link  
 Release: 2019-04-12  
 Poster: ../images/movie-posters/missinglink.jpg  
-Genre: Buddy Comedy, Stop Motion, Adventure, Comedy, Animation
-Director: 
-Writer: 
-Actors: 
-Runtime: 
-Budget: 
+Genre: Buddy Comedy, Stop Motion, Adventure, Comedy, Animation, Family
+Director: Chris Butler
+Writer: Chris Butler
+Actors: Hugh Jackman, David Walliams, Stephen Fry, Matt Lucas, Zach Galifianakis, Timothy Olyphant, Zoe Saldaña, Amrita Acharia, Ching Valdes-Aran, Emma Thompson, Humphrey Ker, Adam Godley, Neil Dickson
+Composer: Carter Burwell
+Runtime: 1h 33m
+Budget: $100,000,000 (estimated)
+Gross Worldwide: $26,565,710
+Taglines: Meet Mr. Link
+Production companies: Annapurna Pictures, Laika Entertainment
 Seen: 2025-09-17  
 Review: Alvin|2.6  
 Review: Diaa|2.8  
@@ -1448,10 +1496,13 @@ Poster: ../images/movie-posters/themenu.jpg
 Genre: Satire, Thriller, Comedy, Dark Comedy, Horror, Psychological Horror
 Director: Mark Mylod
 Writer: Seth Reiss, Will Tracy
-Actors: Ralph Fiennes, Anya Taylor-Joy, Nicholas Hoult, Hong Chau, Janet McTeer, Paul Adelstein, John Leguizamo
+Actors: Ralph Fiennes, Anya Taylor-Joy, Nicholas Hoult, Hong Chau, Janet McTeer, Paul Adelstein, John Leguizamo, Aimee Carrero, Reed Birney
+Composer: Colin Stetson
 Runtime: 1h 47m
-Budget: 
-Gross Worldwide: 
+Budget: $30,000,000 (estimated)
+Gross Worldwide: $79,628,200
+Taglines: Wonderful surprises await you all.
+Production companies: Searchlight Pictures, TSG Entertainment, Hyperobject Industries
 Seen: 2025-09-21  
 Review: Alvin|4.58  
 Review: Diaa|5.0  
@@ -1463,9 +1514,12 @@ Genre: Coming-of-Age, Comedy, Drama, Teen Drama
 Director: Peter Weir
 Writer: Tom Schulman
 Actors: Robin Williams, Robert Sean Leonard, Ethan Hawke
+Composer: Maurice Jarre
 Runtime: 2h 8m
 Budget: $16,400,000 (estimated)
 Gross Worldwide: $235,860,116
+Taglines: He was their inspiration. He made their lives extraordinary.
+Production companies: Touchstone PicturesSilver, Screen Partners IVA, Steven Haft Production
 Seen: 2025-09-27  
 Review: Alvin|3.75  
 Review: Diaa|3.5  
