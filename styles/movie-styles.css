@@ -400,5 +400,5 @@
   height: 100%;
   width: 0%;
   background-color: #0e0030; /* dark purple/blue color */
-  transition: width 2s linear;
+  transition: width 4s linear;
 }
