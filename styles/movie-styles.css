@@ -349,12 +349,12 @@
 }
 #release-poster {
   width: 100px;
-  height: auto;
+  height: 150px;
   object-fit: cover;
   flex-shrink: 0;
   border-radius: 6px;
+  background-color: #ddd; /* optional: shows placeholder if image is still loading */
 }
-
 .text-content {
   flex: 1;
   display: flex;
