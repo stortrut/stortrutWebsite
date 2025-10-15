@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>D&D Timeline with Triangles & Zoom</title>
+<title>D&D Timeline with Dynamic Zoom & Filtering</title>
 <style>
   html, body {
     margin: 0; padding: 0; height: 100%;
@@ -38,6 +38,7 @@
     width: 2px;
     height: 30px;
     background: #ccc;
+    opacity: 0.5;
   }
 
   .year-label {
@@ -48,6 +49,7 @@
     white-space: nowrap;
     transform: translateX(-50%);
     user-select: none;
+    opacity: 0.6;
   }
 
   /* Triangle marker base */
@@ -58,7 +60,7 @@
     border-style: solid;
     cursor: pointer;
     user-select: none;
-    transition: filter 0.2s;
+    transition: filter 0.2s, opacity 0.3s;
   }
   /* Types of triangles */
   .historic {
@@ -117,8 +119,17 @@
   const timeline = document.getElementById('timeline');
   const container = document.getElementById('timeline-container');
 
-  const PIXELS_PER_100_YEARS = 150;
+  // Base pixels per 1 year at scale = 1
+  const BASE_PX_PER_YEAR = 1.5;
 
+  // Zoom thresholds for tick intervals and event visibility
+  const ZOOM_THRESHOLDS = {
+    yearMarkers: [4, 2, 0.7, 0], // zoom scale thresholds
+    tickIntervals: [1, 10, 100, 1000], // corresponding intervals in years
+    eventVisibilities: [0.6, 0.3, 0.1, 0] // min event weight visible at zoom scale
+  };
+
+  // State variables for panning & zooming
   let isDragging = false;
   let lastMouseX = 0;
   let lastMouseY = 0;
@@ -126,71 +137,117 @@
   let offsetY = 0;
   let scale = 1;
 
+  // Loaded events
+  let events = [];
+  // Years range & timeline width in pixels
+  let minYear, maxYear, yearRange, timelineWidth;
+
+  // Fetch and parse events.txt (expects year|title|type|weight)
   fetch('events.txt')
     .then(res => res.text())
     .then(text => {
       const lines = text.trim().split('\n');
-      const events = lines.map(line => {
-        const [yearStr, title, type = 'historic'] = line.split('|');
-        return { year: parseInt(yearStr), title, type };
+      events = lines.map(line => {
+        const [yearStr, title, type = 'historic', weightStr = '1'] = line.split('|');
+        return {
+          year: parseInt(yearStr),
+          title,
+          type: type.toLowerCase(),
+          weight: parseFloat(weightStr)
+        };
       });
-
-      buildTimeline(events);
+      initializeTimeline();
     })
     .catch(err => {
       timeline.innerHTML = '<p style="color:#f44;">Error loading events.txt</p>';
       console.error(err);
     });
 
-  function buildTimeline(events) {
+  // Initialize timeline after loading events
+  function initializeTimeline() {
     if (events.length === 0) return;
 
     const years = events.map(e => e.year);
-    const minYear = Math.floor(Math.min(...years) / 100) * 100 - 200;
-    const maxYear = Math.ceil(Math.max(...years) / 100) * 100 + 200;
-
-    const yearRange = maxYear - minYear;
-    const timelineWidth = (yearRange / 100) * PIXELS_PER_100_YEARS;
+    minYear = Math.floor(Math.min(...years) / 100) * 100 - 500;
+    maxYear = Math.ceil(Math.max(...years) / 100) * 100 + 500;
+    yearRange = maxYear - minYear;
+    timelineWidth = yearRange * BASE_PX_PER_YEAR;
 
     timeline.style.width = timelineWidth + 'px';
 
+    // Initially center timeline horizontally
+    offsetX = (container.clientWidth / 2) - (timelineWidth / 2);
+    offsetY = 0;
+    scale = 1;
+
+    updateTimeline();
+    updateTransform();
+  }
+
+  // Create or update timeline content (ticks and event markers)
+  function updateTimeline() {
     timeline.innerHTML = '';
 
-    // Year markers & labels
-    for (let year = minYear; year <= maxYear; year += 100) {
-      const posX = ((year - minYear) / 100) * PIXELS_PER_100_YEARS;
+    // Determine tick interval based on zoom scale:
+    let tickInterval = 1000;
+    for(let i = 0; i < ZOOM_THRESHOLDS.yearMarkers.length; i++) {
+      if(scale >= ZOOM_THRESHOLDS.yearMarkers[i]) {
+        tickInterval = ZOOM_THRESHOLDS.tickIntervals[i];
+        break;
+      }
+    }
+
+    // Add year ticks and labels
+    for(let y = Math.ceil(minYear / tickInterval) * tickInterval; y <= maxYear; y += tickInterval) {
+      const posX = (y - minYear) * BASE_PX_PER_YEAR;
 
       const yearMark = document.createElement('div');
       yearMark.className = 'year-marker';
       yearMark.style.left = posX + 'px';
+
+      // Larger ticks for bigger intervals
+      yearMark.style.height = (tickInterval <= 10) ? '40px' : '30px';
+      yearMark.style.top = (tickInterval <= 10) ? '-20px' : '-15px';
       timeline.appendChild(yearMark);
 
-      const yearLabel = document.createElement('div');
-      yearLabel.className = 'year-label';
-      yearLabel.style.left = posX + 'px';
-      yearLabel.textContent = year + ' DR';
-      timeline.appendChild(yearLabel);
+      if (tickInterval <= 100) {
+        // Label for more zoomed in
+        const yearLabel = document.createElement('div');
+        yearLabel.className = 'year-label';
+        yearLabel.style.left = posX + 'px';
+        yearLabel.textContent = y + ' DR';
+        timeline.appendChild(yearLabel);
+      }
     }
 
-    // Event markers
-    for (const event of events) {
-      const posX = ((event.year - minYear) / 100) * PIXELS_PER_100_YEARS;
+    // Add event markers filtered by zoom and weight
+    for(const event of events) {
+      // Check visibility by weight at current scale
+      let minWeight = 0;
+      for(let i = 0; i < ZOOM_THRESHOLDS.yearMarkers.length; i++) {
+        if(scale >= ZOOM_THRESHOLDS.yearMarkers[i]) {
+          minWeight = ZOOM_THRESHOLDS.eventVisibilities[i];
+          break;
+        }
+      }
+      if(event.weight < minWeight) continue; // skip event if too light for zoom
+
+      const posX = (event.year - minYear) * BASE_PX_PER_YEAR;
 
       const marker = document.createElement('div');
-      marker.className = `event-marker ${event.type.toLowerCase()}`;
+      marker.className = `event-marker ${event.type}`;
       marker.style.left = posX + 'px';
-      marker.dataset.title = event.title;
+      marker.dataset.title = event.title + ' (' + event.year + ' DR)';
       timeline.appendChild(marker);
     }
-
-    // Center timeline initially
-    offsetX = (container.clientWidth / 2) - (timelineWidth / 2);
-    offsetY = 0;
-    scale = 1;
-    updateTransform();
   }
 
-  // Drag handlers
+  // Update timeline transform (pan + zoom)
+  function updateTransform() {
+    timeline.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+  }
+
+  // Panning (dragging)
   container.addEventListener('mousedown', e => {
     isDragging = true;
     lastMouseX = e.clientX;
@@ -204,7 +261,7 @@
   });
 
   window.addEventListener('mousemove', e => {
-    if (!isDragging) return;
+    if(!isDragging) return;
     const dx = e.clientX - lastMouseX;
     const dy = e.clientY - lastMouseY;
     lastMouseX = e.clientX;
@@ -216,28 +273,35 @@
     updateTransform();
   });
 
-  // Zoom centered on viewport center
+  // Zoom on wheel - zoom centered on mouse position
   container.addEventListener('wheel', e => {
     e.preventDefault();
 
-    const zoomSpeed = 0.0015;
+    const zoomSpeed = 0.0025;
     const oldScale = scale;
-    scale -= e.deltaY * zoomSpeed;
-    scale = Math.min(Math.max(scale, 0.2), 5);
+    let newScale = scale - e.deltaY * zoomSpeed;
+    newScale = Math.min(Math.max(newScale, 0.2), 10);
 
-    // Zoom pivot = center of container
-    const pivotX = container.clientWidth / 2;
-    const pivotY = container.clientHeight / 2;
+    // Calculate mouse position relative to timeline left edge in page coords
+    const rect = timeline.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
 
-    offsetX -= (pivotX) * (scale - oldScale);
-    offsetY -= (pivotY) * (scale - oldScale);
+    // Adjust offset so zoom centers on mouse pointer
+    offsetX -= (mouseX) * (newScale - oldScale);
+    offsetY -= (container.clientHeight / 2) * (newScale - oldScale); // Keep vertical pan stable
 
+    scale = newScale;
+
+    // Update timeline content (ticks & events) based on zoom level
+    updateTimeline();
     updateTransform();
   }, { passive: false });
 
-  function updateTransform() {
-    timeline.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
-  }
+  // On window resize, recenter timeline horizontally (keep vertical pan)
+  window.addEventListener('resize', () => {
+    offsetX = (container.clientWidth / 2) - (timelineWidth * scale / 2);
+    updateTransform();
+  });
 </script>
 
 </body>

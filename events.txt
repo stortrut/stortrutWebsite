@@ -1,6 +1,7 @@
--500 DR|Fall of Myth Drannor|historic
-0 DR|The Time of Troubles|divine
-100 DR|The Rise of Waterdeep|city
-400 DR|The Orc Wars|battle
-900 DR|Spellplague Begins|magic
-1350 DR|Return of the Netherese|arcane
+-500|Fall of Myth Drannor|historic|1
+0|The Time of Troubles|divine|1
+100|The Rise of Waterdeep|city|0.7
+400|The Orc Wars|battle|0.8
+900|Spellplague Begins|magic|1
+1350|Return of the Netherese|arcane|0.5
+2500|Small skirmish|battle|0.1
