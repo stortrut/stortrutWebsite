@@ -11,12 +11,11 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
-  background: #fff9e3;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(123, 78, 0, 0.3);
 }
 
 .title {
+text-align: left;
   font-family: 'Cinzel', serif;
   font-size: 60px;
   color: #7b4e00;
