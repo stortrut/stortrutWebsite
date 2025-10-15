@@ -58,7 +58,7 @@ fetch('/articles/pages.json')
         tooltip.id = 'link-preview-tooltip';
         tooltip.style.position = 'absolute';
         tooltip.style.padding = '8px 12px';
-        tooltip.style.background = 'rgba(0,0,0,0.75)';
+        tooltip.style.background = 'rgba(0, 0, 0, 0.94)';
         tooltip.style.color = '#fff';
         tooltip.style.borderRadius = '4px';
         tooltip.style.pointerEvents = 'none';
