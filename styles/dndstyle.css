@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
   background: #fff9e3;
@@ -27,8 +27,7 @@ body {
 }
 
 p {
-  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
-  max-width: 600px;
+  max-width: 1000px;
   line-height: 1.6;
   font-size: 18px;
   margin-bottom: 1em;
@@ -42,7 +41,6 @@ p + p {
 a {
   color: #b35e00;
   font-weight: 600;
-  text-decoration: underline wavy #d4af37;
   transition: color 0.3s ease;
 }
 
