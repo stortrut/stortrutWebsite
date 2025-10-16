@@ -6,7 +6,7 @@ let startX, startY;
 let currentX = 0, currentY = 0;
 
 let scale = 1;  // Start fully zoomed out
-const minScale = 1;
+const minScale = 0;
 const maxScale = 20;
 
 function updateTransform() {
