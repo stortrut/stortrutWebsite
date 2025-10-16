@@ -7,7 +7,7 @@ let currentX = 0, currentY = 0;
 
 let scale = 1;  // Start fully zoomed out
 const minScale = 1;
-const maxScale = 10;
+const maxScale = 20;
 
 function updateTransform() {
   wrapper.style.transform = `translate(${currentX}px, ${currentY}px) scale(${scale})`;
