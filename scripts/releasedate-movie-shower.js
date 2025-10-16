@@ -113,38 +113,49 @@ function parseMovies(data) {
 }
 
 function startRotation(movieList) {
-  let index = 0;
-
-  function showMovie(movie) {
-    document.getElementById('release-message').textContent = movie.message;
-    document.getElementById('release-description').textContent = '';
-    const poster = document.getElementById('release-poster');
-    poster.src = movie.poster;
-    poster.alt = `Poster for ${movie.title}`;
-
+    let index = 0;
     const progressBar = document.getElementById('movie-swap-bar');
 
-    // Reset progress bar
-    progressBar.style.transition = 'none';
-    progressBar.style.width = '0%';
+    // If only one movie, hide the progress bar
+    if (movieList.length <= 1) {
+        if (progressBar) {
+            progressBar.style.display = 'none';
+        }
+    } else {
+        if (progressBar) {
+            progressBar.style.display = ''; // Show if hidden before
+        }
+    }
 
-    // Force reflow to restart transition
-    progressBar.offsetWidth;
+    function showMovie(movie) {
+        document.getElementById('release-message').textContent = movie.message;
+        document.getElementById('release-description').textContent = '';
+        const poster = document.getElementById('release-poster');
+        poster.src = movie.poster;
+        poster.alt = `Poster for ${movie.title}`;
 
-    // Animate progress bar to full width over 2 seconds
-    progressBar.style.transition = 'width 7s linear';
-    progressBar.style.width = '100%';
-  }
+        if (progressBar && movieList.length > 1) {
+            // Reset progress bar
+            progressBar.style.transition = 'none';
+            progressBar.style.width = '0%';
 
-  // Show the first movie immediately
-  showMovie(movieList[index]);
+            // Force reflow to restart transition
+            progressBar.offsetWidth;
 
-  if (movieList.length > 1) {
-    setInterval(() => {
-      index = (index + 1) % movieList.length;
-      showMovie(movieList[index]);
-    }, 7000); // Slightly longer than animation duration
-  }
-    
+            // Animate progress bar to full width over 7 seconds
+            progressBar.style.transition = 'width 7s linear';
+            progressBar.style.width = '100%';
+        }
+    }
 
+    // Show the first movie immediately
+    showMovie(movieList[index]);
+
+    // Start rotation if more than one movie
+    if (movieList.length > 1) {
+        setInterval(() => {
+            index = (index + 1) % movieList.length;
+            showMovie(movieList[index]);
+        }, 7000); // Match progress bar duration
+    }
 }
