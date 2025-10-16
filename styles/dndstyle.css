@@ -8,16 +8,14 @@ body {
 }
 
 .container {
-  flex: 2;
-  max-width: 1000px;
-  margin: 0 auto;
+  flex: 2;                 /* take twice as much space */
+  background-color: #fff8ee;
   padding: 20px;
   border-radius: 10px;
-    background-color: #fff8ee
 }
 
 .title {
-text-align: left;
+  text-align: left;
   font-family: 'Cinzel', serif;
   font-size: 60px;
   color: #7b4e00;
@@ -60,24 +58,28 @@ a:hover {
 
 
 .article-content {
-  display: flex;        /* ← This is what makes the layout horizontal */
-  gap: 20px;            /* Space between main and side box */
+  display: flex;           /* side by side */
+  gap: 20px;               /* consistent 20px spacing */
+  align-items: flex-start; /* align boxes at the top */
+  max-width: 1000px;
+  margin: 0 auto;          /* center horizontally */
   padding: 20px;
 }
 
 
 /*---- Karaktärs-data --------------------------------------*/
 .character-box {
-      flex: 1;
-      background: #fdfcf8;
-      padding: 20px;
-      border-radius: 8px;
-      border: 2px solid #bbb;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-width: 300px;
-    }
+  flex: 1;                 /* take less space */
+  background: #fdfcf8;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid #bbb;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;        /* prevent it from growing too wide */
+}
+
 
     .character-section {
       border: 1px solid #999;
