@@ -43,6 +43,7 @@ a {
   color: #b35e00;
   font-weight: 600;
   transition: color 0.3s ease;
+    text-decoration: none;
 }
 
 a:hover {
