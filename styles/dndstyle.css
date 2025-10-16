@@ -88,7 +88,6 @@ a:hover {
 
     .character-section strong {
       display: inline-block;
-      width: 100px;
     }
 
     @media (max-width: 768px) {
