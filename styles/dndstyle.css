@@ -8,6 +8,7 @@ body {
 }
 
 .container {
+  flex: 2;
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
@@ -50,6 +51,18 @@ a:hover {
   color: #7b4e00;
   text-decoration: none;
   cursor: pointer;
+}
+
+
+
+
+
+
+
+.article-content {
+  display: flex;        /* ← This is what makes the layout horizontal */
+  gap: 20px;            /* Space between main and side box */
+  padding: 20px;
 }
 
 
