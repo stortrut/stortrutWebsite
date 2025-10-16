@@ -115,15 +115,18 @@ function parseMovies(data) {
 function startRotation(movieList) {
     let index = 0;
     const progressBar = document.getElementById('movie-swap-bar');
+    const progressBarProgress = document.getElementById('movie-swap-progress');
 
     // If only one movie, hide the progress bar
     if (movieList.length <= 1) {
         if (progressBar) {
             progressBar.style.display = 'none';
+            progressBarProgress.style.display = 'none';
         }
     } else {
         if (progressBar) {
             progressBar.style.display = ''; // Show if hidden before
+            progressBarProgress.style.display = '';
         }
     }
 
