@@ -1,3 +1,5 @@
+console.log("✅ Timeline script loaded!");
+
 function renderTimeline(containerId, dataId) {
   const timeline = document.getElementById(containerId);
   const template = document.getElementById(dataId);
