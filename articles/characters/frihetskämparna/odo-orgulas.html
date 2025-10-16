@@ -17,10 +17,6 @@
   <div id="top-bar"></div>
   <script src="/scripts/scriptforall.js"></script>
 
-
-
-
-
   <div class="article-content">
     <div class="container">
       <h1 class="title">
@@ -48,56 +44,23 @@
 
 
 
+
+
+
+
+
+
+  <!-- Event Data (HTML format) -->
+  <div id="eventData" class="event-data">
+    <div data-year="951 4TP">Född</div>
+    <div data-year="972 4TP">Gick med i Frihetskämparna@Frihetskämparna</div>
+  </div>
+
+  <!-- Timeline output -->
   <div id="timeline" class="timeline-container"></div>
 
-  <script>
-    // Hardcoded events: year and description
-    const events = [
-      { year: 1985, description: "Born" },
-      { year: 1993, description: "Started school" },
-      { year: 2001, description: "Graduated high school" },
-      { year: 2006, description: "Finished university" },
-      { year: 2010, description: "First job" },
-      { year: 2018, description: "Moved abroad" },
-      { year: 2022, description: "New project launch" }
-    ];
+  <script src="/scripts/render-timeline.js"></script>
 
-    function renderTimeline() {
-      const timeline = document.getElementById('timeline');
-      timeline.innerHTML = ''; // Clear previous render
-
-      if (events.length < 2) return;
-
-      // Sort by year
-      events.sort((a, b) => a.year - b.year);
-
-      const minYear = events[0].year;
-      const maxYear = events[events.length - 1].year;
-      const range = maxYear - minYear;
-      const containerWidth = timeline.offsetWidth;
-
-      events.forEach(event => {
-        const positionPercent = range === 0 ? 0 : (event.year - minYear) / range;
-        const positionPx = positionPercent * containerWidth;
-
-        const eventEl = document.createElement('div');
-        eventEl.className = 'event';
-        eventEl.style.left = `${positionPx}px`;
-
-        eventEl.innerHTML = `
-          <div class="event-marker"></div>
-          <div class="event-label">${event.year}<br>${event.description}</div>
-        `;
-        timeline.appendChild(eventEl);
-      });
-    }
-
-    // Run on page load
-    window.addEventListener('load', renderTimeline);
-
-    // Optional: re-render on window resize
-    window.addEventListener('resize', renderTimeline);
-  </script>
 
 
 
