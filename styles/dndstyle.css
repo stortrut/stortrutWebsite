@@ -8,12 +8,12 @@ body {
 }
 
 .container {
-  width: 700px;              /* fixed width */
-  margin: 0 auto;            /* center horizontally */
+  width: 100%;
+  max-width: 700px;            /* Fixed max width */
   padding: 20px;
-  border-radius: 10px;
   background-color: #fff8ee;
-  box-sizing: border-box;    /* include padding inside width */
+  border-radius: 10px;
+  box-sizing: border-box;
 }
 
 .title {
@@ -60,26 +60,21 @@ a:hover {
 
 
 .article-content {
-  position: relative;        /* relative parent for absolute child */
-  max-width: 1000px;
-  margin: 0 auto;            /* center the whole container */
-  padding: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;     /* Center the main content horizontally */
 }
 
 
 /*---- Karaktärs-data --------------------------------------*/
 .character-box {
-  position: absolute;        /* position relative to .article-content */
-  top: 0;
-  left: 720px;               /* container width (700) + 20px gap */
-  width: 260px;              /* fixed width */
+  position: absolute;
+  left: calc(50% + 370px);     /* 50% (center) + half main width (350) + 20px gap */
+  width: 260px;
   background: #fdfcf8;
   padding: 20px;
   border-radius: 8px;
   border: 2px solid #bbb;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
   box-sizing: border-box;
 }
 
