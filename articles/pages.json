@@ -1,14 +1,14 @@
 [
   {
     "name": "Hektor Kostos",
-    "url": "/articles/characters/frihetskämparna/hektor-kostos.html",
+    "url": "/articles/characters/frihetskämparna/hektor_kostos.html",
     "shorthands": [
       "Hektor"
     ]
   },
   {
     "name": "Odo Orgulas",
-    "url": "/articles/characters/frihetskämparna/odo-orgulas.html",
+    "url": "/articles/characters/frihetskämparna/odo_orgulas.html",
     "shorthands": [
       "Odo",
       "Big B"
@@ -16,7 +16,7 @@
   },
   {
     "name": "Väggmossens Munkkloster",
-    "url": "/articles/geografi/farnesh/väggmossens-munkkloster.html",
+    "url": "/articles/geografi/farnesh/väggmossens_munkkloster.html",
     "shorthands": []
   },
   {
@@ -27,6 +27,11 @@
   {
     "name": "Frihetskämparna",
     "url": "/articles/grupper/frihetskämparna.html",
+    "shorthands": []
+  },
+  {
+    "name": "Ba-sharin",
+    "url": "/articles/geografi/farnesh/ba-sharin.html",
     "shorthands": []
   }
 ]

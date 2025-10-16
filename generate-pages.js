@@ -39,7 +39,7 @@ walkDir(articlesFolder, (filePath) => {
     path.basename(filePath) !== 'index.html'
   ) {
     const name = path.basename(filePath, '.html')
-  .replace(/[-_]/g, ' ')
+  .replace(/[_]/g, ' ')
   .split(' ')
   .map(word => word.charAt(0).toUpperCase() + word.slice(1))
   .join(' ');
