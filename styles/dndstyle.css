@@ -8,10 +8,12 @@ body {
 }
 
 .container {
-  flex: 2;                 /* take twice as much space */
-  background-color: #fff8ee;
+  width: 700px;              /* fixed width */
+  margin: 0 auto;            /* center horizontally */
   padding: 20px;
   border-radius: 10px;
+  background-color: #fff8ee;
+  box-sizing: border-box;    /* include padding inside width */
 }
 
 .title {
@@ -58,18 +60,19 @@ a:hover {
 
 
 .article-content {
-  display: flex;           /* side by side */
-  gap: 20px;               /* consistent 20px spacing */
-  align-items: flex-start; /* align boxes at the top */
-  max-width: 1400px;
-  margin: 0 auto;          /* center horizontally */
+  position: relative;        /* relative parent for absolute child */
+  max-width: 1000px;
+  margin: 0 auto;            /* center the whole container */
   padding: 20px;
 }
 
 
 /*---- Karaktärs-data --------------------------------------*/
 .character-box {
-  flex: 1;                 /* take less space */
+  position: absolute;        /* position relative to .article-content */
+  top: 0;
+  left: 720px;               /* container width (700) + 20px gap */
+  width: 260px;              /* fixed width */
   background: #fdfcf8;
   padding: 20px;
   border-radius: 8px;
@@ -77,7 +80,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 300px;        /* prevent it from growing too wide */
+  box-sizing: border-box;
 }
 
 
