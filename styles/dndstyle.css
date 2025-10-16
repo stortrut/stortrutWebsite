@@ -51,3 +51,39 @@ a:hover {
   text-decoration: none;
   cursor: pointer;
 }
+
+
+
+.character-box {
+      flex: 1;
+      background: #fdfcf8;
+      padding: 20px;
+      border-radius: 8px;
+      border: 2px solid #bbb;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 300px;
+    }
+
+    .character-section {
+      border: 1px solid #999;
+      border-radius: 4px;
+      padding: 10px;
+      background-color: #fff;
+    }
+
+    .character-section strong {
+      display: inline-block;
+      width: 100px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .character-box {
+        max-width: 100%;
+      }
+    }
