@@ -1131,7 +1131,15 @@ Movie: The Legend of Vox Machina S.3
 Release: 2024-10-12  
 Poster: ../images/movie-posters/tlovms3.JPG  
 Genre: Comedy, Animation, Fantasy
-Director:
+Director: 
+Writer: 
+Actors: 
+Composer:
+Runtime: 
+Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2024-10-03  
 Review: Alvin|4.3  
 Review: Diaa|  
@@ -1142,7 +1150,15 @@ Movie: Arcane Season 2
 Release: 2024-11-15  
 Poster: ../images/movie-posters/arcanes2.jpg  
 Genre: Animation, Drama, Action
-Director:
+Director: 
+Writer: 
+Actors: 
+Composer:
+Runtime: 
+Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2024-11-09  
 Review: Alvin|4.56  
 Review: Diaa|4.0  
@@ -1153,7 +1169,15 @@ Movie: Look Back
 Release: 2024-12-10  
 Poster: ../images/movie-posters/lookback.jpg  
 Genre: Animation, Anime, Drama, Coming-of-Age
-Director:
+Director: 
+Writer: 
+Actors: 
+Composer:
+Runtime: 
+Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2024-12-10  
 Review: Alvin|4.1  
 Review: Diaa|4.7  
@@ -1162,7 +1186,15 @@ Movie: Suzume
 Release: 2022-11-11  
 Poster: ../images/movie-posters/suzume.jpg  
 Genre: Animation, Anime, Drama
-Director:
+Director: 
+Writer: 
+Actors: 
+Composer:
+Runtime: 
+Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2024-12-11  
 Review: Alvin|4.168  
 Review: Diaa|4.7  
@@ -1171,7 +1203,15 @@ Movie: Grave of the Fireflies
 Release: 1988-04-16  
 Poster: ../images/movie-posters/graveofthefireflies.jpg  
 Genre: Animation, Anime, Tragedy, Drama
-Director:
+Director: 
+Writer: 
+Actors: 
+Composer:
+Runtime: 
+Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2024-12-17  
 Review: Alvin|4.56  
 Review: Diaa|4.88  
@@ -1180,6 +1220,15 @@ Movie: Red One
 Release: 2024-11-08  
 Poster: ../images/movie-posters/redone.jpg  
 Genre: Action, Christmas, Adventure
+Director: 
+Writer: 
+Actors: 
+Composer:
+Runtime: 
+Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2024-12-22  
 Review: Alvin|2.46  
 Review: Diaa|3.12  
@@ -1188,8 +1237,15 @@ Movie: Wednesday S.1
 Release: 2022-12-23  
 Poster: ../images/movie-posters/wednesday.jpg  
 Genre: Coming-of-Age, Comedy
-Director:
-Seen: 2024-12-29  
+Director: 
+Writer: 
+Actors: 
+Composer:
+Runtime: 
+Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:Seen: 2024-12-29  
 Review: Alvin|3.884  
 Review: Diaa|3.3  
 
@@ -1197,8 +1253,15 @@ Movie: Squid Game S.2
 Release: 2024-09-15  
 Poster: ../images/movie-posters/squidgames2.jpg  
 Genre: Action, Thriller, Drama
-Director:
-Seen: 2025-01-10  
+Director: 
+Writer: 
+Actors: 
+Composer:
+Runtime: 
+Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:Seen: 2025-01-10  
 Review: Alvin|4.622  
 Review: Diaa|4.1  
 Review: Holger|4.36  
@@ -1208,8 +1271,15 @@ Movie: Wallace & Gromit: Vengeance Most Fowl
 Release: 2024-02-17  
 Poster: ../images/movie-posters/wallaceandgromitvengeancemostfowl.jpg  
 Genre: Animation, Stop Motion, Comedy
-Director:
-Seen: 2025-01-17  
+Director: 
+Writer: 
+Actors: 
+Composer:
+Runtime: 
+Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:Seen: 2025-01-17  
 Review: Alvin|3.46  
 Review: Diaa|3.6  
 Review: Holger|3.96  
@@ -1218,8 +1288,15 @@ Movie: Alice in Borderland S.1
 Release: 2020-12-10  
 Poster: ../images/movie-posters/aliceinborderland.jpg  
 Genre: Action, Drama, Sci-Fi, Psychological
-Director:
-Seen: 2025-01-21  
+Director: 
+Writer: 
+Actors: 
+Composer:
+Runtime: 
+Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:Seen: 2025-01-21  
 Review: Alvin|3.84  
 Review: Diaa|4.0  
 
@@ -1227,7 +1304,15 @@ Movie: Entergalactic
 Release: 2022-09-30  
 Poster: ../images/movie-posters/entergalactic.jpg  
 Genre: Animation, Comedy, Romance
-Director:
+Director: 
+Writer: 
+Actors: 
+Composer:
+Runtime: 
+Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2025-02-02  
 Review: Alvin|4.416  
 Review: Diaa|3.6  
@@ -1237,8 +1322,15 @@ Movie: Alice in Borderland S.2
 Release: 2022-12-22  
 Poster: ../images/movie-posters/aliveinborderlandss2.jpg  
 Genre: Action, Drama, Sci-Fi, Psychological
-Director:
-Seen: 2025-02-05  
+Director: 
+Writer: 
+Actors: 
+Composer:
+Runtime: 
+Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:Seen: 2025-02-05  
 Review: Alvin|3.616  
 Review: Diaa|  
 
@@ -1246,7 +1338,15 @@ Movie: Dog Day Afternoon
 Release: 1975-09-21  
 Poster: ../images/movie-posters/dogdayafternoon.jpg  
 Genre: Crime, Thriller, Heist, Drama
-Director:
+Director: 
+Writer: 
+Actors: 
+Composer:
+Runtime: 
+Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2025-02-23  
 Review: Alvin|3.98  
 Review: Diaa|  
@@ -1255,7 +1355,15 @@ Movie: The Shawshank Redemption
 Release: 1994-09-23  
 Poster: ../images/movie-posters/theshawshankredemtion.jpg 
 Genre: Drama
-Director:
+Director: 
+Writer: 
+Actors: 
+Composer:
+Runtime: 
+Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2025-03-02  
 Review: Alvin|4.52  
 Review: Holger|  
@@ -1267,8 +1375,12 @@ Genre: Action, Adventure, Comedy
 Director: 
 Writer: 
 Actors: 
+Composer:
 Runtime: 
 Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2025-04-10
 Review: Alvin|2.1  
 Review: Diaa|3  
@@ -1280,8 +1392,12 @@ Genre: Anime, Animation, Action, Crime, Adventure
 Director: 
 Writer: 
 Actors: 
+Composer:
 Runtime: 
 Budget: 
+Gross Worldwide:
+Taglines:
+Production companies:
 Seen: 2025  
 Review: Alvin|3.75  
 Review: Diaa|3  
