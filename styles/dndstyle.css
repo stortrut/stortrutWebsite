@@ -9,7 +9,8 @@ body {
 
 .container {
   width: 100%;
-  max-width: 1000px;            /* Fixed max width */
+  max-width: 1000px;
+  /* Fixed max width */
   padding: 20px;
   background-color: #fff8ee;
   border-radius: 10px;
@@ -35,7 +36,7 @@ p {
 }
 
 
-p + p + a + p + a + p + a + p{
+p+p+a+p+a+p+a+p {
   border-top: 1px dashed #d4af37;
   padding-top: 10px;
 }
@@ -44,7 +45,7 @@ a {
   color: #b35e00;
   font-weight: 600;
   transition: color 0.3s ease;
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:hover {
@@ -62,14 +63,16 @@ a:hover {
 .article-content {
   position: relative;
   display: flex;
-  justify-content: center;     /* Center the main content horizontally */
+  justify-content: center;
+  /* Center the main content horizontally */
 }
 
 
 /*---- Karaktärs-data --------------------------------------*/
 .character-box {
   position: absolute;
-  left: calc(50% + 520px);     /* 50% (center) + half main width (350) + 20px gap */
+  left: calc(50% + 520px);
+  /* 50% (center) + half main width (350) + 20px gap */
   width: 260px;
   background: #fdfcf8;
   padding: 20px;
@@ -79,24 +82,25 @@ a:hover {
 }
 
 
-    .character-section {
-      border: 1px solid #999;
-      border-radius: 4px;
-      padding: 10px;
-      background-color: #fff;
-    }
+.character-section {
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #fff;
+}
 
-    .character-section strong {
-      display: inline-block;
-    }
+.character-section strong {
+  display: inline-block;
+}
 
-    @media (max-width: 768px) {
-      body {
-        flex-direction: column;
-      }
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
 
-      .character-box {
-        max-width: 100%;
-      }
-    }
-  /* -------------------------------------- */
+  .character-box {
+    max-width: 100%;
+  }
+}
+
+/* -------------------------------------- */
