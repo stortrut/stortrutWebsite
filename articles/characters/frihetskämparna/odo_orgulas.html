@@ -74,8 +74,15 @@
   <div id="timeline" class="timeline-container"></div>
 
   <script src="/scripts/render-timeline.js"></script>
+
   <script src="/scripts/scripts-for-all/link-inserter.js"></script>
 
+  <script>
+    // Safe call after loading the script
+    if (typeof replaceWordsWithLinks === 'replaceWordsWithLinks') {
+      replaceWordsWithLinks();
+    }
+  </script>
 
 </body>
 
