@@ -334,21 +334,19 @@
   background-color: rgb(255 215 178);
   border: 2px solid #ffffff;
   border-radius: 10px;
-  padding: 16px 24px;
+  padding: 12px 18px;
   margin-left: 50px;
 
   /* 👇 Keep the box a consistent size */
-  width: 300px;
-  min-height: 180px;
+  width: 200px;
 
   font-family: 'monospace';
   color: #0e0030;
-  box-sizing: border-box;
   gap: 16px;
 }
 #release-poster {
-  width: 100px;
-  height: 150px;
+  width: 70px;
+  height: 105px;
   object-fit: cover;
   flex-shrink: 0;
   border-radius: 6px;
@@ -357,7 +355,6 @@
 .text-content {
   flex: 1;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   min-height: 100px;
 
