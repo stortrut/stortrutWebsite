@@ -1,7 +1,27 @@
-if (typeof replaceWordsWithLinks === 'function') {
-  replaceWordsWithLinks();
+function loadScript(url) {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = url;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error(`Failed to load script ${url}`));
+    document.head.appendChild(script);
+  });
 }
 
-if (typeof insertTopBar === 'function') {
-  insertTopBar();
-}
+(async () => {
+  try {
+    // Load the other scripts sequentially (or you can do them in parallel with Promise.all)
+    await loadScript('/scripts/replaceWordsWithLinks.js');
+    await loadScript('/scripts/insertTopBar.js');
+
+    // Now call the functions — they should be defined now
+    if (typeof replaceWordsWithLinks === 'function') {
+      replaceWordsWithLinks();
+    }
+    if (typeof insertTopBar === 'function') {
+      insertTopBar();
+    }
+  } catch (err) {
+    console.error(err);
+  }
+})();
