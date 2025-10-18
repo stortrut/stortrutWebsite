@@ -77,6 +77,7 @@ a:hover {
   border: 2px solid #bbb;
   box-sizing: border-box;
   margin: 10px;
+  max-width: 300px;
   /* no width or display needed here, float handles sizing */
 }
 
@@ -91,7 +92,6 @@ a:hover {
   padding: 10px;
   background-color: #fff;
   margin-bottom: 10px;
-  white-space: nowrap;      /* prevent text wrapping */
 }
 
 .character-image {
@@ -99,7 +99,6 @@ a:hover {
   max-width: 100%;          /* scale down to fit parent width */
   height: auto;
   margin-bottom: 10px;
-  max-height: 150px;        /* optional height limit */
   /* This keeps image from stretching the box */
 }
 /* -------------------------------------- */
