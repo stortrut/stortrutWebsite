@@ -119,7 +119,7 @@ function adjustEventLabelFontSize(timeline) {
   const containerWidth = timeline.offsetWidth;
 
   // Reset all font sizes to a baseline first
-  const baseFontSize = 14; // or whatever your default is
+  const baseFontSize = 20; // or whatever your default is
   events.forEach(ev => {
     const label = ev.querySelector('.event-label');
     if (label) {
