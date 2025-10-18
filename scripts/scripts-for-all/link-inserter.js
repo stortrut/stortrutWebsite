@@ -19,7 +19,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
       const nodes = [];
       while (walker.nextNode()) nodes.push(walker.currentNode);
 
-      const pattern = /\(([^\)]+)\)\s*@\(([^\)]+)\)|(\b[A-Za-z0-9_\-]+)\s*@\(([^\)]+)\)|(\b[A-Za-z0-9_\-]+)\s*@([A-Za-z0-9_\-]+)|(\b[A-Za-z0-9_\-]+)@([A-Za-z0-9_\-]+)/g;
+      const pattern = /\(([^\)]+)\)\s*@\(([^\)]+)\)|([\p{L}\p{N}_\-]+)\s*@\(([^\)]+)\)|([\p{L}\p{N}_\-]+)\s*@([\p{L}\p{N}_\-]+)|([\p{L}\p{N}_\-]+)@([\p{L}\p{N}_\-]+)/gu;
 
       for (const node of nodes) {
         const text = node.textContent;
