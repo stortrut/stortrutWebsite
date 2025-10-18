@@ -118,16 +118,20 @@ function adjustEventLabelFontSize(timeline) {
 
   const containerWidth = timeline.offsetWidth;
 
-  // Reset font size and white-space for accurate measurement
+  // Reset all font sizes to a baseline first
+  const baseFontSize = 14; // or whatever your default is
   events.forEach(ev => {
     const label = ev.querySelector('.event-label');
     if (label) {
-      label.style.fontSize = '';
+      label.style.fontSize = `${baseFontSize}px`;
       label.style.whiteSpace = 'nowrap';
+      label.querySelectorAll('*').forEach(el => {
+        el.style.fontSize = `${baseFontSize}px`;
+      });
     }
   });
 
-  // Calculate minimum gap between adjacent events
+  // Calculate minimum horizontal gap between adjacent events
   let minGap = containerWidth;
   for (let i = 1; i < events.length; i++) {
     const prev = events[i - 1];
@@ -136,25 +140,43 @@ function adjustEventLabelFontSize(timeline) {
     if (gap < minGap) minGap = gap;
   }
 
-  const maxLabelWidth = minGap * 0.9;  // Now maxLabelWidth is defined
+  const maxLabelWidth = minGap * 0.9;
 
-  // Shrink font size until the label fits within maxLabelWidth
-  events.forEach(ev => {
-    const label = ev.querySelector('.event-label');
-    if (!label) return;
+  // Determine the smallest font size that fits all labels within maxLabelWidth
+  let bestFontSize = baseFontSize;
 
-    let fontSize = parseFloat(window.getComputedStyle(label).fontSize);
+  while (bestFontSize > 8) {
+    let allFit = true;
 
-    while (label.scrollWidth > maxLabelWidth && fontSize > 8) {
-      fontSize -= 0.5;
-      label.style.fontSize = fontSize + 'px';
+    for (const ev of events) {
+      const label = ev.querySelector('.event-label');
+      if (!label) continue;
 
-      // Also shrink all child elements for consistency
+      label.style.fontSize = `${bestFontSize}px`;
       label.querySelectorAll('*').forEach(el => {
-        el.style.fontSize = fontSize + 'px';
+        el.style.fontSize = `${bestFontSize}px`;
       });
+
+      if (label.scrollWidth > maxLabelWidth) {
+        allFit = false;
+        break;
+      }
     }
 
-    label.style.whiteSpace = '';  // restore wrapping
+    if (allFit) break;
+
+    bestFontSize -= 0.5;
+  }
+
+  // Apply the best font size to all labels uniformly
+  events.forEach(ev => {
+    const label = ev.querySelector('.event-label');
+    if (label) {
+      label.style.fontSize = `${bestFontSize}px`;
+      label.style.whiteSpace = '';
+      label.querySelectorAll('*').forEach(el => {
+        el.style.fontSize = `${bestFontSize}px`;
+      });
+    }
   });
 }
