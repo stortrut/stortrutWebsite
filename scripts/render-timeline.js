@@ -113,22 +113,45 @@ function adjustEventLabelFontSize(timeline) {
 
   const containerWidth = timeline.offsetWidth;
 
-events.forEach(ev => {
-  const label = ev.querySelector('.event-label');
-  if (!label) return;
+  // Reset font size and set nowrap for measurement
+  events.forEach(ev => {
+    const label = ev.querySelector('.event-label');
+    if (label) {
+      label.style.fontSize = '';
+      label.style.whiteSpace = 'nowrap';
+    }
+  });
 
-  let fontSize = parseFloat(window.getComputedStyle(label).fontSize);
-
-  while (label.scrollWidth > maxLabelWidth && fontSize > 8) {
-    fontSize -= 0.5;
-    label.style.fontSize = fontSize + 'px';
-
-    // Also apply font size to all descendants
-    label.querySelectorAll('*').forEach(el => {
-      el.style.fontSize = fontSize + 'px';
-    });
+  // Calculate minimum gap between adjacent events
+  let minGap = containerWidth;
+  for (let i = 1; i < events.length; i++) {
+    const prev = events[i - 1];
+    const curr = events[i];
+    const gap = curr.offsetLeft - prev.offsetLeft;
+    if (gap < minGap) minGap = gap;
   }
 
-  label.style.whiteSpace = '';
-});
+  // Define max label width as 90% of min gap
+  const maxLabelWidth = minGap * 0.9;
+
+  // Shrink font size if label is wider than maxLabelWidth
+  events.forEach(ev => {
+    const label = ev.querySelector('.event-label');
+    if (!label) return;
+
+    let fontSize = parseFloat(window.getComputedStyle(label).fontSize);
+
+    while (label.scrollWidth > maxLabelWidth && fontSize > 8) {
+      fontSize -= 0.5;
+      label.style.fontSize = fontSize + 'px';
+
+      // Also resize all descendants
+      label.querySelectorAll('*').forEach(el => {
+        el.style.fontSize = fontSize + 'px';
+      });
+    }
+
+    // Restore wrapping after resizing
+    label.style.whiteSpace = '';
+  });
 }
