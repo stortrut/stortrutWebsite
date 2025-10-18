@@ -107,14 +107,13 @@ function loadScript(url) {
   }
 })();
 
-
 function adjustEventLabelFontSize(timeline) {
   const events = timeline.querySelectorAll('.event');
   if (events.length < 2) return;
 
   const containerWidth = timeline.offsetWidth;
 
-  // Reset font size first to default for accurate measurement
+  // Reset font size first to default (inherit from CSS)
   events.forEach(ev => {
     ev.querySelector('.event-label').style.fontSize = '';
   });
@@ -128,15 +127,16 @@ function adjustEventLabelFontSize(timeline) {
     if (gap < minGap) minGap = gap;
   }
 
-  // Desired max width for labels: smaller than minGap to avoid overlap
-  const maxLabelWidth = minGap * 0.9; // 90% of gap for some breathing room
+  // Allow label width to be ~85-90% of the min gap
+  const maxLabelWidth = minGap * 0.9;
 
-  // Adjust font size of each label to fit maxLabelWidth
   events.forEach(ev => {
     const label = ev.querySelector('.event-label');
+    if (!label) return;
+
     let fontSize = parseFloat(window.getComputedStyle(label).fontSize);
 
-    // Shrink font size until width fits or minimum font size reached
+    // Gradually shrink font size while the label overflows and above min font size
     while (label.scrollWidth > maxLabelWidth && fontSize > 8) {
       fontSize -= 0.5;
       label.style.fontSize = fontSize + 'px';
