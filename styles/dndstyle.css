@@ -76,6 +76,7 @@ a:hover {
   border-radius: 8px;
   border: 2px solid #bbb;
   box-sizing: border-box;
+  margin: 10px;
   /* no width or display needed here, float handles sizing */
 }
 
