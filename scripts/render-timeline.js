@@ -51,19 +51,16 @@ function renderTimeline(containerId, dataId) {
 }
 
 function repositionTimelineEvents(timeline) {
-  const minYear = parseInt(timeline.dataset.minYear);
-  const maxYear = parseInt(timeline.dataset.maxYear);
-  const range = maxYear - minYear;
+  const eventElements = timeline.querySelectorAll('.event');
   const containerWidth = timeline.offsetWidth;
 
-  const eventElements = timeline.querySelectorAll('.event');
+  const count = eventElements.length;
+  if (count === 0) return;
 
-  eventElements.forEach(el => {
-    const year = parseInt(el.dataset.year);
-    if (isNaN(year)) return;
+  const spacing = containerWidth / (count - 1);
 
-    const percent = range === 0 ? 0 : (year - minYear) / range;
-    const posX = percent * containerWidth;
+  eventElements.forEach((el, index) => {
+    const posX = spacing * index;
     el.style.left = `${posX}px`;
   });
 }
