@@ -70,10 +70,9 @@ a:hover {
 
 /*---- Karaktärs-data --------------------------------------*/
 .character-box {
-  position: absolute;
-  left: calc(50% + 520px);
-  /* 50% (center) + half main width (350) + 20px gap */
+  float: right;
   width: 260px;
+  margin: 0 0 20px 20px; /* margin-left creates space from the text */
   background: #fdfcf8;
   padding: 20px;
   border-radius: 8px;

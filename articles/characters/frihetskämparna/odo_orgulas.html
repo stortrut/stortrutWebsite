@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" href="/styles/dndstyle.css">
 
-    <link rel="stylesheet" href="/styles/timeline.css">
+  <link rel="stylesheet" href="/styles/timeline.css">
 
 </head>
 
@@ -36,38 +36,40 @@
       <p>
         Letar efter Honmoyaki, som enligt Oraklet ska befinna sig i Spegelgrottorna.
       </p>
+
+      <div class="character-box">
+        <div class="character-section"><strong>Namn:</strong> Odo Orgulas</div>
+        <div class="character-section"><strong>Ålder:</strong> 21 (972 4TP)</div>
+        <div class="character-section"><strong>Folkslag:</strong> Loxfolk</div>
+      </div>
     </div>
 
-    <div class="character-box">
-      <div class="character-section"><strong>Namn:</strong> Odo Orgulas</div>
-      <div class="character-section"><strong>Ålder:</strong> 21 (972 4TP)</div>
-      <div class="character-section"><strong>Folkslag:</strong> Loxfolk</div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+  <!-- Event Data (HTML format) -->
+  <template id="eventData">
+    <div data-year="951">
+      <p>Odo@Odo Föddes</p>
     </div>
-  </div>
-
-
-
-
-
-
-
-
-
-<!-- Event Data (HTML format) -->
-<template id="eventData">
-  <div data-year="951">
-    <p>Odo@Odo Föddes</p>
-  </div>
-  <div data-year="966">
-    <p>Utnämnd till Flatvald</p>
-  </div>
+    <div data-year="966">
+      <p>Utnämnd till Flatvald</p>
+    </div>
     <div data-year="969">
-    <p>Fråntagen positionen som Flatvald</p>
-  </div>
-  <div data-year="972">
-    <p>Gick med i Frihetskämparna@Frihetskämparna .</p>
-  </div>
-</template>
+      <p>Fråntagen positionen som Flatvald</p>
+    </div>
+    <div data-year="972">
+      <p>Gick med i Frihetskämparna@Frihetskämparna .</p>
+    </div>
+  </template>
 
 
   <!-- Timeline output -->
@@ -85,29 +87,29 @@
   </script>
 
   <script>
-  // Function to process the template content and append it somewhere
-  function processEventDataTemplate() {
-    const template = document.getElementById('eventData');
-    if (!template) return;
+    // Function to process the template content and append it somewhere
+    function processEventDataTemplate() {
+      const template = document.getElementById('eventData');
+      if (!template) return;
 
-    // Clone the template content
-    const fragment = template.content.cloneNode(true);
+      // Clone the template content
+      const fragment = template.content.cloneNode(true);
 
-    // Run the replaceWordsWithLinks on the fragment (your modified function)
-    replaceWordsWithLinks(fragment);
+      // Run the replaceWordsWithLinks on the fragment (your modified function)
+      replaceWordsWithLinks(fragment);
 
-    // Now insert the processed content somewhere visible, for example inside timeline
-    const timeline = document.getElementById('timeline');
-    if (timeline) {
-      timeline.appendChild(fragment);
+      // Now insert the processed content somewhere visible, for example inside timeline
+      const timeline = document.getElementById('timeline');
+      if (timeline) {
+        timeline.appendChild(fragment);
+      }
     }
-  }
 
-  // Call this function once your scripts have loaded
-  window.addEventListener('DOMContentLoaded', () => {
-    processEventDataTemplate();
-  });
-</script>
+    // Call this function once your scripts have loaded
+    window.addEventListener('DOMContentLoaded', () => {
+      processEventDataTemplate();
+    });
+  </script>
 
 </body>
 
