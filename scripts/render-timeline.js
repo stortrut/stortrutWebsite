@@ -49,6 +49,7 @@ function renderTimeline(containerId, dataId) {
     // Position all events
     repositionTimelineEvents(timeline);
     adjustEventLabelFontSize(timeline);
+    addEventAgeTooltips(timeline);
 
 
     // Insert links after rendering
@@ -85,7 +86,7 @@ window.addEventListener('resize', () => {
         const timeline = document.getElementById('timeline');
         repositionTimelineEvents(timeline);
         adjustEventLabelFontSize(timeline);
-
+        
     }, 100);
 });
 
@@ -179,4 +180,53 @@ function adjustEventLabelFontSize(timeline) {
       });
     }
   });
+
+
+
+
+  function addEventAgeTooltips(timeline) {
+  const minYear = parseInt(timeline.dataset.minYear, 10);
+  if (isNaN(minYear)) return;
+
+  // Create or reuse the tooltip element
+  let tooltip = document.getElementById('timeline-tooltip');
+  if (!tooltip) {
+    tooltip = document.createElement('div');
+    tooltip.id = 'timeline-tooltip';
+    tooltip.style.position = 'absolute';
+    tooltip.style.padding = '6px 10px';
+    tooltip.style.background = '#000';
+    tooltip.style.color = '#fff';
+    tooltip.style.borderRadius = '4px';
+    tooltip.style.fontSize = '12px';
+    tooltip.style.whiteSpace = 'nowrap';
+    tooltip.style.pointerEvents = 'none';
+    tooltip.style.zIndex = '9999';
+    tooltip.style.opacity = '0';
+    tooltip.style.transition = 'opacity 0.2s ease';
+    document.body.appendChild(tooltip);
+  }
+
+  const events = timeline.querySelectorAll('.event');
+
+  events.forEach(eventEl => {
+    const year = parseInt(eventEl.dataset.year, 10);
+    if (isNaN(year)) return;
+
+    const age = year - minYear;
+
+    eventEl.addEventListener('mouseenter', e => {
+      tooltip.textContent = `Ålder: ${age} år`;
+      const rect = eventEl.getBoundingClientRect();
+      tooltip.style.left = `${rect.left + window.scrollX + 10}px`;
+      tooltip.style.top = `${rect.top + window.scrollY - 30}px`;
+      tooltip.style.opacity = '1';
+    });
+
+    eventEl.addEventListener('mouseleave', () => {
+      tooltip.style.opacity = '0';
+    });
+  });
+}
+
 }
