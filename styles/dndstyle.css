@@ -70,58 +70,35 @@ a:hover {
 
 /*---- Karaktärs-data --------------------------------------*/
 .character-box {
-  float: right;
-  margin: 0 0 20px 20px; /* margin-left creates space from the text */
+  float: right;             /* float the box to the right */
   background: #fdfcf8;
   padding: 20px;
-  border-radius: 2px;
+  border-radius: 8px;
   border: 2px solid #bbb;
   box-sizing: border-box;
+  /* no width or display needed here, float handles sizing */
 }
 
+.character-data {
+  display: inline-block;    /* shrink-wrap text content */
+  vertical-align: top;      /* align with image if needed */
+}
 
 .character-section {
   border: 1px solid #999;
   border-radius: 4px;
   padding: 10px;
   background-color: #fff;
-}
-
-.character-section strong {
-  display: inline-block;
-}
-
-.character-image-wrapper {
-  display: inline-block;
-  max-width: 100%;
+  margin-bottom: 10px;
+  white-space: nowrap;      /* prevent text wrapping */
 }
 
 .character-image {
   display: block;
-  width: 100%;
+  max-width: 100%;          /* scale down to fit parent width */
   height: auto;
-  border-radius: 6px 6px 0 0;
-}
-
-
-
-
-@media (max-width: 768px) {
-  body {
-    flex-direction: column;
-  }
-
-  .character-box {
-    max-width: 100%;
-  }
-}
-.character-image {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 0 auto;
-}
-.character-box .character-section:first-of-type {
-  margin-top: 10px;
+  margin-bottom: 10px;
+  max-height: 150px;        /* optional height limit */
+  /* This keeps image from stretching the box */
 }
 /* -------------------------------------- */
