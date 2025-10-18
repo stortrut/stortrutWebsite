@@ -3,10 +3,9 @@ console.log("✅ Timeline script loaded!");
 function renderTimeline(containerId, dataId) {
   const timeline = document.getElementById(containerId);
   const template = document.getElementById(dataId);
-  const dataContainer = template.content.cloneNode(true); // Clone to access the content
+  const dataContainer = template.content.cloneNode(true);
 
   const rawEvents = dataContainer.querySelectorAll('[data-year]');
-
   const events = Array.from(rawEvents).map(el => ({
     year: parseInt(el.getAttribute('data-year')),
     description: el.innerHTML.trim()
@@ -20,17 +19,19 @@ function renderTimeline(containerId, dataId) {
   const minYear = events[0].year;
   const maxYear = events[events.length - 1].year;
   const range = maxYear - minYear;
-  const containerWidth = timeline.offsetWidth;
 
-  timeline.innerHTML = ''; // Clear existing content
+  // Clear the timeline container once
+  timeline.innerHTML = '';
 
+  // Save range in dataset for later use
+  timeline.dataset.minYear = minYear;
+  timeline.dataset.maxYear = maxYear;
+
+  // Create and insert event elements
   events.forEach(event => {
-    const percent = range === 0 ? 0 : (event.year - minYear) / range;
-    const posX = percent * containerWidth;
-
     const eventEl = document.createElement('div');
     eventEl.className = 'event';
-    eventEl.style.left = `${posX}px`;
+    eventEl.dataset.year = event.year;
 
     eventEl.innerHTML = `
       <div class="event-marker"></div>
@@ -38,23 +39,51 @@ function renderTimeline(containerId, dataId) {
     `;
 
     timeline.appendChild(eventEl);
+  });
 
-      // 👇 Insert links after re-rendering the timeline
+  // Position all events
+  repositionTimelineEvents(timeline);
+
+  // Insert links after rendering
   if (typeof replaceWordsWithLinks === 'function') {
     replaceWordsWithLinks(timeline);
   }
+}
+
+function repositionTimelineEvents(timeline) {
+  const minYear = parseInt(timeline.dataset.minYear);
+  const maxYear = parseInt(timeline.dataset.maxYear);
+  const range = maxYear - minYear;
+  const containerWidth = timeline.offsetWidth;
+
+  const eventElements = timeline.querySelectorAll('.event');
+
+  eventElements.forEach(el => {
+    const year = parseInt(el.dataset.year);
+    if (isNaN(year)) return;
+
+    const percent = range === 0 ? 0 : (year - minYear) / range;
+    const posX = percent * containerWidth;
+    el.style.left = `${posX}px`;
   });
 }
 
+// Run on load
 window.addEventListener('load', () => {
   renderTimeline('timeline', 'eventData');
 });
 
+// Only reposition on resize, don't rerender
+let resizeTimeout;
 window.addEventListener('resize', () => {
-  renderTimeline('timeline', 'eventData');
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    const timeline = document.getElementById('timeline');
+    repositionTimelineEvents(timeline);
+  }, 100);
 });
 
-
+// Optional: Script loader for external dependencies
 function loadScript(url) {
   return new Promise((resolve, reject) => {
     const script = document.createElement('script');
@@ -65,12 +94,10 @@ function loadScript(url) {
   });
 }
 
+// Load and run the link inserter once
 (async () => {
   try {
-    // Load the other scripts sequentially (or you can do them in parallel with Promise.all)
     await loadScript('/scripts/scripts-for-all/link-inserter.js');
-
-    // Now call the functions — they should be defined now
     if (typeof replaceWordsWithLinks === 'function') {
       replaceWordsWithLinks();
     }
