@@ -91,6 +91,21 @@ a:hover {
   display: inline-block;
 }
 
+.character-image-wrapper {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.character-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px 6px 0 0;
+}
+
+
+
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -101,10 +116,10 @@ a:hover {
   }
 }
 .character-image {
-  width: 100%;
-  height: auto;
-  border-radius: 3px 3px 0 0; /* optional rounded top corners */
   display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
 }
 .character-box .character-section:first-of-type {
   margin-top: 10px;
