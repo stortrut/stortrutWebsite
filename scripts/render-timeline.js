@@ -4,53 +4,56 @@ console.log("✅ Timeline script loaded!");
 
 
 function addEventAgeTooltips(timeline) {
-  const minYear = parseInt(timeline.dataset.minYear, 10);
-  if (isNaN(minYear)) return;
+    const minYear = parseInt(timeline.dataset.minYear, 10);
+    if (isNaN(minYear)) return;
 
-  // Create or reuse the tooltip element
-  let tooltip = document.getElementById('timeline-tooltip');
-  if (!tooltip) {
-    tooltip = document.createElement('div');
-    tooltip.id = 'timeline-tooltip';
-    tooltip.style.position = 'absolute';
-    tooltip.style.padding = '6px 10px';
-    tooltip.style.background = '#000';
-    tooltip.style.color = '#fff';
-    tooltip.style.borderRadius = '4px';
-    tooltip.style.fontSize = '12px';
-    tooltip.style.whiteSpace = 'nowrap';
-    tooltip.style.pointerEvents = 'none';
-    tooltip.style.zIndex = '9999';
-    tooltip.style.opacity = '0';
-    tooltip.style.transition = 'opacity 0.2s ease';
-    document.body.appendChild(tooltip);
-  }
+    // Create or reuse the tooltip element
+    let tooltip = document.getElementById('timeline-tooltip');
+    if (!tooltip) {
+        tooltip = document.createElement('div');
+        tooltip.id = 'timeline-tooltip';
+        tooltip.style.position = 'absolute';
+        tooltip.style.padding = '6px 10px';
+        tooltip.style.background = '#000';
+        tooltip.style.color = '#fff';
+        tooltip.style.borderRadius = '4px';
+        tooltip.style.fontSize = '12px';
+        tooltip.style.whiteSpace = 'nowrap';
+        tooltip.style.pointerEvents = 'none';
+        tooltip.style.zIndex = '9999';
+        tooltip.style.opacity = '0';
+        tooltip.style.transition = 'opacity 0.2s ease';
+        document.body.appendChild(tooltip);
+    }
 
-  const events = timeline.querySelectorAll('.event');
+    const events = timeline.querySelectorAll('.event');
 
-  events.forEach(eventEl => {
-    const year = parseInt(eventEl.dataset.year, 10);
-    if (isNaN(year)) return;
+    events.forEach(eventEl => {
+        const year = parseInt(eventEl.dataset.year, 10);
+        if (isNaN(year)) return;
 
-    const age = year - minYear;
+        const age = year - minYear;
 
-eventEl.addEventListener('mouseenter', () => {
-  tooltip.textContent = `Age: ${age} years`;
+        eventEl.addEventListener('mouseenter', () => {
+            tooltip.textContent = `Age: ${age} years`;
 
-  // Delay positioning slightly to ensure it's accurate after DOM changes
-  requestAnimationFrame(() => {
-    const rect = eventEl.getBoundingClientRect();
-    tooltip.style.left = `${rect.left + window.scrollX + 10}px`;
-    tooltip.style.top = `${rect.top + window.scrollY - 30}px`;
-    tooltip.style.opacity = '1';
-  });
-});
+            // Delay positioning slightly to ensure it's accurate after DOM changes
+            requestAnimationFrame(() => {
+                const rect = eventEl.getBoundingClientRect();
+                const tooltipWidth = tooltip.offsetWidth;
+                const centerX = rect.left + window.scrollX + rect.width / 2;
+                tooltip.style.left = `${centerX - tooltipWidth / 2}px`;
+
+                tooltip.style.top = `${rect.top + window.scrollY - 30}px`;
+                tooltip.style.opacity = '1';
+            });
+        });
 
 
-    eventEl.addEventListener('mouseleave', () => {
-      tooltip.style.opacity = '0';
+        eventEl.addEventListener('mouseleave', () => {
+            tooltip.style.opacity = '0';
+        });
     });
-  });
 }
 
 
@@ -140,7 +143,7 @@ window.addEventListener('resize', () => {
         const timeline = document.getElementById('timeline');
         repositionTimelineEvents(timeline);
         adjustEventLabelFontSize(timeline);
-        
+
     }, 100);
 });
 
@@ -168,76 +171,76 @@ function loadScript(url) {
 })();
 
 function adjustEventLabelFontSize(timeline) {
-  const events = timeline.querySelectorAll('.event');
-  if (events.length < 2) return;
+    const events = timeline.querySelectorAll('.event');
+    if (events.length < 2) return;
 
-  const containerWidth = timeline.offsetWidth;
+    const containerWidth = timeline.offsetWidth;
 
-  // Reset all font sizes to a baseline first
-  const baseFontSize = 20; // or whatever your default is
-  events.forEach(ev => {
-    const label = ev.querySelector('.event-label');
-    if (label) {
-      label.style.fontSize = `${baseFontSize}px`;
-      label.style.whiteSpace = 'nowrap';
-      label.querySelectorAll('*').forEach(el => {
-        el.style.fontSize = `${baseFontSize}px`;
-      });
-    }
-  });
+    // Reset all font sizes to a baseline first
+    const baseFontSize = 20; // or whatever your default is
+    events.forEach(ev => {
+        const label = ev.querySelector('.event-label');
+        if (label) {
+            label.style.fontSize = `${baseFontSize}px`;
+            label.style.whiteSpace = 'nowrap';
+            label.querySelectorAll('*').forEach(el => {
+                el.style.fontSize = `${baseFontSize}px`;
+            });
+        }
+    });
 
-  // Calculate minimum horizontal gap between adjacent events
-  let minGap = containerWidth;
-  for (let i = 1; i < events.length; i++) {
-    const prev = events[i - 1];
-    const curr = events[i];
-    const gap = curr.offsetLeft - prev.offsetLeft;
-    if (gap < minGap) minGap = gap;
-  }
-
-  const maxLabelWidth = minGap * 0.9;
-
-  // Determine the smallest font size that fits all labels within maxLabelWidth
-  let bestFontSize = baseFontSize;
-
-  while (bestFontSize > 8) {
-    let allFit = true;
-
-    for (const ev of events) {
-      const label = ev.querySelector('.event-label');
-      if (!label) continue;
-
-      label.style.fontSize = `${bestFontSize}px`;
-      label.querySelectorAll('*').forEach(el => {
-        el.style.fontSize = `${bestFontSize}px`;
-      });
-
-      if (label.scrollWidth > maxLabelWidth) {
-        allFit = false;
-        break;
-      }
+    // Calculate minimum horizontal gap between adjacent events
+    let minGap = containerWidth;
+    for (let i = 1; i < events.length; i++) {
+        const prev = events[i - 1];
+        const curr = events[i];
+        const gap = curr.offsetLeft - prev.offsetLeft;
+        if (gap < minGap) minGap = gap;
     }
 
-    if (allFit) break;
+    const maxLabelWidth = minGap * 0.9;
 
-    bestFontSize -= 0.5;
-  }
+    // Determine the smallest font size that fits all labels within maxLabelWidth
+    let bestFontSize = baseFontSize;
 
-  // Apply the best font size to all labels uniformly
-  events.forEach(ev => {
-    const label = ev.querySelector('.event-label');
-    if (label) {
-      label.style.fontSize = `${bestFontSize}px`;
-      label.style.whiteSpace = '';
-      label.querySelectorAll('*').forEach(el => {
-        el.style.fontSize = `${bestFontSize}px`;
-      });
+    while (bestFontSize > 8) {
+        let allFit = true;
+
+        for (const ev of events) {
+            const label = ev.querySelector('.event-label');
+            if (!label) continue;
+
+            label.style.fontSize = `${bestFontSize}px`;
+            label.querySelectorAll('*').forEach(el => {
+                el.style.fontSize = `${bestFontSize}px`;
+            });
+
+            if (label.scrollWidth > maxLabelWidth) {
+                allFit = false;
+                break;
+            }
+        }
+
+        if (allFit) break;
+
+        bestFontSize -= 0.5;
     }
-  });
+
+    // Apply the best font size to all labels uniformly
+    events.forEach(ev => {
+        const label = ev.querySelector('.event-label');
+        if (label) {
+            label.style.fontSize = `${bestFontSize}px`;
+            label.style.whiteSpace = '';
+            label.querySelectorAll('*').forEach(el => {
+                el.style.fontSize = `${bestFontSize}px`;
+            });
+        }
+    });
 
 
 
 
-  
+
 
 }
