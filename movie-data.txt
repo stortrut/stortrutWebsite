@@ -1245,7 +1245,8 @@ Runtime:
 Budget: 
 Gross Worldwide:
 Taglines:
-Production companies:Seen: 2024-12-29  
+Production companies:
+Seen: 2024-12-29  
 Review: Alvin|3.884  
 Review: Diaa|3.3  
 
@@ -1261,7 +1262,8 @@ Runtime:
 Budget: 
 Gross Worldwide:
 Taglines:
-Production companies:Seen: 2025-01-10  
+Production companies:
+Seen: 2025-01-10  
 Review: Alvin|4.622  
 Review: Diaa|4.1  
 Review: Holger|4.36  
@@ -1279,7 +1281,8 @@ Runtime:
 Budget: 
 Gross Worldwide:
 Taglines:
-Production companies:Seen: 2025-01-17  
+Production companies:
+Seen: 2025-01-17  
 Review: Alvin|3.46  
 Review: Diaa|3.6  
 Review: Holger|3.96  
@@ -1296,7 +1299,8 @@ Runtime:
 Budget: 
 Gross Worldwide:
 Taglines:
-Production companies:Seen: 2025-01-21  
+Production companies:
+Seen: 2025-01-21  
 Review: Alvin|3.84  
 Review: Diaa|4.0  
 
