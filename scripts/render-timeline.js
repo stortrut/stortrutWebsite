@@ -43,6 +43,8 @@ function renderTimeline(containerId, dataId) {
 
   // Position all events
   repositionTimelineEvents(timeline);
+  adjustEventLabelFontSize(timeline);
+
 
   // Insert links after rendering
   if (typeof replaceWordsWithLinks === 'function') {
@@ -77,6 +79,8 @@ window.addEventListener('resize', () => {
   resizeTimeout = setTimeout(() => {
     const timeline = document.getElementById('timeline');
     repositionTimelineEvents(timeline);
+    adjustEventLabelFontSize(timeline);
+
   }, 100);
 });
 
@@ -102,3 +106,40 @@ function loadScript(url) {
     console.error(err);
   }
 })();
+
+
+function adjustEventLabelFontSize(timeline) {
+  const events = timeline.querySelectorAll('.event');
+  if (events.length < 2) return;
+
+  const containerWidth = timeline.offsetWidth;
+
+  // Reset font size first to default for accurate measurement
+  events.forEach(ev => {
+    ev.querySelector('.event-label').style.fontSize = '';
+  });
+
+  // Calculate minimum distance between adjacent event markers
+  let minGap = containerWidth;
+  for (let i = 1; i < events.length; i++) {
+    const prev = events[i - 1];
+    const curr = events[i];
+    const gap = curr.offsetLeft - prev.offsetLeft;
+    if (gap < minGap) minGap = gap;
+  }
+
+  // Desired max width for labels: smaller than minGap to avoid overlap
+  const maxLabelWidth = minGap * 0.9; // 90% of gap for some breathing room
+
+  // Adjust font size of each label to fit maxLabelWidth
+  events.forEach(ev => {
+    const label = ev.querySelector('.event-label');
+    let fontSize = parseFloat(window.getComputedStyle(label).fontSize);
+
+    // Shrink font size until width fits or minimum font size reached
+    while (label.scrollWidth > maxLabelWidth && fontSize > 8) {
+      fontSize -= 0.5;
+      label.style.fontSize = fontSize + 'px';
+    }
+  });
+}
