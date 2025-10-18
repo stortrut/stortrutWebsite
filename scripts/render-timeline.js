@@ -34,13 +34,18 @@ function addEventAgeTooltips(timeline) {
 
     const age = year - minYear;
 
-    eventEl.addEventListener('mouseenter', e => {
-      tooltip.textContent = `Ålder: ${age} år`;
-      const rect = eventEl.getBoundingClientRect();
-      tooltip.style.left = `${rect.left + window.scrollX + 10}px`;
-      tooltip.style.top = `${rect.top + window.scrollY - 30}px`;
-      tooltip.style.opacity = '1';
-    });
+eventEl.addEventListener('mouseenter', () => {
+  tooltip.textContent = `Age: ${age} years`;
+
+  // Delay positioning slightly to ensure it's accurate after DOM changes
+  requestAnimationFrame(() => {
+    const rect = eventEl.getBoundingClientRect();
+    tooltip.style.left = `${rect.left + window.scrollX + 10}px`;
+    tooltip.style.top = `${rect.top + window.scrollY - 30}px`;
+    tooltip.style.opacity = '1';
+  });
+});
+
 
     eventEl.addEventListener('mouseleave', () => {
       tooltip.style.opacity = '0';
