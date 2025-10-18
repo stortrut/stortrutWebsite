@@ -13,7 +13,7 @@ body {
   /* Fixed max width */
   padding: 20px;
   background-color: #fff8ee;
-  border-radius: 10px;
+  border-radius: 1px;
   box-sizing: border-box;
 }
 
@@ -71,11 +71,10 @@ a:hover {
 /*---- Karaktärs-data --------------------------------------*/
 .character-box {
   float: right;
-  width: 260px;
   margin: 0 0 20px 20px; /* margin-left creates space from the text */
   background: #fdfcf8;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 2px;
   border: 2px solid #bbb;
   box-sizing: border-box;
 }
