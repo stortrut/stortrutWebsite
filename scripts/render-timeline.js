@@ -38,6 +38,11 @@ function renderTimeline(containerId, dataId) {
     `;
 
     timeline.appendChild(eventEl);
+
+      // 👇 Insert links after re-rendering the timeline
+  if (typeof replaceWordsWithLinks === 'function') {
+    replaceWordsWithLinks(timeline);
+  }
   });
 }
 
