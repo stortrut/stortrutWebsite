@@ -100,5 +100,13 @@ a:hover {
     max-width: 100%;
   }
 }
-
+.character-image {
+  width: 100%;
+  height: auto;
+  border-radius: 3px 3px 0 0; /* optional rounded top corners */
+  display: block;
+}
+.character-box .character-section:first-of-type {
+  margin-top: 10px;
+}
 /* -------------------------------------- */
