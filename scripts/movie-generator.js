@@ -290,6 +290,11 @@ function sortMovies(criteria) {
   }
 
   sorted.sort((a, b) => {
+    if (criteria === "seen-date") {
+      const da = a.seen_date ? new Date(a.seen_date).getTime() : 0;
+      const db = b.seen_date ? new Date(b.seen_date).getTime() : 0;
+      return (da - db) * currentDirection;
+    }
     if (criteria === "title") {
       return a.title.localeCompare(b.title) * currentDirection;
     }
@@ -301,11 +306,7 @@ function sortMovies(criteria) {
     if (criteria === "rating") {
       return ((a.filteredAvgRating || 0) - (b.filteredAvgRating || 0)) * currentDirection;
     }
-    if (criteria === "seen-date") {
-      const da = a.seen_date ? new Date(a.seen_date).getTime() : 0;
-      const db = b.seen_date ? new Date(b.seen_date).getTime() : 0;
-      return (da - db) * currentDirection;
-    }
+
     return 0;
   });
 
@@ -317,7 +318,7 @@ function sortMovies(criteria) {
 function showMovieModal(movie) {
   const modal = document.getElementById("movie-modal");
   const template = document.getElementById("movie-modal-template");
-  
+
   // Clear previous modal content
   modal.innerHTML = "";
 
@@ -331,7 +332,7 @@ function showMovieModal(movie) {
   clone.querySelector(".modal-genres").textContent = movie.genre || "N/A";
   clone.querySelector(".modal-seen-date").textContent = movie.seen_date || "N/A";
   clone.querySelector(".modal-average-rating").textContent = movie.avgRating.toFixed(1);
-  
+
   const reviewsList = clone.querySelector(".modal-reviews-list");
   reviewsList.innerHTML = movie.reviews.map(r => `<li>${r.name}: ${r.score}</li>`).join("");
 
