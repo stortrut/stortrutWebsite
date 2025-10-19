@@ -14,11 +14,20 @@ function updateTransform() {
 }
 
 // Center the map visually on load
-const rect = viewport.getBoundingClientRect();
-currentX = (rect.width - rect.width * scale) / 2;
-currentY = (rect.height - rect.height * scale) / 2;
+window.addEventListener('load', () => {
+  const viewportRect = viewport.getBoundingClientRect();
+  const wrapperRect = wrapper.getBoundingClientRect();
 
-updateTransform();
+  // Calculate the size of the wrapper at the current scale
+  const scaledWidth = wrapper.offsetWidth * scale;
+  const scaledHeight = wrapper.offsetHeight * scale;
+
+  // Center the wrapper in the viewport
+  currentX = (viewportRect.width - scaledWidth) / 2;
+  currentY = (viewportRect.height - scaledHeight) / 2;
+
+  updateTransform();
+});
 
 // DRAGGING ----------------------
 
