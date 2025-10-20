@@ -104,30 +104,8 @@
     }
   </script>
 
-  <script>
-    // Function to process the template content and append it somewhere
-    function processEventDataTemplate() {
-      const template = document.getElementById('eventData');
-      if (!template) return;
 
-      // Clone the template content
-      const fragment = template.content.cloneNode(true);
 
-      // Run the replaceWordsWithLinks on the fragment (your modified function)
-      replaceWordsWithLinks(fragment);
-
-      // Now insert the processed content somewhere visible, for example inside timeline
-      const timeline = document.getElementById('timeline');
-      if (timeline) {
-        timeline.appendChild(fragment);
-      }
-    }
-
-    // Call this function once your scripts have loaded
-    window.addEventListener('DOMContentLoaded', () => {
-      processEventDataTemplate();
-    });
-  </script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
