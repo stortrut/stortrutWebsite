@@ -69,7 +69,8 @@ a:hover {
 
 /*---- Karaktärs-data --------------------------------------*/
 .character-box {
-  float: right;             /* float the box to the right */
+  float: right;
+  /* float the box to the right */
   background: #fdfcf8;
   padding: 20px;
   border-radius: 8px;
@@ -81,8 +82,10 @@ a:hover {
 }
 
 .character-data {
-  display: inline-block;    /* shrink-wrap text content */
-  vertical-align: top;      /* align with image if needed */
+  display: inline-block;
+  /* shrink-wrap text content */
+  vertical-align: top;
+  /* align with image if needed */
 }
 
 .character-section {
@@ -95,11 +98,13 @@ a:hover {
 
 .character-image {
   display: block;
-  max-width: 100%;          /* scale down to fit parent width */
+  max-width: 100%;
+  /* scale down to fit parent width */
   height: auto;
   margin-bottom: 10px;
   /* This keeps image from stretching the box */
 }
+
 /* -------------------------------------- */
 
 /* ---------Side bar content---------------- */
@@ -115,19 +120,29 @@ a:hover {
 /* Sidebar */
 #toc-sidebar {
   position: fixed;
-  top: 100px; /* vertical offset */
-  width: 200px; /* sidebar width */
-  left: calc(50% - 500px - 250px); /* 500 = 1000/2 main width, 210 = 200 sidebar width + 10px gap */
+  top: 100px;
+  /* vertical offset */
+  width: 200px;
+  /* sidebar width */
+  left: calc(50% - 500px - 250px);
+  /* 500 = 1000/2 main width, 210 = 200 sidebar width + 10px gap */
   max-height: 80vh;
   overflow-y: auto;
   background: #fff8ee;
   border: 2px solid #d4af37;
   border-radius: 4px;
   padding: 10px 15px;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   font-family: 'Cinzel', serif;
   z-index: 1000;
+  display: block;
+  /* makes each link take full line */
+  margin: 5px 0;
+  /* vertical spacing */
+
 }
+
+
 
 /* Hide sidebar on small screens */
 @media (max-width: 1200px) {
