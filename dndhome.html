@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Zoomable Timeline (Zoom on Mouse Position)</title>
+<title>Zoomable Timeline with Padding</title>
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -65,23 +65,26 @@
   const startYear = 1000;
   const endYear = 2100;
 
+  // Padding on left and right sides in pixels
+  const horizontalPadding = 50;
+
   // Zoom levels control how many pixels per year
-  // At zoom level 1: 20 px/year, zoom 0.5: 10 px/year, etc.
   let zoomLevel = 1; 
   const minZoom = 0.1;
   const maxZoom = 5;
 
-  // Render timeline function
   function renderTimeline() {
     timeline.innerHTML = '';
 
     const pixelsPerYear = 20 * zoomLevel;
     const totalYears = endYear - startYear;
-    const timelineWidth = pixelsPerYear * totalYears;
+
+    // Total width includes padding on both sides
+    const timelineWidth = pixelsPerYear * totalYears + horizontalPadding * 2;
     timeline.style.width = timelineWidth + 'px';
     timeline.style.height = '100px';
 
-    // Decide which ticks to show based on zoomLevel
+    // Decide tick step based on zoom level
     let step = 1;
     if (zoomLevel >= 2) {
       step = 1;
@@ -92,9 +95,10 @@
     }
 
     for(let year = startYear; year <= endYear; year += step) {
-      const x = (year - startYear) * pixelsPerYear;
+      // Offset x by horizontalPadding so first year isn't flush left
+      const x = horizontalPadding + (year - startYear) * pixelsPerYear;
 
-      // Draw tick line
+      // Tick line
       const tick = document.createElement('div');
       tick.className = 'tick';
       tick.style.left = x + 'px';
@@ -109,7 +113,7 @@
 
       timeline.appendChild(tick);
 
-      // Draw year label
+      // Year label
       const label = document.createElement('div');
       label.className = 'tick-year';
       label.style.left = x + 'px';
@@ -118,45 +122,38 @@
     }
   }
 
-  // Zoom function with mouse position focus
+  // Zoom function with mouse position focus, accounting for padding
   function zoom(factor, mouseX = null) {
-    // Clamp new zoom level
     const newZoomLevel = Math.min(maxZoom, Math.max(minZoom, zoomLevel * factor));
 
     if (mouseX === null) {
-      // No mouse position, just zoom normally and re-render
       zoomLevel = newZoomLevel;
       renderTimeline();
       return;
     }
 
-    // Calculate pixels per year before and after zoom
     const oldPixelsPerYear = 20 * zoomLevel;
     const newPixelsPerYear = 20 * newZoomLevel;
 
-    // Current scroll position of the container
     const scrollLeft = timelineContainer.scrollLeft;
-
-    // Mouse position relative to the timeline container
     const containerRect = timelineContainer.getBoundingClientRect();
     const mouseOffsetX = mouseX - containerRect.left;
 
-    // Calculate the year under the mouse pointer BEFORE zoom
-    const yearAtMouse = startYear + (scrollLeft + mouseOffsetX) / oldPixelsPerYear;
+    // Calculate year at mouse pointer before zoom (account for padding)
+    const yearAtMouse = startYear + (scrollLeft + mouseOffsetX - horizontalPadding) / oldPixelsPerYear;
 
-    // Calculate the new scrollLeft so that yearAtMouse stays under the mouse
-    const newScrollLeft = (yearAtMouse - startYear) * newPixelsPerYear - mouseOffsetX;
+    // Calculate new scrollLeft so the year stays under mouse pointer (account for padding)
+    const newScrollLeft = (yearAtMouse - startYear) * newPixelsPerYear + horizontalPadding - mouseOffsetX;
 
-    // Apply the zoom level and re-render
     zoomLevel = newZoomLevel;
     renderTimeline();
 
-    // Set the new scroll position, clamped to timeline bounds
+    // Clamp scrollLeft
     const maxScroll = timeline.scrollWidth - timelineContainer.clientWidth;
     timelineContainer.scrollLeft = Math.min(Math.max(newScrollLeft, 0), maxScroll);
   }
 
-  // Button handlers (zoom centered on middle of container)
+  // Buttons zoom centered on container middle
   zoomInBtn.addEventListener('click', () => {
     const centerX = timelineContainer.getBoundingClientRect().left + timelineContainer.clientWidth / 2;
     zoom(1.5, centerX);
@@ -166,7 +163,7 @@
     zoom(1 / 1.5, centerX);
   });
 
-  // Mouse wheel zoom with mouse position focus
+  // Mouse wheel zoom with mouse position
   timelineContainer.addEventListener('wheel', e => {
     e.preventDefault();
 
