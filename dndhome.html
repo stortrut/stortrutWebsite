@@ -3,175 +3,145 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Simple Timeline</title>
+<title>Zoomable Timeline</title>
 <style>
-  html, body {
-    margin: 0; padding: 0; height: 100%;
-    background: #12131a;
-    color: #eee;
+  body {
     font-family: Arial, sans-serif;
-    overflow: hidden;
-    user-select: none;
+    margin: 20px;
   }
-
-  #container {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+  #timeline-container {
     position: relative;
-    cursor: grab;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #timeline {
-    position: relative;
-    height: 30px; /* thicker line */
-    background: #444;
-    border-radius: 15px;
-    user-select: none;
-    will-change: transform;
-  }
-
-  .tick {
-    position: absolute;
-    bottom: 100%;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 15px 10px 0 10px; /* triangle shape */
-    border-color: #bbb transparent transparent transparent;
-    opacity: 0.7;
-  }
-
-  .label {
-    position: absolute;
-    bottom: 100%;
-    margin-bottom: 20px;
-    color: #ccc;
-    font-size: 14px;
-    font-weight: bold;
-    transform: translateX(-50%);
+    width: 100%;
+    height: 100px;
+    border: 1px solid #333;
+    overflow-x: scroll;
     white-space: nowrap;
     user-select: none;
+  }
+  #timeline {
+    position: relative;
+    height: 100px;
+  }
+  .tick {
+    position: absolute;
+    bottom: 0;
+    width: 1px;
+    background-color: black;
+  }
+  .tick-year {
+    position: absolute;
+    bottom: 20px;
+    font-size: 12px;
+    white-space: nowrap;
+    transform: translateX(-50%);
+  }
+  #controls {
+    margin-bottom: 10px;
+  }
+  button {
+    font-size: 16px;
+    margin-right: 10px;
   }
 </style>
 </head>
 <body>
 
-<div id="container">
+<div id="controls">
+  <button id="zoom-in">Zoom In +</button>
+  <button id="zoom-out">Zoom Out -</button>
+</div>
+
+<div id="timeline-container">
   <div id="timeline"></div>
 </div>
 
 <script>
-  const container = document.getElementById('container');
   const timeline = document.getElementById('timeline');
+  const timelineContainer = document.getElementById('timeline-container');
+  const zoomInBtn = document.getElementById('zoom-in');
+  const zoomOutBtn = document.getElementById('zoom-out');
 
-  // Timeline configuration
-  const minYear = -1000;
-  const maxYear = 1000;
-  const yearRange = maxYear - minYear;
-  const basePxPerYear = 1.5; // pixels per year at scale 1
-  const minScale = 0.1;
-  const maxScale = 10;
+  // Timeline settings
+  const startYear = 1000;
+  const endYear = 2100;
 
-  // State
-  let offsetX = 0;
-  let scale = 1;
+  // Zoom levels control how many pixels per year
+  // At zoom level 1: 20 px/year, zoom 0.5: 10 px/year, etc.
+  let zoomLevel = 1; 
+  const minZoom = 0.1;
+  const maxZoom = 5;
 
-  // Setup timeline width according to year range
-  let timelineWidth = yearRange * basePxPerYear;
-  timeline.style.width = timelineWidth + 'px';
+  // Render timeline
+  function renderTimeline() {
+    timeline.innerHTML = '';
 
-  // Center timeline horizontally in container initially
-  offsetX = container.clientWidth / 2 - (timelineWidth * scale) / 2;
-  updateTransform();
+    const pixelsPerYear = 20 * zoomLevel;
+    const totalYears = endYear - startYear;
+    const timelineWidth = pixelsPerYear * totalYears;
+    timeline.style.width = timelineWidth + 'px';
+    timeline.style.height = '100px';
 
-  // Draw ticks every 100 years
-  function drawTicks() {
-    timeline.innerHTML = ''; // clear previous
+    // Decide which ticks to show based on zoomLevel
+    // If zoomLevel >= 2 show every year
+    // else if zoomLevel >= 0.5 show every 10 years
+    // else show every 100 years
+    let step = 1;
+    if (zoomLevel >= 2) {
+      step = 1;
+    } else if (zoomLevel >= 0.5) {
+      step = 10;
+    } else {
+      step = 100;
+    }
 
-    for(let year = minYear; year <= maxYear; year += 100) {
-      const x = (year - minYear) * basePxPerYear;
+    for(let year = startYear; year <= endYear; year += step) {
+      const x = (year - startYear) * pixelsPerYear;
 
+      // Draw tick line
       const tick = document.createElement('div');
-      tick.classList.add('tick');
-      tick.style.left = `${x}px`;
+      tick.className = 'tick';
+      tick.style.left = x + 'px';
+
+      // Tick height depends on granularity
+      if (step === 1) {
+        tick.style.height = '30px';
+      } else if (step === 10) {
+        tick.style.height = '40px';
+      } else {
+        tick.style.height = '50px';
+      }
+
       timeline.appendChild(tick);
 
+      // Draw year label
       const label = document.createElement('div');
-      label.classList.add('label');
-      label.style.left = `${x}px`;
+      label.className = 'tick-year';
+      label.style.left = x + 'px';
       label.textContent = year;
       timeline.appendChild(label);
     }
   }
 
-  drawTicks();
-
-  // Apply current transform
-  function updateTransform() {
-    timeline.style.transform = `translateX(${offsetX}px) scale(${scale})`;
+  function zoom(factor) {
+    zoomLevel = Math.min(maxZoom, Math.max(minZoom, zoomLevel * factor));
+    renderTimeline();
   }
 
-  // Drag to pan
-  let isDragging = false;
-  let dragStartX = 0;
-  let lastOffsetX = 0;
+  zoomInBtn.addEventListener('click', () => zoom(1.5));
+  zoomOutBtn.addEventListener('click', () => zoom(1 / 1.5));
 
-  container.addEventListener('mousedown', e => {
-    isDragging = true;
-    dragStartX = e.clientX;
-    lastOffsetX = offsetX;
-    container.style.cursor = 'grabbing';
-  });
-
-  window.addEventListener('mouseup', () => {
-    isDragging = false;
-    container.style.cursor = 'grab';
-  });
-
-  window.addEventListener('mousemove', e => {
-    if (!isDragging) return;
-    const dx = e.clientX - dragStartX;
-    offsetX = lastOffsetX + dx;
-    updateTransform();
-  });
-
-  // Zoom centered on mouse pointer
-  container.addEventListener('wheel', e => {
+  // Optional: zoom with mouse wheel on timeline container
+  timelineContainer.addEventListener('wheel', e => {
     e.preventDefault();
-
-    const zoomFactor = 1.1;
-    const oldScale = scale;
-    let newScale = scale;
-
-    if(e.deltaY < 0){
-      newScale = Math.min(scale * zoomFactor, maxScale);
+    if (e.deltaY < 0) {
+      zoom(1.2);
     } else {
-      newScale = Math.max(scale / zoomFactor, minScale);
+      zoom(1 / 1.2);
     }
-
-    const rect = timeline.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left; // position inside timeline element
-
-    // world coordinate before zoom
-    const worldX = (mouseX - offsetX) / oldScale;
-
-    // update offset to keep mouse world position stable
-    offsetX = e.clientX - worldX * newScale;
-
-    scale = newScale;
-
-    updateTransform();
-  }, { passive: false });
-
-  // Center timeline on window resize
-  window.addEventListener('resize', () => {
-    offsetX = container.clientWidth / 2 - (timelineWidth * scale) / 2;
-    updateTransform();
   });
+
+  // Initial render
+  renderTimeline();
 </script>
 
 </body>
