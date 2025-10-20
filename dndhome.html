@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Zoomable Timeline Proper Centering</title>
+<title>Zoomable Timeline with Dynamic Min Zoom & Padding</title>
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -64,19 +64,52 @@
 
   const startYear = 1000;
   const endYear = 2100;
-  const horizontalPadding = 50;
+  const totalYears = endYear - startYear;
+
+  // Base padding at full zoom
+  const maxPadding = 50;
 
   let zoomLevel = 1;
-  const minZoom = 0.1;
+  let minZoom = 0.1; // will be recalculated dynamically
   const maxZoom = 5;
+
+  // Calculate dynamic minimum zoom based on container width and max padding
+  function calculateMinZoom(containerWidth) {
+    // At minimum zoom, timeline width should be at least container width
+    // timelineWidth = pixelsPerYear * totalYears + 2 * padding
+    // pixelsPerYear = 20 * zoomLevel
+    // Solve for zoomLevel:
+    // containerWidth <= 20 * zoomLevel * totalYears + 2 * padding
+    // => zoomLevel >= (containerWidth - 2 * padding) / (20 * totalYears)
+    return Math.max(0.01, (containerWidth - 2 * maxPadding) / (20 * totalYears));
+  }
+
+  function getDynamicPadding(zoom) {
+    // As zoom shrinks, reduce padding so timeline can fit
+    // At zoom >= 1, padding = maxPadding
+    // At zoom near minZoom, padding -> 0
+    const minPadding = 5;
+    if (zoom >= 1) return maxPadding;
+    // Linear interpolation between minPadding and maxPadding
+    const t = (zoom - minZoom) / (1 - minZoom);
+    return minPadding + t * (maxPadding - minPadding);
+  }
 
   function renderTimeline() {
     timeline.innerHTML = '';
 
-    const pixelsPerYear = 20 * zoomLevel;
-    const totalYears = endYear - startYear;
-    const timelineWidth = pixelsPerYear * totalYears + horizontalPadding * 2;
+    const containerWidth = timelineContainer.clientWidth;
 
+    // Update minZoom dynamically on container size
+    minZoom = calculateMinZoom(containerWidth);
+
+    // Clamp zoomLevel to minZoom if needed
+    if (zoomLevel < minZoom) zoomLevel = minZoom;
+
+    const padding = getDynamicPadding(zoomLevel);
+    const pixelsPerYear = 20 * zoomLevel;
+
+    const timelineWidth = pixelsPerYear * totalYears + padding * 2;
     timeline.style.width = timelineWidth + 'px';
     timeline.style.height = '100px';
 
@@ -90,7 +123,7 @@
     }
 
     for (let year = startYear; year <= endYear; year += step) {
-      const x = horizontalPadding + (year - startYear) * pixelsPerYear;
+      const x = padding + (year - startYear) * pixelsPerYear;
 
       const tick = document.createElement('div');
       tick.className = 'tick';
@@ -114,7 +147,6 @@
     }
 
     // Center timeline visually if narrower than container
-    const containerWidth = timelineContainer.clientWidth;
     if (timelineWidth < containerWidth) {
       timeline.style.left = ((containerWidth - timelineWidth) / 2) + 'px';
     } else {
@@ -123,13 +155,21 @@
   }
 
   function zoom(factor, mouseX = null) {
-    const newZoomLevel = Math.min(maxZoom, Math.max(minZoom, zoomLevel * factor));
+    const containerWidth = timelineContainer.clientWidth;
+    minZoom = calculateMinZoom(containerWidth);
+
+    let newZoomLevel = zoomLevel * factor;
+    if (newZoomLevel < minZoom) newZoomLevel = minZoom;
+    if (newZoomLevel > maxZoom) newZoomLevel = maxZoom;
 
     if (mouseX === null) {
       zoomLevel = newZoomLevel;
       renderTimeline();
       return;
     }
+
+    const oldPadding = getDynamicPadding(zoomLevel);
+    const newPadding = getDynamicPadding(newZoomLevel);
 
     const oldPixelsPerYear = 20 * zoomLevel;
     const newPixelsPerYear = 20 * newZoomLevel;
@@ -138,19 +178,17 @@
     const containerRect = timelineContainer.getBoundingClientRect();
     const mouseOffsetX = mouseX - containerRect.left;
 
-    // Adjust for horizontal padding & possible left offset (when centered)
     const timelineLeft = parseFloat(getComputedStyle(timeline).left) || 0;
 
-    // Calculate year at mouse pointer before zoom (account for padding & offset)
-    const yearAtMouse = startYear + (scrollLeft + mouseOffsetX - horizontalPadding - timelineLeft) / oldPixelsPerYear;
+    // Calculate year at mouse pointer before zoom
+    const yearAtMouse = startYear + (scrollLeft + mouseOffsetX - oldPadding - timelineLeft) / oldPixelsPerYear;
 
-    // Calculate new scrollLeft so the year stays under mouse pointer
-    const newScrollLeft = (yearAtMouse - startYear) * newPixelsPerYear + horizontalPadding + timelineLeft - mouseOffsetX;
+    // Calculate new scrollLeft so year stays under mouse pointer after zoom
+    const newScrollLeft = (yearAtMouse - startYear) * newPixelsPerYear + newPadding + timelineLeft - mouseOffsetX;
 
     zoomLevel = newZoomLevel;
     renderTimeline();
 
-    // Clamp scrollLeft if timeline wider than container
     const maxScroll = timeline.scrollWidth - timelineContainer.clientWidth;
     timelineContainer.scrollLeft = Math.min(Math.max(newScrollLeft, 0), maxScroll);
   }
@@ -168,6 +206,10 @@
     e.preventDefault();
     const zoomFactor = e.deltaY < 0 ? 1.2 : 1 / 1.2;
     zoom(zoomFactor, e.clientX);
+  });
+
+  window.addEventListener('resize', () => {
+    renderTimeline();
   });
 
   renderTimeline();
