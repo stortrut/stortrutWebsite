@@ -15,18 +15,19 @@ function updateTransform() {
 
 // Center the map visually on load
 window.addEventListener('load', () => {
-  const viewportRect = viewport.getBoundingClientRect();
-  const wrapperRect = wrapper.getBoundingClientRect();
+  // Force layout update before measuring
+  requestAnimationFrame(() => {
+    const viewportRect = viewport.getBoundingClientRect();
+    const wrapperRect = wrapper.getBoundingClientRect();
 
-  // Calculate the size of the wrapper at the current scale
-  const scaledWidth = wrapper.offsetWidth * scale;
-  const scaledHeight = wrapper.offsetHeight * scale;
+    const scaledWidth = wrapper.offsetWidth * scale;
+    const scaledHeight = wrapper.offsetHeight * scale;
 
-  // Center the wrapper in the viewport
-  currentX = (viewportRect.width - scaledWidth) / 2;
-  currentY = (viewportRect.height - scaledHeight) / 2;
+    currentX = (viewport.clientWidth - scaledWidth) / 2;
+    currentY = (viewport.clientHeight - scaledHeight) / 2;
 
-  updateTransform();
+    updateTransform();
+  });
 });
 
 // DRAGGING ----------------------
