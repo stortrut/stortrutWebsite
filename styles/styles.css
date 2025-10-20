@@ -18,6 +18,7 @@ p{
   flex-wrap: wrap; /* allows items to wrap on small screens */
   align-items: center;
   padding: 10px;
+  justify-content: center; /* ✅ center horizontally */
 
   /*some load bs*/
   min-height: 65px;        /* Reserve approx height */
