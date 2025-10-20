@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Zoomable Timeline</title>
+<title>Zoomable Timeline (Zoom on Mouse Position)</title>
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -71,7 +71,7 @@
   const minZoom = 0.1;
   const maxZoom = 5;
 
-  // Render timeline
+  // Render timeline function
   function renderTimeline() {
     timeline.innerHTML = '';
 
@@ -82,9 +82,6 @@
     timeline.style.height = '100px';
 
     // Decide which ticks to show based on zoomLevel
-    // If zoomLevel >= 2 show every year
-    // else if zoomLevel >= 0.5 show every 10 years
-    // else show every 100 years
     let step = 1;
     if (zoomLevel >= 2) {
       step = 1;
@@ -102,7 +99,6 @@
       tick.className = 'tick';
       tick.style.left = x + 'px';
 
-      // Tick height depends on granularity
       if (step === 1) {
         tick.style.height = '30px';
       } else if (step === 10) {
@@ -122,22 +118,60 @@
     }
   }
 
-  function zoom(factor) {
-    zoomLevel = Math.min(maxZoom, Math.max(minZoom, zoomLevel * factor));
+  // Zoom function with mouse position focus
+  function zoom(factor, mouseX = null) {
+    // Clamp new zoom level
+    const newZoomLevel = Math.min(maxZoom, Math.max(minZoom, zoomLevel * factor));
+
+    if (mouseX === null) {
+      // No mouse position, just zoom normally and re-render
+      zoomLevel = newZoomLevel;
+      renderTimeline();
+      return;
+    }
+
+    // Calculate pixels per year before and after zoom
+    const oldPixelsPerYear = 20 * zoomLevel;
+    const newPixelsPerYear = 20 * newZoomLevel;
+
+    // Current scroll position of the container
+    const scrollLeft = timelineContainer.scrollLeft;
+
+    // Mouse position relative to the timeline container
+    const containerRect = timelineContainer.getBoundingClientRect();
+    const mouseOffsetX = mouseX - containerRect.left;
+
+    // Calculate the year under the mouse pointer BEFORE zoom
+    const yearAtMouse = startYear + (scrollLeft + mouseOffsetX) / oldPixelsPerYear;
+
+    // Calculate the new scrollLeft so that yearAtMouse stays under the mouse
+    const newScrollLeft = (yearAtMouse - startYear) * newPixelsPerYear - mouseOffsetX;
+
+    // Apply the zoom level and re-render
+    zoomLevel = newZoomLevel;
     renderTimeline();
+
+    // Set the new scroll position, clamped to timeline bounds
+    const maxScroll = timeline.scrollWidth - timelineContainer.clientWidth;
+    timelineContainer.scrollLeft = Math.min(Math.max(newScrollLeft, 0), maxScroll);
   }
 
-  zoomInBtn.addEventListener('click', () => zoom(1.5));
-  zoomOutBtn.addEventListener('click', () => zoom(1 / 1.5));
+  // Button handlers (zoom centered on middle of container)
+  zoomInBtn.addEventListener('click', () => {
+    const centerX = timelineContainer.getBoundingClientRect().left + timelineContainer.clientWidth / 2;
+    zoom(1.5, centerX);
+  });
+  zoomOutBtn.addEventListener('click', () => {
+    const centerX = timelineContainer.getBoundingClientRect().left + timelineContainer.clientWidth / 2;
+    zoom(1 / 1.5, centerX);
+  });
 
-  // Optional: zoom with mouse wheel on timeline container
+  // Mouse wheel zoom with mouse position focus
   timelineContainer.addEventListener('wheel', e => {
     e.preventDefault();
-    if (e.deltaY < 0) {
-      zoom(1.2);
-    } else {
-      zoom(1 / 1.2);
-    }
+
+    const zoomFactor = e.deltaY < 0 ? 1.2 : 1 / 1.2;
+    zoom(zoomFactor, e.clientX);
   });
 
   // Initial render
