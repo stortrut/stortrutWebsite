@@ -47,6 +47,10 @@
         Zanto.
       </p>
 
+      <h2>Uppväxt</h2>
+      Skickades som ung till Väggmossens Munkkloster där han snabbt blev deras bästa elev. Han tränades av Gregol Sten,
+      och en av hans bästa vänner var Uing Zanto
+
       <h2>Medlem i Frihetskämparna</h2>
       <p>
         Är nu en medlem i Frihetskämparna@(Frihetskämparna).
@@ -106,33 +110,41 @@
 
 
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const headings = document.querySelectorAll("h2");
-    if (headings.length === 0) return;
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const headings = document.querySelectorAll("h2");
+      if (headings.length === 0) return;
 
-    const toc = document.getElementById("toc-sidebar");
-    const list = document.createElement("div");
-    const title = document.createElement("h3");
-    title.textContent = "Innehåll";
-    toc.appendChild(title);
+      const toc = document.getElementById("toc-sidebar");
+      const list = document.createElement("div");
+      const title = document.createElement("h3");
+      title.textContent = "Innehåll";
+      toc.appendChild(title);
 
-    headings.forEach((h2, index) => {
-      // Generate unique ID if missing
-      if (!h2.id) {
-        h2.id = "section-" + index;
-      }
+      headings.forEach((h2, index) => {
+        // Generate unique ID if missing
+        if (!h2.id) {
+          h2.id = "section-" + index;
+        }
 
-      const link = document.createElement("a");
-      link.href = `#${h2.id}`;
-      link.textContent = h2.textContent;
+        const link = document.createElement("a");
+        link.href = `#${h2.id}`;
+        link.textContent = h2.textContent;
 
-      list.appendChild(link);
+        list.appendChild(link);
+      });
+
+      // After generating and inserting sidebar links:
+      const sidebarLinks = document.querySelectorAll('#sidebar-contents a');
+      sidebarLinks.forEach(link => {
+        link.removeAttribute('data-preview');
+      });
+
+
+
+      toc.appendChild(list);
     });
-
-    toc.appendChild(list);
-  });
-</script>
+  </script>
 
 
 
