@@ -103,19 +103,6 @@ a:hover {
 /* -------------------------------------- */
 
 /* ---------Side bar content---------------- */
-#sidebar-contents {
-  position: fixed;
-  top: 80px;          /* distance from top, adjust as needed */
-  left: 40px;         /* add some space from the very left edge */
-  width: 200px;       /* fixed width */
-  max-height: 80vh;   /* keep scrollable */
-  overflow-y: auto;
-  background: #f9f9f9;
-  padding: 10px;
-  border-right: 1px solid #ccc; /* border on right side for separation */
-  box-sizing: border-box;
-  z-index: 1000;
-}
 
 #toc-sidebar {
   position: fixed;
