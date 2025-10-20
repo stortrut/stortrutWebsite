@@ -103,11 +103,24 @@ a:hover {
 /* -------------------------------------- */
 
 /* ---------Side bar content---------------- */
+#sidebar-contents {
+  position: fixed;
+  top: 80px;          /* distance from top, adjust as needed */
+  left: 40px;         /* add some space from the very left edge */
+  width: 200px;       /* fixed width */
+  max-height: 80vh;   /* keep scrollable */
+  overflow-y: auto;
+  background: #f9f9f9;
+  padding: 10px;
+  border-right: 1px solid #ccc; /* border on right side for separation */
+  box-sizing: border-box;
+  z-index: 1000;
+}
 
 #toc-sidebar {
   position: fixed;
   top: 100px; /* distance from top */
-  left: 20px;
+  left: 60px;  /* increase from 20px to add more space from left edge */
   width: 220px;
   max-height: 80vh;
   overflow-y: auto;
@@ -119,6 +132,7 @@ a:hover {
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
   z-index: 1000;
 }
+
 
 #toc-sidebar h3 {
   margin-top: 0;
