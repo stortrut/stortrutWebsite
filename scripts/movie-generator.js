@@ -1,6 +1,6 @@
 let allMovies = []; // store parsed movies globally
-let currentSort = "title"; // default sort criteria
-let currentDirection = 1; // 1 = ascending, -1 = descending
+let currentSort = "seen-date"; // default sort criteria
+let currentDirection = -1; // 1 = ascending, -1 = descending
 
 fetch("/movie-data.txt")
   .then(res => res.text())
