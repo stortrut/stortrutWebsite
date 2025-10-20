@@ -142,7 +142,7 @@ a:hover {
 }
 
 /* Optional: Make room for it on tiny screens */
-@media (max-width: 2000px) {
+@media (max-width: 1700px) {
   #toc-sidebar {
     display: none;
   }
