@@ -117,7 +117,7 @@ a:hover {
   position: fixed;
   top: 100px; /* vertical offset */
   width: 200px; /* sidebar width */
-  left: calc(50% - 500px - 210px); /* 500 = 1000/2 main width, 210 = 200 sidebar width + 10px gap */
+  left: calc(50% - 500px - 250px); /* 500 = 1000/2 main width, 210 = 200 sidebar width + 10px gap */
   max-height: 80vh;
   overflow-y: auto;
   background: #fff8ee;
