@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fast Zoomable Timeline</title>
+  <title>Smooth Scroll Timeline</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -21,7 +21,6 @@
     #timeline {
       position: relative;
       height: 100px;
-      left: 0;
     }
     .tick {
       position: absolute;
@@ -56,7 +55,7 @@
   <div id="timeline"></div>
 </div>
 
-<!-- Hidden config -->
+<!-- Hidden config block for custom start/end years -->
 <script id="timeline-config" type="application/json">
 {
   "startYear": 0,
@@ -81,6 +80,7 @@
   const maxZoom = 5;
   let zoomLevel = 1;
   let minZoom = 0.1;
+  let ticks = [];
 
   function calculateMinZoom(containerWidth) {
     return Math.max(0.01, (containerWidth - 2 * maxPadding) / (basePixelsPerYear * totalYears));
@@ -106,8 +106,16 @@
     return 1000;
   }
 
+  function clearTicks() {
+    ticks.forEach(t => {
+      t.tick.remove();
+      t.label.remove();
+    });
+    ticks = [];
+  }
+
   function renderTimeline() {
-    timeline.innerHTML = '';
+    clearTicks();
 
     const containerWidth = container.clientWidth;
     minZoom = calculateMinZoom(containerWidth);
@@ -116,7 +124,6 @@
     const padding = getDynamicPadding(zoomLevel);
     const pixelsPerYear = basePixelsPerYear * zoomLevel;
     const timelineWidth = pixelsPerYear * totalYears + padding * 2;
-
     timeline.style.width = timelineWidth + 'px';
 
     const scrollLeft = container.scrollLeft;
@@ -134,7 +141,6 @@
       drawnYears.add(year);
     }
 
-    // Always ensure startYear and endYear are shown
     drawnYears.add(startYear);
     drawnYears.add(endYear);
 
@@ -145,13 +151,16 @@
       tick.className = 'tick';
       tick.style.left = x + 'px';
       tick.style.height = step === 1 ? '30px' : step === 10 ? '40px' : '50px';
-      timeline.appendChild(tick);
 
       const label = document.createElement('div');
       label.className = 'tick-year';
       label.style.left = x + 'px';
       label.textContent = year;
+
+      timeline.appendChild(tick);
       timeline.appendChild(label);
+
+      ticks.push({ year, tick, label });
     }
 
     if (timelineWidth < containerWidth) {
@@ -159,6 +168,17 @@
     } else {
       timeline.style.left = '0px';
     }
+  }
+
+  function updateTickPositions() {
+    const padding = getDynamicPadding(zoomLevel);
+    const pixelsPerYear = basePixelsPerYear * zoomLevel;
+
+    ticks.forEach(({ year, tick, label }) => {
+      const x = padding + (year - startYear) * pixelsPerYear;
+      tick.style.left = x + 'px';
+      label.style.left = x + 'px';
+    });
   }
 
   function zoom(factor, mouseX = null) {
@@ -211,7 +231,7 @@
   });
 
   container.addEventListener('scroll', () => {
-    renderTimeline(); // Re-render visible range on scroll
+    updateTickPositions(); // Move ticks instead of redrawing
   });
 
   window.addEventListener('resize', renderTimeline);
