@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Odo</title>
+  
   <meta name="description" content="Medlem i en grupp hjältar vid namn Frihetskämparna.">
+  
   <link rel="icon" type="image/png" href="/images/icons/magpie.png">
 
   <link rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" href="/styles/dndstyle.css">
-
   <link rel="stylesheet" href="/styles/timeline.css">
-
 </head>
 
 <body>
@@ -28,7 +28,6 @@
 
       <div class="character-box">
         <img src="/images/character-art/odo.png" alt="Odo Orgulas" class="character-image">
-
         <div class="character-data">
           <div class="character-section"><strong>Namn:</strong> Odo Orgulas</div>
           <div class="character-section"><strong>Ålder:</strong> 21 (972 4TP)</div>
@@ -119,7 +118,6 @@
 
   <!-- Timeline output -->
   <div id="timeline" class="timeline-container"></div>
-
   <script src="/scripts/render-timeline.js"></script>
   <script src="/scripts/scripts-for-all/link-inserter.js"></script>
 
@@ -130,45 +128,5 @@
     }
   </script>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const headings = document.querySelectorAll("h2");
-      if (headings.length === 0) return;
-
-      const toc = document.getElementById("toc-sidebar");
-      const list = document.createElement("div");
-      const title = document.createElement("h3");
-      title.textContent = "Innehåll";
-      toc.appendChild(title);
-
-      headings.forEach((h2, index) => {
-        // Generate unique ID if missing
-        if (!h2.id) {
-          h2.id = "section-" + index;
-        }
-
-        const link = document.createElement("a");
-        link.href = `#${h2.id}`;
-        link.textContent = h2.textContent;
-
-        list.appendChild(link);
-      });
-
-      // After generating and inserting sidebar links:
-      const sidebarLinks = document.querySelectorAll('#sidebar-contents a');
-      sidebarLinks.forEach(link => {
-        link.removeAttribute('data-preview');
-      });
-
-      toc.appendChild(list);
-    });
-  </script>
-
-
-
-
-
-
 </body>
-
 </html>
