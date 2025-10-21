@@ -1,8 +1,6 @@
 console.log("✅ Timeline script loaded!");
 
 
-
-
 function addEventAgeTooltips(timeline) {
     const minYear = parseInt(timeline.dataset.minYear, 10);
     if (isNaN(minYear)) return;
