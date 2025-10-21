@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Simple Zoomable Timeline</title>
+  <title>Configurable Zoomable Timeline</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -56,9 +56,19 @@
   <div id="timeline"></div>
 </div>
 
+<!-- 🔒 Hidden Config (not shown on page) -->
+<script id="timeline-config" type="application/json">
+{
+  "startYear": 0,
+  "endYear": 900
+}
+</script>
+
 <script>
-  const startYear = 0;
-  const endYear = 900;
+  const configEl = document.getElementById('timeline-config');
+  const config = configEl ? JSON.parse(configEl.textContent) : {};
+  const startYear = config.startYear ?? 0;
+  const endYear = config.endYear ?? 900;
   const totalYears = Math.max(endYear - startYear, 1);
 
   const timeline = document.getElementById('timeline');
@@ -188,7 +198,6 @@
 
   window.addEventListener('resize', renderTimeline);
 
-  // Initial render
   setInitialZoom();
   renderTimeline();
 </script>
