@@ -1,282 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Flexible Timeline</title>
+  <title>Clean Zoomable Timeline</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      margin: 40px;
+      color: #333;
+    }
+
+    #controls {
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 6px 14px;
+      font-size: 16px;
+      border: none;
+      background-color: #444;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #222;
     }
 
     #timeline-container {
       position: relative;
       width: 100%;
-      height: 100px;
-      border: 1px solid #333;
+      height: 120px;
+      border: 1px solid #ccc;
+      background: white;
       overflow-x: scroll;
-      white-space: nowrap;
-      user-select: none;
+      border-radius: 6px;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
     }
 
     #timeline {
       position: relative;
-      height: 100px;
+      height: 100%;
     }
 
     .tick {
       position: absolute;
       bottom: 0;
-      width: 1px;
-      background-color: black;
+      width: 2px;
+      background-color: #888;
+      transition: height 0.1s ease;
     }
 
     .tick-year {
       position: absolute;
       bottom: 20px;
-      font-size: 12px;
+      font-size: 13px;
+      color: #444;
+      font-weight: 500;
       white-space: nowrap;
       transform: translateX(-50%);
+      pointer-events: none;
+      transition: left 0.1s ease;
     }
 
-    #controls {
-      margin-bottom: 10px;
-    }
-
-    button {
-      font-size: 16px;
-      margin-right: 10px;
+    /* Optional: Smooth scroll on mouse wheel */
+    #timeline-container {
+      scroll-behavior: smooth;
     }
   </style>
 </head>
-
 <body>
 
-  <div id="controls">
-    <button id="zoom-in">Zoom In +</button>
-    <button id="zoom-out">Zoom Out -</button>
-  </div>
+<div id="controls">
+  <button id="zoom-in">Zoom In +</button>
+  <button id="zoom-out">Zoom Out -</button>
+</div>
 
-  <div id="timeline-container">
-    <div id="timeline"></div>
-  </div>
+<div id="timeline-container">
+  <div id="timeline"></div>
+</div>
 
-  <!-- Hidden config: change start/end year here -->
-  <script id="timeline-config" type="application/json">
+<!-- Hidden config for flexibility -->
+<script id="timeline-config" type="application/json">
 {
   "startYear": 0,
   "endYear": 900
 }
 </script>
 
-  <script>
-    const configEl = document.getElementById('timeline-config');
-    const config = configEl ? JSON.parse(configEl.textContent) : {};
-    const startYear = config.startYear ?? 0;
-    const endYear = config.endYear ?? 900;
-    const totalYears = Math.max(endYear - startYear, 1);
+<script>
+  const configEl = document.getElementById('timeline-config');
+  const config = configEl ? JSON.parse(configEl.textContent) : {};
+  const startYear = config.startYear ?? 0;
+  const endYear = config.endYear ?? 900;
+  const totalYears = Math.max(endYear - startYear, 1);
 
-    const timeline = document.getElementById('timeline');
-    const container = document.getElementById('timeline-container');
-    const zoomInBtn = document.getElementById('zoom-in');
-    const zoomOutBtn = document.getElementById('zoom-out');
+  const timeline = document.getElementById('timeline');
+  const container = document.getElementById('timeline-container');
+  const zoomInBtn = document.getElementById('zoom-in');
+  const zoomOutBtn = document.getElementById('zoom-out');
 
-    const basePixelsPerYear = 20;
-    const maxPadding = 50;
-    const maxZoom = 5;
-    let zoomLevel = 1;
-    let minZoom = 0.1;
-    let ticks = [];
-    let lastRenderedRange = [null, null];
+  const basePixelsPerYear = 20;
+  const maxPadding = 50;
+  const maxZoom = 5;
+  let zoomLevel = 1;
+  let minZoom = 0.1;
+  let ticks = [];
+  let lastRenderedRange = [null, null];
 
-    function calculateMinZoom(containerWidth) {
-      return Math.max(0.01, (containerWidth - 2 * maxPadding) / (basePixelsPerYear * totalYears));
-    }
+  function calculateMinZoom(containerWidth) {
+    return Math.max(0.01, (containerWidth - 2 * maxPadding) / (basePixelsPerYear * totalYears));
+  }
 
-    function getDynamicPadding(zoom) {
-      const minPadding = 5;
-      if (zoom >= 1) return maxPadding;
-      const t = (zoom - minZoom) / (1 - minZoom);
-      return minPadding + t * (maxPadding - minPadding);
-    }
+  function getDynamicPadding(zoom) {
+    const minPadding = 5;
+    if (zoom >= 1) return maxPadding;
+    const t = (zoom - minZoom) / (1 - minZoom);
+    return minPadding + t * (maxPadding - minPadding);
+  }
 
-    function setInitialZoom() {
-      const containerWidth = container.clientWidth;
-      minZoom = calculateMinZoom(containerWidth);
-      zoomLevel = Math.max(minZoom, 1);
-    }
+  function setInitialZoom() {
+    const containerWidth = container.clientWidth;
+    minZoom = calculateMinZoom(containerWidth);
+    zoomLevel = Math.max(minZoom, 1);
+  }
 
-    function getStepSize() {
-      if (zoomLevel >= 2) return 1;
-      if (zoomLevel >= 0.5) return 10;
-      if (zoomLevel >= 0.1) return 100;
-      return 1000;
-    }
+  function getStepSize() {
+    if (zoomLevel >= 2) return 1;
+    if (zoomLevel >= 0.5) return 10;
+    if (zoomLevel >= 0.1) return 100;
+    return 1000;
+  }
 
-    function clearTicks() {
-      ticks.forEach(t => {
-        t.tick.remove();
-        t.label.remove();
-      });
-      ticks = [];
-    }
+  function clearTicks() {
+    ticks.forEach(t => {
+      t.tick.remove();
+      t.label.remove();
+    });
+    ticks = [];
+  }
 
-    function renderTimeline() {
-      clearTicks();
+  function renderTimeline() {
+    clearTicks();
 
-      const containerWidth = container.clientWidth;
-      minZoom = calculateMinZoom(containerWidth);
-      zoomLevel = Math.max(minZoom, Math.min(zoomLevel, maxZoom));
+    const containerWidth = container.clientWidth;
+    minZoom = calculateMinZoom(containerWidth);
+    zoomLevel = Math.max(minZoom, Math.min(zoomLevel, maxZoom));
 
-      const padding = getDynamicPadding(zoomLevel);
-      const pixelsPerYear = basePixelsPerYear * zoomLevel;
-      const timelineWidth = pixelsPerYear * totalYears + padding * 2;
-      timeline.style.width = timelineWidth + 'px';
+    const padding = getDynamicPadding(zoomLevel);
+    const pixelsPerYear = basePixelsPerYear * zoomLevel;
+    const timelineWidth = pixelsPerYear * totalYears + padding * 2;
+    timeline.style.width = timelineWidth + 'px';
 
-      const scrollLeft = container.scrollLeft;
-      const viewLeft = scrollLeft;
-      const viewRight = scrollLeft + container.clientWidth;
+    const scrollLeft = container.scrollLeft;
+    const viewLeft = scrollLeft;
+    const viewRight = scrollLeft + container.clientWidth;
 
-      const step = getStepSize();
-      const visibleStartYear = Math.floor(((viewLeft - padding) / pixelsPerYear) + startYear);
-      const visibleEndYear = Math.ceil(((viewRight - padding) / pixelsPerYear) + startYear);
+    const step = getStepSize();
+    const visibleStartYear = Math.floor(((viewLeft - padding) / pixelsPerYear) + startYear);
+    const visibleEndYear = Math.ceil(((viewRight - padding) / pixelsPerYear) + startYear);
 
-      const roundedStart = Math.floor(visibleStartYear / step) * step;
-      const roundedEnd = Math.ceil(visibleEndYear / step) * step;
+    const roundedStart = Math.floor(visibleStartYear / step) * step;
+    const roundedEnd = Math.ceil(visibleEndYear / step) * step;
 
-      lastRenderedRange = [roundedStart, roundedEnd];
+    lastRenderedRange = [roundedStart, roundedEnd];
 
-      const drawnYears = new Set();
-
-      for (let year = roundedStart; year <= roundedEnd; year += step) {
-        if (year >= startYear && year <= endYear) {
-          drawnYears.add(year);
-        }
-      }
-
-      // Ensure endYear is always rendered
-      drawnYears.add(endYear);
-
-      drawnYears.forEach(year => {
-        const x = padding + (year - startYear) * pixelsPerYear;
-
-        const tick = document.createElement('div');
-        tick.className = 'tick';
-        tick.style.left = x + 'px';
-        tick.style.height = step === 1 ? '30px' : step === 10 ? '40px' : '50px';
-
-        const label = document.createElement('div');
-        label.className = 'tick-year';
-        label.style.left = x + 'px';
-        label.textContent = year;
-
-        timeline.appendChild(tick);
-        timeline.appendChild(label);
-
-        ticks.push({ year, tick, label });
-      });
-
-      if (timelineWidth < containerWidth) {
-        timeline.style.left = ((containerWidth - timelineWidth) / 2) + 'px';
-      } else {
-        timeline.style.left = '0px';
+    const drawnYears = new Set();
+    for (let year = roundedStart; year <= roundedEnd; year += step) {
+      if (year >= startYear && year <= endYear) {
+        drawnYears.add(year);
       }
     }
 
-    function maybeRenderOnScroll() {
-      const scrollLeft = container.scrollLeft;
-      const containerWidth = container.clientWidth;
-      const padding = getDynamicPadding(zoomLevel);
-      const pixelsPerYear = basePixelsPerYear * zoomLevel;
-      const viewLeftYear = Math.floor((scrollLeft - padding) / pixelsPerYear) + startYear;
-      const viewRightYear = Math.ceil((scrollLeft + containerWidth - padding) / pixelsPerYear) + startYear;
+    drawnYears.add(endYear); // Ensure last year always appears
 
-      const step = getStepSize();
-      const roundedStart = Math.floor(viewLeftYear / step) * step;
-      const roundedEnd = Math.ceil(viewRightYear / step) * step;
+    drawnYears.forEach(year => {
+      const x = padding + (year - startYear) * pixelsPerYear;
 
-      if (
-        roundedStart !== lastRenderedRange[0] ||
-        roundedEnd !== lastRenderedRange[1]
-      ) {
-        renderTimeline();
-      } else {
-        updateTickPositions();
-      }
+      const tick = document.createElement('div');
+      tick.className = 'tick';
+      tick.style.left = x + 'px';
+      tick.style.height = step === 1 ? '25px' : step === 10 ? '35px' : '50px';
+
+      const label = document.createElement('div');
+      label.className = 'tick-year';
+      label.style.left = x + 'px';
+      label.textContent = year;
+
+      timeline.appendChild(tick);
+      timeline.appendChild(label);
+      ticks.push({ year, tick, label });
+    });
+
+    if (timelineWidth < containerWidth) {
+      timeline.style.left = ((containerWidth - timelineWidth) / 2) + 'px';
+    } else {
+      timeline.style.left = '0px';
     }
+  }
 
-    function updateTickPositions() {
-      const padding = getDynamicPadding(zoomLevel);
-      const pixelsPerYear = basePixelsPerYear * zoomLevel;
+  function maybeRenderOnScroll() {
+    const scrollLeft = container.scrollLeft;
+    const containerWidth = container.clientWidth;
+    const padding = getDynamicPadding(zoomLevel);
+    const pixelsPerYear = basePixelsPerYear * zoomLevel;
+    const viewLeftYear = Math.floor((scrollLeft - padding) / pixelsPerYear) + startYear;
+    const viewRightYear = Math.ceil((scrollLeft + containerWidth - padding) / pixelsPerYear) + startYear;
 
-      ticks.forEach(({ year, tick, label }) => {
-        const x = padding + (year - startYear) * pixelsPerYear;
-        tick.style.left = x + 'px';
-        label.style.left = x + 'px';
-      });
+    const step = getStepSize();
+    const roundedStart = Math.floor(viewLeftYear / step) * step;
+    const roundedEnd = Math.ceil(viewRightYear / step) * step;
+
+    if (
+      roundedStart !== lastRenderedRange[0] ||
+      roundedEnd !== lastRenderedRange[1]
+    ) {
+      renderTimeline();
+    } else {
+      updateTickPositions();
     }
+  }
 
-    function zoom(factor, mouseX = null) {
-      const containerWidth = container.clientWidth;
-      minZoom = calculateMinZoom(containerWidth);
+  function updateTickPositions() {
+    const padding = getDynamicPadding(zoomLevel);
+    const pixelsPerYear = basePixelsPerYear * zoomLevel;
 
-      let newZoomLevel = zoomLevel * factor;
-      newZoomLevel = Math.min(Math.max(newZoomLevel, minZoom), maxZoom);
+    ticks.forEach(({ year, tick, label }) => {
+      const x = padding + (year - startYear) * pixelsPerYear;
+      tick.style.left = x + 'px';
+      label.style.left = x + 'px';
+    });
+  }
 
-      if (mouseX === null) {
-        zoomLevel = newZoomLevel;
-        renderTimeline();
-        return;
-      }
+  function zoom(factor, mouseX = null) {
+    const containerWidth = container.clientWidth;
+    minZoom = calculateMinZoom(containerWidth);
 
-      const oldPadding = getDynamicPadding(zoomLevel);
-      const newPadding = getDynamicPadding(newZoomLevel);
-      const oldPixelsPerYear = basePixelsPerYear * zoomLevel;
-      const newPixelsPerYear = basePixelsPerYear * newZoomLevel;
+    let newZoomLevel = zoomLevel * factor;
+    newZoomLevel = Math.min(Math.max(newZoomLevel, minZoom), maxZoom);
 
-      const scrollLeft = container.scrollLeft;
-      const containerRect = container.getBoundingClientRect();
-      const mouseOffsetX = mouseX - containerRect.left;
-      const timelineLeft = parseFloat(getComputedStyle(timeline).left) || 0;
-
-      const yearAtMouse = startYear + (scrollLeft + mouseOffsetX - oldPadding - timelineLeft) / oldPixelsPerYear;
-      const newScrollLeft = (yearAtMouse - startYear) * newPixelsPerYear + newPadding + timelineLeft - mouseOffsetX;
-
+    if (mouseX === null) {
       zoomLevel = newZoomLevel;
       renderTimeline();
-
-      const maxScroll = timeline.scrollWidth - container.clientWidth;
-      container.scrollLeft = Math.min(Math.max(newScrollLeft, 0), maxScroll);
+      return;
     }
 
-    zoomInBtn.addEventListener('click', () => {
-      const centerX = container.getBoundingClientRect().left + container.clientWidth / 2;
-      zoom(1.5, centerX);
-    });
+    const oldPadding = getDynamicPadding(zoomLevel);
+    const newPadding = getDynamicPadding(newZoomLevel);
+    const oldPixelsPerYear = basePixelsPerYear * zoomLevel;
+    const newPixelsPerYear = basePixelsPerYear * newZoomLevel;
 
-    zoomOutBtn.addEventListener('click', () => {
-      const centerX = container.getBoundingClientRect().left + container.clientWidth / 2;
-      zoom(1 / 1.5, centerX);
-    });
+    const scrollLeft = container.scrollLeft;
+    const containerRect = container.getBoundingClientRect();
+    const mouseOffsetX = mouseX - containerRect.left;
+    const timelineLeft = parseFloat(getComputedStyle(timeline).left) || 0;
 
-    container.addEventListener('wheel', e => {
-      e.preventDefault();
-      const zoomFactor = e.deltaY < 0 ? 1.2 : 1 / 1.2;
-      zoom(zoomFactor, e.clientX);
-    });
+    const yearAtMouse = startYear + (scrollLeft + mouseOffsetX - oldPadding - timelineLeft) / oldPixelsPerYear;
+    const newScrollLeft = (yearAtMouse - startYear) * newPixelsPerYear + newPadding + timelineLeft - mouseOffsetX;
 
-    container.addEventListener('scroll', () => {
-      maybeRenderOnScroll();
-    });
-
-    window.addEventListener('resize', renderTimeline);
-
-    setInitialZoom();
+    zoomLevel = newZoomLevel;
     renderTimeline();
-  </script>
+
+    const maxScroll = timeline.scrollWidth - container.clientWidth;
+    container.scrollLeft = Math.min(Math.max(newScrollLeft, 0), maxScroll);
+  }
+
+  zoomInBtn.addEventListener('click', () => {
+    const centerX = container.getBoundingClientRect().left + container.clientWidth / 2;
+    zoom(1.5, centerX);
+  });
+
+  zoomOutBtn.addEventListener('click', () => {
+    const centerX = container.getBoundingClientRect().left + container.clientWidth / 2;
+    zoom(1 / 1.5, centerX);
+  });
+
+  container.addEventListener('wheel', e => {
+    e.preventDefault();
+    const zoomFactor = e.deltaY < 0 ? 1.2 : 1 / 1.2;
+    zoom(zoomFactor, e.clientX);
+  });
+
+  container.addEventListener('scroll', () => {
+    maybeRenderOnScroll();
+  });
+
+  window.addEventListener('resize', renderTimeline);
+
+  setInitialZoom();
+  renderTimeline();
+</script>
 
 </body>
-
 </html>
