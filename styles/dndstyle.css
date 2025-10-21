@@ -151,4 +151,10 @@ a:hover {
   }
 }
 
+div > a {
+  display: block;
+  margin: 5px 0; /* optional spacing */
+}
+
+
 /* -------------------------------------- */
