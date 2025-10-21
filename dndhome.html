@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Zoomable Timeline — Improved Performance & Edge Margins</title>
+<title>Zoomable Timeline — Eras & Events Above Ticks</title>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -27,7 +27,7 @@
   #timeline-container {
     width: 100%;
     max-width: 1200px;
-    height: 340px;
+    height: 360px;
     background: #fff;
     border: 1px solid #ccc;
     overflow: hidden;
@@ -44,6 +44,26 @@
     will-change: transform;
   }
 
+  .era-band {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  .era-label {
+    position: absolute;
+    top: 8px;
+    font-size: 13px;
+    color: #333;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background: rgba(255,255,255,0.6);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
   .axis {
     position: absolute;
     left: 0;
@@ -56,19 +76,22 @@
   .tick {
     position: absolute;
     width: 1px;
-    bottom: 60px;
-    height: 60px;
+    bottom: 40px;    /* tick bottom (so ticks are below events baseline) */
+    height: 50px;    /* tick height */
     background: #333;
   }
 
   .tick-year {
     position: absolute;
-    bottom: 22px;
+    bottom: 12px;    /* place year labels near bottom (below tick) */
     transform: translateX(-50%);
     font-size: 12px;
     white-space: nowrap;
     pointer-events: none;
     color: #222;
+    background: rgba(255,255,255,0.85);
+    padding: 1px 4px;
+    border-radius: 3px;
   }
 
   .event {
@@ -80,8 +103,8 @@
     padding: 4px 6px;
     border-radius: 4px;
     border: 1px solid #bbb;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    z-index: 50;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    z-index: 60;
     display: inline-block;
   }
 
@@ -109,7 +132,7 @@
   <button id="zoom-out">Zoom Out −</button>
   <button id="zoom-in">Zoom In +</button>
   <label style="margin-left:12px; font-size:13px; color:#444;">
-    Wheel to zoom (hover), drag to pan.
+    Wheel to zoom (hover), drag to pan. Events sit above ticks. Eras supported.
   </label>
 </div>
 
@@ -117,102 +140,131 @@
   <div id="timeline" aria-hidden="false"></div>
 </div>
 
+<!-- CONFIG: define eras and events here -->
 <script id="timeline-config" type="application/json">
 {
-  "startYear": 0,
-  "endYear": 900,
+  "eras": [
+    { "name": "The First Era", "length": 9000, "suffix": "1TP", "color": "#6fa8dc" },
+    { "name": "The Second Era", "length": 5000, "suffix": "2TP", "color": "#93c47d" }
+  ],
   "events": [
-    { "year": 100, "label": "Battle of Something" },
-    { "year": 102, "label": "Coronation" },
-    { "year": 105, "label": "Treaty Signed" },
-    { "year": 400, "label": "Great Discovery" },
-    { "year": 800, "label": "Mysterious Event" },
-    { "year": 801, "label": "Close Event" },
-    { "year": 802, "label": "Close Again" }
+    { "era": 0, "year": 50, "label": "Battle of Something" },
+    { "era": 0, "year": 102, "label": "Coronation" },
+    { "era": 0, "year": 105, "label": "Treaty Signed" },
+    { "era": 0, "year": 400, "label": "Great Discovery" },
+    { "era": 0, "year": 800, "label": "Mysterious Event" },
+    { "era": 1, "year": 1, "label": "Second Era Start Event" },
+    { "era": 1, "year": 802, "label": "Close Again (in era2)" }
   ]
 }
 </script>
 
 <script>
 (() => {
+  // --- Parse config and prepare era/global mapping ---
   const cfg = JSON.parse(document.getElementById('timeline-config').textContent.trim());
-  const startYear = Number(cfg.startYear);
-  const endYear = Number(cfg.endYear);
-  const events = Array.isArray(cfg.events) ? cfg.events.slice() : [];
+  const eras = (Array.isArray(cfg.eras) && cfg.eras.length) ? cfg.eras : [{name:'Era 1', length: (cfg.endYear && cfg.startYear) ? cfg.endYear - cfg.startYear : 1000, suffix: ''}];
+  // Ensure era fields
+  eras.forEach((e, i) => {
+    if (typeof e.length !== 'number' || e.length <= 0) e.length = 1000;
+    if (typeof e.name !== 'string') e.name = 'Era ' + (i+1);
+    if (typeof e.suffix !== 'string') e.suffix = '';
+    if (typeof e.color !== 'string') {
+      // pick mild palette if not specified
+      const palette = ['#6fa8dc','#93c47d','#f6b26b','#c27ba0','#8e7cc3'];
+      e.color = palette[i % palette.length];
+    }
+  });
 
+  // build cumulative start positions (global years)
+  const eraStarts = [];
+  let acc = 0;
+  for (const e of eras) {
+    eraStarts.push(acc);
+    acc += e.length;
+  }
+  const totalYears = Math.max(1, acc);
+
+  // map events: support era/year format (preferred), or fallback to {globalYear: N}
+  const rawEvents = Array.isArray(cfg.events) ? cfg.events : [];
+  const events = [];
+  rawEvents.forEach(re => {
+    if (typeof re.era === 'number' && typeof re.year === 'number') {
+      const eraIndex = Math.max(0, Math.min(eras.length - 1, re.era));
+      const yearInEra = Math.max(0, Math.min(eras[eraIndex].length, Math.round(re.year)));
+      const global = eraStarts[eraIndex] + yearInEra;
+      events.push({ era: eraIndex, year: yearInEra, globalYear: global, label: re.label || '' });
+    } else if (typeof re.globalYear === 'number' || typeof re.year === 'number') {
+      // fallback: treat provided `year` as global year
+      const global = Math.round(re.globalYear ?? re.year);
+      let eraIndex = 0;
+      while (eraIndex < eras.length - 1 && global >= eraStarts[eraIndex + 1]) eraIndex++;
+      const yearInEra = Math.max(0, global - eraStarts[eraIndex]);
+      events.push({ era: eraIndex, year: yearInEra, globalYear: global, label: re.label || '' });
+    } else {
+      // ignore malformed event
+    }
+  });
+
+  // --- DOM refs and state ---
   const container = document.getElementById('timeline-container');
   const timeline = document.getElementById('timeline');
   const btnZoomIn = document.getElementById('zoom-in');
   const btnZoomOut = document.getElementById('zoom-out');
 
-  const totalYears = Math.max(1, endYear - startYear);
-
-  // Parameters you can tune:
-  let basePixelsPerYear = 1; // initialized below
+  // parameters
+  let basePixelsPerYear = 1; // computed at init
   let zoom = 1;
-  const minZoom = 0.02;
-  const maxZoom = 40;
+  const minZoom = 0.01;
+  const maxZoom = 100;
 
-  // Edge margin inside the timeline so first/last years are never flush with viewport edge:
-  const edgeMarginPx = 80; // <--- main fix: margin on left/right inside timeline (adjustable)
+  const edgeMarginPx = 90; // margin inside timeline so first/last years have breathing room
 
-  // Pan X (applied as translate). Positive pans timeline to the right.
-  let panX = 0;
+  let panX = 0; // applied translateX (positive moves timeline right)
 
   function containerW() { return container.clientWidth; }
   function containerH() { return container.clientHeight; }
 
-  // timeline inner width that maps year span (excluding edge margins)
   function yearSpanPixelsForZoom(z = zoom) {
     return basePixelsPerYear * totalYears * z;
   }
-
-  // total timeline width including edge margins
   function timelineWidthForZoom(z = zoom) {
     return yearSpanPixelsForZoom(z) + 2 * edgeMarginPx;
   }
-
-  // left offset of timeline inside container when centered (before pan)
   function timelineLeftForWidth(tw) {
     return (containerW() - tw) / 2;
   }
 
-  // normalized for year 0..1
-  function normalizedForYear(y) {
-    return (y - startYear) / totalYears;
+  function normalizedForGlobalYear(gYear) {
+    return gYear / totalYears; // 0..1
   }
 
-  // internal x (inside timeline element) for a year, accounts for edgePadding
-  function xInTimelineForYear(y, tw) {
-    const yearSpan = yearSpanPixelsForZoom(zoom);
-    const norm = normalizedForYear(y);
-    return edgeMarginPx + norm * yearSpan;
+  function xInTimelineForGlobalYear(gYear, tw) {
+    const span = yearSpanPixelsForZoom(zoom);
+    const norm = normalizedForGlobalYear(gYear);
+    return edgeMarginPx + norm * span;
   }
 
-  // full container x for a year
-  function xInContainerForYear(y, tw) {
+  function xInContainerForGlobalYear(gYear, tw) {
     const left = timelineLeftForWidth(tw);
-    return left + panX + xInTimelineForYear(y, tw);
+    return left + panX + xInTimelineForGlobalYear(gYear, tw);
   }
 
-  // ensure pan doesn't show blank edges (clamp)
   function clampPanFor(tw) {
     const left = timelineLeftForWidth(tw);
     if (tw <= containerW()) {
-      // center the timeline inside container
       return 0;
     } else {
-      const maxPan = -left; // panX <= maxPan so visibleLeft >= 0
-      const minPan = containerW() - (left + tw); // panX >= minPan so visibleRight <= containerW
+      const maxPan = -left;
+      const minPan = containerW() - (left + tw);
       if (panX > maxPan) return maxPan;
       if (panX < minPan) return minPan;
       return panX;
     }
   }
 
-  // determine tick step based on px per year (yearSpanPixels / totalYears / zoom cancels -> base*zoom)
   function tickStepFor(tw) {
-    const pxPerYear = (tw - 2*edgeMarginPx) / totalYears; // effective per-year px
+    const pxPerYear = (tw - 2*edgeMarginPx) / totalYears;
     if (pxPerYear >= 80) return 1;
     if (pxPerYear >= 30) return 2;
     if (pxPerYear >= 12) return 5;
@@ -221,68 +273,105 @@
     return 100;
   }
 
-  // Initialize basePixelsPerYear
-  function initBase() {
-    // choose the desired timeline span at zoom = 1 relative to container to be wide
-    const desiredSpanFactor = 2.0; // timeline width (excluding margins) ~ 2x container width
-    basePixelsPerYear = Math.max(0.5, (containerW() * desiredSpanFactor) / Math.max(1, totalYears));
+  // --- Helpers to convert globalYear -> era/year label ---
+  function eraIndexForGlobalYear(gYear) {
+    // binary search or linear (eras small)
+    for (let i = eras.length - 1; i >= 0; i--) {
+      if (gYear >= eraStarts[i]) return i;
+    }
+    return 0;
+  }
+  function labelForGlobalYear(gYear) {
+    const ei = eraIndexForGlobalYear(gYear);
+    const inEra = gYear - eraStarts[ei];
+    const suffix = eras[ei].suffix ? ' ' + eras[ei].suffix : '';
+    return `${inEra}${suffix}`; // e.g., "50 1TP"
+  }
+  function eraNameForGlobalYear(gYear) {
+    const ei = eraIndexForGlobalYear(gYear);
+    return eras[ei].name;
   }
 
-  // Compute visible range in timeline internal coordinates (timeline-local x)
+  // --- Initialize base pixels so timeline is reasonably wide at zoom=1 ---
+  function initBase() {
+    const desiredSpanFactor = 2.0;
+    basePixelsPerYear = Math.max(0.2, (containerW() * desiredSpanFactor) / Math.max(1, totalYears));
+  }
+
+  // Visible range in timeline-local coordinates:
   function visibleTimelineRange(tw) {
     const left = timelineLeftForWidth(tw);
-    // timeline's internal x that corresponds to container left:
-    const xStart = - (left + panX); // may be negative if timeline extends left beyond container
+    const xStart = - (left + panX);
     const xEnd = xStart + containerW();
     return { xStart, xEnd };
   }
 
-  // Convert timeline-local x to year (float)
-  function yearForX(x, tw) {
+  // Convert internal timeline-local x to globalYear (float)
+  function globalYearForX(x, tw) {
     const yearSpan = yearSpanPixelsForZoom(zoom);
     const norm = (x - edgeMarginPx) / (yearSpan || 1);
-    return startYear + norm * totalYears;
+    return Math.max(0, Math.min(totalYears, norm * totalYears));
   }
 
-  // Render only visible ticks & events (with small buffer)
+  // Render: only visible ticks and visible events (with buffer)
   function render() {
     timeline.innerHTML = '';
+
     const tw = timelineWidthForZoom(zoom);
     const left = timelineLeftForWidth(tw);
-
-    // Set timeline element size and translate
     timeline.style.width = Math.max(tw, 1) + 'px';
     timeline.style.height = containerH() + 'px';
     timeline.style.transform = `translateX(${left + panX}px)`;
 
-    // draw axis baseline
+    // Era bands (simple subtle background per era)
+    for (let i = 0; i < eras.length; i++) {
+      const eraStartGlobal = eraStarts[i];
+      const eraLen = eras[i].length;
+      // compute local x and width
+      const x0 = xInTimelineForGlobalYear(eraStartGlobal, tw);
+      const x1 = xInTimelineForGlobalYear(eraStartGlobal + eraLen, tw);
+      const band = document.createElement('div');
+      band.className = 'era-band';
+      band.style.left = x0 + 'px';
+      band.style.width = Math.max(0, x1 - x0) + 'px';
+      band.style.background = eras[i].color;
+      timeline.appendChild(band);
+
+      // era label centered in the era band (only if band visible enough)
+      const bandCenter = x0 + (x1 - x0) / 2;
+      const containerLeft = left + panX;
+      const containerRight = containerLeft + containerW();
+      const bandLeftInContainer = containerLeft + band.offsetLeft; // note: offsetLeft isn't accurate pre-append reading; we compute visibility by comparing x0..x1 to visible range below
+      // We'll render era label based on visibility using visible range:
+    }
+
+    // axis baseline
     const axis = document.createElement('div');
     axis.className = 'axis';
     timeline.appendChild(axis);
 
-    // compute visible range with buffer
-    const bufferPx = Math.max(200, containerW() * 0.25); // buffer so ticks/events pre-render a bit offscreen
+    // visible window (with buffer)
+    const bufferPx = Math.max(200, containerW() * 0.25);
     const { xStart, xEnd } = visibleTimelineRange(tw);
     const visStart = xStart - bufferPx;
     const visEnd = xEnd + bufferPx;
 
-    // draw ticks only in visible range
+    // Draw ticks that are inside visible range
     const step = tickStepFor(tw);
-    // compute approximate year range
-    let startYearF = Math.floor(yearForX(visStart < 0 ? 0 : visStart, tw));
-    let endYearF   = Math.ceil(yearForX(visEnd > tw ? tw : visEnd, tw));
-    // clamp to bounds
-    startYearF = Math.max(startYear, startYearF);
-    endYearF = Math.min(endYear, endYearF);
+    // global years to display
+    let startGlobal = Math.floor(globalYearForX(visStart, tw));
+    let endGlobal = Math.ceil(globalYearForX(visEnd, tw));
+    startGlobal = Math.max(0, startGlobal);
+    endGlobal = Math.min(totalYears, endGlobal);
 
-    // compute first tick aligned to step
-    const firstTick = Math.floor(startYearF / step) * step;
-    for (let y = firstTick; y <= endYear && y <= endYear; y += step) {
-      if (y < startYear) continue;
-      if (y > endYear) break;
-      const xLocal = xInTimelineForYear(y, tw);
-      // skip ticks wholly outside [visStart, visEnd]
+    // align first tick to step
+    const firstTick = Math.floor(startGlobal / step) * step;
+    for (let gy = firstTick; gy <= endGlobal; gy += step) {
+      if (gy < 0) continue;
+      if (gy > totalYears) break;
+      const xLocal = xInTimelineForGlobalYear(gy, tw);
       if (xLocal < visStart || xLocal > visEnd) continue;
+
       const tick = document.createElement('div');
       tick.className = 'tick';
       tick.style.left = xLocal + 'px';
@@ -290,48 +379,75 @@
 
       const lbl = document.createElement('div');
       lbl.className = 'tick-year';
-      lbl.textContent = y;
+      lbl.textContent = labelForGlobalYear(gy);
       lbl.style.left = xLocal + 'px';
       timeline.appendChild(lbl);
     }
 
-    // Place only visible events (plus buffer)
-    // Sort events chronologically for stable stacking
-    const visibleEvents = [];
-    for (const e of events) {
-      const xLocal = xInTimelineForYear(e.year, tw);
-      if (xLocal >= visStart && xLocal <= visEnd) visibleEvents.push({ e, xLocal });
+    // render era labels (only those that intersect visible range)
+    for (let i = 0; i < eras.length; i++) {
+      const eraStartGlobal = eraStarts[i];
+      const eraLen = eras[i].length;
+      const x0 = xInTimelineForGlobalYear(eraStartGlobal, tw);
+      const x1 = xInTimelineForGlobalYear(eraStartGlobal + eraLen, tw);
+      if (x1 < visStart || x0 > visEnd) continue;
+      const eraLabel = document.createElement('div');
+      eraLabel.className = 'era-label';
+      eraLabel.textContent = eras[i].name;
+      // place label near top of timeline and centered within era band (clamped to visible area)
+      const bandCenter = x0 + (x1 - x0) / 2;
+      eraLabel.style.left = bandCenter + 'px';
+      timeline.appendChild(eraLabel);
     }
-    visibleEvents.sort((a,b) => a.e.year - b.e.year);
 
-    // Stack events by real bounding-box overlap
+    // Visible events
+    const visibleEvents = [];
+    for (const ev of events) {
+      const xLocal = xInTimelineForGlobalYear(ev.globalYear, tw);
+      if (xLocal >= visStart && xLocal <= visEnd) visibleEvents.push({ ev, xLocal });
+    }
+    visibleEvents.sort((a,b) => a.ev.globalYear - b.ev.globalYear);
+
+    // Place events above ticks: ensure event bottom is above tick top
+    // tick top (distance from bottom) = tick bottom + tick height = 40 + 50 = 90
+    const tickTop = 40 + 50;
+    const baseBottom = tickTop + 20; // events start 20px above tick top
     const placed = [];
-    const baseBottom = 80;
     for (const item of visibleEvents) {
-      const e = item.e;
+      const ev = item.ev;
       const xLocal = item.xLocal;
       const el = document.createElement('div');
       el.className = 'event';
-      el.textContent = e.label;
+      // Show label and optionally era/year suffix in tooltip (not mandatory)
+      el.textContent = ev.label;
+      // Add small era/year hint on a second span, optional:
+      const hint = document.createElement('span');
+      hint.style.fontSize = '11px';
+      hint.style.opacity = '0.75';
+      hint.style.marginLeft = '6px';
+      hint.textContent = `(${ev.year} ${eras[ev.era].suffix})`;
+      // Append as small muted text if you want: commented to keep label clean:
+      // el.appendChild(hint);
+
       el.style.left = xLocal + 'px';
       el.style.bottom = baseBottom + 'px';
+
       const arrow = document.createElement('div');
       arrow.className = 'arrow-up';
       el.appendChild(arrow);
       timeline.appendChild(el);
 
-      // collision stacking measured in viewport coordinates
-      // give the browser a chance to layout; measure immediately
+      // Stacking by actual bounding-box collision
       let stackLevel = 0;
-      const MAX_STACK = 60; // safety
+      const MAX_STACK = 60;
       function rect(node) { return node.getBoundingClientRect(); }
-      el.style.bottom = (baseBottom + stackLevel * 28) + 'px';
+      // measure after inserted
+      el.style.bottom = (baseBottom + stackLevel * 30) + 'px';
       let r = rect(el);
       while (true) {
         let collided = false;
         for (const other of placed) {
           const ro = rect(other);
-          // horizontal overlap
           const horiz = !(r.right <= ro.left || r.left >= ro.right);
           const vert  = !(r.bottom <= ro.top || r.top >= ro.bottom);
           if (horiz && vert) { collided = true; break; }
@@ -339,72 +455,62 @@
         if (!collided) break;
         stackLevel++;
         if (stackLevel > MAX_STACK) break;
-        el.style.bottom = (baseBottom + stackLevel * 28) + 'px';
+        el.style.bottom = (baseBottom + stackLevel * 30) + 'px';
         r = rect(el);
       }
       placed.push(el);
     }
 
-    // Clamp pan after DOM changes
+    // clamp pan and re-apply translate (in case content size changed)
     panX = clampPanFor(tw);
     timeline.style.transform = `translateX(${left + panX}px)`;
   }
 
-  // Zoom maintaining the containerX point
+  // Zoom centered on containerX (relative to container)
   function performZoom(factor, containerX = null) {
     const oldTw = timelineWidthForZoom(zoom);
     const oldZoom = zoom;
     const newZoom = Math.min(maxZoom, Math.max(minZoom, zoom * factor));
     if (newZoom === zoom) return;
-    // default center at container center
     if (containerX === null) containerX = containerW() / 2;
 
-    // compute normalized point along timeline (0..1) under containerX before zoom
+    // normalized position inside timeline under containerX before zoom
     const leftOld = timelineLeftForWidth(oldTw);
     const xInTimeline_old = containerX - (leftOld + panX);
+    // compute normalized within the yearSpan (0..1)
     const norm = (xInTimeline_old - edgeMarginPx) / (yearSpanPixelsForZoom(oldZoom) || 1);
-
-    // clamp norm
     const normClamped = Math.min(Math.max(norm, 0), 1);
 
-    // apply zoom
+    // apply new zoom
     zoom = newZoom;
 
-    // compute new timeline width and left
+    // compute new positions
     const newTw = timelineWidthForZoom(zoom);
     const leftNew = timelineLeftForWidth(newTw);
 
-    // compute panX so the same normalized point stays under containerX
+    // pan so same normalized point remains under containerX
     panX = containerX - leftNew - (edgeMarginPx + normClamped * yearSpanPixelsForZoom(zoom));
     panX = clampPanFor(newTw);
     render();
   }
 
-  // Simple pan handlers
+  // Drag/pan handlers
   let dragging = false;
   let lastX = 0;
-  function startDrag(clientX) {
-    dragging = true;
-    lastX = clientX;
-    container.style.cursor = 'grabbing';
-  }
-  function endDrag() {
-    dragging = false;
-    container.style.cursor = 'grab';
-  }
+  function startDrag(clientX) { dragging = true; lastX = clientX; container.style.cursor = 'grabbing'; }
+  function endDrag() { dragging = false; container.style.cursor = 'grab'; }
   function moveDrag(clientX) {
     if (!dragging) return;
     const dx = clientX - lastX;
     lastX = clientX;
     panX += dx;
     panX = clampPanFor(timelineWidthForZoom(zoom));
-    // incremental render (only visible items) keeps it fast
     render();
   }
 
   // wheel zoom
   function handleWheel(e) {
-    if (e.ctrlKey || e.metaKey) return; // let browser zoom
+    if (e.ctrlKey || e.metaKey) return;
     e.preventDefault();
     const delta = e.deltaY || -e.wheelDelta;
     const factor = delta < 0 ? 1.12 : 1 / 1.12;
@@ -413,12 +519,11 @@
     performZoom(factor, x);
   }
 
-  // touch support (pinch + pan)
+  // touch pinch + pan
   let touchState = { pinchStartDist: null, pinchStartZoom: null, lastMidX: null };
   container.addEventListener('touchstart', (ev) => {
-    if (ev.touches.length === 1) {
-      startDrag(ev.touches[0].clientX);
-    } else if (ev.touches.length === 2) {
+    if (ev.touches.length === 1) startDrag(ev.touches[0].clientX);
+    else if (ev.touches.length === 2) {
       const a = ev.touches[0], b = ev.touches[1];
       touchState.pinchStartDist = Math.hypot(b.clientX - a.clientX, b.clientY - a.clientY);
       touchState.pinchStartZoom = zoom;
@@ -427,27 +532,21 @@
   }, { passive: false });
 
   container.addEventListener('touchmove', (ev) => {
-    if (ev.touches.length === 1 && dragging) {
-      moveDrag(ev.touches[0].clientX);
-    } else if (ev.touches.length === 2 && touchState.pinchStartDist) {
+    if (ev.touches.length === 1 && dragging) moveDrag(ev.touches[0].clientX);
+    else if (ev.touches.length === 2 && touchState.pinchStartDist) {
       const a = ev.touches[0], b = ev.touches[1];
       const dist = Math.hypot(b.clientX - a.clientX, b.clientY - a.clientY);
       const factor = dist / touchState.pinchStartDist;
       const newZoom = Math.min(maxZoom, Math.max(minZoom, touchState.pinchStartZoom * factor));
-      // apply as performZoom using ratio
       const ratio = newZoom / zoom;
       performZoom(ratio, touchState.lastMidX);
     }
     ev.preventDefault();
   }, { passive: false });
 
-  container.addEventListener('touchend', () => {
-    endDrag();
-    touchState.pinchStartDist = null;
-    touchState.pinchStartZoom = null;
-  });
+  container.addEventListener('touchend', () => { endDrag(); touchState = { pinchStartDist: null, pinchStartZoom: null, lastMidX: null }; });
 
-  // mouse handlers
+  // mouse
   container.addEventListener('mousedown', (e) => { startDrag(e.clientX); });
   window.addEventListener('mouseup', (e) => { endDrag(); });
   window.addEventListener('mousemove', (e) => { moveDrag(e.clientX); });
@@ -457,19 +556,18 @@
   btnZoomIn.addEventListener('click', () => performZoom(1.4, containerW()/2));
   btnZoomOut.addEventListener('click', () => performZoom(1/1.4, containerW()/2));
 
-  // resize handling
-  let resizeTimeout = null;
+  // responsive init
+  let resizeTimer = null;
   window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      const centerX = containerW() / 2;
-      // preserve center year by mapping center -> year and then recenter after init
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const centerX = containerW()/2;
+      // preserve center normalized position
       const twOld = timelineWidthForZoom(zoom);
       const leftOld = timelineLeftForWidth(twOld);
       const xInTimeline_old = centerX - (leftOld + panX);
       const norm = (xInTimeline_old - edgeMarginPx) / (yearSpanPixelsForZoom(zoom) || 1);
       initBase();
-      // compute new pan to keep same normalized center
       const newTw = timelineWidthForZoom(zoom);
       const leftNew = timelineLeftForWidth(newTw);
       panX = centerX - leftNew - (edgeMarginPx + norm * yearSpanPixelsForZoom(zoom));
@@ -478,7 +576,6 @@
     }, 120);
   });
 
-  // initialize & render
   function start() {
     initBase();
     panX = 0;
@@ -486,16 +583,14 @@
     container.style.cursor = 'grab';
   }
 
-  start();
-
-  // Expose for quick debugging if needed
-  window.TimelineDebug = {
-    getState: () => ({ zoom, panX, basePixelsPerYear, edgeMarginPx }),
-    setEdgeMargin: (v) => { edgeMarginPx = Number(v); render(); } // if you want to tweak live
+  // expose for debugging/tweaks
+  window.TimelineAPI = {
+    render, performZoom,
+    state: () => ({ zoom, panX, basePixelsPerYear, totalYears, eraStarts, eras })
   };
 
+  start();
 })();
 </script>
-
 </body>
 </html>

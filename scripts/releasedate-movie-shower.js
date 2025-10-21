@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else if (dayDiff === soonestDiff) {
                         upcomingMatches.push({
                             ...movie,
-                            message: `In ${dayDiff} day${dayDiff !== 1 ? 's' : ''} ${movie.title} released ${today.getFullYear() - year} year${(today.getFullYear() - year) !== 1 ? 's' : ''} ago`,
+                            message: `Om ${dayDiff} dag${dayDiff !== 1 ? 'ar' : ''} ${movie.title} släpptes ${today.getFullYear() - year} år${(today.getFullYear() - year) !== 1 ? 's' : ''} ago`,
                         });
                     }
                 }
