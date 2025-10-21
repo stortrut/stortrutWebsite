@@ -98,6 +98,9 @@ function replaceWordsWithLinks(rootNode = document.body) {
       }
 
       document.querySelectorAll('a').forEach(link => {
+        // Skip links inside the sidebar
+        if (link.closest('#toc-sidebar')) return;
+
         link.addEventListener('mouseenter', async () => {
           if (!link.dataset.preview) {
             try {
