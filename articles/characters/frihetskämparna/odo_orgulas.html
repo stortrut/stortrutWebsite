@@ -35,7 +35,6 @@
           <div class="character-section"><strong>Folkslag:</strong> Loxfolk</div>
           <div class="character-section"><strong>Känd som:</strong> Den Misslyckade Flatvalda</div>
           <div class="character-section"><strong>Familj:</strong> Far, Mor</div>
-
         </div>
       </div>
 
@@ -54,7 +53,8 @@
 
       <h2>Utnämnd till Flatvald</h2>
       <p>
-        Inom kort blev han utsedd till den Flatvalda av Maskar Jukil, klostrets tidigare Flatvalda. Att vara Flatvald är den högsta positionen man kan ha inom klostret,
+        Inom kort blev han utsedd till den Flatvalda av Maskar Jukil, klostrets tidigare Flatvalda. Att vara Flatvald är
+        den högsta positionen man kan ha inom klostret,
         och är en stor ära. Odo Skickades ut för att sprida klostrets lära och rekrytera nya medlemmar.
       </p>
 
@@ -66,20 +66,24 @@
         för klostret, men speciellt för Maskar Jukil som många ansåg hade begått ett pinsamt och grovt misstag.
       </p>
       <p>
-        Det var inte bara hans familj och mästare som blev besviken på honom. I stort sätt alla munkar och vänner han hade bröt
+        Det var inte bara hans familj och mästare som blev besviken på honom. I stort sätt alla munkar och vänner han
+        hade bröt
         kontakten med honom, och Odo blev utfryst. Ingen ville bli förknippad med ett sådan stort misslyckande.
       </p>
 
       <h2>Drickandet och Honmoyaki</h2>
       <p>
-        Odos drickande och mentala hälsa blev värre efter han blev fråntagen titeln som Flatvald. Han åkte runt i små byar och 
-        drack i ca tre år. Tillslut beslutande han sig för att försöka fixa sitt liv, och han var övertygad om att den enda personen
+        Odos drickande och mentala hälsa blev värre efter han blev fråntagen titeln som Flatvald. Han åkte runt i små
+        byar och
+        drack i ca tre år. Tillslut beslutande han sig för att försöka fixa sitt liv, och han var övertygad om att den
+        enda personen
         som kunda hjälpa honom var den mytomspunna Honmoyaki.
       </p>
 
       <h2>Medlem i Frihetskämparna</h2>
       <p>
-        Hans letande efter Honmoyaki ledde honom till Ba-sharin@(Ba-sharin), där han träffade ett gäng personer som alla tillslut
+        Hans letande efter Honmoyaki ledde honom till Ba-sharin@(Ba-sharin), där han träffade ett gäng personer som alla
+        tillslut
         bildade gruppen Frihetskämparna@(Frihetskämparna). Dessa hjältar begav sig ut på många äventyr.
       </p>
 
@@ -89,14 +93,7 @@
       </p>
 
     </div>
-
-
   </div>
-
-
-
-
-
 
 
 
@@ -132,50 +129,6 @@
       replaceWordsWithLinks();
     }
   </script>
-
-
-
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const headings = document.querySelectorAll("h2");
-      if (headings.length === 0) return;
-
-      const toc = document.getElementById("toc-sidebar");
-      const list = document.createElement("div");
-      const title = document.createElement("h3");
-      title.textContent = "Innehåll";
-      toc.appendChild(title);
-
-      headings.forEach((h2, index) => {
-        // Generate unique ID if missing
-        if (!h2.id) {
-          h2.id = "section-" + index;
-        }
-
-        const link = document.createElement("a");
-        link.href = `#${h2.id}`;
-        link.textContent = h2.textContent;
-
-        list.appendChild(link);
-      });
-
-      // After generating and inserting sidebar links:
-      const sidebarLinks = document.querySelectorAll('#sidebar-contents a');
-      sidebarLinks.forEach(link => {
-        link.removeAttribute('data-preview');
-      });
-
-      toc.appendChild(list);
-    });
-  </script>
-
-
-
-
-
-
-
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,19 +29,25 @@
       width: 100%;
       height: 300px;
       overflow: hidden;
-      border-top: 1px solid #aaa;
-      border-bottom: 1px solid #aaa;
       position: relative;
       background: white;
       cursor: grab;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* Vertically centers everything inside */
     }
 
     #timeline {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
+      position: relative;
       height: 100%;
     }
+
+    #timeline {
+      position: relative;
+      height: 100%;
+    }
+
 
     .tick {
       position: absolute;
@@ -50,13 +57,13 @@
       height: 60px;
     }
 
-    .tick-year {
-      position: absolute;
-      top: -20px;
-      transform: translateX(-50%);
-      font-size: 12px;
-      white-space: nowrap;
-    }
+ .tick-year {
+  position: absolute;
+  bottom: 70px; /* instead of top: -20px */
+  transform: translateX(-50%);
+  font-size: 12px;
+  white-space: nowrap;
+}
 
     .event {
       position: absolute;
@@ -91,19 +98,20 @@
     }
   </style>
 </head>
+
 <body>
 
-<div id="controls">
-  <button id="zoom-in">Zoom In +</button>
-  <button id="zoom-out">Zoom Out -</button>
-</div>
+  <div id="controls">
+    <button id="zoom-in">Zoom In +</button>
+    <button id="zoom-out">Zoom Out -</button>
+  </div>
 
-<div id="timeline-container">
-  <div id="timeline"></div>
-</div>
+  <div id="timeline-container">
+    <div id="timeline"></div>
+  </div>
 
-<!-- Timeline Config -->
-<script id="timeline-config" type="application/json">
+  <!-- Timeline Config -->
+  <script id="timeline-config" type="application/json">
 {
   "startYear": 0,
   "endYear": 900,
@@ -116,151 +124,152 @@
 }
 </script>
 
-<script>
-  const config = JSON.parse(document.getElementById('timeline-config').textContent);
-  const startYear = config.startYear ?? 0;
-  const endYear = config.endYear ?? 900;
-  const events = config.events ?? [];
+  <script>
+    const config = JSON.parse(document.getElementById('timeline-config').textContent);
+    const startYear = config.startYear ?? 0;
+    const endYear = config.endYear ?? 900;
+    const events = config.events ?? [];
 
-  const container = document.getElementById('timeline-container');
-  const timeline = document.getElementById('timeline');
-  const zoomIn = document.getElementById('zoom-in');
-  const zoomOut = document.getElementById('zoom-out');
+    const container = document.getElementById('timeline-container');
+    const timeline = document.getElementById('timeline');
+    const zoomIn = document.getElementById('zoom-in');
+    const zoomOut = document.getElementById('zoom-out');
 
-  const basePixelsPerYear = 20;
-  let zoomLevel = 1;
-  const maxZoom = 10;
-  const minZoom = 0.02;
-  let isDragging = false;
-  let dragStartX = 0;
-  let scrollStart = 0;
+    const basePixelsPerYear = 20;
+    let zoomLevel = 1;
+    const maxZoom = 10;
+    const minZoom = 0.02;
+    let isDragging = false;
+    let dragStartX = 0;
+    let scrollStart = 0;
 
-  function getPixelsPerYear() {
-    return basePixelsPerYear * zoomLevel;
-  }
-
-  function renderTimeline() {
-    timeline.innerHTML = '';
-
-    const ppy = getPixelsPerYear();
-    const padding = 200;
-    const totalYears = endYear - startYear;
-    const width = ppy * totalYears + padding * 2;
-    timeline.style.width = width + 'px';
-
-    // Ticks & Labels
-    let step = 1;
-    if (zoomLevel < 0.3) step = 100;
-    else if (zoomLevel < 1) step = 10;
-
-    for (let year = startYear; year <= endYear; year++) {
-      if (year % step !== 0 && year !== endYear) continue;
-      const x = padding + (year - startYear) * ppy;
-
-      const tick = document.createElement('div');
-      tick.className = 'tick';
-      tick.style.left = x + 'px';
-      timeline.appendChild(tick);
-
-      const label = document.createElement('div');
-      label.className = 'tick-year';
-      label.textContent = year;
-      label.style.left = x + 'px';
-      timeline.appendChild(label);
+    function getPixelsPerYear() {
+      return basePixelsPerYear * zoomLevel;
     }
 
-    // Events
-    const grouped = {};
-    events.forEach(e => {
-      if (!grouped[e.year]) grouped[e.year] = [];
-      grouped[e.year].push(e.label);
-    });
+    function renderTimeline() {
+      timeline.innerHTML = '';
 
-    Object.entries(grouped).forEach(([yearStr, labels]) => {
-      const year = parseInt(yearStr);
-      const x = padding + (year - startYear) * ppy;
+      const ppy = getPixelsPerYear();
+      const padding = 200;
+      const totalYears = endYear - startYear;
+      const width = ppy * totalYears + padding * 2;
+      timeline.style.width = width + 'px';
 
-      labels.forEach((labelText, i) => {
-        const el = document.createElement('div');
-        el.className = 'event';
-        el.textContent = labelText;
-        el.style.left = x + 'px';
-        el.style.transform = 'translateX(-50%)';
+      // Ticks & Labels
+      let step = 1;
+      if (zoomLevel < 0.3) step = 100;
+      else if (zoomLevel < 1) step = 10;
 
-        const arrow = document.createElement('div');
-        arrow.className = 'arrow';
+      for (let year = startYear; year <= endYear; year++) {
+        if (year % step !== 0 && year !== endYear) continue;
+        const x = padding + (year - startYear) * ppy;
 
-        if (i % 2 === 0) {
-          el.style.bottom = '70px';
-          arrow.classList.add('down');
-          arrow.style.bottom = '68px';
-        } else {
-          el.style.top = '70px';
-          arrow.classList.add('up');
-          arrow.style.top = '68px';
-        }
+        const tick = document.createElement('div');
+        tick.className = 'tick';
+        tick.style.left = x + 'px';
+        timeline.appendChild(tick);
 
-        el.appendChild(arrow);
-        timeline.appendChild(el);
+        const label = document.createElement('div');
+        label.className = 'tick-year';
+        label.textContent = year;
+        label.style.left = x + 'px';
+        timeline.appendChild(label);
+      }
+
+      // Events
+      const grouped = {};
+      events.forEach(e => {
+        if (!grouped[e.year]) grouped[e.year] = [];
+        grouped[e.year].push(e.label);
       });
+
+      Object.entries(grouped).forEach(([yearStr, labels]) => {
+        const year = parseInt(yearStr);
+        const x = padding + (year - startYear) * ppy;
+
+        labels.forEach((labelText, i) => {
+          const el = document.createElement('div');
+          el.className = 'event';
+          el.textContent = labelText;
+          el.style.left = x + 'px';
+          el.style.transform = 'translateX(-50%)';
+
+          const arrow = document.createElement('div');
+          arrow.className = 'arrow';
+
+          if (i % 2 === 0) {
+            el.style.bottom = '70px';
+            arrow.classList.add('down');
+            arrow.style.bottom = '68px';
+          } else {
+            el.style.top = '70px';
+            arrow.classList.add('up');
+            arrow.style.top = '68px';
+          }
+
+          el.appendChild(arrow);
+          timeline.appendChild(el);
+        });
+      });
+    }
+
+    function zoom(factor, centerX = null) {
+      const oldZoom = zoomLevel;
+      zoomLevel *= factor;
+      zoomLevel = Math.min(Math.max(zoomLevel, minZoom), maxZoom);
+
+      if (centerX === null) {
+        centerX = container.offsetWidth / 2;
+      }
+
+      const scrollX = container.scrollLeft;
+      const offsetX = scrollX + centerX;
+      const yearAtCenter = startYear + (offsetX - 200) / (basePixelsPerYear * oldZoom);
+      const newOffsetX = (yearAtCenter - startYear) * basePixelsPerYear * zoomLevel + 200;
+
+      renderTimeline();
+      container.scrollLeft = newOffsetX - centerX;
+    }
+
+    zoomIn.addEventListener('click', () => zoom(1.5));
+    zoomOut.addEventListener('click', () => zoom(1 / 1.5));
+
+    // Wheel zoom
+    container.addEventListener('wheel', e => {
+      if (e.ctrlKey || e.metaKey) return;
+      e.preventDefault();
+      zoom(e.deltaY < 0 ? 1.2 : 1 / 1.2, e.clientX - container.getBoundingClientRect().left);
     });
-  }
 
-  function zoom(factor, centerX = null) {
-    const oldZoom = zoomLevel;
-    zoomLevel *= factor;
-    zoomLevel = Math.min(Math.max(zoomLevel, minZoom), maxZoom);
+    // Dragging
+    container.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      dragStartX = e.clientX;
+      scrollStart = container.scrollLeft;
+      container.style.cursor = 'grabbing';
+    });
 
-    if (centerX === null) {
-      centerX = container.offsetWidth / 2;
-    }
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      container.style.cursor = 'grab';
+    });
 
-    const scrollX = container.scrollLeft;
-    const offsetX = scrollX + centerX;
-    const yearAtCenter = startYear + (offsetX - 200) / (basePixelsPerYear * oldZoom);
-    const newOffsetX = (yearAtCenter - startYear) * basePixelsPerYear * zoomLevel + 200;
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        const dx = e.clientX - dragStartX;
+        container.scrollLeft = scrollStart - dx;
+      }
+    });
 
-    renderTimeline();
-    container.scrollLeft = newOffsetX - centerX;
-  }
+    window.addEventListener('load', () => {
+      renderTimeline();
+      container.scrollLeft = timeline.scrollWidth / 2 - container.clientWidth / 2;
+    });
 
-  zoomIn.addEventListener('click', () => zoom(1.5));
-  zoomOut.addEventListener('click', () => zoom(1 / 1.5));
-
-  // Wheel zoom
-  container.addEventListener('wheel', e => {
-    if (e.ctrlKey || e.metaKey) return;
-    e.preventDefault();
-    zoom(e.deltaY < 0 ? 1.2 : 1 / 1.2, e.clientX - container.getBoundingClientRect().left);
-  });
-
-  // Dragging
-  container.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    dragStartX = e.clientX;
-    scrollStart = container.scrollLeft;
-    container.style.cursor = 'grabbing';
-  });
-
-  document.addEventListener('mouseup', () => {
-    isDragging = false;
-    container.style.cursor = 'grab';
-  });
-
-  document.addEventListener('mousemove', (e) => {
-    if (isDragging) {
-      const dx = e.clientX - dragStartX;
-      container.scrollLeft = scrollStart - dx;
-    }
-  });
-
-  window.addEventListener('load', () => {
-    renderTimeline();
-    container.scrollLeft = timeline.scrollWidth / 2 - container.clientWidth / 2;
-  });
-
-  window.addEventListener('resize', renderTimeline);
-</script>
+    window.addEventListener('resize', renderTimeline);
+  </script>
 
 </body>
+
 </html>
