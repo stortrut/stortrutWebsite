@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Smooth Scroll Timeline</title>
+  <title>Flexible Timeline</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -55,7 +55,7 @@
   <div id="timeline"></div>
 </div>
 
-<!-- Hidden config block for custom start/end years -->
+<!-- Hidden config: change start/end year here -->
 <script id="timeline-config" type="application/json">
 {
   "startYear": 0,
@@ -81,6 +81,7 @@
   let zoomLevel = 1;
   let minZoom = 0.1;
   let ticks = [];
+  let lastRenderedRange = [null, null];
 
   function calculateMinZoom(containerWidth) {
     return Math.max(0.01, (containerWidth - 2 * maxPadding) / (basePixelsPerYear * totalYears));
@@ -131,20 +132,16 @@
     const viewRight = scrollLeft + container.clientWidth;
 
     const step = getStepSize();
-    const visibleStartYear = Math.floor((viewLeft - padding) / pixelsPerYear) + startYear - 5;
-    const visibleEndYear = Math.ceil((viewRight - padding) / pixelsPerYear) + startYear + 5;
+    const visibleStartYear = Math.floor(((viewLeft - padding) / pixelsPerYear) + startYear);
+    const visibleEndYear = Math.ceil(((viewRight - padding) / pixelsPerYear) + startYear);
 
-    const drawnYears = new Set();
+    const roundedStart = Math.floor(visibleStartYear / step) * step;
+    const roundedEnd = Math.ceil(visibleEndYear / step) * step;
 
-    for (let year = visibleStartYear; year <= visibleEndYear; year += step) {
+    lastRenderedRange = [roundedStart, roundedEnd];
+
+    for (let year = roundedStart; year <= roundedEnd; year += step) {
       if (year < startYear || year > endYear) continue;
-      drawnYears.add(year);
-    }
-
-    drawnYears.add(startYear);
-    drawnYears.add(endYear);
-
-    for (const year of drawnYears) {
       const x = padding + (year - startYear) * pixelsPerYear;
 
       const tick = document.createElement('div');
@@ -167,6 +164,28 @@
       timeline.style.left = ((containerWidth - timelineWidth) / 2) + 'px';
     } else {
       timeline.style.left = '0px';
+    }
+  }
+
+  function maybeRenderOnScroll() {
+    const scrollLeft = container.scrollLeft;
+    const containerWidth = container.clientWidth;
+    const padding = getDynamicPadding(zoomLevel);
+    const pixelsPerYear = basePixelsPerYear * zoomLevel;
+    const viewLeftYear = Math.floor((scrollLeft - padding) / pixelsPerYear) + startYear;
+    const viewRightYear = Math.ceil((scrollLeft + containerWidth - padding) / pixelsPerYear) + startYear;
+
+    const step = getStepSize();
+    const roundedStart = Math.floor(viewLeftYear / step) * step;
+    const roundedEnd = Math.ceil(viewRightYear / step) * step;
+
+    if (
+      roundedStart !== lastRenderedRange[0] ||
+      roundedEnd !== lastRenderedRange[1]
+    ) {
+      renderTimeline();
+    } else {
+      updateTickPositions();
     }
   }
 
@@ -231,7 +250,7 @@
   });
 
   container.addEventListener('scroll', () => {
-    updateTickPositions(); // Move ticks instead of redrawing
+    maybeRenderOnScroll();
   });
 
   window.addEventListener('resize', renderTimeline);
