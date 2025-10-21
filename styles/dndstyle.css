@@ -33,7 +33,9 @@ p {
   font-size: 18px;
   margin-bottom: 1em;
 }
-
+h2 {
+  margin-bottom: 0px;
+}
 
 p+p+a+p+a+p+a+p {
   border-top: 1px dashed #d4af37;
