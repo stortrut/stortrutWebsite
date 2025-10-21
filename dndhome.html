@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Zoomable Timeline with Dynamic Min Zoom & Padding</title>
+<title>Zoomable Timeline with Configurable Years</title>
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -56,41 +56,39 @@
   <div id="timeline"></div>
 </div>
 
+<!-- Hidden configuration for timeline years -->
+<script id="timeline-config" type="application/json">
+{
+  "startYear": 0,
+  "endYear": 972
+}
+</script>
+
 <script>
+  const configEl = document.getElementById('timeline-config');
+  const config = configEl ? JSON.parse(configEl.textContent) : {};
+  const startYear = config.startYear || 1000;
+  const endYear = config.endYear || 2100;
+  const totalYears = endYear - startYear;
+
   const timeline = document.getElementById('timeline');
   const timelineContainer = document.getElementById('timeline-container');
   const zoomInBtn = document.getElementById('zoom-in');
   const zoomOutBtn = document.getElementById('zoom-out');
 
-  const startYear = 1000;
-  const endYear = 2100;
-  const totalYears = endYear - startYear;
-
-  // Base padding at full zoom
   const maxPadding = 50;
 
   let zoomLevel = 1;
-  let minZoom = 0.1; // will be recalculated dynamically
+  let minZoom = 0.1;
   const maxZoom = 5;
 
-  // Calculate dynamic minimum zoom based on container width and max padding
   function calculateMinZoom(containerWidth) {
-    // At minimum zoom, timeline width should be at least container width
-    // timelineWidth = pixelsPerYear * totalYears + 2 * padding
-    // pixelsPerYear = 20 * zoomLevel
-    // Solve for zoomLevel:
-    // containerWidth <= 20 * zoomLevel * totalYears + 2 * padding
-    // => zoomLevel >= (containerWidth - 2 * padding) / (20 * totalYears)
     return Math.max(0.01, (containerWidth - 2 * maxPadding) / (20 * totalYears));
   }
 
   function getDynamicPadding(zoom) {
-    // As zoom shrinks, reduce padding so timeline can fit
-    // At zoom >= 1, padding = maxPadding
-    // At zoom near minZoom, padding -> 0
     const minPadding = 5;
     if (zoom >= 1) return maxPadding;
-    // Linear interpolation between minPadding and maxPadding
     const t = (zoom - minZoom) / (1 - minZoom);
     return minPadding + t * (maxPadding - minPadding);
   }
@@ -100,10 +98,8 @@
 
     const containerWidth = timelineContainer.clientWidth;
 
-    // Update minZoom dynamically on container size
     minZoom = calculateMinZoom(containerWidth);
 
-    // Clamp zoomLevel to minZoom if needed
     if (zoomLevel < minZoom) zoomLevel = minZoom;
 
     const padding = getDynamicPadding(zoomLevel);
@@ -146,7 +142,6 @@
       timeline.appendChild(label);
     }
 
-    // Center timeline visually if narrower than container
     if (timelineWidth < containerWidth) {
       timeline.style.left = ((containerWidth - timelineWidth) / 2) + 'px';
     } else {
@@ -180,10 +175,8 @@
 
     const timelineLeft = parseFloat(getComputedStyle(timeline).left) || 0;
 
-    // Calculate year at mouse pointer before zoom
     const yearAtMouse = startYear + (scrollLeft + mouseOffsetX - oldPadding - timelineLeft) / oldPixelsPerYear;
 
-    // Calculate new scrollLeft so year stays under mouse pointer after zoom
     const newScrollLeft = (yearAtMouse - startYear) * newPixelsPerYear + newPadding + timelineLeft - mouseOffsetX;
 
     zoomLevel = newZoomLevel;
