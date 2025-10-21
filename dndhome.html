@@ -1,92 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Zoomable Timeline Corrected</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Precision Zoomable Timeline</title>
 <style>
+  * { box-sizing: border-box; }
   body {
     margin: 0;
-    font-family: sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: #f5f5f5;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #f5f5f5;
+    gap: 12px;
+    padding: 12px;
   }
 
   #controls {
-    margin: 20px;
+    display:flex;
+    gap:8px;
+    align-items:center;
   }
-
-  button {
-    padding: 6px 12px;
-    font-size: 16px;
-  }
+  button { padding:8px 12px; font-size:14px; }
 
   #timeline-container {
     width: 100%;
-    height: 300px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    border-top: 1px solid #aaa;
-    border-bottom: 1px solid #aaa;
-    background: white;
-    cursor: grab;
+    max-width: 1200px;
+    height: 340px;
+    background: #fff;
+    border: 1px solid #ccc;
+    overflow: hidden; /* we control pan via transform */
     position: relative;
+    cursor: grab;
   }
 
   #timeline {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 100%;
+    transform-origin: 0 0;
+    will-change: transform;
+  }
+
+  .axis {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #ddd;
+    top: 60%; /* baseline for ticks and years */
   }
 
   .tick {
     position: absolute;
     width: 1px;
-    background: #000;
-    bottom: 0;
+    bottom: 60px;
     height: 60px;
+    background: #333;
   }
 
   .tick-year {
     position: absolute;
-    bottom: 20px;
+    bottom: 22px;
     transform: translateX(-50%);
     font-size: 12px;
     white-space: nowrap;
-    z-index: 1;
+    pointer-events: none;
+    color: #222;
   }
 
   .event {
     position: absolute;
+    transform: translateX(-50%);
     font-size: 12px;
     white-space: nowrap;
-    background: #eee;
-    padding: 2px 4px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    z-index: 2;
+    background: #fff;
+    padding: 4px 6px;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    z-index: 50;
+    display: inline-block;
   }
 
-  .arrow.up {
+  .event .arrow-up {
     position: absolute;
-    top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 6px solid #333;
+    top: 100%;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid #bbb;
+  }
+
+  /* helpful small width responsiveness */
+  @media (max-width:600px){
+    .tick-year { font-size: 11px; }
+    .event { font-size: 11px; padding:3px 5px; }
   }
 </style>
 </head>
 <body>
 
 <div id="controls">
+  <button id="zoom-out">Zoom Out −</button>
   <button id="zoom-in">Zoom In +</button>
-  <button id="zoom-out">Zoom Out -</button>
+  <label style="margin-left:12px; font-size:13px; color:#444;">
+    Use mouse wheel to zoom (hover), drag to pan. Touch: pinch + drag.
+  </label>
 </div>
 
-<div id="timeline-container">
-  <div id="timeline"></div>
+<div id="timeline-container" aria-label="timeline container">
+  <div id="timeline" aria-hidden="false"></div>
 </div>
 
 <script id="timeline-config" type="application/json">
@@ -106,153 +135,363 @@
 </script>
 
 <script>
-const config = JSON.parse(document.getElementById('timeline-config').textContent);
-const startYear = config.startYear;
-const endYear = config.endYear;
-const events = config.events;
+(() => {
+  const cfg = JSON.parse(document.getElementById('timeline-config').textContent.trim());
+  const startYear = Number(cfg.startYear);
+  const endYear = Number(cfg.endYear);
+  const events = Array.isArray(cfg.events) ? cfg.events.slice() : [];
 
-const container = document.getElementById('timeline-container');
-const timeline = document.getElementById('timeline');
-const zoomIn = document.getElementById('zoom-in');
-const zoomOut = document.getElementById('zoom-out');
+  const container = document.getElementById('timeline-container');
+  const timeline = document.getElementById('timeline');
+  const btnZoomIn = document.getElementById('zoom-in');
+  const btnZoomOut = document.getElementById('zoom-out');
 
-let basePixelsPerYear = 1; // will scale dynamically
-let zoomLevel = 1;
-const maxZoom = 10;
-const minZoom = 0.01;
-
-// Initialize basePixelsPerYear so first and last year span a reasonable width
-function initBasePixels() {
-  basePixelsPerYear = container.clientWidth * 0.8 / (endYear - startYear);
-}
-
-// Adaptive tick step based on zoom
-function getTickStep() {
-  const ppy = basePixelsPerYear * zoomLevel;
-  if (ppy >= 50) return 1;
-  if (ppy >= 20) return 5;
-  if (ppy >= 10) return 10;
-  if (ppy >= 5) return 50;
-  return 100;
-}
-
-// Render timeline
-function renderTimeline() {
-  timeline.innerHTML = '';
-  const ppy = basePixelsPerYear * zoomLevel;
+  // logical settings
   const totalYears = endYear - startYear;
-  const width = ppy * totalYears;
-  timeline.style.width = width + 'px';
+  // initial base timeline width (logical units mapped to pixels when zoom=1)
+  // choose base so timeline initially spans ~2x container width (so you can pan)
+  let basePixelsPerYear = 1; // will be initialized on load/resize
+  let zoom = 1;              // scale multiplier
+  const minZoom = 0.02;
+  const maxZoom = 40;
 
-  // Draw ticks
-  const step = getTickStep();
-  for (let y = startYear; y <= endYear; y += step) {
-    const x = (y - startYear) * ppy;
-    const tick = document.createElement('div');
-    tick.className = 'tick';
-    tick.style.left = x + 'px';
-    timeline.appendChild(tick);
+  // current pan offset in px (applied as translateX)
+  // panX moves the timeline right when positive
+  let panX = 0;
 
-    const label = document.createElement('div');
-    label.className = 'tick-year';
-    label.textContent = y;
-    label.style.left = x + 'px';
-    timeline.appendChild(label);
+  // helper to compute container geometry
+  function containerRect() { return container.getBoundingClientRect(); }
+  function containerW() { return container.clientWidth; }
+  function containerH() { return container.clientHeight; }
+
+  // compute current timeline pixel width
+  function timelineWidthForZoom(z = zoom) {
+    return basePixelsPerYear * totalYears * z;
   }
 
-  // Place events, stacking dynamically based on bounding box overlap
-  const placedEvents = [];
-  events.forEach(e => {
-    const x = (e.year - startYear) * ppy;
-    const el = document.createElement('div');
-    el.className = 'event';
-    el.textContent = e.label;
-    el.style.left = x + 'px';
-    el.style.transform = 'translateX(-50%)';
+  // the left position (inside container) where timeline's logical x=0 maps to:
+  // We center the timeline within the container by default:
+  function timelineLeftForWidth(tw) {
+    // place the timeline so it's centered in container
+    return (containerW() - tw) / 2;
+  }
 
-    const arrow = document.createElement('div');
-    arrow.className = 'arrow up';
-    el.appendChild(arrow);
-    timeline.appendChild(el);
+  // normalized position (0..1) for a year
+  function normalizedForYear(y) {
+    return (y - startYear) / totalYears;
+  }
 
-    // Stack above if overlapping previous events
-    let bottom = 60;
-    while (true) {
-      let overlap = false;
-      const rect = el.getBoundingClientRect();
-      for (let other of placedEvents) {
-        const otherRect = other.getBoundingClientRect();
-        if (
-          rect.left < otherRect.right &&
-          rect.right > otherRect.left &&
-          rect.bottom > otherRect.top &&
-          rect.top < otherRect.bottom
-        ) {
-          overlap = true;
-          break;
-        }
-      }
-      if (!overlap) break;
-      bottom += 26;
-      el.style.bottom = bottom + 'px';
+  // pixel position inside timeline element for a normalized value
+  function xInTimelineForNormalized(norm, tw) {
+    return norm * tw;
+  }
+
+  // full pixel X inside container for a given year:
+  function xInContainerForYear(y, tw) {
+    const norm = normalizedForYear(y);
+    const xTimeline = xInTimelineForNormalized(norm, tw);
+    const left = timelineLeftForWidth(tw);
+    return left + xTimeline + panX;
+  }
+
+  // clamp pan so there is no empty area outside timeline if timeline is bigger than container
+  function clampPanFor(tw) {
+    // If timeline narrower than container, center it: panX such that timelineLeft + panX == 0? No: we want timeline centered -> panX = 0 (since left already centers)
+    const left = timelineLeftForWidth(tw);
+    if (tw <= containerW()) {
+      // center -> panX = 0
+      return 0;
+    } else {
+      // we must keep visible area inside timeline: visibleLeft = left + panX <= 0
+      // and visibleRight = left + panX + tw >= containerW()
+      const maxPan = -left; // if panX = maxPan then visibleLeft = 0
+      const minPan = containerW() - (left + tw); // if panX = minPan then visibleRight = containerW()
+      // minPan <= panX <= maxPan
+      if (panX > maxPan) return maxPan;
+      if (panX < minPan) return minPan;
+      return panX;
     }
-    el.style.bottom = bottom + 'px';
-    placedEvents.push(el);
-  });
-}
-
-// Zoom function (scale around centerX)
-function zoom(factor, centerX = null) {
-  const oldZoom = zoomLevel;
-  zoomLevel = Math.min(Math.max(zoomLevel * factor, minZoom), maxZoom);
-  if (centerX === null) centerX = container.clientWidth / 2;
-  const scrollLeft = container.scrollLeft;
-  const yearAtCenter = scrollLeft / oldZoom / basePixelsPerYear;
-  renderTimeline();
-  container.scrollLeft = yearAtCenter * basePixelsPerYear * zoomLevel;
-}
-
-// Event listeners
-zoomIn.addEventListener('click', () => zoom(1.5));
-zoomOut.addEventListener('click', () => zoom(1/1.5));
-
-container.addEventListener('wheel', e => {
-  if (e.ctrlKey || e.metaKey) return;
-  e.preventDefault();
-  const rect = container.getBoundingClientRect();
-  zoom(e.deltaY < 0 ? 1.2 : 1/1.2, e.clientX - rect.left);
-});
-
-// Dragging
-let isDragging = false;
-let dragStartX = 0;
-let scrollStart = 0;
-container.addEventListener('mousedown', e => {
-  isDragging = true;
-  dragStartX = e.clientX;
-  scrollStart = container.scrollLeft;
-  container.style.cursor = 'grabbing';
-});
-document.addEventListener('mouseup', () => {
-  isDragging = false;
-  container.style.cursor = 'grab';
-});
-document.addEventListener('mousemove', e => {
-  if (isDragging) {
-    container.scrollLeft = scrollStart - (e.clientX - dragStartX);
   }
-});
 
-// Initialize
-window.addEventListener('resize', () => {
-  initBasePixels();
-  renderTimeline();
-});
-window.addEventListener('load', () => {
-  initBasePixels();
-  renderTimeline();
-  container.scrollLeft = 0;
-});
+  // adaptive tick step based on pxPerYear
+  function tickStepFor(tw) {
+    const pxPerYear = tw / totalYears;
+    // tuned thresholds to avoid clutter
+    if (pxPerYear >= 80) return 1;
+    if (pxPerYear >= 30) return 2;
+    if (pxPerYear >= 12) return 5;
+    if (pxPerYear >= 6) return 10;
+    if (pxPerYear >= 2.5) return 50;
+    return 100;
+  }
+
+  // initialize basePixelsPerYear on load/resize so default timelineWidth ~ 2x container
+  function initBase() {
+    const wantTimelineSpanFactor = 2.0; // timeline width at zoom=1 will be ~2x container width
+    basePixelsPerYear = Math.max(0.5, (containerW() * wantTimelineSpanFactor) / Math.max(1, totalYears));
+  }
+
+  // Render the whole timeline: ticks & events (stacking by OBJ overlap)
+  function render() {
+    timeline.innerHTML = ''; // clear
+    const tw = timelineWidthForZoom();
+    const left = timelineLeftForWidth(tw);
+
+    // position timeline element and apply pan via transform (we place timeline at left=0 and translate it)
+    // timeline element's internal coordinate system: x in [0..tw]
+    timeline.style.width = Math.max(tw, 1) + 'px';
+    timeline.style.height = containerH() + 'px';
+
+    // We place timeline at computed left, then translate by panX
+    // Instead of changing left each render, set timeline's transform to place it:
+    timeline.style.transform = `translateX(${left + panX}px)`;
+
+    // Draw axis baseline (optional)
+    const axis = document.createElement('div');
+    axis.className = 'axis';
+    timeline.appendChild(axis);
+
+    // Draw ticks and year labels
+    const step = tickStepFor(tw);
+    // ensure first and last are drawn
+    const ticks = [];
+    for (let y = startYear; y <= endYear; y += step) ticks.push(y);
+    if (ticks[0] !== startYear) ticks.unshift(startYear);
+    if (ticks[ticks.length - 1] !== endYear) ticks.push(endYear);
+
+    for (const y of ticks) {
+      const norm = normalizedForYear(y);
+      const x = xInTimelineForNormalized(norm, tw);
+
+      const tick = document.createElement('div');
+      tick.className = 'tick';
+      tick.style.left = x + 'px';
+      timeline.appendChild(tick);
+
+      const lbl = document.createElement('div');
+      lbl.className = 'tick-year';
+      lbl.textContent = y;
+      lbl.style.left = x + 'px';
+      timeline.appendChild(lbl);
+    }
+
+    // Place events and stack them only when their bounding boxes overlap
+    // We'll iterate events in chronological order
+    const placed = []; // store DOM nodes of placed events for collision checks
+
+    // base vertical offset above the axis baseline
+    const baseBottom = 80; // px
+    for (const e of events.slice().sort((a,b) => a.year - b.year)) {
+      const norm = normalizedForYear(e.year);
+      const x = xInTimelineForNormalized(norm, tw);
+
+      // create element initially at baseBottom
+      const el = document.createElement('div');
+      el.className = 'event';
+      el.textContent = e.label;
+      el.style.left = x + 'px';
+      el.style.bottom = baseBottom + 'px';
+
+      const arrow = document.createElement('div');
+      arrow.className = 'arrow-up';
+      el.appendChild(arrow);
+
+      timeline.appendChild(el);
+
+      // now perform collision stacking: increase bottom until no overlap with prior placed events
+      // measure in viewport coordinates to handle transforms
+      const MAX_STACK = 40; // protective limit
+      let stackLevel = 0;
+      function rectOf(node) { return node.getBoundingClientRect(); }
+
+      // Since appended, we can measure
+      let r = rectOf(el);
+      // Check overlaps and increase
+      while (true) {
+        let collided = false;
+        for (const other of placed) {
+          const ro = rectOf(other);
+          // if horizontal overlap and vertical overlap -> collision
+          const horizOverlap = !(r.right <= ro.left || r.left >= ro.right);
+          const vertOverlap = !(r.bottom <= ro.top || r.top >= ro.bottom);
+          if (horizOverlap && vertOverlap) {
+            collided = true;
+            break;
+          }
+        }
+        if (!collided) break;
+        stackLevel++;
+        if (stackLevel > MAX_STACK) break; // safety
+        const newBottom = baseBottom + stackLevel * 28;
+        el.style.bottom = newBottom + 'px';
+        // re-measure
+        r = rectOf(el);
+      }
+
+      placed.push(el);
+    }
+
+    // After render, ensure pan is clamped so we don't show blank space outside timeline
+    panX = clampPanFor(tw);
+    timeline.style.transform = `translateX(${left + panX}px)`;
+  }
+
+  // Zoom logic centered on containerX (relative to container left)
+  function performZoom(factor, containerX = null) {
+    const oldTw = timelineWidthForZoom();
+    const oldZoom = zoom;
+    const newZoom = Math.min(maxZoom, Math.max(minZoom, zoom * factor));
+    if (newZoom === zoom) return;
+    zoom = newZoom;
+
+    // default center is container center
+    if (containerX === null) containerX = containerW() / 2;
+
+    // compute normalized position within timeline that is under containerX before zoom
+    const leftOld = timelineLeftForWidth(oldTw);
+    const xInTimeline_old = containerX - (leftOld + panX);
+    const normalized = xInTimeline_old / (oldTw || 1);
+
+    // compute new timeline width/left
+    const newTw = timelineWidthForZoom();
+    const leftNew = timelineLeftForWidth(newTw);
+
+    // Now compute panX so that the same normalized point lands under containerX after zoom:
+    // containerX = leftNew + panX_new + normalized*newTw
+    const newPan = containerX - leftNew - normalized * newTw;
+    panX = newPan;
+    // clamp and render
+    panX = clampPanFor(newTw);
+    render();
+  }
+
+  // Pan handling (mouse/touch)
+  let dragging = false;
+  let lastPointerX = 0;
+  function startDrag(clientX) {
+    dragging = true;
+    lastPointerX = clientX;
+    container.style.cursor = 'grabbing';
+  }
+  function endDrag() {
+    dragging = false;
+    container.style.cursor = 'grab';
+  }
+  function moveDrag(clientX) {
+    if (!dragging) return;
+    const dx = clientX - lastPointerX;
+    lastPointerX = clientX;
+    panX += dx;
+    panX = clampPanFor(timelineWidthForZoom());
+    render(); // incremental render keeps collisions correct
+  }
+
+  // wheel zoom (with mouse pos)
+  function handleWheel(e) {
+    // when user holds ctrl/meta, skip (browser zoom)
+    if (e.ctrlKey || e.metaKey) return;
+    e.preventDefault();
+    // zoom factor per wheel notch (tuned)
+    const delta = (e.deltaY || e.wheelDelta);
+    const factor = delta < 0 ? 1.16 : 1 / 1.16;
+    const rect = containerRect();
+    const x = e.clientX - rect.left;
+    performZoom(factor, x);
+  }
+
+  // touch: simple pinch + pan
+  let touchState = { pinchDist: null, initialZoom: null, lastMidX: null };
+  container.addEventListener('touchstart', (ev) => {
+    if (ev.touches.length === 1) {
+      startDrag(ev.touches[0].clientX);
+    } else if (ev.touches.length === 2) {
+      // pinch start
+      const t0 = ev.touches[0], t1 = ev.touches[1];
+      const dx = t1.clientX - t0.clientX;
+      const dy = t1.clientY - t0.clientY;
+      touchState.pinchDist = Math.hypot(dx, dy);
+      touchState.initialZoom = zoom;
+      touchState.lastMidX = (t0.clientX + t1.clientX) / 2 - containerRect().left;
+    }
+  }, { passive: false });
+
+  container.addEventListener('touchmove', (ev) => {
+    if (ev.touches.length === 1 && dragging) {
+      moveDrag(ev.touches[0].clientX);
+    } else if (ev.touches.length === 2 && touchState.pinchDist) {
+      const t0 = ev.touches[0], t1 = ev.touches[1];
+      const dx = t1.clientX - t0.clientX;
+      const dy = t1.clientY - t0.clientY;
+      const dist = Math.hypot(dx, dy);
+      const factor = dist / touchState.pinchDist;
+      // zoom relative to mid point
+      const midX = (t0.clientX + t1.clientX) / 2 - containerRect().left;
+      zoom = Math.min(maxZoom, Math.max(minZoom, touchState.initialZoom * factor));
+      // recompute pan so mid keeps position
+      const oldTw = timelineWidthForZoom(1); // not used; do safe recompute by performing performZoom style math:
+      // we will reuse performZoom with appropriate factor recalculated from current zoom:
+      // compute immediate factor to achieve new zoom from previous
+      // but to keep it simple: use performZoom with factor = (zoom / touchState.initialZoom)
+      performZoom(zoom / touchState.initialZoom, midX);
+    }
+    ev.preventDefault();
+  }, { passive: false });
+
+  container.addEventListener('touchend', (ev) => {
+    endDrag();
+    touchState.pinchDist = null;
+    touchState.initialZoom = null;
+    touchState.lastMidX = null;
+  });
+
+  // mouse events
+  container.addEventListener('mousedown', (e) => {
+    startDrag(e.clientX);
+  });
+  window.addEventListener('mouseup', (e) => {
+    endDrag();
+  });
+  window.addEventListener('mousemove', (e) => {
+    moveDrag(e.clientX);
+  });
+
+  // wheel
+  container.addEventListener('wheel', handleWheel, { passive: false });
+
+  // zoom buttons
+  btnZoomIn.addEventListener('click', () => performZoom(1.4, containerW()/2));
+  btnZoomOut.addEventListener('click', () => performZoom(1/1.4, containerW()/2));
+
+  // resize handling
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    // re-init base and re-center relative to container center
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const centerX = containerW()/2;
+      initBase();
+      // ensure zoom and pan keep center visually same: recompute pan maintaining center year
+      // compute normalized year under center before resizing (approx)
+      // crude but effective: keep year at center constant
+      render();
+    }, 120);
+  });
+
+  // initial setup
+  function start() {
+    initBase();
+    // initial zoom is 1, center timeline; panX 0 is correct because left centers timeline
+    panX = 0;
+    render();
+    // ensure container cursor
+    container.style.cursor = 'grab';
+  }
+
+  // expose some debug hooks into window (optional)
+  window._timelineAPI = { performZoom, render, getState: () => ({zoom, panX, basePixelsPerYear}) };
+
+  start();
+})();
 </script>
 
 </body>
