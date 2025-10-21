@@ -20,4 +20,5 @@ function loadScript(url) {
   } catch (err) {
     console.error(err);
   }
-})();
+})
+();

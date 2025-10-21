@@ -28,6 +28,9 @@ function createSidebar() {
             link.removeAttribute('data-preview');
         });
 
+        console.log(`✅✅✅ Sidebar created!`);
+
+
         toc.appendChild(list);
     });
 }
