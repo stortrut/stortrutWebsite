@@ -57,13 +57,14 @@
       height: 60px;
     }
 
- .tick-year {
-  position: absolute;
-  bottom: 70px; /* instead of top: -20px */
-  transform: translateX(-50%);
-  font-size: 12px;
-  white-space: nowrap;
-}
+    .tick-year {
+      position: absolute;
+      bottom: 70px;
+      /* instead of top: -20px */
+      transform: translateX(-50%);
+      font-size: 12px;
+      white-space: nowrap;
+    }
 
     .event {
       position: absolute;
@@ -87,14 +88,18 @@
       border-left: 5px solid transparent;
       border-right: 5px solid transparent;
       border-bottom: 6px solid #333;
+      position: absolute;
       top: 100%;
+      /* BELOW the box */
     }
 
     .arrow.down {
       border-left: 5px solid transparent;
       border-right: 5px solid transparent;
       border-top: 6px solid #333;
+      position: absolute;
       bottom: 100%;
+      /* ABOVE the box */
     }
   </style>
 </head>
@@ -124,151 +129,155 @@
 }
 </script>
 
-  <script>
-    const config = JSON.parse(document.getElementById('timeline-config').textContent);
-    const startYear = config.startYear ?? 0;
-    const endYear = config.endYear ?? 900;
-    const events = config.events ?? [];
+<script>
+  const config = JSON.parse(document.getElementById('timeline-config').textContent);
+  const startYear = config.startYear ?? 0;
+  const endYear = config.endYear ?? 900;
+  const events = config.events ?? [];
 
-    const container = document.getElementById('timeline-container');
-    const timeline = document.getElementById('timeline');
-    const zoomIn = document.getElementById('zoom-in');
-    const zoomOut = document.getElementById('zoom-out');
+  const container = document.getElementById('timeline-container');
+  const timeline = document.getElementById('timeline');
+  const zoomIn = document.getElementById('zoom-in');
+  const zoomOut = document.getElementById('zoom-out');
 
-    const basePixelsPerYear = 20;
-    let zoomLevel = 1;
-    const maxZoom = 10;
-    const minZoom = 0.02;
-    let isDragging = false;
-    let dragStartX = 0;
-    let scrollStart = 0;
+  const basePixelsPerYear = 20;
+  let zoomLevel = 1;
+  const maxZoom = 10;
+  const minZoom = 0.02;
+  let isDragging = false;
+  let dragStartX = 0;
+  let scrollStart = 0;
 
-    function getPixelsPerYear() {
-      return basePixelsPerYear * zoomLevel;
+  function getPixelsPerYear() {
+    return basePixelsPerYear * zoomLevel;
+  }
+
+  function renderTimeline() {
+    timeline.innerHTML = '';
+
+    const ppy = getPixelsPerYear();
+    const padding = 200;
+    const totalYears = endYear - startYear;
+    const width = ppy * totalYears + padding * 2;
+    timeline.style.width = width + 'px';
+
+    // Tick marks and year labels
+    let step = 1;
+    if (zoomLevel < 0.3) step = 100;
+    else if (zoomLevel < 1) step = 10;
+
+    for (let year = startYear; year <= endYear; year++) {
+      if (year % step !== 0 && year !== endYear) continue;
+      const x = padding + (year - startYear) * ppy;
+
+      const tick = document.createElement('div');
+      tick.className = 'tick';
+      tick.style.left = x + 'px';
+      timeline.appendChild(tick);
+
+      const label = document.createElement('div');
+      label.className = 'tick-year';
+      label.textContent = year;
+      label.style.left = x + 'px';
+      timeline.appendChild(label);
     }
 
-    function renderTimeline() {
-      timeline.innerHTML = '';
+    // Events rendering
+    const grouped = {};
+    events.forEach(e => {
+      if (!grouped[e.year]) grouped[e.year] = [];
+      grouped[e.year].push(e.label);
+    });
 
-      const ppy = getPixelsPerYear();
-      const padding = 200;
-      const totalYears = endYear - startYear;
-      const width = ppy * totalYears + padding * 2;
-      timeline.style.width = width + 'px';
+    Object.entries(grouped).forEach(([yearStr, labels]) => {
+      const year = parseInt(yearStr);
+      const x = padding + (year - startYear) * ppy;
 
-      // Ticks & Labels
-      let step = 1;
-      if (zoomLevel < 0.3) step = 100;
-      else if (zoomLevel < 1) step = 10;
+      labels.forEach((labelText, i) => {
+        const el = document.createElement('div');
+        el.className = 'event';
+        el.textContent = labelText;
+        el.style.left = x + 'px';
+        el.style.transform = 'translateX(-50%)';
 
-      for (let year = startYear; year <= endYear; year++) {
-        if (year % step !== 0 && year !== endYear) continue;
-        const x = padding + (year - startYear) * ppy;
+        const arrow = document.createElement('div');
+        arrow.className = 'arrow';
 
-        const tick = document.createElement('div');
-        tick.className = 'tick';
-        tick.style.left = x + 'px';
-        timeline.appendChild(tick);
+        if (i % 2 === 0) {
+          // Top label
+          el.style.bottom = '100px'; // further from tick line
+          arrow.classList.add('down');
+          arrow.style.position = 'absolute';
+          arrow.style.bottom = '-6px'; // below the label
+        } else {
+          // Bottom label
+          el.style.top = '100px';
+          arrow.classList.add('up');
+          arrow.style.position = 'absolute';
+          arrow.style.top = '-6px'; // above the label
+        }
 
-        const label = document.createElement('div');
-        label.className = 'tick-year';
-        label.textContent = year;
-        label.style.left = x + 'px';
-        timeline.appendChild(label);
-      }
-
-      // Events
-      const grouped = {};
-      events.forEach(e => {
-        if (!grouped[e.year]) grouped[e.year] = [];
-        grouped[e.year].push(e.label);
+        el.appendChild(arrow);
+        timeline.appendChild(el);
       });
+    });
+  }
 
-      Object.entries(grouped).forEach(([yearStr, labels]) => {
-        const year = parseInt(yearStr);
-        const x = padding + (year - startYear) * ppy;
+  function zoom(factor, centerX = null) {
+    const oldZoom = zoomLevel;
+    zoomLevel *= factor;
+    zoomLevel = Math.min(Math.max(zoomLevel, minZoom), maxZoom);
 
-        labels.forEach((labelText, i) => {
-          const el = document.createElement('div');
-          el.className = 'event';
-          el.textContent = labelText;
-          el.style.left = x + 'px';
-          el.style.transform = 'translateX(-50%)';
-
-          const arrow = document.createElement('div');
-          arrow.className = 'arrow';
-
-          if (i % 2 === 0) {
-            el.style.bottom = '70px';
-            arrow.classList.add('down');
-            arrow.style.bottom = '68px';
-          } else {
-            el.style.top = '70px';
-            arrow.classList.add('up');
-            arrow.style.top = '68px';
-          }
-
-          el.appendChild(arrow);
-          timeline.appendChild(el);
-        });
-      });
+    if (centerX === null) {
+      centerX = container.offsetWidth / 2;
     }
 
-    function zoom(factor, centerX = null) {
-      const oldZoom = zoomLevel;
-      zoomLevel *= factor;
-      zoomLevel = Math.min(Math.max(zoomLevel, minZoom), maxZoom);
+    const scrollX = container.scrollLeft;
+    const offsetX = scrollX + centerX;
+    const yearAtCenter = startYear + (offsetX - 200) / (basePixelsPerYear * oldZoom);
+    const newOffsetX = (yearAtCenter - startYear) * basePixelsPerYear * zoomLevel + 200;
 
-      if (centerX === null) {
-        centerX = container.offsetWidth / 2;
-      }
+    renderTimeline();
+    container.scrollLeft = newOffsetX - centerX;
+  }
 
-      const scrollX = container.scrollLeft;
-      const offsetX = scrollX + centerX;
-      const yearAtCenter = startYear + (offsetX - 200) / (basePixelsPerYear * oldZoom);
-      const newOffsetX = (yearAtCenter - startYear) * basePixelsPerYear * zoomLevel + 200;
+  zoomIn.addEventListener('click', () => zoom(1.5));
+  zoomOut.addEventListener('click', () => zoom(1 / 1.5));
 
-      renderTimeline();
-      container.scrollLeft = newOffsetX - centerX;
+  // Mouse wheel zoom
+  container.addEventListener('wheel', e => {
+    if (e.ctrlKey || e.metaKey) return;
+    e.preventDefault();
+    zoom(e.deltaY < 0 ? 1.2 : 1 / 1.2, e.clientX - container.getBoundingClientRect().left);
+  });
+
+  // Mouse dragging
+  container.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    dragStartX = e.clientX;
+    scrollStart = container.scrollLeft;
+    container.style.cursor = 'grabbing';
+  });
+
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+    container.style.cursor = 'grab';
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+      const dx = e.clientX - dragStartX;
+      container.scrollLeft = scrollStart - dx;
     }
+  });
 
-    zoomIn.addEventListener('click', () => zoom(1.5));
-    zoomOut.addEventListener('click', () => zoom(1 / 1.5));
+  window.addEventListener('load', () => {
+    renderTimeline();
+    container.scrollLeft = timeline.scrollWidth / 2 - container.clientWidth / 2;
+  });
 
-    // Wheel zoom
-    container.addEventListener('wheel', e => {
-      if (e.ctrlKey || e.metaKey) return;
-      e.preventDefault();
-      zoom(e.deltaY < 0 ? 1.2 : 1 / 1.2, e.clientX - container.getBoundingClientRect().left);
-    });
-
-    // Dragging
-    container.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      dragStartX = e.clientX;
-      scrollStart = container.scrollLeft;
-      container.style.cursor = 'grabbing';
-    });
-
-    document.addEventListener('mouseup', () => {
-      isDragging = false;
-      container.style.cursor = 'grab';
-    });
-
-    document.addEventListener('mousemove', (e) => {
-      if (isDragging) {
-        const dx = e.clientX - dragStartX;
-        container.scrollLeft = scrollStart - dx;
-      }
-    });
-
-    window.addEventListener('load', () => {
-      renderTimeline();
-      container.scrollLeft = timeline.scrollWidth / 2 - container.clientWidth / 2;
-    });
-
-    window.addEventListener('resize', renderTimeline);
-  </script>
+  window.addEventListener('resize', renderTimeline);
+</script>
 
 </body>
 
