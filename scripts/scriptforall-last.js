@@ -10,15 +10,11 @@ function loadScript(url) {
 
 (async () => {
   try {
-    // Load the other scripts sequentially (or you can do them in parallel with Promise.all)
     await loadScript('/scripts/scripts-for-all/sidebar-maker.js');
 
-    // Now call the functions — they should be defined now
-    if (typeof createSidebar === 'function') {
-      createSidebar();
-    }
+    // Call the function
+    if (typeof createSidebar === 'function') createSidebar();
   } catch (err) {
     console.error(err);
   }
-})
-();
+})();
