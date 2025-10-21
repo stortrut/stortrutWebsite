@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Zoomable Timeline</title>
+  <title>Zoomable Timeline (Fixed)</title>
   <style>
     body {
       font-family: sans-serif;
@@ -52,10 +52,11 @@
 
     .tick-year {
       position: absolute;
-      bottom: 70px;
+      bottom: 90px; /* Raised higher so not covered by events */
       transform: translateX(-50%);
       font-size: 12px;
       white-space: nowrap;
+      z-index: 2;
     }
 
     .event {
@@ -66,6 +67,7 @@
       padding: 2px 4px;
       border-radius: 3px;
       border: 1px solid #ccc;
+      z-index: 1;
     }
 
     .arrow.down {
@@ -90,7 +92,6 @@
   <div id="timeline"></div>
 </div>
 
-<!-- Timeline Config (edit this!) -->
 <script id="timeline-config" type="application/json">
 {
   "startYear": 0,
@@ -136,17 +137,18 @@
     const ppy = getPixelsPerYear();
     const sidePadding = container.offsetWidth / 2;
     const totalYears = endYear - startYear;
-    const width = ppy * totalYears + sidePadding * 2;
+    const width = ppy * totalYears + container.offsetWidth; // ensures equal margins both sides
 
     timeline.style.width = width + 'px';
 
-    // Ticks and years
+    // Adjust tick step depending on zoom
     let step = 1;
     if (zoomLevel < 0.3) step = 100;
     else if (zoomLevel < 1) step = 10;
 
     for (let year = startYear; year <= endYear; year++) {
-      if (year % step !== 0 && year !== endYear) continue;
+      if (year % step !== 0 && year !== startYear && year !== endYear) continue;
+
       const x = sidePadding + (year - startYear) * ppy;
 
       const tick = document.createElement('div');
@@ -161,7 +163,7 @@
       timeline.appendChild(label);
     }
 
-    // Group and space events
+    // Group and space events vertically
     const eventSlots = {};
     events.forEach(e => {
       const pos = Math.round((e.year - startYear) * ppy);
@@ -183,8 +185,8 @@
         const arrow = document.createElement('div');
         arrow.className = 'arrow down';
 
-        const spacing = 26; // event spacing
-        const verticalOffset = 60 + i * spacing;
+        const spacing = 26;
+        const verticalOffset = 20 + i * spacing; // now lower, below tick labels
         el.style.bottom = verticalOffset + 'px';
         el.appendChild(arrow);
         timeline.appendChild(el);
@@ -197,9 +199,7 @@
     zoomLevel *= factor;
     zoomLevel = Math.min(Math.max(zoomLevel, minZoom), maxZoom);
 
-    if (centerX === null) {
-      centerX = container.offsetWidth / 2;
-    }
+    if (centerX === null) centerX = container.offsetWidth / 2;
 
     const scrollX = container.scrollLeft;
     const offsetX = scrollX + centerX;
@@ -221,7 +221,7 @@
   });
 
   // Dragging
-  container.addEventListener('mousedown', (e) => {
+  container.addEventListener('mousedown', e => {
     isDragging = true;
     dragStartX = e.clientX;
     scrollStart = container.scrollLeft;
@@ -233,16 +233,16 @@
     container.style.cursor = 'grab';
   });
 
-  document.addEventListener('mousemove', (e) => {
+  document.addEventListener('mousemove', e => {
     if (isDragging) {
       const dx = e.clientX - dragStartX;
-      container.scrollLeft = scrollStart - dx;
+      container.scrollLeft = Math.max(0, Math.min(timeline.scrollWidth - container.clientWidth, scrollStart - dx));
     }
   });
 
   window.addEventListener('load', () => {
     renderTimeline();
-    container.scrollLeft = timeline.scrollWidth / 2 - container.clientWidth / 2;
+    container.scrollLeft = (timeline.scrollWidth - container.clientWidth) / 2;
   });
 
   window.addEventListener('resize', renderTimeline);
