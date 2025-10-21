@@ -39,8 +39,6 @@ p {
 
 h2 {
   margin-bottom: 0px;
-  position: relative;
-  display: inline-block;
 }
 
 h2::after {
