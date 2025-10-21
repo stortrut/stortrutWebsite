@@ -39,7 +39,8 @@ p {
 
 h2 {
   margin-bottom: 0px;
-  border-bottom: 3px solid #d4af37;
+  border-bottom: 2px solid #d4af37;
+  overflow: hidden;
 }
 
 
