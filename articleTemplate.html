@@ -2,33 +2,76 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title></title>
-    <meta name="description" content="Overview information.">
-
-    <link rel="stylesheet" href="/styles/styles.css">
-    <link rel="stylesheet" href="/styles/dndstyle.css">
+  <meta charset="UTF-8">
+  <title>Odo</title>
+  
+  <meta name="description" content="Beskrivning.">
+  
   <link rel="icon" type="image/png" href="/images/icons/magpie.png">
 
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/dndstyle.css">
+  <link rel="stylesheet" href="/styles/timeline.css">
 </head>
 
 <body>
-    <div id="top-bar"></div>
-    <script src="/scripts/scriptforall.js"></script>
-    <!--------------------------------------------->
+  <div id="top-bar"></div>
+  <div id="toc-sidebar"></div>
 
-    <div class="article-content">
-        <div class="container">
-            <h1 class="title">
-                Titel
-            </h1>
-            <p>
-                Text
-            </p>
+  <script src="/scripts/scriptforall.js"></script>
+
+  <div class="article-content">
+    <div class="container">
+      <h1 class="title">
+        Huvudtitel
+      </h1>
+
+      <div class="character-box">
+        <div class="character-data">
+          <div class="character-section"><strong>Namn:</strong> Namn</div>
+          <div class="character-section"><strong>Ålder:</strong> -- (972 4TP)</div>
+          <div class="character-section"><strong>Folkslag:</strong> -- </div>
+          <div class="character-section"><strong>Känd som:</strong> -- </div>
+          <div class="character-section"><strong>Familj:</strong> -- </div>
         </div>
+      </div>
+
+      <p>
+        Beskrivning.
+      </p>
+
+      <h2>Undertitel</h2>
+      <p>
+        Text här text här.
+      </p>
     </div>
+  </div>
 
 
+
+  <h2 style="text-align: center; margin-bottom: 20px; border-bottom: 0px;">
+    Tidslinje
+  </h2>
+  <!-- Event Data (HTML format) -->
+  <template id="eventData">
+    <div data-year="951" data-year-modifier="4TP">
+      <p>Event</p>
+    </div>
+    <div data-year="966" data-year-modifier="4TP">
+      <p>Event</p>
+    </div>
+    <div data-year="969" data-year-modifier="4TP">
+      <p>Event</p>
+    </div>
+    <div data-year="972" data-year-modifier="4TP">
+      <p>Event</p>
+    </div>
+  </template>
+
+
+  <!-- Timeline output -->
+  <div id="timeline" class="timeline-container"></div>
+
+  <script src="/scripts/scriptforall-last.js"></script>
 </body>
-
 </html>

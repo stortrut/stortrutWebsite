@@ -27,11 +27,18 @@
   {
     "name": "Frihetskämparna",
     "url": "/articles/grupper/frihetskämparna.html",
-    "shorthands": ["Frihetskämparna"]
+    "shorthands": [
+      "Frihetskämparna"
+    ]
   },
   {
     "name": "Ba-sharin",
     "url": "/articles/geografi/farnesh/ba-sharin.html",
+    "shorthands": []
+  },
+  {
+    "name": "Session-34",
+    "url": "/articles/session-reports/session-34.html",
     "shorthands": []
   }
 ]
