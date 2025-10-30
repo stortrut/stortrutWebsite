@@ -1667,13 +1667,14 @@ Release: 1957-04-10
 Poster: ../images/movie-posters/12angrymen.jpg
 Genre: Legal Drama, Psychological Drama, Crime, Drama
 Director: Sidney Lumet
-Writer: 
-Actors: 
-Composer: 
-Runtime: 1h 55m
-Budget: 1h 36m
-Gross Worldwide: 
-Taglines: 
-Production companies: 
+Writer: Reginald Rose
+Actors: Martin Balsam, John Fiedler, Lee J. Cobb
+Composer: Kenyon Hopkins
+Runtime: 1h 36m
+Budget: $350,000 (estimated)
+Gross Worldwide: $2,945
+Taglines: It explodes like 12 sticks of dynamite!
+Production companies: Orion-Nova Productions
 Seen: 2025-10-30  
 Review: Alvin|
+Review: Carl|
