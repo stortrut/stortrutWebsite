@@ -1661,3 +1661,19 @@ Production companies: Summit Entertainment, K/O Paper Products, SOIXAN7E QUIN5E
 Seen: 2025-10-19  
 Review: Alvin|2.88  
 Review: Diaa|
+
+Movie: 12 Angry Men
+Release: 1957-04-10  
+Poster: ../images/movie-posters/12angrymen.jpg
+Genre: Legal Drama, Psychological Drama, Crime, Drama
+Director: Sidney Lumet
+Writer: 
+Actors: 
+Composer: 
+Runtime: 1h 55m
+Budget: 1h 36m
+Gross Worldwide: 
+Taglines: 
+Production companies: 
+Seen: 2025-10-30  
+Review: Alvin|
