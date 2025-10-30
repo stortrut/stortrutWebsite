@@ -1676,5 +1676,5 @@ Gross Worldwide: $2,945
 Taglines: It explodes like 12 sticks of dynamite!
 Production companies: Orion-Nova Productions
 Seen: 2025-10-30  
-Review: Alvin|
-Review: Carl|
+Review: Alvin|0
+Review: Carl|0
