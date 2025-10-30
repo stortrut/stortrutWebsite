@@ -1679,7 +1679,7 @@ Seen: 2025-10-30
 Review: Alvin|3.8
 Review: Carl|0
 
-Movie: Now You See Me
+Movie: A Nightmare On Elmstreet
 Release: 2013-05-31  
 Poster: ../images/movie-posters/anightmareonelmstreet.jpg 
 Genre: Heist, Crime, Mystery, Thriller, Caper
