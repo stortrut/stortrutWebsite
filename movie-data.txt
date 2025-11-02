@@ -1677,7 +1677,7 @@ Taglines: It explodes like 12 sticks of dynamite!
 Production companies: Orion-Nova Productions
 Seen: 2025-10-30  
 Review: Alvin|3.8
-Review: Carl|0
+Review: Carl|4
 
 Movie: A Nightmare On Elmstreet
 Release: 2013-05-31  
@@ -1695,6 +1695,7 @@ Production companies: Summit Entertainment, K/O Paper Products, SOIXAN7E QUIN5E
 Seen: 2025-10-30  
 Review: Alvin|2.5 
 Review: Holger|2.3
+Review: Carl|3
 
 Movie: Smiling Friends S.3
 Release: 2013-05-31  
@@ -1711,17 +1712,17 @@ Taglines:
 Production companies: 
 Seen: 2025-11-02  
 Review: Alvin|3.4
-Review: Carl|
+Review: Carl|4
 
 Movie: Weapons
-Release: 2013-05-31  
+Release: 2025-05-31  
 Poster: ../images/movie-posters/weapons.jpg 
 Genre: 
 Director: 
 Writer:
 Actors: 
 Composer:  
-Runtime: 
+Runtime: 2h 8m
 Budget: 
 Gross Worldwide: 
 Taglines: 
