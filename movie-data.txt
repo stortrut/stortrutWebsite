@@ -1696,6 +1696,23 @@ Seen: 2025-10-30
 Review: Alvin|2.5 
 Review: Holger|2.3
 
+Movie: Smiling Friends S.3
+Release: 2013-05-31  
+Poster: ../images/movie-posters/anightmareonelmstreet.jpg 
+Genre: Heist, Crime, Mystery, Thriller, Caper
+Director: Louis Leterrier
+Writer: Ed Solomon, Boaz Yakin, Edward Ricourt
+Actors: Jesse Eisenberg, Mark Ruffalo, Woody Harrelson, Isla Fisher, Dave Franco, Morgan Freeman, Michael Caine, Michael Kelly, Common
+Composer: Brian Tyler
+Runtime: 1h 55m
+Budget: $75,000,000 (estimated)
+Gross Worldwide: $351,723,989
+Taglines: Come in close, because the more you think you see, the easier it'll be to fool you
+Production companies: Summit Entertainment, K/O Paper Products, SOIXAN7E QUIN5E
+Seen: 2025-11-02  
+Review: Alvin|3.4
+Review: Carl|
+
 Movie: Weapons
 Release: 2013-05-31  
 Poster: ../images/movie-posters/anightmareonelmstreet.jpg 
@@ -1711,4 +1728,5 @@ Taglines: Come in close, because the more you think you see, the easier it'll be
 Production companies: Summit Entertainment, K/O Paper Products, SOIXAN7E QUIN5E
 Seen: 2025-11-02  
 Review: Alvin|3.217
-Review: Holger|4.17
+Review: Carl|4.17
+
