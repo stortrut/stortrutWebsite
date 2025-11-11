@@ -1733,19 +1733,19 @@ Review: Alvin|3.217
 Review: Carl|4.17
 
 Movie: Perfect Blue
-Release: 2025-08-08     
+Release: 1998-02-28     
 Poster: ../images/movie-posters/perfectblue.jpg
-Genre: Dark Comedy, Psychological Horror, Supernatural Horror, Witch Horror, Horror, Mystery
-Director: Zach Cregger
-Writer: Zach Cregger
-Actors: Scarlett Sher, Julia Garner, Cary Christopher
-Composer: Zach Cregger, Hays Holladay, Ryan Holladay
-Runtime: 2h 8m
-Budget: $38,000,000 (estimated)
-Gross Worldwide: $267,525,978
-Taglines: Last night at 2:17 am every child from Mrs. Gandy's class woke up, got out of bed, went downstairs, opened the front door, walked into the dark ...and they never came back.
-Production companies: New Line Cinema, Domain Entertainment (II), Subconscious
-Seen: 2025-11-02  
-Review: Alvin|3.217
-Review: Carl|4.17
-
+Genre: Japanese, Anime, Animation, Psychological Drama, Psychological Thriller, Serial Killer, Showbiz Drama
+Director: Satoshi Kon
+Writer: Satoshi Kon, Sadayuki Murai, Yoshikazu Takeuchi
+Actors: Junko Iwao, Rica Matsumoto, Shinpachi Tsuji
+Composer: Masahiro Ikumi
+Runtime: 1h 22m
+Budget: ¥3,000,000 (estimated)
+Gross Worldwide: $2,647,349
+Taglines: The color of illusion is Perfect Blue.
+Production companies: Madhouse, Rex Entertainment
+Seen: 2025-11-11  
+Review: Alvin|4.65
+Review: Carl|4.25
+Review: Holger|4.48
