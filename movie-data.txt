@@ -1390,13 +1390,13 @@ Seen: 2025-04-10
 Review: Alvin|2.1  
 Review: Diaa|3  
 
-Movie: Lupin III: The First  
+Movie: Lupin III: The First
 Release: 2019-12-06  
 Poster: ../images/movie-posters/lupin3thefirst.jpg  
-Genre: Anime, Animation, Action, Crime, Adventure
-Director: 
-Writer: 
-Actors: 
+Genre: Anime, Animation, Action, Crime, Adventure, Japanese, Computer Animation, Mystery
+Director: Takashi Yamazaki
+Writer: Monkey Punch, Takashi Yamazaki, Maurice Leblanc
+Actors: Kan'ichi Kurita, Kiyoshi Kobayashi
 Composer:
 Runtime: 
 Budget: 
@@ -1407,19 +1407,19 @@ Seen: 2025
 Review: Alvin|3.75  
 Review: Diaa|3  
 
-Movie: Rick and Morty S.8  
-Release: 2025-07-21  
+Movie: Rick and Morty S.8
+Release: 2025-05-25  
 Poster: ../images/movie-posters/Rick_and_Morty_season_8.jpg  
-Genre: Sci-Fi, Animation
-Director: 
-Writer: 
-Actors: 
-Composer:
-Runtime: 
+Genre: Sci-Fi, Animation, Multiverse, Buddy Comedy, Parody, Psychological Drama, Adult Animaiton, Time Travel, Adventure, Satire
+Director: Justin Roiland, Dan Harmon
+Writer: Justin Roiland, Dan Harmon
+Actors: Chris Parnell, Spencer Grammer, Sarah Chalke
+Composer: Ryan Elder
+Runtime: 23m
 Budget: 
 Gross Worldwide:
-Taglines:
-Production companies:
+Taglines: Science makes sense, family doesn't.
+Production companies: Adult Swim
 Seen: 2025-06-18  
 Review: Alvin|  
 Review: Holger|  
