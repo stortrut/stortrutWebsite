@@ -41,7 +41,7 @@ Review: Diaa|4.1
 Movie: Akira  
 Release: 1988-07-16  
 Poster: ../images/movie-posters/akira.jpg  
-Genre: Animation, Anime
+Genre: Animation, Anime, 2D Animation
 Seen: 2021-08-06  
 Review: Alvin|4.06  
 Review: Diaa|3  
@@ -81,7 +81,7 @@ Review: Diaa|2.6
 Movie: Nausicaä of the Valley of the Wind  
 Release: 1984-03-11  
 Poster: ../images/movie-posters/nausicaä.jpg  
-Genre: Animation, Anime
+Genre: Animation, Anime, 2D Animation
 Seen: 2021-08-23  
 Review: Alvin|3.524  
 Review: Diaa|2.5  
@@ -213,7 +213,7 @@ Review: Holger|2.94
 Movie: Paprika
 Release: 2006-11-25
 Poster: ../images/movie-posters/paprika.jpg
-Genre: Animation, Anime, Psychological
+Genre: Animation, Anime, Psychological, 2D Animation
 Seen: 2021-11-03
 Review: Alvin|4.7
 Review: Diaa|3.6
@@ -231,7 +231,7 @@ Review: Holger|2.52
 Movie: Cowboy Bebop
 Release: 1998-04-03
 Poster: ../images/movie-posters/cowboybebop.jpg
-Genre: Animation, Anime, Sci-Fi, Action
+Genre: Animation, Anime, Sci-Fi, Action, 2D Animation
 Seen: 2021-11-10
 Review: Alvin|4.96
 Review: Diaa|4.3
@@ -267,7 +267,7 @@ Review: Holger|3.36
 Movie: Super Crooks
 Release: 2021-11-25
 Poster: ../images/movie-posters/supercrooks.jpg
-Genre: Animation, Anime, Heist, Superhero
+Genre: Animation, Anime, Heist, Superhero, 2D Animation
 Seen: 2021-11-28
 Review: Alvin|3.48
 Review: Diaa|
@@ -275,7 +275,7 @@ Review: Diaa|
 Movie: Jojo: Stone Ocean
 Release: 2021-12-01
 Poster: ../images/movie-posters/jojostoneocean.jpg
-Genre: Action, Anime, Animation
+Genre: Action, Anime, Animation, 2D Animation
 Seen: 2021-11-30
 Review: Alvin|3.932
 Review: Diaa|4
@@ -319,7 +319,7 @@ Review: Holger|2.54
 Movie: Cowboy Bebop: The Movie
 Release: 2001-09-01
 Poster: ../images/movie-posters/cowboybebopthemovie.jpg
-Genre: Action, Sci-Fi, Anime, Animation
+Genre: Action, Sci-Fi, Anime, Animation, 2D Animation
 Seen: 2022-01-04
 Review: Alvin|4.192
 Review: Diaa|3.92
@@ -355,7 +355,7 @@ Review: Holger|3.98
 Movie: The Legend of Vox Machina S.1
 Release: 2022-01-20
 Poster: ../images/movie-posters/tlovm.jpg
-Genre: Comedy, Animation, Fantasy
+Genre: Comedy, Animation, Fantasy, 2D Animation, Adult Animation
 Seen: 2022-01-28
 Review: Alvin|4.7336
 Review: Diaa|3.8
@@ -373,7 +373,7 @@ Review: Holger|3.38
 Movie: Smiling Friends S.1
 Release: 2020-04-01
 Poster: ../images/movie-posters/smilingfriends.jpg
-Genre: Comedy, Animation
+Genre: Comedy, Animation, 2D Animation
 Seen: 2022-01-30
 Review: Alvin|3.8446
 Review: Holger|3.66
@@ -408,7 +408,7 @@ Review: Holger|3.58
 Movie: Redline
 Release: 2009-10-09
 Poster: ../images/movie-posters/redline.jpg
-Genre: Animation, Anime
+Genre: Animation, Anime, 2D Animation, Racing
 Seen: 2022-03-12
 Review: Alvin|3.7194
 Review: Diaa|4
@@ -481,7 +481,7 @@ Review: Holger|1.64
 Movie: Who Framed Roger Rabbit
 Release: 1988-06-22
 Poster: ../images/movie-posters/whoframedrogerrabbit.jpg
-Genre: Animation, Comedy, Buddy Comedy, Whodunnit
+Genre: Animation, Comedy, Buddy Comedy, Whodunnit, 2D Animation
 Seen: 2022-06-10
 Review: Alvin|3.57
 Review: Diaa|3.68
@@ -535,7 +535,7 @@ Review: Holger|3.2
 Movie: Rick & Morty S.6
 Release: 2022-09-04
 Poster: ../images/movie-posters/rickandmortys6.jpg
-Genre: Animation, Comedy, Sci-Fi
+Genre: Animation, Comedy, Sci-Fi, 2D Animation
 Seen: 2022-09-11
 Review: Alvin|3.984
 Review: Holger|3.38
@@ -560,7 +560,7 @@ Review: Holger|3.54
 Movie: Chainsaw Man
 Release: 2022-10-11
 Poster: ../images/movie-posters/chainsawman.jpg
-Genre: Animation, Anime, Action
+Genre: Animation, Anime, Action, 2D Animation
 Seen: 2022-10-28
 Review: Alvin|4.454
 Review: Diaa|4.5
@@ -653,7 +653,7 @@ Review: Holger|2.66
 Movie: The Legend of Vox Machina S.2
 Release: 2023-01-20
 Poster: ../images/movie-posters/tlovms2.jpg
-Genre: Comedy, Animation, Fantasy
+Genre: Comedy, Animation, Fantasy, 2D Animation
 Seen: 2023-01-20
 Review: Alvin|4.402
 Review: Diaa|3.74
@@ -705,7 +705,7 @@ Review: Holger|4.34
 Movie: Weathering With You
 Release: 2019-07-19
 Poster: ../images/movie-posters/weatheringwithyou.jpg
-Genre: Animation, Anime, Romance
+Genre: Animation, Anime, Romance, 2D Animation
 Seen: 2023-03-24
 Review: Alvin|3.698
 Review: Diaa|4.78
@@ -787,7 +787,7 @@ Review: Holger|4.72
 Movie: Invincible: Atom Eve  
 Release: 2023-08-25  
 Poster: ../images/movie-posters/atomeve.jpg  
-Genre: Superhero, Action, Animation
+Genre: Superhero, Action, Animation, 2D Animation
 Director:
 Seen: 2023-07-29  
 Review: Alvin|4.226  
@@ -796,7 +796,7 @@ Review: Holger|3.96
 Movie: Angel’s Egg  
 Release: 1985-01-01  
 Poster: ../images/movie-posters/angelsegg.jpg  
-Genre: Anime, Animation, Fantasy, Mystery
+Genre: Anime, Animation, Fantasy, Mystery, 2D Animation
 Director:
 Seen: 2023-08-15  
 Review: Alvin|2.938  
@@ -815,7 +815,7 @@ Review: Carl|4.625
 Movie: Fionna and Cake  
 Release: 2023-08-31  
 Poster: ../images/movie-posters/fionnaandcake.jpg  
-Genre: Animation, Action, Adventure, Drama, Fantastic, Comedy
+Genre: Animation, Action, Adventure, Drama, Fantastic, Comedy, 2D Animation
 Director:
 Seen: 2023-09-15  
 Review: Alvin|4.008  
@@ -867,7 +867,7 @@ Review: Carl|3.1
 Movie: Rick and Morty S.7  
 Release: 2023-10-15  
 Poster: ../images/movie-posters/Rick_and_Morty_season_7.jpg
-Genre: Sci-Fi, Animation
+Genre: Sci-Fi, Animation, 2D Animation
 Director:
 Seen: 2023-10-17  
 Review: Alvin|3.8  
@@ -886,14 +886,14 @@ Review: Holger|3.56
 Movie: Invincible S.2  
 Release: 2023-06-01  
 Poster: ../images/movie-posters/Invincible_season_2.jpg  
-Genre: Superhero, Action, Animation, 
+Genre: Superhero, Action, Animation, 2D Animation
 Director:
 Seen: 2023-11-06  
 
 Movie: Scavengers Reign
 Release: 2023-11-17  
 Poster: ../images/movie-posters/scavengersreign.jpg  
-Genre: Animation, Sci-Fi, Adventure, Drama
+Genre: Animation, Sci-Fi, Adventure, Drama, 2D Animation
 Director:
 Seen: 2023-11-16  
 Review: Alvin|4.0904  
@@ -902,7 +902,7 @@ Review: Holger|4.28
 Movie: Scott Pilgrim Takes Off  
 Release: 2023-11-24  
 Poster: ../images/movie-posters/scottpilgrimtakesoff.jpg  
-Genre: Animation, Action, Anime, Comedy, Whodunnit, Comedy
+Genre: Animation, Action, Anime, Comedy, Whodunnit, Comedy, 2D Animation
 Director:
 Seen: 2023-11-20  
 Review: Alvin|3.647  
@@ -930,7 +930,7 @@ Review: Diaa|3
 Movie: The Boy and the Heron  
 Release: 2023-07-14  
 Poster: ../images/movie-posters/theboyandtheheron.jpg  
-Genre: Animation, Anime, Adventure, Drama
+Genre: Animation, Anime, Adventure, Drama, 2D Animation
 Director:
 Seen: 2023-12-30  
 Review: Alvin|3.63  
@@ -949,7 +949,7 @@ Review: Diaa|3.5
 Movie: Once Upon a Studio  
 Release: 2023-11-22  
 Poster: ../images/movie-posters/onceuponastudio.jpg 
-Genre: Animation
+Genre: Animation, 2D Animation
 Director:
 Seen: 2023-12-31  
 Review: Alvin|4.3  
@@ -958,7 +958,7 @@ Review: Diaa|3
 Movie: If Anything Happens I Love You  
 Release: 2020-11-20  
 Poster: ../images/movie-posters/ifanythinghappensiloveyou.jpg  
-Genre: Animation, Drama
+Genre: Animation, Drama, 2D Animation
 Director:
 Seen: 2023-12-31  
 Review: Alvin|4.5  
@@ -976,7 +976,7 @@ Review: Diaa|3
 Movie: Lackadaisy  
 Release: 2023-11-10  
 Poster: ../images/movie-posters/lackadaisy.jpg  
-Genre: Animation, Comedy, Crime
+Genre: Animation, Comedy, Crime, 2D Animation
 Director:
 Seen: 2023-12-31  
 Review: Alvin|3.2  
@@ -1004,7 +1004,7 @@ Review: Diaa|2.5
 Movie: Hazbin Hotel S.1  
 Release: 2024-01-31  
 Poster: ../images/movie-posters/hazbinhotel.jpg  
-Genre: Animation, Action, Drama, Comedy
+Genre: Animation, Action, Drama, Comedy, 2D Animation, Adult Animation
 Director:
 Seen: 2024-02-26  
 Review: Alvin|4.7816  
@@ -1044,7 +1044,7 @@ Review: Carl|3.4
 Movie: Smiling Friends S2  
 Release: 2024-04-01  
 Poster: ../images/movie-posters/smilingfriendss2.jpg  
-Genre: Animation, Comedy
+Genre: Animation, Comedy, 2D Animation
 Director:
 Seen: 2024-04-01  
 Review: Alvin|  
@@ -1071,7 +1071,7 @@ Review: Holger|3.62
 Movie: Jujutsu Kaisen 0  
 Release: 2021-12-24  
 Poster: ../images/movie-posters/jjk0.jpg  
-Genre: Animation, Anime, Romance, Action
+Genre: Animation, Anime, Romance, Action, 2D Animation
 Director:
 Seen: 2024-07-08  
 Review: Alvin|2.904  
@@ -1130,7 +1130,7 @@ Review: Holger|3.4
 Movie: The Legend of Vox Machina S.3  
 Release: 2024-10-12  
 Poster: ../images/movie-posters/tlovms3.JPG  
-Genre: Comedy, Animation, Fantasy
+Genre: Comedy, Animation, Fantasy, 2D Animation
 Director: 
 Writer: 
 Actors: 
@@ -1168,7 +1168,7 @@ Review: Carl|
 Movie: Look Back  
 Release: 2024-12-10  
 Poster: ../images/movie-posters/lookback.jpg  
-Genre: Animation, Anime, Drama, Coming-of-Age
+Genre: Animation, Anime, Drama, Coming-of-Age, 2D Animation
 Director: 
 Writer: 
 Actors: 
@@ -1185,7 +1185,7 @@ Review: Diaa|4.7
 Movie: Suzume  
 Release: 2022-11-11  
 Poster: ../images/movie-posters/suzume.jpg  
-Genre: Animation, Anime, Drama
+Genre: Animation, Anime, Drama, 2D Animation
 Director: 
 Writer: 
 Actors: 
@@ -1202,7 +1202,7 @@ Review: Diaa|4.7
 Movie: Grave of the Fireflies  
 Release: 1988-04-16  
 Poster: ../images/movie-posters/graveofthefireflies.jpg  
-Genre: Animation, Anime, Tragedy, Drama
+Genre: Animation, Anime, Tragedy, Drama, 2D Animation
 Director: 
 Writer: 
 Actors: 
@@ -1410,7 +1410,7 @@ Review: Diaa|3
 Movie: Rick and Morty S.8
 Release: 2025-05-25  
 Poster: ../images/movie-posters/Rick_and_Morty_season_8.jpg  
-Genre: Sci-Fi, Animation, Multiverse, Buddy Comedy, Parody, Psychological Drama, Adult Animaiton, Time Travel, Adventure, Satire
+Genre: Sci-Fi, Animation, Multiverse, Buddy Comedy, Parody, Psychological Drama, Adult Animation, Time Travel, Adventure, Satire, 2D Animation
 Director: Justin Roiland, Dan Harmon
 Writer: Justin Roiland, Dan Harmon
 Actors: Chris Parnell, Spencer Grammer, Sarah Chalke
@@ -1701,7 +1701,7 @@ Review: Carl|3
 Movie: Smiling Friends S.3
 Release: 2025-08-05  
 Poster: ../images/movie-posters/smilingfriendsseason3.webp
-Genre: Adult Animation, Buddy Comedy, Dark Comedy, Satire, Animation, Hand-Drawn Animation, Comedy, Short
+Genre: Adult Animation, Buddy Comedy, Dark Comedy, Satire, Animation, Hand-Drawn Animation, Comedy, Short, 2D Animation
 Director: Zach Hadel, Michael Cusack
 Writer: Michael Cusack, Zach Hadel
 Actors: Michael Cusack, Zach Hadel, Marc M.
@@ -1735,7 +1735,7 @@ Review: Carl|4.17
 Movie: Perfect Blue
 Release: 1998-02-28     
 Poster: ../images/movie-posters/perfectblue.jpg
-Genre: Japanese, Anime, Animation, Psychological Drama, Psychological Thriller, Serial Killer, Showbiz Drama
+Genre: Japanese, Anime, Animation, Psychological Drama, Psychological Thriller, Serial Killer, Showbiz Drama, 2D Animation
 Director: Satoshi Kon
 Writer: Satoshi Kon, Sadayuki Murai, Yoshikazu Takeuchi
 Actors: Junko Iwao, Rica Matsumoto, Shinpachi Tsuji
@@ -1749,3 +1749,19 @@ Seen: 2025-11-11
 Review: Alvin|4.65
 Review: Carl|4.25
 Review: Holger|4.48
+
+Movie: Hazbin Hotel S.2
+Release: 2025-10-29
+Poster: ../images/movie-posters/hazbinhotelseason2.png
+Genre: Adult Animation, Animation, 2D Animation, Musical, Drama, Comedy
+Director: Vivienne Medrano  
+Writer: Vivienne Medrano
+Actors: Erika Henningsen, Stephanie Beatriz, Blake Roman, Keith David, Alex Brightman, Amir Talai, Christian Borle
+Composer: Evan Alderete, Gooseworx, Brian Sadler
+Runtime: 32m
+Budget: 
+Gross Worldwide:
+Taglines: The war that will unite a century.
+Production companies: Bento Box Entertainment, Spindle Horse Toons, A24, Amazon MGM Studios
+Seen: 2025-10-29
+Review: Alvin|4.65
