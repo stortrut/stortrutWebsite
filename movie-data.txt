@@ -1752,7 +1752,7 @@ Review: Holger|4.48
 
 Movie: Hazbin Hotel S.2
 Release: 2025-10-29
-Poster: ../images/movie-posters/hazbinhotelseason2.png
+Poster: ../images/movie-posters/hazbinhotelseason2.webp
 Genre: Adult Animation, Animation, 2D Animation, Musical, Drama, Comedy
 Director: Vivienne Medrano  
 Writer: Vivienne Medrano
