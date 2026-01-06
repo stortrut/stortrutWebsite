@@ -1752,22 +1752,6 @@ Review: Holger|4.48
 
 Movie: Hazbin Hotel S.2
 Release: 2025-10-29
-Poster: ../images/movie-posters/hazbinhotels2.webp
-Genre: Adult Animation, Animation, 2D Animation, Musical, Drama, Comedy
-Director: Vivienne Medrano  
-Writer: Vivienne Medrano
-Actors: Erika Henningsen, Stephanie Beatriz, Blake Roman, Keith David, Alex Brightman, Amir Talai, Christian Borle
-Composer: Evan Alderete, Gooseworx, Brian Sadler
-Runtime: 32m
-Budget: 
-Gross Worldwide:
-Taglines: The war that will unite a century.
-Production companies: Bento Box Entertainment, Spindle Horse Toons, A24, Amazon MGM Studios
-Seen: 2025-11-19
-Review: Alvin|4.65
-
-Movie: The Mighty Nine
-Release: 2025-10-29
 Poster: ../images/movie-posters/hazbinhotelseason2.png
 Genre: Adult Animation, Animation, 2D Animation, Musical, Drama, Comedy
 Director: Vivienne Medrano  
@@ -1781,3 +1765,41 @@ Taglines: The war that will unite a century.
 Production companies: Bento Box Entertainment, Spindle Horse Toons, A24, Amazon MGM Studios
 Seen: 2025-10-29
 Review: Alvin|4.65
+Review: Holger|
+Review: Carl|
+
+Movie: The Mighty Nein
+Release: 2025-11-19
+Poster: ../images/movie-posters/themightynein.jpeg
+Genre: Adult Animation, Animation, 2D Animation, Drama, Comedy, Action, Superhero, Fantasy
+Director: Critical Role
+Writer: Critical Role
+Actors: Laura Bailey, Taliesin Jaffe, Ashley Johnson, Matthew Mercer, Liam O'Brien, Marisha Ray, Sam Riegel, Travis Willingham, Mark Strong
+Composer: Neal Acree
+Runtime: 30m
+Budget: 
+Gross Worldwide:
+Taglines: 
+Production companies: Amazon MGM Studios, Critical Role Productions, Metapigeon, Titmouse
+Seen: 2025-11-19
+Review: Alvin|
+Review: Holger|
+Review: Carl|
+
+Movie: Fallen Angels
+Release: 1995-09-06
+Poster: ../images/movie-posters/fallenangels.jpg
+Genre: Comedy, Crime, Drama, Romance
+Director: Wong Kar-Wai
+Writer: Wong Kar-Wai
+Actors: Leon Lai, Michelle Reis, Takeshi Kaneshiro
+Composer: Frankie Chan, Roel A. García
+Runtime: 1h 39m
+Budget: $7,476,025 (estimated)
+Gross Worldwide: $755,022
+Taglines: 
+Production companies: Amazon MGM Studios, Critical Role Productions, Metapigeon, Titmouse
+Seen: 2025-11-30
+Review: Diaa|
+Review: Holger| 4.2
+Review: Carl|3
