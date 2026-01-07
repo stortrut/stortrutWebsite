@@ -1752,7 +1752,7 @@ Review: Holger|4.48
 
 Movie: Hazbin Hotel S.2
 Release: 2025-10-29
-Poster: ../images/movie-posters/hazbinhotelseason2.webp
+Poster: ../images/movie-posters/hazbinhotels2.webp
 Genre: Adult Animation, Animation, 2D Animation, Musical, Drama, Comedy
 Director: Vivienne Medrano  
 Writer: Vivienne Medrano
@@ -1765,8 +1765,8 @@ Taglines: The war that will unite a century.
 Production companies: Bento Box Entertainment, Spindle Horse Toons, A24, Amazon MGM Studios
 Seen: 2025-10-29
 Review: Alvin|4.65
-Review: Holger|
-Review: Carl|
+Review: Holger| 0
+Review: Carl| 0
 
 Movie: The Mighty Nein
 Release: 2025-11-19
@@ -1782,9 +1782,9 @@ Gross Worldwide:
 Taglines: 
 Production companies: Amazon MGM Studios, Critical Role Productions, Metapigeon, Titmouse
 Seen: 2025-11-19
-Review: Alvin|
-Review: Holger|
-Review: Carl|
+Review: Alvin| 0
+Review: Holger| 0
+Review: Carl| 0
 
 Movie: Fallen Angels
 Release: 1995-09-06
