@@ -45,11 +45,11 @@ h2 {
    margin-top: 41px;
 }
 
-pre {
-  white-space: pre-wrap;
+
+
+.quote {
+  white-space: pre-line;
 }
-
-
 
 
 
