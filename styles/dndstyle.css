@@ -54,18 +54,20 @@ h2 {
 
 .magic-item {
   max-width: 600px;
-  padding: 20px 28px;
+  padding: 0px 28px;
   margin: 40px auto;
   border: 1px solid #ccc;
   border-radius: 6px;
   background: #ffffff;
   line-height: 1.6;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .item-name {
   font-variant: small-caps;
   font-size: 1.6em;
   margin-bottom: 4px;
+  margin-top: 20px
 }
 
 .item-meta {
