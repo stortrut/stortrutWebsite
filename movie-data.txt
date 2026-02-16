@@ -1337,7 +1337,7 @@ Taglines:
 Production companies:
 Seen: 2025-02-05  
 Review: Alvin|3.616  
-Review: Diaa|  
+Review: Diaa|3.8  
 
 Movie: Dog Day Afternoon  
 Release: 1975-09-21  
@@ -1354,7 +1354,7 @@ Taglines:
 Production companies:
 Seen: 2025-02-23  
 Review: Alvin|3.98  
-Review: Diaa|  
+Review: Holger| 4.2
 
 Movie: The Shawshank Redemption  
 Release: 1994-09-23  
@@ -1371,7 +1371,8 @@ Taglines:
 Production companies:
 Seen: 2025-03-02  
 Review: Alvin|4.52  
-Review: Holger|  
+Review: Holger| 4
+Review: Carl| 4.25
 
 Movie: A Minecraft Movie  
 Release: 2025-04-04  
@@ -1661,7 +1662,7 @@ Taglines: Come in close, because the more you think you see, the easier it'll be
 Production companies: Summit Entertainment, K/O Paper Products, SOIXAN7E QUIN5E
 Seen: 2025-10-19  
 Review: Alvin|2.88  
-Review: Diaa|
+Review: Diaa| 3.4
 
 Movie: 12 Angry Men
 Release: 1957-04-10  
@@ -1765,8 +1766,8 @@ Taglines: The war that will unite a century.
 Production companies: Bento Box Entertainment, Spindle Horse Toons, A24, Amazon MGM Studios
 Seen: 2025-10-29
 Review: Alvin|4.65
-Review: Holger| 0
-Review: Carl| 0
+Review: Holger| 4
+Review: Carl| 4.22
 
 Movie: The Mighty Nein
 Release: 2025-11-19
@@ -1782,9 +1783,10 @@ Gross Worldwide:
 Taglines: 
 Production companies: Amazon MGM Studios, Critical Role Productions, Metapigeon, Titmouse
 Seen: 2025-11-19
-Review: Alvin| 0
-Review: Holger| 0
-Review: Carl| 0
+Review: Alvin| 4.49999
+Review: Diaa| 4.6
+Review: Carl| 4.29
+Review: Holger| 4.499999999999999
 
 Movie: Fallen Angels
 Release: 1995-09-06
