@@ -52,7 +52,32 @@ h2 {
 }
 
 
+.magic-item {
+  max-width: 600px;
+  padding: 20px 28px;
+  margin: 40px auto;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #ffffff;
+  line-height: 1.6;
+}
 
+.item-name {
+  font-variant: small-caps;
+  font-size: 1.6em;
+  margin-bottom: 4px;
+}
+
+.item-meta {
+  font-style: italic;
+  color: #555;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.magic-item p {
+  margin-bottom: 12px;
+}
 
 
 
