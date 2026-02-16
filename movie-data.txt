@@ -1804,6 +1804,23 @@ Review: Diaa|
 Review: Holger| 4.2
 Review: Carl|3
 
+Movie: Trading Places
+Release: 1990-04-08
+Poster: ../images/movie-posters/tradingPlaces.jpeg
+Genre: Satire, Comedy
+Director: Mark Frost, David Lynch
+Writer: Timothy Harris, Herschel Weingrod
+Actors: Eddie Murphy, Dan Aykroyd, Ralph Bellamy
+Composer: Elmer Bernstein
+Runtime: 1h 56m
+Budget: $15,000,000 (estimated)
+Gross Worldwide: $90,404,800
+Taglines: They're not just getting rich... They're getting even.
+Production companies: Paramount PicturesCinema Group Ventures
+Seen: 2025-12-12
+Review: Alvin| 3.79
+Review: Carl| 3.5
+
 Movie: Twin Peaks S.1
 Release: 1990-04-08
 Poster: ../images/movie-posters/twinPeaksS1.png
@@ -1811,12 +1828,12 @@ Genre: Cop Drama, Psychological Drama, Psychological Thriller, Sereal Killer, Su
 Director: Mark Frost, David Lynch
 Writer: Mark Frost. David Lynch
 Actors: Kyle MacLachlan, Michael Ontkean, Mädchen Amick
-Composer: Stuart Staples, Tindersticks
+Composer: Angelo Badalamenti
 Runtime: 50m
 Budget: 
 Gross Worldwide: 
 Taglines: A town where everyone knows everyone and nothing is what it seems.
-Production companies: Alcatraz Films, Andrew Lauren Productions, Arte France Cinéma
+Production companies: Lynch/Frost Productions, Propaganda Films, Spelling Entertainment
 Seen: 2025-12-19
 Review: Alvin| 4.41
 Review: Carl| 4.1
