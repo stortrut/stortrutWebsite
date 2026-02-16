@@ -1804,6 +1804,23 @@ Review: Diaa|
 Review: Holger| 4.2
 Review: Carl|3
 
+Movie: Twin Peaks S.1
+Release: 1990-04-08
+Poster: ../images/movie-posters/twinPeaksS1.png
+Genre: Cop Drama, Psychological Drama, Psychological Thriller, Sereal Killer, Suspense Mystery, Tragedy, Whodunnit, Teen Drama, Crime
+Director: Mark Frost, David Lynch
+Writer: Mark Frost. David Lynch
+Actors: Kyle MacLachlan, Michael Ontkean, Mädchen Amick
+Composer: Stuart Staples, Tindersticks
+Runtime: 50m
+Budget: 
+Gross Worldwide: 
+Taglines: A town where everyone knows everyone and nothing is what it seems.
+Production companies: Alcatraz Films, Andrew Lauren Productions, Arte France Cinéma
+Seen: 2025-12-19
+Review: Alvin| 4.41
+Review: Carl| 4.1
+
 Movie: High Life
 Release: 2018-09-09
 Poster: ../images/movie-posters/highLife.png
@@ -1817,7 +1834,7 @@ Budget: €8,000,000 (estimated)
 Gross Worldwide: $2,133,033
 Taglines: Oblivion awaits
 Production companies: Alcatraz Films, Andrew Lauren Productions, Arte France Cinéma
-Seen: 2025-12-15
+Seen: 2026-01-15
 Review: Alvin| 1.2
 Review: Diaa| 2.1
 Review: Carl| 2.67
