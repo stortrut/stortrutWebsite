@@ -1803,3 +1803,21 @@ Seen: 2025-11-30
 Review: Diaa|
 Review: Holger| 4.2
 Review: Carl|3
+
+Movie: High Life
+Release: 2018-09-09
+Poster: ../images/movie-posters/highLife.png
+Genre: Dystopian, Sci-Fi, Psychological Drama, Thriller
+Director: Claire Denis
+Writer: Claire Denis, Jean-Pol Fargeau, Geoff Cox
+Actors: Robert Pattinson, Juliette Binoche, André 3000
+Composer: Stuart Staples, Tindersticks
+Runtime: 1h 53m
+Budget: €8,000,000 (estimated)
+Gross Worldwide: $2,133,033
+Taglines: Oblivion awaits
+Production companies: Alcatraz Films, Andrew Lauren Productions, Arte France Cinéma
+Seen: 2025-12-15
+Review: Alvin| 1.2
+Review: Diaa| 2.1
+Review: Carl| 2.67
