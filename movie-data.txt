@@ -1808,7 +1808,7 @@ Review: Carl|3
 
 Movie: Trading Places
 Release: 1990-04-08
-Poster: ../images/movie-posters/tradingPlaces.jpeg
+Poster: ../images/movie-posters/tradingPlaces.jpg
 Genre: Satire, Comedy
 Director: Mark Frost, David Lynch
 Writer: Timothy Harris, Herschel Weingrod
