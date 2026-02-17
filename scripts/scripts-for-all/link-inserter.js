@@ -1,3 +1,5 @@
+//Supported formats @Jon, Jon@(Target), (Display Name)@(Target), Jon@Target
+
 function replaceWordsWithLinks(rootNode = document.body) {
   fetch('/articles/pages.json')
     .then(res => res.json())

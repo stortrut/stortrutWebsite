@@ -35,8 +35,6 @@ p {
   margin-top: 10px;
 }
 
-
-
 h2 {
   margin-bottom: 0px;
   border-bottom: 2px solid #d4af37;
@@ -45,13 +43,10 @@ h2 {
    margin-top: 41px;
 }
 
-
-
 .quote {
   white-space: pre-line;
   margin-bottom: 20px;
 }
-
 
 .magic-item {
   max-width: 600px;
