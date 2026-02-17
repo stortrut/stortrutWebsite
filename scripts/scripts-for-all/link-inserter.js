@@ -1,90 +1,95 @@
 //Supported formats @Jon, Jon@(Target), (Display Name)@(Target), Jon@Target
 
+// ======================
+// Replace @words with links (robust version)
+// ======================
 function replaceWordsWithLinks(rootNode = document.body) {
   fetch('/articles/pages.json')
     .then(res => res.json())
     .then(pages => {
-
-      // Build lookup map
+      // Build lookup map (lowercase keys for case-insensitive matching)
       const pageMap = {};
       for (const page of pages) {
-        const url = page.url;
-        pageMap[page.name.toLowerCase()] = url;
-
+        pageMap[page.name.toLowerCase()] = page.url;
         if (Array.isArray(page.shorthands)) {
-          for (const sh of page.shorthands) {
-            pageMap[sh.toLowerCase()] = url;
-          }
+          for (const sh of page.shorthands) pageMap[sh.toLowerCase()] = page.url;
         }
       }
-
-      console.log('✅ links inserted');
 
       const walker = document.createTreeWalker(rootNode, NodeFilter.SHOW_TEXT);
       const nodes = [];
       while (walker.nextNode()) nodes.push(walker.currentNode);
 
-      // Regex pattern: captures leading space instead of lookbehind
-      const pattern = /(^|\s)@([\p{L}\p{N}_\-]+)|\(([^\)]+)\)\s*@\(([^\)]+)\)|([\p{L}\p{N}_\-]+)\s*@\(([^\)]+)\)|([\p{L}\p{N}_\-]+)\s*@([\p{L}\p{N}_\-]+)|([\p{L}\p{N}_\-]+)@([\p{L}\p{N}_\-]+)/gu;
-
-      for (const node of nodes) {
+      nodes.forEach(node => {
         const text = node.textContent;
-        if (!text.includes('@')) continue;
+        if (!text.includes('@')) return; // skip nodes without @
 
-        const newHtml = text.replace(pattern, (
-          match,
-          leadingSpace,
-          atOnlyTarget,
-          dispParen, targetParen1,
-          dispWordMulti, targetParen2,
-          dispWordSingle, targetSingle1,
-          dispWordSingleNoSpace, targetSingle2
-        ) => {
+        const words = text.split(/(\s+)/); // keep whitespace
 
-          // Determine which capture group matched
-          const targetName = (
-            atOnlyTarget ||
-            targetParen1 ||
-            targetParen2 ||
-            targetSingle1 ||
-            targetSingle2 ||
-            ''
-          ).trim();
+        const newWords = words.map(word => {
+          let originalWord = word;
 
-          let key = targetName.toLowerCase();
-          let url = pageMap[key];
+          // ---- Handle @Name and @Names (Swedish -s) ----
+          if (word.startsWith('@')) {
+            let target = word.slice(1).toLowerCase();
+            let url = pageMap[target];
 
-          // Swedish genitive support: @Odos → @Odo
-          if (!url && key.endsWith('s')) {
-            const singularKey = key.slice(0, -1);
-            if (pageMap[singularKey]) {
-              url = pageMap[singularKey];
+            if (!url && target.endsWith('s')) {
+              const singular = target.slice(0, -1);
+              url = pageMap[singular];
             }
+
+            if (url) return `<a href="${url}">${originalWord}</a>`;
+            return originalWord;
           }
 
-          if (!url) return match;
+          // ---- Handle Name@(Target) ----
+          const atParenMatch = word.match(/^([\p{L}\p{N}_\-]+)@\((.+)\)$/u);
+          if (atParenMatch) {
+            const display = atParenMatch[1];
+            let target = atParenMatch[2].toLowerCase();
+            let url = pageMap[target];
 
-          const displayText = (
-            dispParen ||
-            dispWordMulti ||
-            dispWordSingle ||
-            dispWordSingleNoSpace ||
-            atOnlyTarget ||
-            ''
-          ).trim();
+            // Swedish genitive -s support
+            if (!url && target.endsWith('s')) url = pageMap[target.slice(0,-1)];
+            if (url) return `<a href="${url}">${display}</a>`;
+            return originalWord;
+          }
 
-          const link = `<a href="${url}">${displayText}</a>`;
+          // ---- Handle (Display)@(Target) ----
+          const parenMatch = word.match(/^\((.+)\)@\((.+)\)$/u);
+          if (parenMatch) {
+            const display = parenMatch[1];
+            let target = parenMatch[2].toLowerCase();
+            let url = pageMap[target];
 
-          // Put back leading space if it exists
-          return (leadingSpace || '') + link;
+            if (!url && target.endsWith('s')) url = pageMap[target.slice(0,-1)];
+            if (url) return `<a href="${url}">${display}</a>`;
+            return originalWord;
+          }
+
+          // ---- Handle Name@Target ----
+          const atMatch = word.match(/^([\p{L}\p{N}_\-]+)@([\p{L}\p{N}_\-]+)$/u);
+          if (atMatch) {
+            const display = atMatch[1];
+            let target = atMatch[2].toLowerCase();
+            let url = pageMap[target];
+
+            if (!url && target.endsWith('s')) url = pageMap[target.slice(0,-1)];
+            if (url) return `<a href="${url}">${display}</a>`;
+            return originalWord;
+          }
+
+          return originalWord; // no match
         });
 
-        if (newHtml !== text) {
+        // Replace the text node with a span containing the links
+        if (newWords.join('') !== text) {
           const span = document.createElement('span');
-          span.innerHTML = newHtml;
+          span.innerHTML = newWords.join('');
           node.parentNode.replaceChild(span, node);
         }
-      }
+      });
 
       // ======================
       // Tooltip System
@@ -96,7 +101,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
           tooltip.id = 'link-preview-tooltip';
           tooltip.style.position = 'absolute';
           tooltip.style.padding = '8px 12px';
-          tooltip.style.background = 'rgba(0, 0, 0, 0.94)';
+          tooltip.style.background = 'rgba(0,0,0,0.94)';
           tooltip.style.color = '#fff';
           tooltip.style.borderRadius = '4px';
           tooltip.style.pointerEvents = 'none';
@@ -111,15 +116,13 @@ function replaceWordsWithLinks(rootNode = document.body) {
         tooltip.textContent = preview;
 
         const rect = link.getBoundingClientRect();
-        const tooltipWidth = 300;
-        const padding = 10;
-        const top = rect.bottom + window.scrollY + 8;
         let left = rect.left + window.scrollX;
-
+        let top = rect.bottom + window.scrollY + 8;
+        const padding = 10;
+        const tooltipWidth = 300;
         const viewportWidth = document.documentElement.clientWidth;
-        if (left + tooltipWidth + padding > viewportWidth) {
-          left = viewportWidth - tooltipWidth - padding;
-        }
+
+        if (left + tooltipWidth + padding > viewportWidth) left = viewportWidth - tooltipWidth - padding;
         if (left < padding) left = padding;
 
         tooltip.style.left = `${left}px`;
@@ -160,7 +163,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
 }
 
 // ======================
-// Template Processing
+// Template processing
 // ======================
 function processEventDataTemplate() {
   const template = document.getElementById('eventData');
@@ -174,7 +177,7 @@ function processEventDataTemplate() {
 }
 
 // ======================
-// Run on DOM ready
+// Init
 // ======================
 window.addEventListener('DOMContentLoaded', () => {
   processEventDataTemplate();
