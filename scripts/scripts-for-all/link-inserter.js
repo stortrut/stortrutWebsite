@@ -24,9 +24,8 @@ function replaceWordsWithLinks(rootNode = document.body) {
       const nodes = [];
       while (walker.nextNode()) nodes.push(walker.currentNode);
 
-      // 🔹 FIXED REGEX (uses lookbehind — does NOT consume space)
-      const pattern = /(?<=^|\s)@([\p{L}\p{N}_\-]+)|\(([^\)]+)\)\s*@\(([^\)]+)\)|([\p{L}\p{N}_\-]+)\s*@\(([^\)]+)\)|([\p{L}\p{N}_\-]+)\s*@([\p{L}\p{N}_\-]+)|([\p{L}\p{N}_\-]+)@([\p{L}\p{N}_\-]+)/gu;
-
+      // Regex pattern: captures leading space instead of lookbehind
+      const pattern = /(^|\s)@([\p{L}\p{N}_\-]+)|\(([^\)]+)\)\s*@\(([^\)]+)\)|([\p{L}\p{N}_\-]+)\s*@\(([^\)]+)\)|([\p{L}\p{N}_\-]+)\s*@([\p{L}\p{N}_\-]+)|([\p{L}\p{N}_\-]+)@([\p{L}\p{N}_\-]+)/gu;
 
       for (const node of nodes) {
         const text = node.textContent;
@@ -34,6 +33,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
 
         const newHtml = text.replace(pattern, (
           match,
+          leadingSpace,
           atOnlyTarget,
           dispParen, targetParen1,
           dispWordMulti, targetParen2,
@@ -41,6 +41,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
           dispWordSingleNoSpace, targetSingle2
         ) => {
 
+          // Determine which capture group matched
           const targetName = (
             atOnlyTarget ||
             targetParen1 ||
@@ -51,17 +52,17 @@ function replaceWordsWithLinks(rootNode = document.body) {
           ).trim();
 
           let key = targetName.toLowerCase();
-let url = pageMap[key];
+          let url = pageMap[key];
 
-// If no match, try removing trailing "s" (Swedish genitive)
-if (!url && key.endsWith('s')) {
-  const singularKey = key.slice(0, -1);
-  if (pageMap[singularKey]) {
-    url = pageMap[singularKey];
-  }
-}
+          // Swedish genitive support: @Odos → @Odo
+          if (!url && key.endsWith('s')) {
+            const singularKey = key.slice(0, -1);
+            if (pageMap[singularKey]) {
+              url = pageMap[singularKey];
+            }
+          }
 
-if (!url) return match;
+          if (!url) return match;
 
           const displayText = (
             dispParen ||
@@ -72,7 +73,10 @@ if (!url) return match;
             ''
           ).trim();
 
-          return `<a href="${url}">${displayText}</a>`;
+          const link = `<a href="${url}">${displayText}</a>`;
+
+          // Put back leading space if it exists
+          return (leadingSpace || '') + link;
         });
 
         if (newHtml !== text) {
@@ -83,12 +87,10 @@ if (!url) return match;
       }
 
       // ======================
-      // TOOLTIP SYSTEM
+      // Tooltip System
       // ======================
-
       function showTooltip(link, preview) {
         let tooltip = document.getElementById('link-preview-tooltip');
-
         if (!tooltip) {
           tooltip = document.createElement('div');
           tooltip.id = 'link-preview-tooltip';
@@ -111,19 +113,14 @@ if (!url) return match;
         const rect = link.getBoundingClientRect();
         const tooltipWidth = 300;
         const padding = 10;
-
         const top = rect.bottom + window.scrollY + 8;
         let left = rect.left + window.scrollX;
 
         const viewportWidth = document.documentElement.clientWidth;
-
         if (left + tooltipWidth + padding > viewportWidth) {
           left = viewportWidth - tooltipWidth - padding;
         }
-
-        if (left < padding) {
-          left = padding;
-        }
+        if (left < padding) left = padding;
 
         tooltip.style.left = `${left}px`;
         tooltip.style.top = `${top}px`;
@@ -136,30 +133,22 @@ if (!url) return match;
       }
 
       document.querySelectorAll('a').forEach(link => {
-
         if (link.closest('#toc-sidebar')) return;
 
         link.addEventListener('mouseenter', async () => {
-
           if (!link.dataset.preview) {
             try {
               const res = await fetch(link.href);
               const text = await res.text();
               const parser = new DOMParser();
               const doc = parser.parseFromString(text, 'text/html');
-
               const metaDesc = doc.querySelector('meta[name="description"]');
-              const preview = metaDesc
-                ? metaDesc.getAttribute('content')
-                : 'No preview available';
-
+              const preview = metaDesc ? metaDesc.getAttribute('content') : 'No preview available';
               link.dataset.preview = preview;
-
             } catch {
               link.dataset.preview = 'Failed to load preview';
             }
           }
-
           showTooltip(link, link.dataset.preview);
         });
 
@@ -170,30 +159,23 @@ if (!url) return match;
     .catch(err => console.error('Error loading pages.json', err));
 }
 
-
 // ======================
-// TEMPLATE PROCESSING
+// Template Processing
 // ======================
-
 function processEventDataTemplate() {
   const template = document.getElementById('eventData');
   if (!template) return;
 
   const fragment = template.content.cloneNode(true);
-
   replaceWordsWithLinks(fragment);
 
   const timeline = document.getElementById('timeline');
-  if (timeline) {
-    timeline.appendChild(fragment);
-  }
+  if (timeline) timeline.appendChild(fragment);
 }
 
-
 // ======================
-// INIT
+// Run on DOM ready
 // ======================
-
 window.addEventListener('DOMContentLoaded', () => {
   processEventDataTemplate();
 });
