@@ -7,7 +7,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
   fetch('/articles/pages.json')
     .then(res => res.json())
     .then(pages => {
-      // Build lookup map (lowercase keys for case-insensitive matching)
+      // Build lookup map (lowercase keys)
       const pageMap = {};
       for (const page of pages) {
         pageMap[page.name.toLowerCase()] = page.url;
@@ -22,12 +22,12 @@ function replaceWordsWithLinks(rootNode = document.body) {
 
       nodes.forEach(node => {
         const text = node.textContent;
-        if (!text.includes('@')) return; // skip nodes without @
+        if (!text.includes('@')) return;
 
         const words = text.split(/(\s+)/); // keep whitespace
 
         const newWords = words.map(word => {
-          let originalWord = word;
+          const originalWord = word;
 
           // ---- Handle @Name and @Names (Swedish -s) ----
           if (word.startsWith('@')) {
@@ -39,7 +39,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
               url = pageMap[singular];
             }
 
-            if (url) return `<a href="${url}">${originalWord}</a>`;
+            if (url) return `<a href="${url}">${originalWord.slice(1)}</a>`; // remove @
             return originalWord;
           }
 
@@ -50,8 +50,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
             let target = atParenMatch[2].toLowerCase();
             let url = pageMap[target];
 
-            // Swedish genitive -s support
-            if (!url && target.endsWith('s')) url = pageMap[target.slice(0,-1)];
+            if (!url && target.endsWith('s')) url = pageMap[target.slice(0, -1)];
             if (url) return `<a href="${url}">${display}</a>`;
             return originalWord;
           }
@@ -63,7 +62,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
             let target = parenMatch[2].toLowerCase();
             let url = pageMap[target];
 
-            if (!url && target.endsWith('s')) url = pageMap[target.slice(0,-1)];
+            if (!url && target.endsWith('s')) url = pageMap[target.slice(0, -1)];
             if (url) return `<a href="${url}">${display}</a>`;
             return originalWord;
           }
@@ -75,7 +74,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
             let target = atMatch[2].toLowerCase();
             let url = pageMap[target];
 
-            if (!url && target.endsWith('s')) url = pageMap[target.slice(0,-1)];
+            if (!url && target.endsWith('s')) url = pageMap[target.slice(0, -1)];
             if (url) return `<a href="${url}">${display}</a>`;
             return originalWord;
           }
