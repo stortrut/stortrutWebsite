@@ -4,10 +4,13 @@ function replaceWordsWithLinks(rootNode = document.body) {
   fetch('/articles/pages.json')
     .then(res => res.json())
     .then(pages => {
+
+      // Build lookup map
       const pageMap = {};
       for (const page of pages) {
         const url = page.url;
         pageMap[page.name.toLowerCase()] = url;
+
         if (Array.isArray(page.shorthands)) {
           for (const sh of page.shorthands) {
             pageMap[sh.toLowerCase()] = url;
@@ -15,14 +18,15 @@ function replaceWordsWithLinks(rootNode = document.body) {
         }
       }
 
-      console.log(`✅ links inserted`);
+      console.log('✅ links inserted');
 
       const walker = document.createTreeWalker(rootNode, NodeFilter.SHOW_TEXT);
       const nodes = [];
       while (walker.nextNode()) nodes.push(walker.currentNode);
 
-      // 🔹 Fixed regex: @Name matched first + safe boundaries
-      const pattern = /(?:^|\s)@([\p{L}\p{N}_\-]+)|\(([^\)]+)\)\s*@\(([^\)]+)\)|([\p{L}\p{N}_\-]+)\s*@\(([^\)]+)\)|([\p{L}\p{N}_\-]+)\s*@([\p{L}\p{N}_\-]+)|([\p{L}\p{N}_\-]+)@([\p{L}\p{N}_\-]+)/gu;
+      // 🔹 FIXED REGEX (uses lookbehind — does NOT consume space)
+      const pattern = /(?<=^|\s)@([\p{L}\p{N}_\-]+)|\(([^\)]+)\)\s*@\(([^\)]+)\)|([\p{L}\p{N}_\-]+)\s*@\(([^\)]+)\)|([\p{L}\p{N}_\-]+)\s*@([\p{L}\p{N}_\-]+)|([\p{L}\p{N}_\-]+)@([\p{L}\p{N}_\-]+)/gu;
+
 
       for (const node of nodes) {
         const text = node.textContent;
@@ -36,10 +40,6 @@ function replaceWordsWithLinks(rootNode = document.body) {
           dispWordSingle, targetSingle1,
           dispWordSingleNoSpace, targetSingle2
         ) => {
-
-          // Preserve leading space for " Hello @Jon"
-          const hasLeadingSpace = match.startsWith(' ');
-          const cleanMatch = hasLeadingSpace ? match.trim() : match;
 
           const targetName = (
             atOnlyTarget ||
@@ -63,9 +63,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
             ''
           ).trim();
 
-          const linkHtml = `<a href="${url}">${displayText}</a>`;
-
-          return hasLeadingSpace ? ' ' + linkHtml : linkHtml;
+          return `<a href="${url}">${displayText}</a>`;
         });
 
         if (newHtml !== text) {
@@ -75,9 +73,13 @@ function replaceWordsWithLinks(rootNode = document.body) {
         }
       }
 
-      // Tooltip code (optional, keep if you want tooltips)
+      // ======================
+      // TOOLTIP SYSTEM
+      // ======================
+
       function showTooltip(link, preview) {
         let tooltip = document.getElementById('link-preview-tooltip');
+
         if (!tooltip) {
           tooltip = document.createElement('div');
           tooltip.id = 'link-preview-tooltip';
@@ -100,14 +102,16 @@ function replaceWordsWithLinks(rootNode = document.body) {
         const rect = link.getBoundingClientRect();
         const tooltipWidth = 300;
         const padding = 10;
-        const top = rect.bottom + window.scrollY + 8;
 
+        const top = rect.bottom + window.scrollY + 8;
         let left = rect.left + window.scrollX;
 
         const viewportWidth = document.documentElement.clientWidth;
+
         if (left + tooltipWidth + padding > viewportWidth) {
           left = viewportWidth - tooltipWidth - padding;
         }
+
         if (left < padding) {
           left = padding;
         }
@@ -119,49 +123,55 @@ function replaceWordsWithLinks(rootNode = document.body) {
 
       function hideTooltip() {
         const tooltip = document.getElementById('link-preview-tooltip');
-        if (tooltip) {
-          tooltip.style.opacity = '0';
-        }
+        if (tooltip) tooltip.style.opacity = '0';
       }
 
       document.querySelectorAll('a').forEach(link => {
-        // Skip links inside the sidebar
+
         if (link.closest('#toc-sidebar')) return;
 
         link.addEventListener('mouseenter', async () => {
+
           if (!link.dataset.preview) {
             try {
               const res = await fetch(link.href);
               const text = await res.text();
               const parser = new DOMParser();
               const doc = parser.parseFromString(text, 'text/html');
+
               const metaDesc = doc.querySelector('meta[name="description"]');
-              const preview = metaDesc ? metaDesc.getAttribute('content') : 'No preview available';
+              const preview = metaDesc
+                ? metaDesc.getAttribute('content')
+                : 'No preview available';
+
               link.dataset.preview = preview;
+
             } catch {
               link.dataset.preview = 'Failed to load preview';
             }
           }
+
           showTooltip(link, link.dataset.preview);
         });
 
-        link.addEventListener('mouseleave', () => {
-          hideTooltip();
-        });
+        link.addEventListener('mouseleave', hideTooltip);
       });
+
     })
     .catch(err => console.error('Error loading pages.json', err));
 }
 
 
-// Helper function to process your template and append to the timeline div
+// ======================
+// TEMPLATE PROCESSING
+// ======================
+
 function processEventDataTemplate() {
   const template = document.getElementById('eventData');
   if (!template) return;
 
   const fragment = template.content.cloneNode(true);
 
-  // Call replaceWordsWithLinks on the cloned content
   replaceWordsWithLinks(fragment);
 
   const timeline = document.getElementById('timeline');
@@ -170,7 +180,11 @@ function processEventDataTemplate() {
   }
 }
 
-// Run on DOM ready
+
+// ======================
+// INIT
+// ======================
+
 window.addEventListener('DOMContentLoaded', () => {
   processEventDataTemplate();
 });
