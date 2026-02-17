@@ -50,9 +50,18 @@ function replaceWordsWithLinks(rootNode = document.body) {
             ''
           ).trim();
 
-          const key = targetName.toLowerCase();
-          const url = pageMap[key];
-          if (!url) return match;
+          let key = targetName.toLowerCase();
+let url = pageMap[key];
+
+// If no match, try removing trailing "s" (Swedish genitive)
+if (!url && key.endsWith('s')) {
+  const singularKey = key.slice(0, -1);
+  if (pageMap[singularKey]) {
+    url = pageMap[singularKey];
+  }
+}
+
+if (!url) return match;
 
           const displayText = (
             dispParen ||
