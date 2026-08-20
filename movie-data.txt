@@ -1826,7 +1826,7 @@ Review: Carl| 3.5
 Movie: Twin Peaks S.1
 Release: 1990-04-08
 Poster: ../images/movie-posters/twinPeaksS1.png
-Genre: Cop Drama, Psychological Drama, Psychological Thriller, Sereal Killer, Suspense Mystery, Tragedy, Whodunnit, Teen Drama, Crime
+Genre: Cop Drama, Psychological Drama, Psychological Thriller, Serial Killer, Suspense Mystery, Tragedy, Whodunnit, Teen Drama, Crime
 Director: Mark Frost, David Lynch
 Writer: Mark Frost. David Lynch
 Actors: Kyle MacLachlan, Michael Ontkean, Mädchen Amick
