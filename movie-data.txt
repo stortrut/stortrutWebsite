@@ -1878,7 +1878,7 @@ Review: Carl| 3.2
 
 Movie: Obsession
 Release: 2026-05-15
-Poster: ../images/movie-posters/Obsession.png
+Poster: ../images/movie-posters/obsession.png
 Genre: Dark Romance, Psychological Horror, Psychological Thriller, Supernatural Horror, Horror, Thriller
 Director: Curry Barker
 Writer: Curry Barker
