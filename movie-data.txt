@@ -1875,3 +1875,21 @@ Seen: 2026-04-21
 Review: Alvin| 3.4
 Review: Diaa| 3.6
 Review: Carl| 3.2
+
+Movie: Waynes World
+Release: 1992-02-14
+Poster: ../images/movie-posters/Wayne's_World.jpg
+Genre: Buddy Comedy, Comedy, Music, Musical, Meta
+Director: Penelope Spheeris
+Writer: Mike Myers, Bonnie Turner, Terry Turner
+Actors: Mike Myers, Dana Carvey, Rob Lowe
+Composer: J. Peter Robinson
+Runtime: 1h 34m
+Budget: $20,000,000 (estimated)
+Gross Worldwide: $183,097,323
+Taglines: You'll laugh. You'll cry. You'll hurl.
+Production companies: Paramount Pictures
+Seen: 2026-08-05
+Review: Alvin| 3.2
+Review: Holger| 3.2
+ 
