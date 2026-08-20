@@ -1876,6 +1876,42 @@ Review: Alvin| 3.4
 Review: Diaa| 3.6
 Review: Carl| 3.2
 
+Movie: Obsession
+Release: 2026-05-15
+Poster: ../images/movie-posters/Obsession.png
+Genre: Dark Romance, Psychological Horror, Psychological Thriller, Supernatural Horror, Horror, Thriller
+Director: Curry Barker
+Writer: Curry Barker
+Actors: Michael Johnston, Inde Navarrette, Cooper Tomlinson
+Composer: Rock Burwell
+Runtime: 1h 49m
+Budget: $750,000 (estimated)
+Gross Worldwide: $495,693,715
+Taglines: Be careful who you wish for...
+Production companies: Capstone Pictures, Blumhouse Productions, Tea Shop Productions
+Seen: 2026-07-25
+Review: Alvin| 3.75
+Review: Diaa| 0
+Review: Carl| 0
+
+Movie: Spider-Man: Brand new day
+Release: 2026-07-31
+Poster: ../images/movie-posters/spidermanbrandnewday.jpg
+Genre: Marvel, Superhero, Action, Urban Adventure, Adventure, Sci-Fi
+Director: stin Daniel Cretton
+Writer: Chris McKenna, Erik Sommers, Stan Lee
+Actors: Tom Holland; Zendaya, Mark Ruffalo
+Composer: Michael Giacchino
+Runtime: 2h 25m
+Budget: $225,000,000 (estimated)
+Gross Worldwide: $2,039,929,225
+Taglines: No matter if no one remembers me, I'll keep protecting
+Production companies: Columbia Pictures, Marvel Studios, Sony Pictures
+Seen: 2026-07-25
+Review: Alvin| 4.23
+Review: Diaa| 0
+Review: Carl| 0
+
 Movie: Waynes World
 Release: 1992-02-14
 Poster: ../images/movie-posters/Wayne's_World.jpg
