@@ -1,24 +1,33 @@
 
-document.addEventListener('DOMContentLoaded', () => {
-    fetch('/movie-data.txt')
+document.addEventListener('DOMContentLoaded', () => { //This waits until the HTML document has loaded before running
+
+    fetch('data/movie-data.txt') //Gets the movie data text
         .then(response => {
             if (!response.ok) throw new Error('Failed to load movie data');
-            return response.text();
+            return response.text(); //Gets the content as text
         })
-        .then(text => {
-            const movies = parseMovies(text);
+
+        .then(text => { //We use that text
+
+            const movies = getMovies(text); //We get the movies through the function
+
+            //Get the data of today
             const today = new Date();
             const todayMonth = today.getMonth(); // 0-11
             const todayDate = today.getDate();   // 1-31
 
+            //Create two arrays of potentional matches
             const exactMatches = [];
             const upcomingMatches = [];
 
-            let soonestDiff = Infinity;
+            let soonestDiff = Infinity; //We use let, because that means we can reasign it later
 
+            //We go through all the movies
             for (const movie of movies) {
-                let releaseDate;
 
+                let releaseDate; //we assign it a Date data
+                
+                //We check if it is a string, and then split it on the "-", otherwise we check if it is a Date
                 if (typeof movie.release === 'string' && movie.release.includes('-')) {
                     const [year, month, day] = movie.release.split('-').map(Number);
                     releaseDate = new Date(year, month - 1, day);
@@ -41,9 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const yearsAgo = today.getFullYear() - year;
                     exactMatches.push({
                         ...movie,
-                        message: `${movie.title} released today ${yearsAgo} year${yearsAgo !== 1 ? 's' : ''} ago! 🎉`,
+                        message: `${movie.title} released today ${yearsAgo} year${yearsAgo !== 1 ? 's' : ''} ago!`,
                     });
-                } else {
+                } 
+                else {
                     // Calculate days until this movie’s mm-dd
                     const thisYear = new Date(today.getFullYear(), month - 1, day);
                     let dayDiff = Math.ceil((thisYear - today) / (1000 * 60 * 60 * 24));
@@ -58,12 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         upcomingMatches.length = 0;
                         upcomingMatches.push({
                             ...movie,
-                            message: `In ${dayDiff} day${dayDiff !== 1 ? 's' : ''} ${movie.title} released ${today.getFullYear() - year} year${(today.getFullYear() - year) !== 1 ? 's' : ''} ago`,
+                            message: `In ${dayDiff} day${dayDiff !== 1 ? 's' : ''} ${movie.title} released ${today.getFullYear() - year} year${(today.getFullYear() - year) !== 1 ? 's' : ''} ago.`,
                         });
                     } else if (dayDiff === soonestDiff) {
                         upcomingMatches.push({
                             ...movie,
-                            message: `Om ${dayDiff} dag${dayDiff !== 1 ? 'ar' : ''} ${movie.title} släpptes ${today.getFullYear() - year} år${(today.getFullYear() - year) !== 1 ? 's' : ''} ago`,
+                            message: `In ${dayDiff} day${dayDiff !== 1 ? 's' : ''} ${movie.title} released ${today.getFullYear() - year} years${(today.getFullYear() - year) !== 1 ? 's' : ''} ago.`,
                         });
                     }
                 }
@@ -72,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const displayList = exactMatches.length > 0 ? exactMatches : upcomingMatches;
 
             if (displayList.length > 0) {
+                console.log(displayList);
                 startRotation(displayList);
             } else {
                 document.getElementById('release-message').textContent = 'No matching movie found.';
@@ -84,33 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 });
 
-// Parses valid movie entries only
-function parseMovies(data) {
-    const movies = [];
-    const entries = data.trim().split('\n\n');
 
-    for (const entry of entries) {
-        const movie = {};
-        const lines = entry.trim().split('\n');
-
-        for (const line of lines) {
-            const [key, ...rest] = line.split(': ');
-            const value = rest.join(': ').trim();
-
-            if (key === 'Movie') movie.title = value;
-            else if (key === 'Release') movie.release = value;
-            else if (key === 'Poster') movie.poster = value;
-        }
-
-        if (movie.title && movie.release && movie.poster) {
-            movies.push(movie);
-        } else {
-            console.warn('Skipping movie due to missing fields:', movie);
-        }
-    }
-
-    return movies;
-}
 
 function startRotation(movieList) {
     let index = 0;
@@ -138,23 +123,23 @@ function startRotation(movieList) {
         poster.alt = `Poster for ${movie.title}`;
 
         if (progressBar && movieList.length > 1) {
-            // Reset progress bar
+            //Reset progress bar
             progressBar.style.transition = 'none';
             progressBar.style.width = '0%';
 
-            // Force reflow to restart transition
+            //Force reflow to restart transition
             progressBar.offsetWidth;
 
-            // Animate progress bar to full width over 7 seconds
+            //Animate progress bar to full width over 7 seconds
             progressBar.style.transition = 'width 7s linear';
             progressBar.style.width = '100%';
         }
     }
 
-    // Show the first movie immediately
+    //Show the first movie immediately
     showMovie(movieList[index]);
 
-    // Start rotation if more than one movie
+    //Start rotation if more than one movie
     if (movieList.length > 1) {
         setInterval(() => {
             index = (index + 1) % movieList.length;

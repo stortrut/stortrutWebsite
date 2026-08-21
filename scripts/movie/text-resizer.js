@@ -1,9 +1,14 @@
 function resizeTitleText() {
+  //Gets all the titles
   const titles = document.querySelectorAll('.movie-title');
 
+  //Goes through each title
   titles.forEach(title => {
+
+    //Gets the title holder
     const parent = title.parentElement;
     if (!parent) return;
+    parent.style.backgroundColor = "red";
 
     const maxHeight = parent.clientHeight;
     const maxWidth = parent.clientWidth;

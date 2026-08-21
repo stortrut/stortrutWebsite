@@ -8,26 +8,27 @@
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="stylesheet" href="styles/movie-styles.css">
 
-  <link rel="icon" type="image/png" href="/images/icons/magpie.png">
 
-  <script src="/scripts/text-resizer.js"></script>
+  <!-- Script loaded specifically for the movie page -->
+  <script src="/scripts/movie/movie-getter.js"></script>
 </head>
 
+
 <body>
-  <div id="top-bar"></div>
+  <!-- This inserts the top bar, changes the logo, and stuff like that -->
+  <script src="/scripts/scripts-for-all/scriptforall.js"></script>
 
-  <script src="/scripts/scriptforall.js"></script>
-
-
-
+    <!-- Title -->
   <h1>
     Filmrecensioner
   </h1>
 
-
+  <!--Movie data and sort options-->
   <div class="sort-holder-wrapper">
-    <!--Sort holder-->
+
+    <!--Data for sorting the movies-->
     <div class="sort-holder">
+      <!--Sort options-->
       <select id="sort-select">
         <option value="seen-date">Datum Sedd</option>
         <option value="title">Titel</option>
@@ -35,8 +36,10 @@
         <option value="rating">Betyg</option>
       </select>
 
+      <!--Sort direction-->
       <button id="sort-direction-toggle" style="margin-left: 8px;">Asc ↑</button>
 
+      <!--Name filters-->
       <div id="reviewer-filters">
         <input type="checkbox" id="Alvin" value="Alvin">
         <label for="Alvin">Alvin</label>
@@ -51,43 +54,56 @@
         <label for="Carl">Carl</label>
       </div>
 
+      <!--Genre filter-->
       <div id="genre-filter">
         <label for="genre-select">Genre:</label>
         <select id="genre-select">
-          <option value="all">Alla</option> <!-- All genres -->
+          <option value="all">All</option> <!-- All genres -->
           <!-- Other genres will be added dynamically -->
         </select>
       </div>
     </div>
+
+
+    <!--Movie count box-->
     <div id="movie-count-box">
       <div class="label">Filmer sedda:</div>
       <div class="number" id="movie-count-number">0</div>
     </div>
+
+    <!--Movie release fact box-->
     <div id="image-text-box">
       <img id="release-poster" src="" alt="Movie Poster" />
+
       <div class="text-content">
         <div class="label" id="release-message"></div>
         <div class="description" id="release-description"></div>
       </div>
+
       <div id="movie-swap-progress">
         <div id="movie-swap-bar"></div>
       </div>
+
     </div>
   </div>
 
-  <script src="/scripts/releasedate-movie-shower.js" defer></script>
+  <!--Inserts the release data fun fact data-->
+  <script src="/scripts/movie/releasedate-movie-shower.js" defer></script>
+
 
   <hr>
   <br>
 
-
   <!-- This is where movies go -->
   <div id="reviews"></div>
-  <script src="/scripts/movie-generator.js" defer></script>
+  <script src="/scripts/movie/movie-generator.js" defer></script>
 
 
-  <!-- Changeable box info -->
 
+
+
+
+  <!-- Template for each movie box -->
   <template id="movie-template">
     <div class="all-review-data-holder">
       <div class="review-data-holder">
@@ -98,7 +114,8 @@
     </div>
   </template>
 
-  <!-- MOVIE MODAL TEMPLATE -->
+  
+  <!-- Template for the movie info box -->
   <template id="movie-modal-template">
     <div class="modal-content">
       <span class="close-button">&times;</span>

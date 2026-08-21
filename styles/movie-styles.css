@@ -336,8 +336,7 @@
   padding: 12px 18px;
   margin-left: 50px;
 
-  /* 👇 Keep the box a consistent size */
-  width: 200px;
+  width: 240px;
 
   font-family: 'monospace';
   color: #0e0030;

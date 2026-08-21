@@ -1,10 +1,15 @@
 function insertTopBar() {
-    //Top-bar
+
+    //We create and insert the top bar element
+    const topBar = document.createElement('div');
+    topBar.id = 'top-bar';
+    document.body.prepend(topBar);
+
+    //We now insert it
     fetch('/page-components/top-bar.html')
         .then(res => res.text())
         .then(html => {
-            document.getElementById('top-bar').innerHTML = html;
-            const topBar = document.getElementById('top-bar');
+            topBar.innerHTML = html;
             topBar.classList.add('loaded');
 
             // Now that the top bar is loaded, we can safely query its elements

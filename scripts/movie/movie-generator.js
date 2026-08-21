@@ -2,14 +2,16 @@ let allMovies = []; // store parsed movies globally
 let currentSort = "seen-date"; // default sort criteria
 let currentDirection = -1; // 1 = ascending, -1 = descending
 
-fetch("/movie-data.txt")
+fetch("/data/movie-data.txt")
+
   .then(res => res.text())
   .then(text => {
-    allMovies = parseMovies(text);
+    allMovies = getMovies(text);
 
+
+    //Render the total movies watched stuff
     const totalWatched = allMovies.length;
     const countElem = document.getElementById("movie-count-number");
-
     if (countElem) {
       let current = 0;
       const duration = 1000; // ms
@@ -40,6 +42,7 @@ fetch("/movie-data.txt")
         }
       }, 1000 / frameRate);
     }
+
 
     // Extract all genres from all movies and split by commas, trim, dedupe and sort
     const genreSet = new Set();
@@ -115,120 +118,93 @@ function updateToggleButtonLabel() {
   toggleBtn.textContent = currentDirection === 1 ? "↑" : "↓";
 }
 
-function parseMovies(text) {
-  const blocks = text.trim().split(/\n\s*\n/);
-  return blocks.map(block => {
-    const lines = block.split("\n").map(l => l.trim());
-    let movie = { title: "", poster: "", reviews: [], release: null, seen_date: "", genre: "" };
 
-    lines.forEach(line => {
-      const match = line.match(/^([^:]+):\s*(.*)$/);
-      if (!match) return;
 
-      const field = match[1].trim().toLowerCase();
-      const value = match[2].trim();
 
-      switch (field) {
-        case "movie":
-          movie.title = value;
-          break;
-        case "poster":
-          movie.poster = value;
-          break;
-        case "release":
-          const date = new Date(value);
-          if (!isNaN(date.getTime())) {
-            movie.release = date;
-            movie.releaseYear = date.getFullYear();
-          } else {
-            movie.release = null;
-            movie.releaseYear = null;
-            console.warn(`Invalid release date: "${value}"`);
-          }
-          break;
-        case "seen":
-          movie.seen_date = value;
-          break;
-        case "genre":
-          movie.genre = value;
-          break;
-        case "review":
-          const [name, score] = value.split("|").map(s => s.trim());
-          if (name && !isNaN(parseFloat(score))) {
-            movie.reviews.push({ name, score: parseFloat(score) });
-          }
-          break;
-      }
+
+//Renders all the movie boxes
+function renderMovies(movies) {
+
+    const container = document.getElementById("reviews");
+    const template = document.getElementById("movie-template");
+
+    container.innerHTML = "";
+
+    const activeReviewers = Array.from(
+        document.querySelectorAll('#reviewer-filters input:checked')
+    ).map(cb => cb.value);
+
+    const selectedGenre =
+        document.getElementById("genre-select")?.value || "all";
+
+    movies.forEach(movie => {
+
+        //Skip movie if it doesn't match filters
+        if (!matchesFilters(movie, activeReviewers, selectedGenre)) {
+            return;
+        }
+
+        //Create movie from template
+        const clone = template.content.cloneNode(true);
+
+        const title = clone.querySelector(".movie-title");
+        const poster = clone.querySelector(".movie-poster");
+        const reviews = clone.querySelector(".reviews-holder");
+
+        title.textContent =
+            `${movie.title} ${movie.releaseYear ? `(${movie.releaseYear})` : ""}`;
+
+        poster.src = movie.poster;
+        poster.alt = movie.title;
+
+        // Add reviews
+        movie.reviews
+            .filter(r =>
+                activeReviewers.length === 0 ||
+                activeReviewers.includes(r.name)
+            )
+            .forEach(r => {
+                reviews.innerHTML += `
+                    <div class="review-holder">
+                        <p class="review-name">${r.name}:</p>
+                        <div class="star-rating" data-score="${r.score}"></div>
+                    </div>
+                `;
+            });
+
+        clone.querySelector(".all-review-data-holder")
+            .addEventListener("click", () => showMovieModal(movie));
+
+        container.appendChild(clone);
     });
 
-    movie.avgRating = movie.reviews.length
-      ? movie.reviews.reduce((a, r) => a + r.score, 0) / movie.reviews.length
-      : 0;
-
-    return movie;
-  });
+    renderStars();
 }
 
-function renderMovies(movies) {
-  const container = document.getElementById("reviews");
-  container.innerHTML = "";
+function matchesFilters(movie, reviewers, genre) {
 
-  const activeReviewers = Array.from(document.querySelectorAll('#reviewer-filters input:checked'))
-    .map(cb => cb.value);
+    if (reviewers.length > 0) {
+        const movieReviewers = movie.reviews.map(r => r.name);
 
-  const selectedGenre = document.getElementById("genre-select")?.value || "all";
-
-  const template = document.getElementById("movie-template");
-
-  movies.forEach(movie => {
-    // Reviewer filter
-    const reviewersInMovie = movie.reviews.map(r => r.name);
-    const hasAll = activeReviewers.every(name => reviewersInMovie.includes(name));
-    if (activeReviewers.length > 0 && !hasAll) return;
-
-    // Genre filter
-    if (selectedGenre !== "all") {
-      const movieGenres = movie.genre ? movie.genre.split(",").map(g => g.trim()) : [];
-      if (!movieGenres.includes(selectedGenre)) return;
+        if (!reviewers.every(name => movieReviewers.includes(name))) {
+            return false;
+        }
     }
 
-    const reviewsToShow = activeReviewers.length > 0
-      ? movie.reviews.filter(r => activeReviewers.includes(r.name))
-      : movie.reviews;
+    if (genre !== "all") {
+        const movieGenres = movie.genre
+            .split(",")
+            .map(g => g.trim());
 
-    if (reviewsToShow.length === 0) return;
+        if (!movieGenres.includes(genre)) {
+            return false;
+        }
+    }
 
-    // Clone the template
-    const clone = template.content.cloneNode(true);
-    const titleElem = clone.querySelector(".movie-title");
-    const posterElem = clone.querySelector(".movie-poster");
-    const reviewsHolder = clone.querySelector(".reviews-holder");
-
-    titleElem.textContent = `${movie.title} ${movie.releaseYear ? `(${movie.releaseYear})` : ""}`;
-    posterElem.src = movie.poster;
-    posterElem.alt = movie.title;
-
-    reviewsHolder.innerHTML = ""; // Clear any old reviews if reused
-
-    reviewsToShow.forEach(r => {
-      const reviewDiv = document.createElement("div");
-      reviewDiv.className = "review-holder";
-      reviewDiv.innerHTML = `
-        <p class="review-name">${r.name}:</p>
-        <div class="star-rating" data-score="${r.score}"></div>
-      `;
-      reviewsHolder.appendChild(reviewDiv);
-    });
-
-    // Add click to show modal
-    const wrapper = clone.querySelector(".all-review-data-holder");
-    wrapper.addEventListener("click", () => showMovieModal(movie));
-
-    container.appendChild(clone);
-  });
-
-  renderStars();
+    return true;
 }
+
+
 
 function renderStars() {
   document.querySelectorAll('.star-rating').forEach(el => {
@@ -314,7 +290,7 @@ function sortMovies(criteria) {
 }
 
 
-
+//Movie info
 function showMovieModal(movie) {
   const modal = document.getElementById("movie-modal");
   const template = document.getElementById("movie-modal-template");
