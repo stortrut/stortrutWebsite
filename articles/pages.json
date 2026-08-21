@@ -2,34 +2,12 @@
   {
     "name": "Hektor Kostos",
     "url": "/articles/characters/frihetskämparna/hektor_kostos.html",
-    "shorthands": [
-      "Hektor"
-    ]
+    "shorthands": []
   },
   {
     "name": "Odo Orgulas",
     "url": "/articles/characters/frihetskämparna/odo_orgulas.html",
-    "shorthands": [
-      "Odo",
-      "Big B"
-    ]
-  },
-  {
-    "name": "Väggmossens Munkkloster",
-    "url": "/articles/geografi/farnesh/väggmossens_munkkloster.html",
     "shorthands": []
-  },
-  {
-    "name": "Loxfolk",
-    "url": "/articles/folkslag/loxfolk.html",
-    "shorthands": []
-  },
-  {
-    "name": "Frihetskämparna",
-    "url": "/articles/grupper/frihetskämparna.html",
-    "shorthands": [
-      "Frihetskämparna"
-    ]
   },
   {
     "name": "Ba-sharin",
@@ -42,28 +20,33 @@
     "shorthands": []
   },
   {
-    "name": "Session 34",
-    "url": "/articles/session-reports/session_34.html",
+    "name": "Väggmossens Munkkloster",
+    "url": "/articles/geografi/farnesh/väggmossens_munkkloster.html",
     "shorthands": []
   },
   {
-    "name": "Session 33",
-    "url": "/articles/session-reports/session_33.html",
+    "name": "Session 33 C2",
+    "url": "/articles/session-reports/campaign_2/session_33_C2.html",
     "shorthands": []
   },
   {
-    "name": "Session 36",
-    "url": "/articles/session-reports/session_36.html",
+    "name": "Session 34 C2",
+    "url": "/articles/session-reports/campaign_2/session_34_C2.html",
     "shorthands": []
   },
   {
-    "name": "Session 37",
-    "url": "/articles/session-reports/session_37.html",
+    "name": "Session 36 C2",
+    "url": "/articles/session-reports/campaign_2/session_36_C2.html",
     "shorthands": []
   },
   {
-    "name": "Session 38",
-    "url": "/articles/session-reports/session_38.html",
+    "name": "Session 37 C2",
+    "url": "/articles/session-reports/campaign_2/session_37_C2.html",
+    "shorthands": []
+  },
+  {
+    "name": "Session 38 C2",
+    "url": "/articles/session-reports/campaign_2/session_38_C2.html",
     "shorthands": []
   }
 ]

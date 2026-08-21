@@ -1,4 +1,4 @@
-function insertTopBar() {
+function insertTopBar(hideDnDStuff = false) {
 
     //We create and insert the top bar element
     const topBar = document.createElement('div');
@@ -11,6 +11,16 @@ function insertTopBar() {
         .then(html => {
             topBar.innerHTML = html;
             topBar.classList.add('loaded');
+
+            if (hideDnDStuff) {
+                document.getElementById('search-container').style.display = 'none';
+            }
+            if (hideDnDStuff) {
+                document.getElementById('random-page-button').style.display = 'none';
+            }
+            if (hideDnDStuff) {
+                document.getElementById('map-button').style.display = 'none';
+            }
 
             // Now that the top bar is loaded, we can safely query its elements
             const searchInput = document.getElementById('search-input');

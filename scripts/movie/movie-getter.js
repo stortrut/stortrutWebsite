@@ -3,7 +3,6 @@ function getMovies(text) {
 
     return blocks.map(block => {
 
-        
         const lines = block.split(/\r?\n/).map(l => l.trim());
 
         let movie = {

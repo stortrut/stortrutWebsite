@@ -1,54 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Odo</title>
-    <meta name="description" content="Ett munkkloster i Farnesh.">
-  <link rel="icon" type="image/png" href="/images/icons/magpie.png">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
 
+        <title>Title</title>
+        <meta name="description" content="Beskrivning.">
 
-    <link rel="stylesheet" href="/styles/styles.css">
-    <link rel="stylesheet" href="/styles/dndstyle.css">
+        <link rel="stylesheet" href="/styles/styles.css">
+        <link rel="stylesheet" href="/styles/dndstyle.css">
+        <link rel="stylesheet" href="/styles/timeline.css">
+    </head>
 
-</head>
+    <body>
+        <script 
+            src="/scripts/scripts-for-all/scriptforall.js" >
+        </script>
 
-<body>
-    <div id="top-bar"></div>
-    <script src="/scripts/scriptforall.js"></script>
-
-    <div class="article-content">
-        <div class="container">
-
-            <h1 class="title">
-                Väggmossens Munkkloster
-            </h1>
-            <p>
-                Väggmossen är ett område i västra Farnesh. Uppe på själva “väggen” finns ett stort munkkloster. Munkmästarna lär ut Öppna Handens väg. Där man använder olika tekniker med händerna och kroppen, som till exempel De tio Flatteknikerna .
-            </p>
-            <p>
-                Maskar Jukil är klostrets högste mästare, och gör de största och viktigaste besluten. Det är till exempel han som väljer ut den Flatvalda .
-
-            </p>
-            <p>
-                Odo Orgulas misslyckande som Flatvald bringade en enorm skam över hela klostret, och Maskar Jukil jobbar för att få tillbaka respekten.
-            </p>
-            <p>
-                De samarbetar just nu med Glasriddarorden .
-            </p>
-
-            <h2>Anmärkningsvära Munkar</h2>
-            <ul>
-    <li>Gregol Sten</li>
-    <li>Maskar Jukil</li>
-    <li>Odo Orgulas</li>
-    <li>Uing Zanto</li>
-</ul>
-
-        </div>
-    </div>
-
-      <script src="/scripts/scriptforall-last.js"></script>
-</body>
-
-</html>
+        <script 
+            src="/scripts/scripts_for_generating/createHtmlTextFromTextFile.js" >
+        </script>
+        <script> 
+            readFile("/TEST/../../articles/geografi/farnesh/väggmossens_munkkloster.txt");
+        </script>
+    </body>
+    </html>
+    

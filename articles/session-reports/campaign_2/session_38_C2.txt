@@ -1,13 +1,5 @@
-Meta Details
-
-Page Title: 
-Page Description:
-Copy description from first text after h1:
-Has topbar: YES
-Has sidebar: YES
-
 [h1]
-Session 38 – Odos sista strid
+Session 38 - Odos sista strid
 
 Odo och gänget slåss mot Maskar Jukil och hans lärjungar. Maskar försöker få tillbaka Odo som den Flatvalda, för att återställa Maskars status – men Odo bevisar för sin gamla mästare att han har hittat inre frid och accepterat vem han är. Fylld med desperation efter att ha fallit ner från Affärsplatån använder Maskar Jukil Den Tionde Flattekniken på Odo, vilket dödar honom.
 

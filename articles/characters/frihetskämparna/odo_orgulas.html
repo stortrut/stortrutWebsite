@@ -1,124 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <title>Odo</title>
-  
-  <meta name="description" content="Medlem i en grupp hjältar vid namn Frihetskämparna.">
-  
-  <link rel="icon" type="image/png" href="/images/icons/magpie.png">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
 
-  <link rel="stylesheet" href="/styles/styles.css">
-  <link rel="stylesheet" href="/styles/dndstyle.css">
-  <link rel="stylesheet" href="/styles/timeline.css">
-</head>
+        <title>Title</title>
+        <meta name="description" content="Beskrivning.">
 
-<body>
-  <div id="top-bar"></div>
-  <div id="toc-sidebar"></div>
+        <link rel="stylesheet" href="/styles/styles.css">
+        <link rel="stylesheet" href="/styles/dndstyle.css">
+        <link rel="stylesheet" href="/styles/timeline.css">
+    </head>
 
-  <script src="/scripts/scriptforall.js"></script>
+    <body>
+        <script 
+            src="/scripts/scripts-for-all/scriptforall.js" >
+        </script>
 
-  <div class="article-content">
-    <div class="container">
-      <h1 class="title">
-        Odo Orgulas
-      </h1>
-
-      <div class="character-box">
-        <img src="/images/character-art/odo.png" alt="Odo Orgulas" class="character-image">
-        <div class="character-data">
-          <div class="character-section"><strong>Namn:</strong> Odo Orgulas</div>
-          <div class="character-section"><strong>Ålder:</strong> 21 (972 4TP)</div>
-          <div class="character-section"><strong>Folkslag:</strong> Loxfolk</div>
-          <div class="character-section"><strong>Känd som:</strong> Den Misslyckade Flatvalda</div>
-          <div class="character-section"><strong>Familj:</strong> Far, Mor</div>
-        </div>
-      </div>
-
-      <p>
-        En loxfolk@Loxfolk som växte upp på (Väggmossens Munkkloster)@(Väggmossens Munkkloster).
-        Han är före detta Flatvald och föddes som Formmärkt. Han bildade och äventyrade sedan med
-        gruppen Frihetskämparna@(Frihetskämparna).
-      </p>
-
-      <h2>Uppväxt</h2>
-      <p>
-        Skickades som ung till (Väggmossens Munkkloster)@(Väggmossens Munkkloster) där han snabbt blev deras bästa elev.
-        Han tränades av Gregol
-        Sten, och en av hans bästa vänner och rival var Uing Zanto.
-      </p>
-
-      <h2>Utnämnd till Flatvald</h2>
-      <p>
-        Inom kort blev han utsedd till den Flatvalda av Maskar Jukil, klostrets tidigare Flatvalda. Att vara Flatvald är
-        den högsta positionen man kan ha inom klostret,
-        och är en stor ära. Odo Skickades ut för att sprida klostrets lära och rekrytera nya medlemmar.
-      </p>
-
-      <h2>Fråntagen titeln som Flatvald</h2>
-      <p>
-        Istället för att följa sina plikter så blev Odo lockad av lust och livets fröjder. Han började dricka
-        och hänga i städerna för nöje istället. Detta ledde till att Odo blev fråntagen titeln som Flatvald vilket
-        fick enorma konsekvenser för (Väggmossens Munkklosters)@(Väggmossens Munkkloster) rykte. Det var en enorm skam
-        för klostret, men speciellt för Maskar Jukil som många ansåg hade begått ett pinsamt och grovt misstag.
-      </p>
-      <p>
-        Det var inte bara hans familj och mästare som blev besviken på honom. I stort sätt alla munkar och vänner han
-        hade bröt
-        kontakten med honom, och Odo blev utfryst. Ingen ville bli förknippad med ett sådan stort misslyckande.
-      </p>
-
-      <h2>Drickandet och Honmoyaki</h2>
-      <p>
-        Odos drickande och mentala hälsa blev värre efter han blev fråntagen titeln som Flatvald. Han åkte runt i små
-        byar och
-        drack i ca tre år. Tillslut beslutande han sig för att försöka fixa sitt liv, och han var övertygad om att den
-        enda personen
-        som kunda hjälpa honom var den mytomspunna Honmoyaki.
-      </p>
-
-      <h2>Medlem i Frihetskämparna</h2>
-      <p>
-        Hans letande efter Honmoyaki ledde honom till Ba-sharin@(Ba-sharin), där han träffade ett gäng personer som alla
-        tillslut
-        bildade gruppen Frihetskämparna@(Frihetskämparna). Dessa hjältar begav sig ut på många äventyr.
-      </p>
-
-      <h2>Rolig Fakta</h2>
-      <p>
-        Odos favorit dryck är Qvänum-öl. Han hatar Elgodssvartahunds-öl.
-      </p>
-
-    </div>
-  </div>
-
-
-
-  <h2 style="text-align: center; margin-bottom: 20px; border-bottom: 0px;">
-    Tidslinje av Odos Liv
-  </h2>
-  <!-- Event Data (HTML format) -->
-  <template id="eventData">
-    <div data-year="951" data-year-modifier="4TP">
-      <p>Odo@Odo Föddes</p>
-    </div>
-    <div data-year="966" data-year-modifier="4TP">
-      <p>Utnämnd till Flatvald</p>
-    </div>
-    <div data-year="969" data-year-modifier="4TP">
-      <p>Fråntagen positionen som Flatvald</p>
-    </div>
-    <div data-year="972" data-year-modifier="4TP">
-      <p>Gick med i Frihetskämparna@Frihetskämparna</p>
-    </div>
-  </template>
-
-
-  <!-- Timeline output -->
-  <div id="timeline" class="timeline-container"></div>
-
-  <script src="/scripts/scriptforall-last.js"></script>
-</body>
-</html>
+        <script 
+            src="/scripts/scripts_for_generating/createHtmlTextFromTextFile.js" >
+        </script>
+        <script> 
+            readFile("/TEST/../../articles/characters/frihetskämparna/odo_orgulas.txt");
+        </script>
+    </body>
+    </html>
+    

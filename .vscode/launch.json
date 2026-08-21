@@ -1,17 +1,23 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Generate Articles",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\generate-pages.js"
+            "program": "${workspaceFolder}/scripts/scripts_for_generating/generateArticlesFromTextFiles.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Generate Pages",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/scripts/scripts_for_generating/generate-pages.js"
         }
     ]
 }

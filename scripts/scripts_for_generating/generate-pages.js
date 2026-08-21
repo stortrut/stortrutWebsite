@@ -1,13 +1,17 @@
 const fs = require('fs');
 const path = require('path');
 
-const articlesFolder = path.join(__dirname, 'articles');
-const outputFile = path.join(articlesFolder, 'pages.json');
+const articlesFolder = path.join(__dirname, '..', '..', 'articles'); //.. is going up one level
+const outputFile = path.join(__dirname, '..', '..','articles', 'pages.json');
 
 // Read existing pages.json if it exists
 let existingPages = [];
 if (fs.existsSync(outputFile)) {
-  existingPages = JSON.parse(fs.readFileSync(outputFile, 'utf-8'));
+    const content = fs.readFileSync(outputFile, 'utf-8').trim();
+
+    if (content !== '') {
+        existingPages = JSON.parse(content);
+    }
 }
 
 // Create a map for quick lookup by name

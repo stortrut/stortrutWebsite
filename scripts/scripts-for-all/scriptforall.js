@@ -11,6 +11,10 @@ function loadScript(url) {
   });
 }
 
+const script = document.querySelector('script[src="/scripts/scripts-for-all/scriptforall.js"]');
+const hideDnD = script.dataset.hideDnd === "true";
+console.log(hideDnD);
+
 //Loads the scripts at start, and allows it to wait inside (like a courutine in unity I think :o )
 (async () => {
   try {
@@ -30,7 +34,7 @@ function loadScript(url) {
       replaceWordsWithLinks();
     }
     if (typeof insertTopBar === 'function') {
-      insertTopBar();
+      insertTopBar(hideDnD);
     }
   } catch (err) {
     console.error(err);
