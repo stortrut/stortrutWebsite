@@ -31,6 +31,7 @@ console.log(hideDnD);
 
     // After the functions are loaded, we call them
     if (typeof replaceWordsWithLinks === 'function') {
+        console.log("Calling replaceWordsWithLinks");
       replaceWordsWithLinks();
     }
     if (typeof insertTopBar === 'function') {

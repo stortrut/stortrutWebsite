@@ -1,0 +1,2 @@
+1. Run the "generateArticlesFromTextFiles.js" script -> it creates hmtl pages of every text file in the "articles" folder
+2. Run the "generate-pages.js" script -> it creates a data bank of all the pages

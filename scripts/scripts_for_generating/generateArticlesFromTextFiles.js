@@ -44,14 +44,14 @@ getAllFilePaths(folder, (filePath) => {
 
     <body>
         <script 
-            src="/scripts/scripts-for-all/scriptforall.js" >
-        </script>
-
-        <script 
             src="/scripts/scripts_for_generating/createHtmlTextFromTextFile.js" >
         </script>
         <script> 
             readFile("${webPath}");
+        </script>
+
+        <script 
+            src="/scripts/scripts-for-all/scriptforall.js" >
         </script>
     </body>
     </html>

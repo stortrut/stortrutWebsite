@@ -1,11 +1,8 @@
 //Supported formats @Jon, Jon@(Target), (Display Name)@(Target), Jon@Target
 
-// ======================
-// Replace @words with links (robust version)
-// ======================
-
-
 function replaceWordsWithLinks(rootNode = document.body) {
+    console.log("replaceWordsWithLinks started");
+
   fetch('/articles/pages.json')
     .then(res => res.json())
     .then(pages => {
@@ -92,9 +89,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
         }
       });
 
-      // ======================
       // Tooltip System
-      // ======================
       function showTooltip(link, preview) {
         let tooltip = document.getElementById('link-preview-tooltip');
         if (!tooltip) {
@@ -163,9 +158,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
     .catch(err => console.error('Error loading pages.json', err));
 }
 
-// ======================
 // Template processing
-// ======================
 function processEventDataTemplate() {
   const template = document.getElementById('eventData');
   if (!template) return;
@@ -177,9 +170,8 @@ function processEventDataTemplate() {
   if (timeline) timeline.appendChild(fragment);
 }
 
-// ======================
+
 // Init
-// ======================
 window.addEventListener('DOMContentLoaded', () => {
   processEventDataTemplate();
 });
