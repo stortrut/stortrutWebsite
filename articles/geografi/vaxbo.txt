@@ -1,0 +1,15 @@
+﻿[h1]
+Vaxbo
+En by känd för sin smakrika honung och maten som lagas på den.
+Rumlar Varkosh hade här en liten privat magisk skola där han lärde ut bortglömd (förbjuden) kaos-magi gratis, tills han blev påkommen och infångad av provinsens starkaste magiker.
+
+[h2]
+Blommguden La’mi
+Byn är beskyddad av en lokal naturgud: La’mi.
+Domän: Blommor, nektar, bin, växtlighet.
+Symbol: En 6-bladig blomma med en hexagonformad pistill.
+
+[h2]
+Vaxbo Kommunalskola
+En väldigt liten skola, driven gratis av en gammal dvärg och hans lilla goblin-assistent.
+
