@@ -7,7 +7,10 @@
   {
     "name": "Odo Orgulas",
     "url": "/articles/characters/frihetskämparna/odo_orgulas.html",
-    "shorthands": []
+    "shorthands": [
+      "Odo",
+      "Den misslyckade flatvalda"
+    ]
   },
   {
     "name": "Ba-sharin",
@@ -47,6 +50,21 @@
   {
     "name": "Session 38 C2",
     "url": "/articles/session-reports/campaign_2/session_38_C2.html",
+    "shorthands": []
+  },
+  {
+    "name": "Frihetskämparna",
+    "url": "/articles/grupper/frihetskämparna.html",
+    "shorthands": []
+  },
+  {
+    "name": "Jon",
+    "url": "/articles/characters/frihetskämparna/jon.html",
+    "shorthands": []
+  },
+  {
+    "name": "Sandhäst",
+    "url": "/articles/varelser/djur/sandhäst.html",
     "shorthands": []
   }
 ]

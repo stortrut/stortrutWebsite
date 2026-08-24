@@ -25,8 +25,8 @@ getAllFilePaths(folder, (filePath) => {
         return;
     }
 
-    const relativePath = path.relative(__dirname, filePath);
-    const webPath = '/TEST/' + relativePath.replace(/\\/g, '/');
+    const relativePath = path.relative(folder, filePath);
+    const webPath = '/articles/' + relativePath.replace(/\\/g, '/');
 
     const html = `
     <!DOCTYPE html>

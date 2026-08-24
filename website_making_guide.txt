@@ -2,7 +2,7 @@
 2. Run the "generate-pages.js" script -> it creates a data bank of all the pages
 
 
-
+When editing text files in another software, remmeber to use UTF-8
 
 
 

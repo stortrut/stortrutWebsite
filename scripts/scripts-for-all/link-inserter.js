@@ -2,18 +2,32 @@
 
 function replaceWordsWithLinks(rootNode = document.body) {
     console.log("replaceWordsWithLinks started");
+    console.log("Root:", rootNode);
 
+  //Loads the pages data base 
   fetch('/articles/pages.json')
-    .then(res => res.json())
+    .then(res => {
+      console.log("pages.json response:", res.status);
+      return res.json()
+    }
+  )
     .then(pages => {
+      console.log("Pages loaded:", pages);
+
       // Build lookup map (lowercase keys)
       const pageMap = {};
+
       for (const page of pages) {
+
         pageMap[page.name.toLowerCase()] = page.url;
+
         if (Array.isArray(page.shorthands)) {
           for (const sh of page.shorthands) pageMap[sh.toLowerCase()] = page.url;
         }
       }
+      console.log("Page map:", pageMap);
+
+
 
       const walker = document.createTreeWalker(rootNode, NodeFilter.SHOW_TEXT);
       const nodes = [];
@@ -21,12 +35,21 @@ function replaceWordsWithLinks(rootNode = document.body) {
 
       nodes.forEach(node => {
         const text = node.textContent;
+
+        if (text.includes('@')) {
+          console.log("Found @ in:", text);
+        }
+
         if (!text.includes('@')) return;
 
+
+        
         const words = text.split(/(\s+)/); // keep whitespace
+        console.log("Words:", words);
 
         const newWords = words.map(word => {
           const originalWord = word;
+
 
           // ---- Handle @Name and @Names (Swedish -s) ----
           if (word.startsWith('@')) {
@@ -43,16 +66,27 @@ function replaceWordsWithLinks(rootNode = document.body) {
           }
 
           // ---- Handle Name@(Target) ----
-          const atParenMatch = word.match(/^([\p{L}\p{N}_\-]+)@\((.+)\)$/u);
+          const atParenMatch = word.match(/^([\p{L}\p{N}_-]+)@\((.+)\)$/u);
+
+          console.log("Testing:", word);
+          console.log("Match:", atParenMatch);
+
           if (atParenMatch) {
             const display = atParenMatch[1];
             let target = atParenMatch[2].toLowerCase();
             let url = pageMap[target];
 
+            console.log("Display:", display);
+            console.log("Target:", target);
+            console.log("URL:", url);
+
+
             if (!url && target.endsWith('s')) url = pageMap[target.slice(0, -1)];
             if (url) return `<a href="${url}">${display}</a>`;
             return originalWord;
           }
+
+
 
           // ---- Handle (Display)@(Target) ----
           const parenMatch = word.match(/^\((.+)\)@\((.+)\)$/u);
@@ -171,7 +205,7 @@ function processEventDataTemplate() {
 }
 
 
-// Init
-window.addEventListener('DOMContentLoaded', () => {
-  processEventDataTemplate();
-});
+// 
+//window.addEventListener('DOMContentLoaded', () => {
+//  processEventDataTemplate();
+//});
