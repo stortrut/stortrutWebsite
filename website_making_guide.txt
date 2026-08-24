@@ -1,2 +1,12 @@
 1. Run the "generateArticlesFromTextFiles.js" script -> it creates hmtl pages of every text file in the "articles" folder
 2. Run the "generate-pages.js" script -> it creates a data bank of all the pages
+
+
+
+
+
+
+
+This website project is just to learn html / css / javascript - so its a mix of tutorials, online guides, and lots of 
+    code that I do not understand yet - and (unfortunately) some code from ai because I have been lazy and just taken some 
+    solutions from the google results - but the goal is to replace all that code with my own :j ai is buns
