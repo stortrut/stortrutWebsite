@@ -1,18 +1,18 @@
 //Supported formats @Jon, Jon@(Target), (Display Name)@(Target), Jon@Target
 
 function replaceWordsWithLinks(rootNode = document.body) {
-    console.log("replaceWordsWithLinks started");
-    console.log("Root:", rootNode);
+    //console.log("replaceWordsWithLinks started");
+    //console.log("Root:", rootNode);
 
   //Loads the pages data base 
   fetch('/articles/pages.json')
     .then(res => {
-      console.log("pages.json response:", res.status);
+      //console.log("pages.json response:", res.status);
       return res.json()
     }
   )
     .then(pages => {
-      console.log("Pages loaded:", pages);
+      //console.log("Pages loaded:", pages);
 
       // Build lookup map (lowercase keys)
       const pageMap = {};
@@ -25,7 +25,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
           for (const sh of page.shorthands) pageMap[sh.toLowerCase()] = page.url;
         }
       }
-      console.log("Page map:", pageMap);
+      //console.log("Page map:", pageMap);
 
 
 
@@ -37,7 +37,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
         const text = node.textContent;
 
         if (text.includes('@')) {
-          console.log("Found @ in:", text);
+          //console.log("Found @ in:", text);
         }
 
         if (!text.includes('@')) return;
@@ -45,7 +45,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
 
         
         const words = text.split(/(\s+)/); // keep whitespace
-        console.log("Words:", words);
+        //console.log("Words:", words);
 
         const newWords = words.map(word => {
           const originalWord = word;
@@ -53,7 +53,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
 
           // ---- Handle @Name and @Names (Swedish -s) ----
           if (word.startsWith('@')) {
-            let target = word.slice(1).toLowerCase();
+            let target = word.slice(1).toLowerCase().replace(/[.,!?;:]+$/, ''); //Removes , - . ! ? etc so the matches bevome correct
             let url = pageMap[target];
 
             if (!url && target.endsWith('s')) {
@@ -68,17 +68,17 @@ function replaceWordsWithLinks(rootNode = document.body) {
           // ---- Handle Name@(Target) ----
           const atParenMatch = word.match(/^([\p{L}\p{N}_-]+)@\((.+)\)$/u);
 
-          console.log("Testing:", word);
-          console.log("Match:", atParenMatch);
+          ////console.log("Testing:", word);
+          ////console.log("Match:", atParenMatch);
 
           if (atParenMatch) {
             const display = atParenMatch[1];
-            let target = atParenMatch[2].toLowerCase();
+            let target = atParenMatch[2].toLowerCase().replace(/[.,!?;:]+$/, '');
             let url = pageMap[target];
 
-            console.log("Display:", display);
-            console.log("Target:", target);
-            console.log("URL:", url);
+            ////console.log("Display:", display);
+            ////console.log("Target:", target);
+            ////console.log("URL:", url);
 
 
             if (!url && target.endsWith('s')) url = pageMap[target.slice(0, -1)];

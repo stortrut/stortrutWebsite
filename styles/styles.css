@@ -79,7 +79,12 @@ p{
   cursor: pointer;
   font-weight: bold;
   padding: 9px 10px;
-  margin: 0 5px;
+
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 3px;
+  margin-right: 3px;
+
   white-space: nowrap;
   
 

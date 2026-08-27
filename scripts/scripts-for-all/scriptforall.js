@@ -13,7 +13,7 @@ function loadScript(url) {
 
 const script = document.querySelector('script[src="/scripts/scripts-for-all/scriptforall.js"]');
 const hideDnD = script.dataset.hideDnd === "true";
-console.log(hideDnD);
+//console.log(hideDnD);
 
 //Loads the scripts at start, and allows it to wait inside (like a courutine in unity I think :o )
 (async () => {
@@ -31,7 +31,7 @@ console.log(hideDnD);
 
     // After the functions are loaded, we call them
     if (typeof replaceWordsWithLinks === 'function') {
-        console.log("Calling replaceWordsWithLinks");
+        //console.log("Calling replaceWordsWithLinks");
       replaceWordsWithLinks();
     }
     if (typeof insertTopBar === 'function') {

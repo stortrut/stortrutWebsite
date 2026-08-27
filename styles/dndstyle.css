@@ -19,7 +19,7 @@ body {
 .title {
   text-align: left;
   font-family: 'Cinzel', serif;
-  font-size: 60px;
+  font-size: 40px;
   color: #7b4e00;
   text-shadow: 2px 2px 0 #d4af37;
   border-bottom: 3px solid #d4af37;
@@ -107,9 +107,19 @@ a:hover {
 
 .session-holder {
   padding-top: 10px;
+  padding-left: 90px;
+  padding-right: 90px;
+
+  /* Be centered */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
 }
 
-
+.campaign-sessions-title {
+    text-align: center;
+}
 
 
 .article-content {
