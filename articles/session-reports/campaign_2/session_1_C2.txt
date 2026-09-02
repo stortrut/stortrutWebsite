@@ -9,7 +9,7 @@ Jon, ett starkt kraftigt @skogsfolk som verkar leta efter ett jobb.
  
 [h2]
 Odo Orgulas
-@Odo, en stor elefantliknande varelse (@loxfolk), som verkade söka efter någon, kom ombord på de jättelika järnvagnarna med ett gäng av fulla festande personer.
+@Odo, en stor (elefantliknande varelse)@(loxfolk), som verkade söka efter någon, kom ombord på de jättelika järnvagnarna med ett gäng av fulla festande personer.
  
 [h2]
 Hektor Kostos
