@@ -1,16 +1,25 @@
+{
+const script = document.currentScript;
+const campaign = script.dataset.campaign;
+
+console.log(campaign);
+
+
 
 fetch('/articles/pages.json')
     .then(response => response.json())
     .then(pages => {
 
         const sessions = pages.filter(page =>
-            page.url.startsWith('/articles/session-reports/campaign_2/')
+            page.url.startsWith(`/articles/session-reports/campaign_${campaign}/`)
         );
 
         //Sort sessions numerically
+        const sessionRegex = new RegExp(`session_(\\d+)_C${campaign}`, 'i');
+
         sessions.sort((a, b) => {
-            const numA = parseInt(a.url.match(/session_(\d+)_C2/i)[1]);
-            const numB = parseInt(b.url.match(/session_(\d+)_C2/i)[1]);
+            const numA = parseInt(a.url.match(sessionRegex)[1]);
+            const numB = parseInt(b.url.match(sessionRegex)[1]);
 
             return numA - numB;
         });
@@ -19,13 +28,14 @@ fetch('/articles/pages.json')
         sessions.forEach(session => {
             console.log(session.name, session.url);
 
-            const sessionHolder = document.querySelector('.session-holder');
-
+            const sessionHolder = document.querySelector(`.campaign-${campaign}`);            
+            
             const button = document.createElement('button');
 
             let fileName = session.url.split('/').pop().replace('.html', '');
-            fileName = fileName.replace('s', 'S'); //Only replaces the first s with a A
-            fileName = fileName.replace('C2', '');
+
+            fileName = fileName.replace('s', 'S');
+            fileName = fileName.replace(`C${campaign}`, '');
             fileName = fileName.replaceAll('_', ' ');
 
             button.textContent = fileName;
@@ -38,3 +48,4 @@ fetch('/articles/pages.json')
             sessionHolder.appendChild(button);
         });
     });
+}
