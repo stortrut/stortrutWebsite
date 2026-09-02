@@ -1,0 +1,14 @@
+[h1]
+Demonfrälsaren
+
+Ett långsvärd (longsword) som används av Hektor Kostos. 
+ 
+The wide blade of this dwarvish sword has a blue-orange shine to it. Its hilt and cross-guard is made out of an heavy deep blue jade.
+ 
+[h2]
+Funktion
+This sword deals an additional 1d6 radiant damage the first time you hit a demon, undead, or fiend in a combat. This creature is now marked until you take a long rest.
+ 
+You can as an action, once a day, point this sword at a marked creature within 60 feet and say “I give you mercy”/“Jag skonar dig” to deal 3d10 radiant damage.
+ 
+If a cleric of @Karoon is attuned and wielding this weapon, attack rolls of 19 are also considered Critical Hits.

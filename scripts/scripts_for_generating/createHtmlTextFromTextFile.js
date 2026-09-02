@@ -1,9 +1,13 @@
 const articleHolder = document.createElement('div');
 const textHolder = document.createElement('div');
 
+
 async function readFile(filePath) {
 
-    //Creating the neccecities
+    // ==========================================================
+    // Create containers
+    // ==========================================================
+
     articleHolder.classList.add('article-content');
     document.body.appendChild(articleHolder);
 
@@ -11,40 +15,127 @@ async function readFile(filePath) {
     articleHolder.appendChild(textHolder);
 
 
+    // ==========================================================
+    // Read text file
+    // ==========================================================
 
-    //Adding the text
     const response = await fetch(filePath);
-    const text = await response.text(); //Converts it into a JS string
+    const text = await response.text();
 
-    const lines = text.split(/\r?\n/); //Converts each line into a new element
+    const lines = text.split(/\r?\n/);
+
+
+    // ==========================================================
+    // State
+    // ==========================================================
 
     let shouldBeH1 = false;
     let shouldBeH2 = false;
 
-    //Display all lines
-    for (const line of lines) 
-    {
-        //Check if line is a modifier
-        if(line == "[h1]") {
-            shouldBeH1 = true;
-            continue;
-        }
-        if(line == "[h2]") {
-            shouldBeH2 = true;
+    let insideQuote = false;
+    let quoteLines = [];
+
+
+    // ==========================================================
+    // Process every line
+    // ==========================================================
+
+    for (const line of lines) {
+
+        // ------------------------------------------------------
+        // QUOTE START
+        // ------------------------------------------------------
+
+        if (line.trim() === "[quote]") {
+
+            insideQuote = true;
+            quoteLines = [];
+
             continue;
         }
 
-        //Type out text
-        if(shouldBeH1){
+
+        // ------------------------------------------------------
+        // QUOTE END
+        // ------------------------------------------------------
+
+        if (line.trim() === "[end_quote]") {
+
+            if (insideQuote) {
+
+                createAndAddQuoteElement(
+                    quoteLines
+                );
+
+                insideQuote = false;
+                quoteLines = [];
+            }
+
+            continue;
+        }
+
+
+        // ------------------------------------------------------
+        // If we're currently inside a quote,
+        // store the line instead of creating a <p>
+        // ------------------------------------------------------
+
+        if (insideQuote) {
+
+            quoteLines.push(line);
+
+            continue;
+        }
+
+
+        // ------------------------------------------------------
+        // H1
+        // ------------------------------------------------------
+
+        if (line.trim() === "[h1]") {
+
+            shouldBeH1 = true;
+
+            continue;
+        }
+
+
+        // ------------------------------------------------------
+        // H2
+        // ------------------------------------------------------
+
+        if (line.trim() === "[h2]") {
+
+            shouldBeH2 = true;
+
+            continue;
+        }
+
+
+        // ------------------------------------------------------
+        // Create normal element
+        // ------------------------------------------------------
+
+        if (shouldBeH1) {
+
             createAndAddH1Element(line);
+
             shouldBeH1 = false;
+
         }
-        else if(shouldBeH2){
+
+        else if (shouldBeH2) {
+
             createAndAddH2Element(line);
+
             shouldBeH2 = false;
+
         }
-        else{
+
+        else {
+
             createAndAddTextElement(line);
+
         }
 
     }
@@ -52,24 +143,195 @@ async function readFile(filePath) {
 
 
 
-//Create text functions
-async function createAndAddTextElement(text) {
-    const element = document.createElement("p");
+// ==========================================================
+// Normal text
+// ==========================================================
+
+function createAndAddTextElement(text) {
+
+    const element =
+        document.createElement("p");
+
     element.textContent = text;
 
     textHolder.appendChild(element);
 }
 
-async function createAndAddH1Element(text) {
-    const element = document.createElement("h1");
+
+
+// ==========================================================
+// H1
+// ==========================================================
+
+function createAndAddH1Element(text) {
+
+    const element =
+        document.createElement("h1");
+
     element.textContent = text;
-    element.classList.add('title');
+
+    element.classList.add("title");
 
     textHolder.appendChild(element);
 }
-async function createAndAddH2Element(text) {
-    const element = document.createElement("h2");
+
+
+
+// ==========================================================
+// H2
+// ==========================================================
+
+function createAndAddH2Element(text) {
+
+    const element =
+        document.createElement("h2");
+
     element.textContent = text;
 
     textHolder.appendChild(element);
+}
+
+
+
+// ==========================================================
+// QUOTE
+// ==========================================================
+
+function createAndAddQuoteElement(lines) {
+
+    // ------------------------------------------------------
+    // Remove empty lines at beginning/end
+    // ------------------------------------------------------
+
+    while (
+        lines.length > 0 &&
+        lines[0].trim() === ""
+    ) {
+        lines.shift();
+    }
+
+    while (
+        lines.length > 0 &&
+        lines[lines.length - 1].trim() === ""
+    ) {
+        lines.pop();
+    }
+
+
+    // ------------------------------------------------------
+    // Find author
+    //
+    // Last non-empty line beginning with "-"
+    //
+    // Example:
+    //
+    // -Hitachi
+    // ------------------------------------------------------
+
+    let author = "";
+
+    if (lines.length > 0) {
+
+        const lastLine =
+            lines[lines.length - 1].trim();
+
+        if (lastLine.startsWith("-")) {
+
+            author =
+                lastLine
+                    .substring(1)
+                    .trim();
+
+            lines.pop();
+        }
+    }
+
+
+    // ------------------------------------------------------
+    // Create quote container
+    // ------------------------------------------------------
+
+    const quote =
+        document.createElement("blockquote");
+
+    quote.classList.add("custom-quote");
+
+
+    // ------------------------------------------------------
+    // Create quote text
+    // ------------------------------------------------------
+
+    const quoteText =
+        document.createElement("div");
+
+    quoteText.classList.add("quote-text");
+
+
+    // Remove unnecessary empty lines
+    while (
+        lines.length > 0 &&
+        lines[0].trim() === ""
+    ) {
+        lines.shift();
+    }
+
+    while (
+        lines.length > 0 &&
+        lines[lines.length - 1].trim() === ""
+    ) {
+        lines.pop();
+    }
+
+
+    // ------------------------------------------------------
+    // Add each quote line
+    // ------------------------------------------------------
+
+    for (let i = 0; i < lines.length; i++) {
+
+        quoteText.appendChild(
+            document.createTextNode(
+                lines[i]
+            )
+        );
+
+        if (i < lines.length - 1) {
+
+            quoteText.appendChild(
+                document.createElement("br")
+            );
+        }
+    }
+
+
+    quote.appendChild(quoteText);
+
+
+    // ------------------------------------------------------
+    // Author
+    // ------------------------------------------------------
+
+    if (author !== "") {
+
+        const quoteAuthor =
+            document.createElement("div");
+
+        quoteAuthor.classList.add(
+            "quote-author"
+        );
+
+        quoteAuthor.textContent =
+            "— " + author;
+
+        quote.appendChild(
+            quoteAuthor
+        );
+    }
+
+
+    // ------------------------------------------------------
+    // Add quote to page
+    // ------------------------------------------------------
+
+    textHolder.appendChild(quote);
 }

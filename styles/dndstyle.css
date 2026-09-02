@@ -170,6 +170,31 @@ a:hover {
 
 /* -------------------------------------- */
 
+
+
+
+
+.custom-quote {
+    margin: 2rem 0;
+    padding: 1.5rem 2rem;
+    border-left: 5px solid currentColor;
+    background: rgba(128, 128, 128, 0.1);
+}
+
+.quote-text {
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.quote-author {
+    margin-top: 1rem;
+    text-align: left;
+    font-weight: bold;
+}
+
+
+
 /* ---------Side bar content---------------- */
 
 /* Main content */
