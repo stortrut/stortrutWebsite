@@ -1,0 +1,42 @@
+[h1]
+Handskarna av Målmedvetenhet
+
+Gjord av en blandning av vitt- och lilaglänsande glasmaterial, dessa handskar glöder med drivet hos dem som bär dem. Handskarna verkar sitta tightare runt handleden desto högre motivationen hos den som bär dem är.
+ 
+Dessa handskar hittades av Frihetskämparna i Frukostbaronens herrgårdsslott i Session 20 - Frukostbaronens fall och flykt upp i torn.
+
+[h2]
+Funktion
+
+Reflective Resolve: Whenever a creaure within 30 feet makes a Critical Hit on an attack roll, you can use your reaction to regain 1 Hit Die, and melee weapon attacks you make until the end of your next turn now count as a +2 magic weapon.
+ 
+Whenever a creature within 30 feet rolls a Nat 1 on an attack roll, melee weapon attacks until the end of your next turn now count as a -2 magic weapon. You can spend 2 Hit Dice, or take 1 of your Hit Dice in psychic damage to ignore this effect.
+ 
+Enduring Willpower: When you make a weapon attack with disadvantage, you can choose to expend an amount of Hit Dice equal to your maximum amount of Hit Dice. When you do, you make that weapon attack with advantage instead.
+ 
+If do not have enough Hit Dice, you can choose to take psychic damage equal to rolling your maximum amount of Hit Dice. If that damage were to reduce you to 0 hit points, you still finish your attack fully before falling unconscious.
+ 
+Happily Ever After (Once a day): When you hit an enemy with a melee weapon attack made with these gauntlets, you can choose to activate this ability, dealing an additional 3d6 psychic damage as you do.
+ 
+Illusions and imagery spring forth surrounding the target in a misty stationary 10ft radius circle. The illusions shows how the target first succeeds in their short term goal, and eventually their long term goal, enthralling the target with its deepest desires.
+ 
+While the target is within this dreamy landscape, it has disadvantage on its attack rolls, saving throws, and ability checks. And all attack rolls against it has advantage. Its speed is also halved inside the dreamscape.
+ 
+The illusions disappears at the start of your turn, unless you spend half of your Hit Die, rounded down.
+
+[h2]
+Motivation and its Forms
+
+This weapon changes form depending on the wielder’s long term goal, and the motivation for it.
+ 
+As you attune to this weapon, choose the option which closest resembles your dream, and what drives you to achieve it.
+
+Form of Revenge	Overcoming and returning the suffering to someone or something that hurt you in your past is what drives you.	Vengeful Strike (Once a day). After a creature within range hits you with a Critical Hit, you can use your reaction to make a meelee attack against them.
+
+Form of Fear	You are motivated to avoid shame, failure or some sort of negative experience.	Adrenaline Rush. After you take damage from a Critical Hit you can as a reaction move up to your speed. You can do this even if the damage brought you down to 0 Hit Points.
+
+Form of Curiosity	Seeking adventure or knowledge, new expieriences is what drives you.	Critical Thinking. Whenever you hit a creature with a Critical Hit, you learn all of its damage resistances and vulnerabilities.
+
+Null Form	Strangely, your deepest desires are not found within you. You feel a big emptiness within you. The gauntlets find this deeply disturbing, severing the attunement with you immediately.	-
+
+Form of Desire	You’re in need of some sort of emotional or material fulfillment.	Desperate Attempt (Once a day). When you are under 50% of your total hit points and roll a 19 on an attack roll, you can activate this ability to turn the attack into a Critical Hit.

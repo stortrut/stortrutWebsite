@@ -1,0 +1,9 @@
+[h1]
+Målsökande Obsidianpilar
+
+Dessa pilar är skapade av @Målobsidian i @Dotán.
+
+[h2]
+Funktion
+
+You can as an action spend a spell slot to activate up to 10 arrows of this kind for 24 hours. If an activated arrow were to miss its target, and the target is not standing within 5 feet of a wall that is in the arrow’s path, the arrow will magically arch around and attack the target again at the start of the targets next turn. If this second attack were to miss again, repeat the process.
