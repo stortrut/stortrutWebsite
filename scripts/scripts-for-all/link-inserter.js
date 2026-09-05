@@ -25,16 +25,21 @@ function replaceWordsWithLinks(rootNode = document.body) {
         .then(res => res.json())
         .then(pages => {
 
-            // --------------------------------------------------
-            // Build lookup map
-            // --------------------------------------------------
+            // ==========================================================
+            // Build lookup maps
+            // ==========================================================
 
-            const pageMap = {};
+            const nameMap = {};
+            const shorthandMap = {};
 
             for (const page of pages) {
 
                 if (page.name) {
-                    pageMap[page.name.toLowerCase()] = page.url;
+
+                    const name =
+                        page.name.trim().toLowerCase();
+
+                    nameMap[name] = page.url;
                 }
 
                 if (Array.isArray(page.shorthands)) {
@@ -42,28 +47,46 @@ function replaceWordsWithLinks(rootNode = document.body) {
                     for (const sh of page.shorthands) {
 
                         if (sh) {
-                            pageMap[sh.toLowerCase()] = page.url;
+
+                            const shorthand =
+                                sh.trim().toLowerCase();
+
+                            shorthandMap[shorthand] =
+                                page.url;
                         }
                     }
                 }
             }
 
 
-            // ==================================================
-            // Helper: find URL
-            // ==================================================
+            // ==========================================================
+            // Normalize target
+            // ==========================================================
 
-            function findPageUrl(target) {
+            function normalizeTarget(target) {
 
-                if (!target) return null;
-
-                target = target
+                return target
                     .trim()
                     .toLowerCase()
                     .replace(/[.,!?;:]+$/, '');
+            }
 
-                // Exact match
-                let url = pageMap[target];
+
+            // ==========================================================
+            // Find URL using full name
+            // ==========================================================
+
+            function findFullNameUrl(target) {
+
+                if (!target) {
+                    return null;
+                }
+
+                target =
+                    normalizeTarget(target);
+
+                let url =
+                    nameMap[target];
 
                 if (url) {
                     return url;
@@ -75,7 +98,8 @@ function replaceWordsWithLinks(rootNode = document.body) {
                     const singular =
                         target.slice(0, -1);
 
-                    url = pageMap[singular];
+                    url =
+                        nameMap[singular];
 
                     if (url) {
                         return url;
@@ -86,9 +110,56 @@ function replaceWordsWithLinks(rootNode = document.body) {
             }
 
 
-            // ==================================================
-            // Helper: escape HTML
-            // ==================================================
+            // ==========================================================
+            // Find URL using full name OR shorthand
+            // ==========================================================
+
+            function findPageUrl(target) {
+
+                if (!target) {
+                    return null;
+                }
+
+                target =
+                    normalizeTarget(target);
+
+                // Full name first
+                let url =
+                    nameMap[target];
+
+                if (url) {
+                    return url;
+                }
+
+                // Swedish plural -s
+                if (target.endsWith('s')) {
+
+                    const singular =
+                        target.slice(0, -1);
+
+                    url =
+                        nameMap[singular];
+
+                    if (url) {
+                        return url;
+                    }
+                }
+
+                // Shorthand
+                url =
+                    shorthandMap[target];
+
+                if (url) {
+                    return url;
+                }
+
+                return null;
+            }
+
+
+            // ==========================================================
+            // Escape HTML
+            // ==========================================================
 
             function escapeHtml(value) {
 
@@ -101,9 +172,43 @@ function replaceWordsWithLinks(rootNode = document.body) {
             }
 
 
-            // ==================================================
+            // ==========================================================
+            // Escape regex characters
+            // ==========================================================
+
+            function escapeRegex(value) {
+
+                return value.replace(
+                    /[.*+?^${}()|[\]\\]/g,
+                    '\\$&'
+                );
+            }
+
+
+            // ==========================================================
+            // Get full names, longest first
+            // ==========================================================
+
+            const fullNames =
+                Object.keys(nameMap)
+                    .filter(name => name.includes(' '))
+                    .sort((a, b) => b.length - a.length);
+
+
+            let fullNamePattern = '';
+
+            if (fullNames.length > 0) {
+
+                fullNamePattern =
+                    fullNames
+                        .map(escapeRegex)
+                        .join('|');
+            }
+
+
+            // ==========================================================
             // Process text nodes
-            // ==================================================
+            // ==========================================================
 
             const walker =
                 document.createTreeWalker(
@@ -120,37 +225,20 @@ function replaceWordsWithLinks(rootNode = document.body) {
 
             nodes.forEach(node => {
 
-                const text = node.textContent;
+                const text =
+                    node.textContent;
 
                 if (!text.includes('@')) {
                     return;
                 }
 
 
-                // ==================================================
-                // IMPORTANT:
-                //
-                // We process the ENTIRE text node instead of
-                // splitting on whitespace.
-                //
-                // This allows:
-                //
-                // Hektor@(Hektor Kostos)
-                //
-                // to remain one complete match.
-                // ==================================================
-
-
                 let result = text;
 
 
-                // --------------------------------------------------
-                // Handle (Display Name)@(Target)
-                //
-                // Example:
-                //
-                // (Hektor Kostos)@(Hektor Kostos)
-                // --------------------------------------------------
+                // ======================================================
+                // (Display Name)@(Target)
+                // ======================================================
 
                 result = result.replace(
                     /\(([^()\n]+)\)@\(([^()\n]+)\)/gu,
@@ -163,22 +251,18 @@ function replaceWordsWithLinks(rootNode = document.body) {
                             return match;
                         }
 
-                        return `<a href="${escapeHtml(url)}">${escapeHtml(display)}</a>`;
+                        return (
+                            `<a href="${escapeHtml(url)}">` +
+                            `${escapeHtml(display)}` +
+                            `</a>`
+                        );
                     }
                 );
 
 
-                // --------------------------------------------------
-                // Handle Name@(Target)
-                //
-                // Example:
-                //
-                // Hektor@(Hektor Kostos)
-                //
-                // Result:
-                //
-                // <a href="...">Hektor</a>
-                // --------------------------------------------------
+                // ======================================================
+                // Name@(Target)
+                // ======================================================
 
                 result = result.replace(
                     /([\p{L}\p{N}_-]+)@\(([^()\n]+)\)/gu,
@@ -187,33 +271,22 @@ function replaceWordsWithLinks(rootNode = document.body) {
                         const url =
                             findPageUrl(target);
 
-                        console.log(
-                            'Name@(Target):',
-                            match,
-                            'Display:',
-                            display,
-                            'Target:',
-                            target,
-                            'URL:',
-                            url
-                        );
-
                         if (!url) {
                             return match;
                         }
 
-                        return `<a href="${escapeHtml(url)}">${escapeHtml(display)}</a>`;
+                        return (
+                            `<a href="${escapeHtml(url)}">` +
+                            `${escapeHtml(display)}` +
+                            `</a>`
+                        );
                     }
                 );
 
 
-                // --------------------------------------------------
-                // Handle Name@Target
-                //
-                // Example:
-                //
-                // Hektor@Kostos
-                // --------------------------------------------------
+                // ======================================================
+                // Name@Target
+                // ======================================================
 
                 result = result.replace(
                     /([\p{L}\p{N}_-]+)@([\p{L}\p{N}_-]+)/gu,
@@ -226,73 +299,76 @@ function replaceWordsWithLinks(rootNode = document.body) {
                             return match;
                         }
 
-                        return `<a href="${escapeHtml(url)}">${escapeHtml(display)}</a>`;
+                        return (
+                            `<a href="${escapeHtml(url)}">` +
+                            `${escapeHtml(display)}` +
+                            `</a>`
+                        );
                     }
                 );
 
 
-                // --------------------------------------------------
-                // Handle @Name
+                // ======================================================
+                // @Full Name OR @Shorthand
                 //
-                // Example:
+                // IMPORTANT:
                 //
-                // @Hektor
-                // --------------------------------------------------
+                // These are handled in ONE pass.
+                //
+                // That means after @Odo Orgulas becomes a link,
+                // another regex cannot subsequently see the @Odo
+                // inside the generated HTML.
+                // ======================================================
 
-                result = result.replace(
-                    /@([\p{L}\p{N}_-]+)/gu,
-                    (match, target) => {
+                let mentionRegex;
 
-                        const url =
-                            findPageUrl(target);
+                if (fullNamePattern) {
 
-                        if (!url) {
-                            return match;
+                    mentionRegex =
+                        new RegExp(
+                            `@(${fullNamePattern}|[\\p{L}\\p{N}_-]+)(?=\\s|[.,!?;:]|$)`,
+                            'giu'
+                        );
+
+                } else {
+
+                    mentionRegex =
+                        /@([\p{L}\p{N}_-]+)(?=\s|[.,!?;:]|$)/gu;
+                }
+
+
+                result =
+                    result.replace(
+                        mentionRegex,
+                        (match, target) => {
+
+                            const url =
+                                findPageUrl(target);
+
+                            if (!url) {
+                                return match;
+                            }
+
+                            return (
+                                `<a href="${escapeHtml(url)}">` +
+                                `${escapeHtml(target)}` +
+                                `</a>`
+                            );
                         }
-
-                        return `<a href="${escapeHtml(url)}">${escapeHtml(target)}</a>`;
-                    }
-                );
+                    );
 
 
-                // --------------------------------------------------
-                // Handle @First Last
-                //
-                // Example:
-                //
-                // @Hektor Kostos
-                //
-                // This is intentionally done LAST because the
-                // previous replacements handle the more specific
-                // @(...) formats first.
-                // --------------------------------------------------
-
-                result = result.replace(
-                    /@([\p{L}\p{N}_-]+(?:\s+[\p{L}\p{N}_-]+)+)(?=\s|[.,!?;:]|$)/gu,
-                    (match, target) => {
-
-                        const url =
-                            findPageUrl(target);
-
-                        if (!url) {
-                            return match;
-                        }
-
-                        return `<a href="${escapeHtml(url)}">${escapeHtml(target)}</a>`;
-                    }
-                );
-
-
-                // ==================================================
-                // Replace text node if changed
-                // ==================================================
+                // ======================================================
+                // Replace text node
+                // ======================================================
 
                 if (result !== text) {
 
                     const span =
                         document.createElement('span');
 
-                    span.innerHTML = result;
+                    span.innerHTML =
+                        result;
 
                     node.parentNode.replaceChild(
                         span,
@@ -304,7 +380,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
 
 
             // ==========================================================
-            // Tooltip System
+            // Tooltip system
             // ==========================================================
 
             function showTooltip(link, preview) {
@@ -313,6 +389,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
                     document.getElementById(
                         'link-preview-tooltip'
                     );
+
 
                 if (!tooltip) {
 
@@ -426,13 +503,14 @@ function replaceWordsWithLinks(rootNode = document.body) {
                     );
 
                 if (tooltip) {
-                    tooltip.style.opacity = '0';
+                    tooltip.style.opacity =
+                        '0';
                 }
             }
 
 
             // ==========================================================
-            // Add tooltip handlers
+            // Tooltip handlers
             // ==========================================================
 
             document
@@ -460,7 +538,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
                                             link.href
                                         );
 
-                                    const text =
+                                    const html =
                                         await res.text();
 
                                     const parser =
@@ -468,7 +546,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
 
                                     const doc =
                                         parser.parseFromString(
-                                            text,
+                                            html,
                                             'text/html'
                                         );
 
@@ -482,8 +560,8 @@ function replaceWordsWithLinks(rootNode = document.body) {
                                     const preview =
                                         metaDesc
                                             ? metaDesc.getAttribute(
-                                                  'content'
-                                              )
+                                                'content'
+                                            )
                                             : 'No preview available';
 
 

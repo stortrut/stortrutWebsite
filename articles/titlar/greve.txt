@@ -1,0 +1,11 @@
+[h1]
+Greve
+
+När en person gör något riktigt heroiskt eller avsevärt för Kejsarriket eller världen kan Kejsaren välja att ge ut titeln "Greve". En blodslinje kan bli dubbad till greve av endast Kejsaren själv.
+
+[h2]
+Anmärkningsvärda Grevar
+
+[list]
+@Greve Greshold
+[end_list]

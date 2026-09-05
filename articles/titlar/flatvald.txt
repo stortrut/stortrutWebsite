@@ -1,0 +1,16 @@
+[h1]
+Flatvald
+
+En titel som ges ut av @(Väggmossens Munkklosters) mästare. Den Flatvalda blir tillslut den som leder templet, och den som väljer ut den nästa Flatvalda.
+ 
+För varje Flatteknik  den Flatvalda har lärt sig, lindas ett gult band runt hen.
+ 
+Den nuvarande Flatvalda har namnet Bronn Potam.
+
+[h2]
+Tidigare Flatvalda
+[list]
+@Maskar Jukil
+@Bronn Potam
+@Odo Orgulas
+[end_list]

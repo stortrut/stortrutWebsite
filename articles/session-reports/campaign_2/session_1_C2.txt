@@ -1,6 +1,8 @@
 ﻿[h1]
 Session 1 - Ba-sharin, Möjliheternas Stad
 
+Spelad: 2022
+
 En vacker vårdag drar ett par stora järnjättar en stor järnvagn längs med stora tjocka räls-spår, upp mot @Ba-sharin. En stad som lovar rikedomar och äventyr, men som i nuläget istället är styrt av ett gille som verkar hänga alla som går emot deras restriktioner och regler. På vagnen sitter ett antal speciella personer som kommer att förändra staden, världen och sig själva.
 
 [h2]
@@ -15,26 +17,26 @@ Odo Orgulas
 Hektor Kostos
 Hektor@(Hektor Kostos) en människa bärande på en stor flagga, blev igenkänd som en frihetskämpe av @Hitachi.
 
-Bob@(Hektor Kostos)
-@Hektor Kostos
-
 [h2]
 Hitachi
-@Hitachi, en smygande katt som bor i Ba-sharin.
+@Hitachi, en smygande katt som bor i @Ba-sharin.
 
 [h2]
 Skatprinsen
-En man i glittrande svartvit rustning hoppar ner från järnvagnens tak, och landar längst fram. Han introducerar sig själv som Skatprinsen, och välkommnar alla till Ba-sharin.
+En man i glittrande svartvit rustning hoppar ner från järnvagnens tak, och landar längst fram. Han introducerar sig själv som @Skatprinsen, och välkomnar alla till @Ba-sharin.
  
-Han anklagar Masi Klöver, en av Odo Orgulas vänner, för att ha smugglat ut skatter från en hemlig gång från gruvan i Ba-sharin. Enligt Ba-sharins Äventyrsgille ska allt som hittas där nere gå igenom dem först.
+Han anklagar @Masi Klöver, en av @Odo Orgulas vänner, för att ha smugglat ut skatter från en hemlig gång från gruvan i @Ba-sharin. Enligt @(Ba-sharins Äventyrsgille) ska allt som hittas där nere gå igenom dem först.
  
-Skatprinsen attackerar och gruppen av personer försöker slå tillbaka, men något med Skatprinsens rustning gör att den inte går att träffa. Skatprinsen tar Masi Klöver och beskriver hur han ska hängas tillsammans med andra tjuvar på torget om bara 4 dagar.
+@Skatprinsen attackerar och gruppen av personer försöker slå tillbaka, men något med @Skatprinsens rustning gör att den inte går att träffa. @Skatprinsen tar @Masi Klöver och beskriver hur han ska hängas tillsammans med andra tjuvar på torget om bara 4 dagar.
  
 [h2]
 Hektor och Oraklet
-Hektor berättar att han letar efter ett orakel, som ska kunna besvara vilken fråga som helst. Detta verkar vara enda sättet att hitta Skatprinsens svaghet - men intresserar även Odo Orgulas eftersom han vill veta platsen till en person.
- 
-Hitachi leder gruppen till ett värdshus i de mörkare delarna av staden. Där inne övertalar dem, Föremål Loot Table, en gammal dvärgklansledare, att hjälpa er i fighten mot gillet. Efter en välformulerad argumentation från både Hektor och Hitachi får dem Ur-klingan, en extremt gammal dolk som smeds av det allra första @Keratenet som hittades djupt ner i de djupaste gruvorna. Den sägs kunna hjälpa dem hitta ner till gruvornas botten, där Oraklet enligt legenderna finns.
- 
-Dem bestämmer er för att rädda Masi Klöver ur gillets fängelse, även känt som @Bedövande Hålan. Och dem spenderar resten av dagen med att scouta ut området och för att få information om fängelset och dess vakter.
+@Hektor berättar att han letar efter ett orakel@(Oraklet i Ba-sharin), som ska kunna besvara vilken fråga som helst. Detta verkar vara enda sättet att hitta Skatprinsens svaghet - men intresserar även @Odo Orgulas eftersom han vill veta platsen till en person.
 
+@Hitachi leder gruppen till ett värdshus i de mörkare delarna av staden. Där inne övertalar dem en gammal dvärgklansledare, @Forka den Första, att hjälpa er i fighten mot gillet. Efter en välformulerad argumentation från både @Hektor och @Hitachi får dem @Ur-klingan, en extremt gammal dolk som smeds av det allra första @keratenet som hittades djupt ner i de djupaste gruvorna. Den sägs kunna hjälpa dem hitta ner till gruvornas botten, där Oraklet@(Oraklet i Ba-sharin), enligt legenderna finns.
+ 
+Dem bestämmer er för att rädda @Masi Klöver ur gillets fängelse, även känt som @Bedövande Hålan. Och dem spenderar resten av dagen med att scouta ut området och för att få information om fängelset och dess vakter.
+
+
+
+De går upp i Level 2.

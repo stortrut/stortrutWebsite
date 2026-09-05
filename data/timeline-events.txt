@@ -1,0 +1,40 @@
+    # Timeline events
+#
+# Format:
+# LABEL | YEAR | MONTH | WEEK | DAY | SYMBOL | SHOW_AT
+#
+# SHOW_AT:
+# year  = appears at every zoom level
+# month = appears at month, week and day levels
+# week  = appears at week and day levels
+# day   = appears only at day level
+
+
+
+
+Tempelherrens Församlig splittras | 971 | 1 | 1 | 1 | ✖ | month
+
+
+Tempelherrens Församlig splittras | 971 | 1 | 1 | 1 | ✖ | month
+
+Nardozima-paret blir sjuka och dör | 968 | 5 | 2 | 3 | ✖ | year
+
+Skatprinsen får sin rustning och skickas till Ba-sharin för att ta över gillet | 966 | 7 | 3 | 5 | ★ | year
+Laric Putaji blir räddad av Greve Greshold, och svärs in i Glasriddarordern | 964 | 5 | 1 | 9 | ★ | year
+
+Hang Hang får sin målobsidian rustning | 961 | 7 | 3 | 5 | ★ | month
+Hang Hang svärs in i Glasriddarordern | 961 | 4 | 3 | 5 | ★ | year
+
+Derek får sin svavelkristallrustning | 952 | 7 | 3 | 5 | ★ | month
+Hektor Kostos leder revolutionen i Istonik | 952 | 1 | 2 | 7 | ✖ | year
+
+
+Nappesha tar minnen från de överlevande från Jons by | 949 | 9 | 2 | 10 | ✖ | month
+Derek bränner ner Jons by | 949 | 9 | 2 | 7 | ✖ | year
+Jon föds | 942 | 1 | 2 | 7 | ❤ | year
+
+Derek föds | 932 | 1 | 1 | 1 | ❤ | year
+Hektor föds | 931 | 1 | 1 | 1 | ❤ | year
+
+
+

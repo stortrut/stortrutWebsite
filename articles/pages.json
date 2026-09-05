@@ -2,7 +2,9 @@
   {
     "name": "Hektor Kostos",
     "url": "/articles/characters/frihetskämparna/hektor_kostos.html",
-    "shorthands": []
+    "shorthands": [
+      "Hektor"
+    ]
   },
   {
     "name": "Odo Orgulas",
@@ -14,17 +16,17 @@
   },
   {
     "name": "Ba-sharin",
-    "url": "/articles/geografi/farnesh/ba-sharin.html",
+    "url": "/articles/geografi/provinser/farnesh/ba-sharin.html",
     "shorthands": []
   },
   {
     "name": "Sunhural",
-    "url": "/articles/geografi/farnesh/sunhural.html",
+    "url": "/articles/geografi/provinser/farnesh/sunhural.html",
     "shorthands": []
   },
   {
     "name": "Väggmossens Munkkloster",
-    "url": "/articles/geografi/farnesh/väggmossens_munkkloster.html",
+    "url": "/articles/geografi/provinser/farnesh/väggmossens_munkkloster.html",
     "shorthands": []
   },
   {
@@ -65,11 +67,6 @@
   {
     "name": "Sandhäst",
     "url": "/articles/varelser/djur/sandhäst.html",
-    "shorthands": []
-  },
-  {
-    "name": "Vaxbo",
-    "url": "/articles/geografi/vaxbo.html",
     "shorthands": []
   },
   {
@@ -250,6 +247,163 @@
   {
     "name": "~$itachi",
     "url": "/articles/characters/frihetskämparna/~$itachi.html",
+    "shorthands": []
+  },
+  {
+    "name": "Blodsbanden",
+    "url": "/articles/föremål/blodsbanden.html",
+    "shorthands": []
+  },
+  {
+    "name": "Dairokkan",
+    "url": "/articles/föremål/dairokkan.html",
+    "shorthands": []
+  },
+  {
+    "name": "Demonfrälsaren",
+    "url": "/articles/föremål/demonfrälsaren.html",
+    "shorthands": []
+  },
+  {
+    "name": "Den Första Klingan",
+    "url": "/articles/föremål/den_första_klingan.html",
+    "shorthands": [
+      "Ur-klingan"
+    ]
+  },
+  {
+    "name": "Ledvinden",
+    "url": "/articles/föremål/ledvinden.html",
+    "shorthands": []
+  },
+  {
+    "name": "~$ssion 1 C2",
+    "url": "/articles/session-reports/campaign_2/~$ssion_1_C2.html",
+    "shorthands": []
+  },
+  {
+    "name": "Karoons Demonfångarkrona",
+    "url": "/articles/föremål/karoons_demonfångarkrona.html",
+    "shorthands": []
+  },
+  {
+    "name": "Grentorp",
+    "url": "/articles/geografi/provinser/farnesh/grentorp.html",
+    "shorthands": []
+  },
+  {
+    "name": "Farnesh",
+    "url": "/articles/geografi/provinser/farnesh.html",
+    "shorthands": []
+  },
+  {
+    "name": "Arasu",
+    "url": "/articles/gudar/arasu.html",
+    "shorthands": []
+  },
+  {
+    "name": "Derado",
+    "url": "/articles/gudar/derado.html",
+    "shorthands": []
+  },
+  {
+    "name": "Alkohol",
+    "url": "/articles/mat_och_dryck/alkohol.html",
+    "shorthands": []
+  },
+  {
+    "name": "De Lärdas Sällskap",
+    "url": "/articles/organisationer/de_lärdas_sällskap.html",
+    "shorthands": []
+  },
+  {
+    "name": "Eldtunga",
+    "url": "/articles/språk/eldtunga.html",
+    "shorthands": []
+  },
+  {
+    "name": "Flatvald",
+    "url": "/articles/titlar/flatvald.html",
+    "shorthands": []
+  },
+  {
+    "name": "Greve",
+    "url": "/articles/titlar/greve.html",
+    "shorthands": []
+  },
+  {
+    "name": "Dvärgar",
+    "url": "/articles/varelser/folkslag/dvärgar.html",
+    "shorthands": []
+  },
+  {
+    "name": "Fältfolk",
+    "url": "/articles/varelser/folkslag/fältfolk.html",
+    "shorthands": []
+  },
+  {
+    "name": "Hinokaster",
+    "url": "/articles/gudar/hinokaster.html",
+    "shorthands": []
+  },
+  {
+    "name": "Bertil",
+    "url": "/articles/characters/bertil.html",
+    "shorthands": []
+  },
+  {
+    "name": "Darná",
+    "url": "/articles/characters/darná.html",
+    "shorthands": []
+  },
+  {
+    "name": "De Fyra Fantasterna",
+    "url": "/articles/grupper/de_fyra_fantasterna.html",
+    "shorthands": []
+  },
+  {
+    "name": "Bodkristall",
+    "url": "/articles/material/bodkristall.html",
+    "shorthands": []
+  },
+  {
+    "name": "Jadesten",
+    "url": "/articles/material/jadesten.html",
+    "shorthands": []
+  },
+  {
+    "name": "Karoon",
+    "url": "/articles/gudar/karoon.html",
+    "shorthands": []
+  },
+  {
+    "name": "Drömmstoft",
+    "url": "/articles/material/drömmstoft.html",
+    "shorthands": []
+  },
+  {
+    "name": "Forka Den Första",
+    "url": "/articles/characters/forka_den_första.html",
+    "shorthands": []
+  },
+  {
+    "name": "Masi Klöver",
+    "url": "/articles/characters/masi_klöver.html",
+    "shorthands": []
+  },
+  {
+    "name": "Oraklet I Ba-sharin",
+    "url": "/articles/characters/oraklet_i_ba-sharin.html",
+    "shorthands": []
+  },
+  {
+    "name": "Skatprinsen",
+    "url": "/articles/characters/glasriddarorden/skatprinsen.html",
+    "shorthands": []
+  },
+  {
+    "name": "Vaxby",
+    "url": "/articles/geografi/vaxby.html",
     "shorthands": []
   }
 ]

@@ -1,0 +1,2049 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>D&D Timeline</title>
+
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/dndstyle.css">
+    <link rel="stylesheet" href="/styles/timeline.css">
+
+    <style>
+        .timeline-wrapper {
+            width: 100%;
+            user-select: none;
+        }
+
+        .timeline-controls {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-controls button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .timeline-current {
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 8px;
+            min-height: 1.25em;
+        }
+
+        .timeline {
+            position: relative;
+            width: 100%;
+            height: 190px;
+            overflow: hidden;
+            cursor: grab;
+            touch-action: none;
+        }
+
+        .timeline:active {
+            cursor: grabbing;
+        }
+
+        .timeline-axis {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 92px;
+            height: 2px;
+            background: currentColor;
+        }
+
+        .timeline-center-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 1px;
+            background: currentColor;
+            opacity: 0.12;
+            pointer-events: none;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            transform: translateX(-50%);
+            text-align: center;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .timeline-marker-label {
+            font-size: 0.75rem;
+        }
+
+        .timeline-marker-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            background: currentColor;
+            opacity: 0.4;
+        }
+
+        .year-label {
+            top: 8px;
+            font-weight: 600;
+        }
+
+        .year-label .timeline-marker-line {
+            top: 20px;
+            height: 72px;
+        }
+
+        .month-label {
+            top: 35px;
+        }
+
+        .month-label .timeline-marker-line {
+            top: 17px;
+            height: 40px;
+        }
+
+        .week-label {
+            top: 60px;
+        }
+
+        .week-label .timeline-marker-line {
+            top: 17px;
+            height: 32px;
+        }
+
+        .day-label {
+            top: 105px;
+            font-size: 0.72rem;
+        }
+
+        .day-label .timeline-marker-line {
+            bottom: 17px;
+            height: 18px;
+        }
+
+        .edge-label {
+            position: absolute;
+            white-space: nowrap;
+            pointer-events: none;
+            font-size: 0.75rem;
+        }
+
+        .edge-left {
+            left: 0;
+        }
+
+        .edge-right {
+            right: 0;
+            text-align: right;
+        }
+
+        .edge-year {
+            top: 8px;
+            font-weight: 600;
+        }
+
+        .edge-month {
+            top: 35px;
+        }
+
+        .edge-week {
+            top: 60px;
+        }
+
+        .timeline-event {
+            position: absolute;
+            transform: translateX(-50%);
+            width: max-content;
+            max-width: 150px;
+            text-align: center;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .timeline-event-symbol {
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        .timeline-event-label {
+            margin-top: 2px;
+            font-size: 0.68rem;
+            line-height: 1.15;
+            white-space: normal;
+            overflow-wrap: break-word;
+        }
+
+        .timeline-event.above {
+            bottom: 104px;
+        }
+
+        .timeline-event.above.stack-1 {
+            bottom: 132px;
+        }
+
+        .timeline-event.above.stack-2 {
+            bottom: 160px;
+        }
+
+        .timeline-event.above.stack-3 {
+            bottom: 188px;
+        }
+
+        .timeline-event.below {
+            top: 105px;
+        }
+
+        .timeline-event.below.stack-1 {
+            top: 133px;
+        }
+
+        .timeline-event.below.stack-2 {
+            top: 161px;
+        }
+
+        .timeline-event.below.stack-3 {
+            top: 189px;
+        }
+
+        .timeline-event-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            background: currentColor;
+            opacity: 0.35;
+        }
+
+        .timeline-event.above .timeline-event-line {
+            top: 100%;
+            height: 13px;
+        }
+
+        .timeline-event.below .timeline-event-line {
+            bottom: 100%;
+            height: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+<script src="/scripts/scripts-for-all/scriptforall.js"></script>
+
+<div class="timeline-wrapper">
+
+    <div class="timeline-controls">
+        <button id="zoomOut">−</button>
+        <button id="zoomReset">Reset</button>
+        <button id="zoomIn">+</button>
+    </div>
+
+    <div
+        class="timeline-current"
+        id="timelineCurrent">
+    </div>
+
+    <div
+        class="timeline"
+        id="timeline">
+
+        <div class="timeline-axis"></div>
+
+        <div class="timeline-center-line"></div>
+
+    </div>
+</div>
+
+
+<script>
+
+/* ============================================================
+   CALENDAR
+   ============================================================ */
+
+const MONTHS_PER_YEAR = 10;
+const WEEKS_PER_MONTH = 3;
+const DAYS_PER_WEEK = 10;
+
+const DAYS_PER_MONTH =
+    WEEKS_PER_MONTH * DAYS_PER_WEEK;
+
+const DAYS_PER_YEAR =
+    MONTHS_PER_YEAR * DAYS_PER_MONTH;
+
+
+/* ============================================================
+   TIMELINE RANGE
+   ============================================================ */
+
+const startYear = 930;
+const endYear = 972;
+
+const totalStartDay = 0;
+
+const totalEndDay =
+    (endYear - startYear) *
+    DAYS_PER_YEAR;
+
+const MIN_ZOOM_DAYS = 1;
+
+const totalRange =
+    totalEndDay -
+    totalStartDay;
+
+let viewStartDay =
+    totalStartDay;
+
+let viewEndDay =
+    totalEndDay;
+
+
+/* ============================================================
+   EVENTS
+   ============================================================ */
+
+let events = [];
+
+
+/*
+    Event visibility is cumulative:
+
+        year  -> year + month + week + day
+        month -> month + week + day
+        week  -> week + day
+        day   -> day
+*/
+
+const visibilityLevels = {
+    year: ['year', 'month', 'week', 'day'],
+    month: ['month', 'week', 'day'],
+    week: ['week', 'day'],
+    day: ['day']
+};
+
+
+/* ============================================================
+   DOM
+   ============================================================ */
+
+const timeline =
+    document.getElementById('timeline');
+
+const timelineCurrent =
+    document.getElementById('timelineCurrent');
+
+const zoomInButton =
+    document.getElementById('zoomIn');
+
+const zoomOutButton =
+    document.getElementById('zoomOut');
+
+const zoomResetButton =
+    document.getElementById('zoomReset');
+
+
+/* ============================================================
+   DATE CONVERSION
+   ============================================================ */
+
+function dateToDay(
+    year,
+    month,
+    week,
+    day
+) {
+    return (
+        (year - startYear) *
+            DAYS_PER_YEAR +
+
+        (month - 1) *
+            DAYS_PER_MONTH +
+
+        (week - 1) *
+            DAYS_PER_WEEK +
+
+        (day - 1)
+    );
+}
+
+
+function dayToDate(totalDay) {
+
+    totalDay = Math.max(
+        totalStartDay,
+        Math.min(
+            totalEndDay,
+            totalDay
+        )
+    );
+
+
+    if (
+        totalDay >= totalEndDay
+    ) {
+        return {
+            year: endYear,
+            month: 1,
+            week: 1,
+            day: 1
+        };
+    }
+
+
+    const yearIndex =
+        Math.floor(
+            totalDay /
+            DAYS_PER_YEAR
+        );
+
+    const year =
+        startYear + yearIndex;
+
+    const dayOfYear =
+        totalDay -
+        yearIndex * DAYS_PER_YEAR;
+
+    const month =
+        Math.floor(
+            dayOfYear /
+            DAYS_PER_MONTH
+        ) + 1;
+
+    const dayOfMonth =
+        dayOfYear %
+        DAYS_PER_MONTH;
+
+    const week =
+        Math.floor(
+            dayOfMonth /
+            DAYS_PER_WEEK
+        ) + 1;
+
+    const day =
+        Math.floor(
+            dayOfMonth %
+            DAYS_PER_WEEK
+        ) + 1;
+
+    return {
+        year,
+        month,
+        week,
+        day
+    };
+}
+
+
+/* ============================================================
+   POSITION
+   ============================================================ */
+
+function dayToPercent(day) {
+
+    const range =
+        viewEndDay -
+        viewStartDay;
+
+    if (
+        range <= 0
+    ) {
+        return 0;
+    }
+
+    return (
+        (
+            day -
+            viewStartDay
+        ) /
+        range
+    ) * 100;
+}
+
+
+/* ============================================================
+   MARKERS
+   ============================================================ */
+
+function addMarker(
+    percent,
+    label,
+    className
+) {
+
+    const marker =
+        document.createElement('div');
+
+    marker.className =
+        `timeline-marker ${className}`;
+
+    marker.style.left =
+        `${percent}%`;
+
+
+    const labelElement =
+        document.createElement('div');
+
+    labelElement.className =
+        'timeline-marker-label';
+
+    labelElement.textContent =
+        label;
+
+
+    marker.appendChild(
+        labelElement
+    );
+
+
+    const line =
+        document.createElement('div');
+
+    line.className =
+        'timeline-marker-line';
+
+
+    marker.appendChild(
+        line
+    );
+
+
+    timeline.appendChild(
+        marker
+    );
+}
+
+
+/* ============================================================
+   EDGE LABELS
+   ============================================================ */
+
+function addEdgeLabel(
+    side,
+    text,
+    className
+) {
+
+    const element =
+        document.createElement('div');
+
+    element.className =
+        `edge-label ${
+            side === 'left'
+                ? 'edge-left'
+                : 'edge-right'
+        } ${className}`;
+
+    element.textContent =
+        text;
+
+    timeline.appendChild(
+        element
+    );
+}
+
+
+/* ============================================================
+   ZOOM LEVEL
+   ============================================================ */
+
+function getVisibleDays() {
+
+    return (
+        viewEndDay -
+        viewStartDay
+    );
+}
+
+
+function getZoomLevel() {
+
+    const visibleDays =
+        getVisibleDays();
+
+
+    if (
+        visibleDays >=
+        DAYS_PER_YEAR * 2
+    ) {
+        return 'year';
+    }
+
+
+    if (
+        visibleDays >=
+        DAYS_PER_MONTH * 2
+    ) {
+        return 'month';
+    }
+
+
+    if (
+        visibleDays >=
+        DAYS_PER_WEEK * 2
+    ) {
+        return 'week';
+    }
+
+
+    return 'day';
+}
+
+
+/* ============================================================
+   YEAR LEVEL
+   ============================================================ */
+
+function createYearLevel() {
+
+    const visibleYears =
+        getVisibleDays() /
+        DAYS_PER_YEAR;
+
+
+    let interval = 1;
+
+
+    if (
+        visibleYears >= 60
+    ) {
+        interval = 10;
+    }
+    else if (
+        visibleYears >= 30
+    ) {
+        interval = 5;
+    }
+    else if (
+        visibleYears >= 14
+    ) {
+        interval = 2;
+    }
+
+
+    let year =
+        Math.ceil(
+            startYear /
+            interval
+        ) * interval;
+
+
+    while (
+        year < endYear
+    ) {
+
+        const day =
+            dateToDay(
+                year,
+                1,
+                1,
+                1
+            );
+
+
+        if (
+            day > viewStartDay &&
+            day < viewEndDay
+        ) {
+
+            addMarker(
+                dayToPercent(day),
+                `${year}`,
+                'year-label'
+            );
+        }
+
+
+        year += interval;
+    }
+
+
+    const leftDate =
+        dayToDate(
+            viewStartDay
+        );
+
+    const rightDate =
+        dayToDate(
+            viewEndDay
+        );
+
+
+    addEdgeLabel(
+        'left',
+        `${leftDate.year}`,
+        'edge-year'
+    );
+
+    addEdgeLabel(
+        'right',
+        `${rightDate.year}`,
+        'edge-year'
+    );
+}
+
+
+/* ============================================================
+   MONTH LEVEL
+   ============================================================ */
+
+function createMonthLevel() {
+
+    const leftDate =
+        dayToDate(
+            viewStartDay
+        );
+
+    const rightDate =
+        dayToDate(
+            viewEndDay
+        );
+
+
+    addEdgeLabel(
+        'left',
+        `${leftDate.year}`,
+        'edge-year'
+    );
+
+    addEdgeLabel(
+        'right',
+        `${rightDate.year}`,
+        'edge-year'
+    );
+
+
+    for (
+        let year =
+            leftDate.year;
+
+        year <=
+            rightDate.year;
+
+        year++
+    ) {
+
+        for (
+            let month = 1;
+
+            month <=
+                MONTHS_PER_YEAR;
+
+            month++
+        ) {
+
+            const monthStart =
+                dateToDay(
+                    year,
+                    month,
+                    1,
+                    1
+                );
+
+
+            if (
+                monthStart >
+                    viewStartDay &&
+                monthStart <
+                    viewEndDay
+            ) {
+
+                addMarker(
+                    dayToPercent(
+                        monthStart
+                    ),
+                    `${month}`,
+                    'month-label'
+                );
+            }
+        }
+    }
+
+
+    addEdgeLabel(
+        'left',
+        `M${leftDate.month}`,
+        'edge-month'
+    );
+
+    addEdgeLabel(
+        'right',
+        `M${rightDate.month}`,
+        'edge-month'
+    );
+}
+
+
+/* ============================================================
+   WEEK LEVEL
+   ============================================================ */
+
+function createWeekLevel() {
+
+    const leftDate =
+        dayToDate(
+            viewStartDay
+        );
+
+    const rightDate =
+        dayToDate(
+            viewEndDay
+        );
+
+
+    addEdgeLabel(
+        'left',
+        `${leftDate.year}`,
+        'edge-year'
+    );
+
+    addEdgeLabel(
+        'right',
+        `${rightDate.year}`,
+        'edge-year'
+    );
+
+
+    addEdgeLabel(
+        'left',
+        `M${leftDate.month}`,
+        'edge-month'
+    );
+
+    addEdgeLabel(
+        'right',
+        `M${rightDate.month}`,
+        'edge-month'
+    );
+
+
+    for (
+        let year =
+            leftDate.year;
+
+        year <=
+            rightDate.year;
+
+        year++
+    ) {
+
+        for (
+            let month = 1;
+
+            month <=
+                MONTHS_PER_YEAR;
+
+            month++
+        ) {
+
+            for (
+                let week = 1;
+
+                week <=
+                    WEEKS_PER_MONTH;
+
+                week++
+            ) {
+
+                const weekStart =
+                    dateToDay(
+                        year,
+                        month,
+                        week,
+                        1
+                    );
+
+
+                if (
+                    weekStart >
+                        viewStartDay &&
+                    weekStart <
+                        viewEndDay
+                ) {
+
+                    addMarker(
+                        dayToPercent(
+                            weekStart
+                        ),
+                        `${week}`,
+                        'week-label'
+                    );
+                }
+            }
+        }
+    }
+
+
+    addEdgeLabel(
+        'left',
+        `W${leftDate.week}`,
+        'edge-week'
+    );
+
+    addEdgeLabel(
+        'right',
+        `W${rightDate.week}`,
+        'edge-week'
+    );
+}
+
+
+/* ============================================================
+   DAY LEVEL
+   ============================================================ */
+
+function createDayLevel() {
+
+    const leftDate =
+        dayToDate(
+            viewStartDay
+        );
+
+    const rightDate =
+        dayToDate(
+            viewEndDay
+        );
+
+
+    addEdgeLabel(
+        'left',
+        `${leftDate.year}`,
+        'edge-year'
+    );
+
+    addEdgeLabel(
+        'right',
+        `${rightDate.year}`,
+        'edge-year'
+    );
+
+
+    addEdgeLabel(
+        'left',
+        `M${leftDate.month}`,
+        'edge-month'
+    );
+
+    addEdgeLabel(
+        'right',
+        `M${rightDate.month}`,
+        'edge-month'
+    );
+
+
+    addEdgeLabel(
+        'left',
+        `W${leftDate.week}`,
+        'edge-week'
+    );
+
+    addEdgeLabel(
+        'right',
+        `W${rightDate.week}`,
+        'edge-week'
+    );
+
+
+    const firstDay =
+        Math.floor(
+            viewStartDay
+        );
+
+    const lastDay =
+        Math.ceil(
+            viewEndDay
+        );
+
+
+    for (
+        let day =
+            firstDay;
+
+        day <=
+            lastDay;
+
+        day++
+    ) {
+
+        if (
+            day <
+                viewStartDay ||
+            day >
+                viewEndDay
+        ) {
+            continue;
+        }
+
+
+        const date =
+            dayToDate(day);
+
+
+        addMarker(
+            dayToPercent(day),
+            `${date.day}`,
+            'day-label'
+        );
+    }
+}
+
+
+/* ============================================================
+   EVENT VISIBILITY
+   ============================================================ */
+
+function eventShouldShow(
+    event,
+    zoomLevel
+) {
+
+    /*
+        Default to every level.
+    */
+
+    if (
+        !event.showAt
+    ) {
+        return true;
+    }
+
+
+    const level =
+        String(
+            event.showAt
+        )
+        .trim()
+        .toLowerCase();
+
+
+    /*
+        Unknown values are ignored
+        and treated as "show everywhere".
+    */
+
+    if (
+        !visibilityLevels[level]
+    ) {
+        return true;
+    }
+
+
+    return visibilityLevels[level]
+        .includes(
+            zoomLevel
+        );
+}
+
+
+/* ============================================================
+   EVENT STACKING
+   ============================================================ */
+
+function createEvents() {
+
+    const zoomLevel =
+        getZoomLevel();
+
+
+    const visibleEvents =
+        events
+            .filter(
+                event =>
+                    eventShouldShow(
+                        event,
+                        zoomLevel
+                    )
+            )
+            .map(
+                event => {
+
+                    return {
+                        event,
+
+                        day:
+                            dateToDay(
+                                event.year,
+                                event.month,
+                                event.week,
+                                event.day
+                            )
+                    };
+                }
+            )
+            .filter(
+                item =>
+                    item.day >=
+                        viewStartDay &&
+                    item.day <=
+                        viewEndDay
+            )
+            .sort(
+                (a, b) =>
+                    a.day - b.day
+            );
+
+
+    visibleEvents.forEach(
+        item => {
+
+            item.percent =
+                dayToPercent(
+                    item.day
+                );
+        }
+    );
+
+
+    /*
+        Events that are close together
+        are placed onto separate rows.
+    */
+
+    const minimumPercentDistance =
+        Math.max(
+            2,
+            130 /
+                Math.max(
+                    timeline.clientWidth,
+                    1
+                )
+        );
+
+
+    const stackRows = [];
+
+
+    visibleEvents.forEach(
+        item => {
+
+            let rowFound =
+                false;
+
+
+            for (
+                let row = 0;
+
+                row <
+                    stackRows.length;
+
+                row++
+            ) {
+
+                const rowItems =
+                    stackRows[row];
+
+
+                const previous =
+                    rowItems[
+                        rowItems.length - 1
+                    ];
+
+
+                if (
+                    Math.abs(
+                        item.percent -
+                        previous.percent
+                    ) >=
+                    minimumPercentDistance
+                ) {
+
+                    rowItems.push(
+                        item
+                    );
+
+                    item.stack =
+                        row;
+
+                    rowFound =
+                        true;
+
+                    break;
+                }
+            }
+
+
+            if (
+                !rowFound
+            ) {
+
+                stackRows.push([
+                    item
+                ]);
+
+                item.stack =
+                    stackRows.length - 1;
+            }
+        }
+    );
+
+
+    /*
+        Render events.
+    */
+
+    visibleEvents.forEach(
+        item => {
+
+            const element =
+                document.createElement(
+                    'div'
+                );
+
+
+            const above =
+                item.stack % 2 === 0;
+
+
+            element.className =
+                `timeline-event ${
+                    above
+                        ? 'above'
+                        : 'below'
+                }`;
+
+
+            const depth =
+                Math.min(
+                    Math.floor(
+                        item.stack / 2
+                    ),
+                    3
+                );
+
+
+            if (
+                depth > 0
+            ) {
+
+                element.classList.add(
+                    `stack-${depth}`
+                );
+            }
+
+
+            element.style.left =
+                `${item.percent}%`;
+
+
+            const symbol =
+                document.createElement(
+                    'div'
+                );
+
+
+            symbol.className =
+                'timeline-event-symbol';
+
+
+            symbol.textContent =
+                item.event.symbol ||
+                '•';
+
+
+            if (
+                item.event.label
+            ) {
+
+                const label =
+                    document.createElement(
+                        'div'
+                    );
+
+
+                label.className =
+                    'timeline-event-label';
+
+
+                label.textContent =
+                    item.event.label;
+
+
+                element.appendChild(
+                    label
+                );
+            }
+
+
+            element.insertBefore(
+                symbol,
+                element.firstChild
+            );
+
+
+            const line =
+                document.createElement(
+                    'div'
+                );
+
+
+            line.className =
+                'timeline-event-line';
+
+
+            element.appendChild(
+                line
+            );
+
+
+            timeline.appendChild(
+                element
+            );
+        }
+    );
+}
+
+
+/* ============================================================
+   CURRENT POSITION
+   ============================================================ */
+
+function updateCurrentDate() {
+
+    const centerDay =
+        viewStartDay +
+        (
+            viewEndDay -
+            viewStartDay
+        ) / 2;
+
+
+    const date =
+        dayToDate(
+            centerDay
+        );
+
+
+    const zoomLevel =
+        getZoomLevel();
+
+
+    if (
+        zoomLevel === 'year'
+    ) {
+
+        timelineCurrent.textContent =
+            `Year ${date.year}`;
+
+    }
+    else if (
+        zoomLevel === 'month'
+    ) {
+
+        timelineCurrent.textContent =
+            `Year ${date.year}` +
+            ` · Month ${date.month}`;
+
+    }
+    else if (
+        zoomLevel === 'week'
+    ) {
+
+        timelineCurrent.textContent =
+            `Year ${date.year}` +
+            ` · Month ${date.month}` +
+            ` · Week ${date.week}`;
+
+    }
+    else {
+
+        timelineCurrent.textContent =
+            `Year ${date.year}` +
+            ` · Month ${date.month}` +
+            ` · Week ${date.week}` +
+            ` · Day ${date.day}`;
+    }
+}
+
+
+/* ============================================================
+   REDRAW
+   ============================================================ */
+
+function createTimeline() {
+
+    timeline
+        .querySelectorAll(
+            '.timeline-marker, ' +
+            '.timeline-event, ' +
+            '.edge-label'
+        )
+        .forEach(
+            element =>
+                element.remove()
+        );
+
+
+    const zoomLevel =
+        getZoomLevel();
+
+
+    if (
+        zoomLevel === 'year'
+    ) {
+
+        createYearLevel();
+
+    }
+    else if (
+        zoomLevel === 'month'
+    ) {
+
+        createMonthLevel();
+
+    }
+    else if (
+        zoomLevel === 'week'
+    ) {
+
+        createWeekLevel();
+
+    }
+    else {
+
+        createDayLevel();
+    }
+
+
+    createEvents();
+
+    updateCurrentDate();
+
+
+    zoomInButton.disabled =
+        getVisibleDays() <=
+        MIN_ZOOM_DAYS;
+
+
+    zoomOutButton.disabled =
+        getVisibleDays() >=
+        totalRange;
+}
+
+
+/* ============================================================
+   ZOOM
+   ============================================================ */
+
+function zoomTimeline(
+    factor,
+    mousePercent = 50
+) {
+
+    const oldStart =
+        viewStartDay;
+
+    const oldEnd =
+        viewEndDay;
+
+    const oldRange =
+        oldEnd -
+        oldStart;
+
+
+    let newRange =
+        oldRange *
+        factor;
+
+
+    newRange =
+        Math.max(
+            MIN_ZOOM_DAYS,
+            Math.min(
+                totalRange,
+                newRange
+            )
+        );
+
+
+    const mouseDay =
+        oldStart +
+        (
+            mousePercent /
+            100
+        ) *
+        oldRange;
+
+
+    let newStart =
+        mouseDay -
+        (
+            mousePercent /
+            100
+        ) *
+        newRange;
+
+
+    let newEnd =
+        newStart +
+        newRange;
+
+
+    if (
+        newStart <
+        totalStartDay
+    ) {
+
+        newStart =
+            totalStartDay;
+
+        newEnd =
+            newStart +
+            newRange;
+    }
+
+
+    if (
+        newEnd >
+        totalEndDay
+    ) {
+
+        newEnd =
+            totalEndDay;
+
+        newStart =
+            newEnd -
+            newRange;
+    }
+
+
+    if (
+        newEnd -
+        newStart <
+        MIN_ZOOM_DAYS
+    ) {
+
+        newEnd =
+            newStart +
+            MIN_ZOOM_DAYS;
+
+
+        if (
+            newEnd >
+            totalEndDay
+        ) {
+
+            newEnd =
+                totalEndDay;
+
+            newStart =
+                newEnd -
+                MIN_ZOOM_DAYS;
+        }
+    }
+
+
+    viewStartDay =
+        newStart;
+
+    viewEndDay =
+        newEnd;
+
+
+    createTimeline();
+}
+
+
+/* ============================================================
+   WHEEL
+   ============================================================ */
+
+timeline.addEventListener(
+    'wheel',
+    event => {
+
+        event.preventDefault();
+
+
+        const rect =
+            timeline.getBoundingClientRect();
+
+
+        const mousePercent =
+            (
+                (
+                    event.clientX -
+                    rect.left
+                ) /
+                rect.width
+            ) * 100;
+
+
+        zoomTimeline(
+            event.deltaY < 0
+                ? 0.8
+                : 1.25,
+            mousePercent
+        );
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+zoomInButton.addEventListener(
+    'click',
+    () => {
+
+        zoomTimeline(
+            0.8,
+            50
+        );
+    }
+);
+
+
+zoomOutButton.addEventListener(
+    'click',
+    () => {
+
+        zoomTimeline(
+            1.25,
+            50
+        );
+    }
+);
+
+
+zoomResetButton.addEventListener(
+    'click',
+    () => {
+
+        viewStartDay =
+            totalStartDay;
+
+        viewEndDay =
+            totalEndDay;
+
+        createTimeline();
+    }
+);
+
+
+/* ============================================================
+   DRAG
+   ============================================================ */
+
+let isDragging = false;
+
+let dragStartX = 0;
+
+let dragStartViewStart = 0;
+
+let dragStartViewEnd = 0;
+
+
+timeline.addEventListener(
+    'pointerdown',
+    event => {
+
+        if (
+            event.pointerType === 'mouse' &&
+            event.button !== 0
+        ) {
+            return;
+        }
+
+
+        isDragging = true;
+
+
+        dragStartX =
+            event.clientX;
+
+
+        dragStartViewStart =
+            viewStartDay;
+
+
+        dragStartViewEnd =
+            viewEndDay;
+
+
+        timeline.setPointerCapture(
+            event.pointerId
+        );
+
+
+        timeline.style.cursor =
+            'grabbing';
+    }
+);
+
+
+timeline.addEventListener(
+    'pointermove',
+    event => {
+
+        if (
+            !isDragging
+        ) {
+            return;
+        }
+
+
+        const rect =
+            timeline.getBoundingClientRect();
+
+
+        const pixelsMoved =
+            event.clientX -
+            dragStartX;
+
+
+        const originalRange =
+            dragStartViewEnd -
+            dragStartViewStart;
+
+
+        const daysPerPixel =
+            originalRange /
+            rect.width;
+
+
+        const dayChange =
+            pixelsMoved *
+            daysPerPixel;
+
+
+        let newStart =
+            dragStartViewStart -
+            dayChange;
+
+        let newEnd =
+            dragStartViewEnd -
+            dayChange;
+
+
+        if (
+            newStart <
+            totalStartDay
+        ) {
+
+            const correction =
+                totalStartDay -
+                newStart;
+
+
+            newStart =
+                totalStartDay;
+
+            newEnd +=
+                correction;
+        }
+
+
+        if (
+            newEnd >
+            totalEndDay
+        ) {
+
+            const correction =
+                newEnd -
+                totalEndDay;
+
+
+            newEnd =
+                totalEndDay;
+
+            newStart -=
+                correction;
+        }
+
+
+        viewStartDay =
+            newStart;
+
+        viewEndDay =
+            newEnd;
+
+
+        createTimeline();
+    }
+);
+
+
+timeline.addEventListener(
+    'pointerup',
+    event => {
+
+        isDragging = false;
+
+
+        try {
+
+            timeline.releasePointerCapture(
+                event.pointerId
+            );
+
+        }
+        catch (error) {
+            /* Already released. */
+        }
+
+
+        timeline.style.cursor =
+            'grab';
+    }
+);
+
+
+timeline.addEventListener(
+    'pointercancel',
+    () => {
+
+        isDragging = false;
+
+        timeline.style.cursor =
+            'grab';
+    }
+);
+
+
+/* ============================================================
+   LOAD EVENT TEXT FILE
+   ============================================================ */
+
+async function loadTimelineEvents() {
+
+    try {
+
+        const response =
+            await fetch(
+                '/data/timeline-events.txt',
+                {
+                    cache: 'no-cache'
+                }
+            );
+
+
+        if (
+            !response.ok
+        ) {
+
+            throw new Error(
+                `HTTP ${response.status}`
+            );
+        }
+
+
+        const text =
+            await response.text();
+
+
+        events =
+            parseTimelineEvents(
+                text
+            );
+
+
+        createTimeline();
+
+    }
+    catch (error) {
+
+        console.error(
+            'Could not load timeline events:',
+            error
+        );
+
+
+        events = [];
+
+        createTimeline();
+    }
+}
+
+
+/* ============================================================
+   PARSE EVENT TEXT
+   ============================================================
+
+   Format:
+
+   LABEL | YEAR | MONTH | WEEK | DAY | SYMBOL | SHOW_AT
+
+   Example:
+
+   Battle of X | 1025 | 4 | 2 | 7 | ◆ | year
+   ============================================================ */
+
+function parseTimelineEvents(text) {
+
+    const parsedEvents = [];
+
+
+    const lines =
+        text.split(/\r?\n/);
+
+
+    lines.forEach(
+        (rawLine, index) => {
+
+            const line =
+                rawLine.trim();
+
+
+            /*
+                Ignore:
+                    blank lines
+                    comments
+            */
+
+            if (
+                !line ||
+                line.startsWith('#')
+            ) {
+                return;
+            }
+
+
+            const parts =
+                line
+                    .split('|')
+                    .map(
+                        part =>
+                            part.trim()
+                    );
+
+
+            /*
+                Minimum required:
+
+                    label
+                    year
+                    month
+                    week
+                    day
+
+                Symbol and showAt are optional.
+            */
+
+            if (
+                parts.length < 5
+            ) {
+
+                console.warn(
+                    `Skipping invalid timeline line ${index + 1}:`,
+                    rawLine
+                );
+
+                return;
+            }
+
+
+            const label =
+                parts[0];
+
+
+            const year =
+                Number(parts[1]);
+
+
+            const month =
+                Number(parts[2]);
+
+
+            const week =
+                Number(parts[3]);
+
+
+            const day =
+                Number(parts[4]);
+
+
+            const symbol =
+                parts[5] ||
+                '•';
+
+
+            const showAt =
+                parts[6] ||
+                'year';
+
+
+            /*
+                Basic validation.
+            */
+
+            if (
+                !label ||
+                !Number.isInteger(year) ||
+                !Number.isInteger(month) ||
+                !Number.isInteger(week) ||
+                !Number.isInteger(day)
+            ) {
+
+                console.warn(
+                    `Skipping invalid timeline line ${index + 1}:`,
+                    rawLine
+                );
+
+                return;
+            }
+
+
+            if (
+                month < 1 ||
+                month > MONTHS_PER_YEAR ||
+                week < 1 ||
+                week > WEEKS_PER_MONTH ||
+                day < 1 ||
+                day > DAYS_PER_WEEK
+            ) {
+
+                console.warn(
+                    `Skipping invalid calendar date on line ${index + 1}:`,
+                    rawLine
+                );
+
+                return;
+            }
+
+
+            parsedEvents.push({
+
+                label,
+
+                year,
+
+                month,
+
+                week,
+
+                day,
+
+                symbol,
+
+                showAt
+            });
+        }
+    );
+
+
+    return parsedEvents;
+}
+
+
+/* ============================================================
+   INITIAL DRAW + LOAD DATA
+   ============================================================ */
+
+createTimeline();
+
+loadTimelineEvents();
+
+</script>
+
+</body>
+</html>

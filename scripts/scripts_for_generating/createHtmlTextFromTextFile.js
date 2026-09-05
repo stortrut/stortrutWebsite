@@ -31,20 +31,57 @@ async function readFile(filePath) {
 
     let shouldBeH1 = false;
     let shouldBeH2 = false;
+    let shouldBeH3 = false;
 
     let insideQuote = false;
     let quoteLines = [];
 
+    let insideList = false;
+    let listItems = []; 
 
-    // ==========================================================
-    // Process every line
-    // ==========================================================
+
+    //Process every line
 
     for (const line of lines) {
 
-        // ------------------------------------------------------
-        // QUOTE START
-        // ------------------------------------------------------
+        //Check for list
+        if (line.trim() === "[list]") {
+
+            insideList = true;
+            listItems = [];
+
+            continue;
+        }
+
+        //Check for list end
+
+        if (line.trim() === "[end_list]") {
+
+            if (insideList) {
+
+                createAndAddListElement(listItems);
+
+                insideList = false;
+                listItems = [];
+            }
+
+            continue;
+        }
+
+        // In the list
+
+        if (insideList) {
+
+            // Ignore empty lines
+            if (line.trim() !== "") {
+                listItems.push(line);
+            }
+
+            continue;
+        }
+
+
+        // Check for quote start
 
         if (line.trim() === "[quote]") {
 
@@ -113,6 +150,18 @@ async function readFile(filePath) {
 
 
         // ------------------------------------------------------
+        // H3
+        // ------------------------------------------------------
+
+        if (line.trim() === "[h3]") {
+
+            shouldBeH3 = true;
+
+            continue;
+        }
+
+
+        // ------------------------------------------------------
         // Create normal element
         // ------------------------------------------------------
 
@@ -132,11 +181,18 @@ async function readFile(filePath) {
 
         }
 
+        else if (shouldBeH3) {
+
+            createAndAddH3Element(line);
+
+            shouldBeH3 = false;
+        }
+
         else {
 
             createAndAddTextElement(line);
-
         }
+        
 
     }
 }
@@ -194,8 +250,22 @@ function createAndAddH2Element(text) {
 
 
 // ==========================================================
-// QUOTE
+// H3
 // ==========================================================
+
+function createAndAddH3Element(text) {
+
+    const element =
+        document.createElement("h3");
+
+    element.textContent = text;
+
+    textHolder.appendChild(element);
+}
+
+
+
+// Add quote
 
 function createAndAddQuoteElement(lines) {
 
@@ -334,4 +404,40 @@ function createAndAddQuoteElement(lines) {
     // ------------------------------------------------------
 
     textHolder.appendChild(quote);
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+// Add list element
+function createAndAddListElement(items) {
+
+    const list =
+        document.createElement("ul");
+
+    list.classList.add("custom-list");
+
+
+    for (const item of items) {
+
+        const listItem =
+            document.createElement("li");
+
+        listItem.textContent =
+            item;
+
+        list.appendChild(listItem);
+    }
+
+
+    textHolder.appendChild(list);
 }
