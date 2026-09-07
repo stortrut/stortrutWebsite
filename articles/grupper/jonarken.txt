@@ -1,0 +1,35 @@
+[h1]
+Jonarken
+
+Ett stort handelsgille som sträcker sig över flera provinser.
+
+[quote]
+Engen last är för tung, inget avstånd är för lång.
+ 
+-Jonarkens Motto
+[end_quote]
+
+Gillesmedlemmar har olika ranker baserat på hur många och svåra uppdrag och laster de har tagit på sig. Baserat på dessa ranker får de olika bonusar.
+
+[h2]
+Ranker
+[list]
+Bronssköld
+Silversköld
+Guldsköld
+Diamantsköld
+Keratensköld
+[end_list]
+
+För att gå upp i rank behöver man samla på sig lådor som man får efter en leverans har levereras. För att gå upp i silversköld behöver man 6 bronslådor, för att gå upp i guldsköld behöver man 6 silverlådor, osv. 6 bronslådor är värd 1 silverlåda, 6 silverlådor är värd 1 guldlåda, osv.
+ 
+Dessa lådor representeras som små pins som gillesmedlemmar har påsydda på sin lädersköld som de har på sin utstyrsel.
+
+[h2]
+Anmärkningsvärda Utposter
+
+Ett stort centrum finns i Tamagi
+
+[h2]
+Ursprung
+Företaget skapades av en stor handelsman vid namn Palo Jonarken i början av denna tidsperioden.

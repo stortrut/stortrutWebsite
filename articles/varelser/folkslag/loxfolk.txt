@@ -2,3 +2,11 @@
 Loxfolk
 
 Loxfolk är humanoida elefantliknande varelser.
+
+[h2]
+Anmärkningsvärda Loxfolk
+[list]
+@Odo Orgulas
+@Bronn Potam
+@Sorna Levärgess
+[end_list]

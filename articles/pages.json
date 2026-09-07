@@ -538,7 +538,212 @@
   },
   {
     "name": "Stickling",
-    "url": "/articles/varelser/stickling.html",
+    "url": "/articles/varelser/väsen/stickling.html",
+    "shorthands": []
+  },
+  {
+    "name": "Arjonn Darbô",
+    "url": "/articles/characters/arjonn_darbô.html",
+    "shorthands": []
+  },
+  {
+    "name": "Baron Briljant",
+    "url": "/articles/characters/baron_briljant.html",
+    "shorthands": []
+  },
+  {
+    "name": "Derek",
+    "url": "/articles/characters/derek.html",
+    "shorthands": []
+  },
+  {
+    "name": "Gratun Truppenhos",
+    "url": "/articles/characters/gratun_truppenhos.html",
+    "shorthands": []
+  },
+  {
+    "name": "Gregol Sten",
+    "url": "/articles/characters/gregol_sten.html",
+    "shorthands": []
+  },
+  {
+    "name": "Gruchal",
+    "url": "/articles/characters/gruchal.html",
+    "shorthands": []
+  },
+  {
+    "name": "Hebhi",
+    "url": "/articles/characters/hebhi.html",
+    "shorthands": []
+  },
+  {
+    "name": "Honmoyaki",
+    "url": "/articles/characters/honmoyaki.html",
+    "shorthands": []
+  },
+  {
+    "name": "Lissilja Darbô",
+    "url": "/articles/characters/lissilja_darbô.html",
+    "shorthands": []
+  },
+  {
+    "name": "Lugi",
+    "url": "/articles/characters/lugi.html",
+    "shorthands": []
+  },
+  {
+    "name": "Maskar Jukil",
+    "url": "/articles/characters/maskar_jukil.html",
+    "shorthands": []
+  },
+  {
+    "name": "Oraklet",
+    "url": "/articles/characters/oraklet.html",
+    "shorthands": []
+  },
+  {
+    "name": "Pipfer Jordman",
+    "url": "/articles/characters/pipfer_jordman.html",
+    "shorthands": []
+  },
+  {
+    "name": "Rannill Njal",
+    "url": "/articles/characters/rannill_njal.html",
+    "shorthands": []
+  },
+  {
+    "name": "Rushap",
+    "url": "/articles/characters/rushap.html",
+    "shorthands": []
+  },
+  {
+    "name": "Sorna Levärgess",
+    "url": "/articles/characters/sorna_levärgess.html",
+    "shorthands": []
+  },
+  {
+    "name": "Tarpax",
+    "url": "/articles/characters/tarpax.html",
+    "shorthands": []
+  },
+  {
+    "name": "Waltruda",
+    "url": "/articles/characters/waltruda.html",
+    "shorthands": []
+  },
+  {
+    "name": "Wrankan Galo",
+    "url": "/articles/characters/wrankan_galo.html",
+    "shorthands": []
+  },
+  {
+    "name": "Belens Amulet",
+    "url": "/articles/föremål/belens_amulet.html",
+    "shorthands": []
+  },
+  {
+    "name": "Gnagarutrotaren",
+    "url": "/articles/föremål/gnagarutrotaren.html",
+    "shorthands": []
+  },
+  {
+    "name": "Rôgularna",
+    "url": "/articles/geografi/provinser/farnesh/rôgularna.html",
+    "shorthands": []
+  },
+  {
+    "name": "Skogarna I Öst",
+    "url": "/articles/geografi/skogarna_i_öst.html",
+    "shorthands": []
+  },
+  {
+    "name": "Valven",
+    "url": "/articles/geografi/valven/valven.html",
+    "shorthands": []
+  },
+  {
+    "name": "Vorticen",
+    "url": "/articles/geografi/vorticen.html",
+    "shorthands": []
+  },
+  {
+    "name": "Vorticiska Havet",
+    "url": "/articles/geografi/vorticiska_havet.html",
+    "shorthands": []
+  },
+  {
+    "name": "Ba-sharins Äventyrsgille",
+    "url": "/articles/grupper/ba-sharins_äventyrsgille.html",
+    "shorthands": []
+  },
+  {
+    "name": "De Gröna Dropparna",
+    "url": "/articles/grupper/de_gröna_dropparna.html",
+    "shorthands": []
+  },
+  {
+    "name": "Jonarken",
+    "url": "/articles/grupper/jonarken.html",
+    "shorthands": []
+  },
+  {
+    "name": "Redels Slavar",
+    "url": "/articles/grupper/redels_slavar.html",
+    "shorthands": []
+  },
+  {
+    "name": "Symbitstammarna",
+    "url": "/articles/grupper/symbitstammarna.html",
+    "shorthands": []
+  },
+  {
+    "name": "Väktet",
+    "url": "/articles/grupper/väktet.html",
+    "shorthands": []
+  },
+  {
+    "name": "Månfestivalen",
+    "url": "/articles/kultur/månfestivalen.html",
+    "shorthands": []
+  },
+  {
+    "name": "Kettei Och Stigätaren",
+    "url": "/articles/Legender/kettei_och_stigätaren.html",
+    "shorthands": []
+  },
+  {
+    "name": "Själskontrakt",
+    "url": "/articles/magi/själskontrakt.html",
+    "shorthands": []
+  },
+  {
+    "name": "Sabaködla",
+    "url": "/articles/varelser/djur/sabaködla.html",
+    "shorthands": []
+  },
+  {
+    "name": "Pandafolk",
+    "url": "/articles/varelser/folkslag/pandafolk.html",
+    "shorthands": []
+  },
+  {
+    "name": "Potamfolk",
+    "url": "/articles/varelser/folkslag/potamfolk.html",
+    "shorthands": []
+  },
+  {
+    "name": "Sandalv",
+    "url": "/articles/varelser/folkslag/sandalv.html",
+    "shorthands": []
+  },
+  {
+    "name": "Stigätaren",
+    "url": "/articles/varelser/väsen/stigätaren.html",
+    "shorthands": []
+  },
+  {
+    "name": "Kejsarträd",
+    "url": "/articles/växter/kejsarträd.html",
     "shorthands": []
   }
 ]

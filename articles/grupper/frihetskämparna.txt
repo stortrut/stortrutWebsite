@@ -1,5 +1,35 @@
 [h1]
 Frihetskämparna
 
+En grupp av personer som träffades i Ba-sharin år 972.
+ 
+Gruppen består av Jon, Odo Orgulas, Hitachi och Hektor Kostos.
+
+[quote]
+Vi är hjältar!
+ 
+-Odo, sekunder innan han slår ihjäl en stor råtta
+[end_quote]
+
+
 [h2]
-En grupp från Farnesh.
+Resan Till Oraklet
+Gruppen reste ner i Ba-sharins djupa gruvor för att hitta Oraklet. I hopp om att detta Orakel skulle ge dem svaret på hur man besegrade Skatprinsen .
+ 
+Med hjälp av Den Första Klingan lyckades de ta sig ner igenom de laborintiska gångarna.
+
+[h3]
+Frågor Ställda Till Oraklet
+[list]
+Jon frågade om en person vid namn Pio var vid liv, och vart hon befann sig i så fall. Oraklet svarade att denna person var vid liv, och var påväg mot Sunhural.
+Odo Orgulas frågade vart Honmoyaki befinner sig, och fick svaret att han ska vara bland Spegelgrottorna .
+Hektor Kostos frågade vart Greve Greshold  befann sig, och fick svaret att han skulle befinna sig i Sunhural i ett år fram över.
+Hitachi ville få reda på hur man besegrade Skatprinsen , och fick hans rustning förklarad och hur man tog sig igenom dess effekt.
+[end_list]
+
+
+[quote]
+Ba-sharin... mot ljustår!
+ 
+-Odo, i sitt tal till folket av Ba-sharin
+[end_quote]

@@ -1,0 +1,17 @@
+[h1]
+Pandafolk
+
+Humanoida pandor med stora fluffiga kroppar. De är sällsynta i Kejsarriket, och de större städerna med folkslaget finns endast i specifika provinser.
+
+[h2]
+Frömåga - Pandafat
+[quote]
+At the end of a long rest, they gain 2 temporary hitpoints per character level.
+[end_quote]
+
+[h2]
+Anmärkningsvärda Pandafolk
+[list]
+@Pong Pong
+@Frukostbaronen
+[end_list]

@@ -1,0 +1,17 @@
+[h1]
+Belens Amulet
+
+Denna amulet har förmågan att skydda bäraren när hen faller i strid.
+
+
+[h2]
+Amulet of Belen
+
+[quote]
+Wondrous item, requires attunement
+
+This old polished bronze amulet has 3 softly smiling skulls etched into the metal. Each skull can hold a spell.
+
+As an action you can cast a spell, with the casting time of one action, into one of the skulls. The skull retains the spell for 6 hour.
+After you go down to 0 hit points, the most recent spell that was cast into a skull, is cast on the wearer.
+[end_quote]
