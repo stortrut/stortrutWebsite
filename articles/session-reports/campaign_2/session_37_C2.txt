@@ -1,4 +1,4 @@
-
+[h1]
 Session 37 - Del 2 av hjältespelen
 
 Datum spelat: 26-02-15
@@ -10,7 +10,8 @@ när de blir stoppade av Maskar Jukil. @Hektor och Jon har börjat åka ner för
 stanna kvar och möta sin gamla mästare själv. Jon skickar dock ett meddelande med en Sending Scroll till Bronn,
 och frågar om hjälp.
 
-<h2>Innan de blev fängslade</h2>
+[h2]
+Innan de blev fängslade
 
 Innan de fängslades så gav de alla sina föremål till Skogshuggarn. Jon tog med sina knogjärn, förklätt som en
 del av hans punkiga utstyrsel.
@@ -18,7 +19,8 @@ del av hans punkiga utstyrsel.
 Innan de kastas in i cellen så kastar en vakt “Detect Magic” på dem, men då de inte har några magiska föremål så
 passerar de. 
 
-<h2>Samtal med Laric Putaji</h2>
+[h2]
+Samtal med Laric Putaji
 
 De pratar med Laric om vad som hände med honom i Muraskiborg. Han pratar om hur han blev besegrad av en demon
 och sedan fångatagen av Eldknektarna. Gruppen som fraktade Nappeshas lik från Dotán förde honom till Sunhural,
@@ -31,16 +33,17 @@ säger att han står med sitt liv i skuld till gruppen, och att han gärna vill 
 behöver bli Skatprinsen.
 
 
-<div class="quote">
+[quote]
 “Greshold har skapat en lek vi alla har gått med i, och jag tänker se till att den får ett slut."
 
 - Laric Putaji
 
-</div>
+[end_quote]
 
-<h2>Plan om att bryta sig ut</h2>
+[h2]
+Plan om att bryta sig ut
 
-Odo inspekterar cellen och inser att gallret är gjort av keraten, vilket är Kejsarrikets starkaste metall. Jon
+@Odo inspekterar cellen och inser att gallret är gjort av keraten, vilket är Kejsarrikets starkaste metall. Jon
 försöker transformera sig till ett djur, men blå runor lyser då till vid utsidan av cellerna och han stoppas.
 
 Laric säger att han har ett äss i rockärmen, “en liten fågel” som kan potentiellt hjälpa dem att få nycklarna
@@ -49,40 +52,37 @@ från ett av Eldknektarnas rastrum.
 Hektor försöker be till Karoon för rådgivning, men känner inte att han får någon kontakt.
 
 
-<h2>
+[h2]
 Samtal om den Tioende Flattekniken
-</h2>
 
-Jon tar upp de märkliga tillfällen under vissa av deras strider när fiender har exploderat inifrån på ett hemskt
+@Jon tar upp de märkliga tillfällen under vissa av deras strider när fiender har exploderat inifrån på ett hemskt
 sätt, och frågar Odo om har varit den Tionde Flattekniken. Odo bekräftar det och säger att den är svår att
 kontrollera men försäkrar dem om att de inte kommer att skadas av den.
 
 
-<div class="quote">
+[quote]
 Vilka liv är värda att ta, Odo?
 
 - Hektor
 
-</div>
+[end_quote]
 
 Odo säger att vissa människor som har gjort så många hemskheter inte alltid kommer att överleva i strid mot de.
 
 
-<h2>
+[h2]
 Greven gör en entré
-</h2>
 
 De hör en person komma gående sakta inifrån fängelset. Det är Greve Greshold, med Larics skata i handen, med
 knäckt nacke.
 
 
-<div class="quote">
+[quote]
 Frihetskämparna från Ba-sharin. Jag önskar att vårt första möte kunde ha varit under bättre omständigheter. Men
 ni har bokstavligt talat satt er själva i den här situationen.
 
 - Greve Greshold
-
-</div>
+[end_quote]
 
 
 Greshold säger att han inte har mycket tid, men att han vill ha svar på två frågor. Den första frågan är hur
@@ -96,13 +96,12 @@ sedan kroppen åt sidan.
 Den andra frågan han vill ha svar på, som han även frågar med en glimt i ögat, är:
 
 
-<div class="quote">
+[quote]
 “Har vem som helst det som krävs för att vara en sann hjälte? Eller behövs det en ugn, som kan smälta sandkornen
 i folks liv och forma en riktig hjälte.”
 
 - Greve Greshold
-
-</div>
+[end_quote]
 
 
 Jon frågar om Greven kan ställa om frågan till en mer konkret version, till vilket Greven istället kollar på
@@ -120,9 +119,8 @@ Jon tar på sig den på sitt långfinger, och Hektor tar på sig den på sitt ri
 frus ring. Odo lägger den i sin ficka.
 
 
-<h2>
+[h2]
 Hang Hang gör en entré
-</h2>
 
 En större explosion hörs och genom portarna in till fängelset kommer en våg av eld och ljus. Skrik och kaos hörs
 från gatorna utanför, och silhuetten av en jättelik best syns flyga förbi. Inom kort ser gruppen en man klättra
@@ -136,7 +134,9 @@ Hang Hang informerar de att det var han som släppte ut draken. Greven tänker s
 Greven har dock gjort om hjältespelen, del 2 är nu att ta ner draken.
 
 
-<h2>Jon letar efter en Scroll of Sending</h2>
+[h2]
+Jon letar efter en Scroll of Sending
+
 Jon springer in till Eldknektarnas rastrum och kastar “Detect Magic”, men rummet verkar inte ha några magiska
 föremål, men han hittar av en slump en nyckelknippa där det står “Magiska Försvarsresurser". Han springer vidare
 i korridoren och tack vare “Detect Magic” hittar han ett rum som lyser upp. Med hjälp av nyckeln låser han upp
@@ -185,13 +185,11 @@ väldiga silhuett. Han frågar vad som är rätt beslut att göra, till vilket h
 svarar:
 
 
-<div class="quote">
+[quote]
 “Hektor, en av mina Frälsare, jag litar på de beslut du tar.”
 
 - Karoon
-
-</div>
-
+[end_quote]
 
 Hektor svarar dock fundersamt på vad som egentligen är rätt beslut. Till vilket Karoon med en resignerad men
 varm blick avslutar hans syn. När Hektor sedan öppnar ögonen ser han de upplysta silhuetterna av Hitachi och
@@ -207,49 +205,40 @@ då ser han även formen av Honmoyakis själ, som nickar nöjt åt hans tankar. 
 inte innan han viskar till Odo:
 </p>
 
-<div class="quote">
+[quote]
 “Ditt förflutna närmar sig, gör dig redo”
 
 - Honmoyaki
+[end_quote]
 
-</div>
-
-<h2>
+[h2]
 Vägen till Hitachi
-</h2>
-<p>
+
 När de kommer ut ur fängelset så ser de hur den stora röda draken försöker flyga ut ur staden, men krockar in
 med en stor magisk barriär och faller sedan ner och krossar en massa hus i Grummelgatorna.
-</p>
-<p>
+
 Jon använder en av sina “Scroll of Sending” och kontaktar Gregol Sten, och frågar honom om han är i Sunhural.
 Gregol svarar förvirrat att han inte är i Sunhural, men att han mötte Bronn för ett tag sedan och att han var på
 väg till Sunhural.
-</p>
-<p>
+
 Laric säger att han måste lämna dem, för att skaffa vapen och rustning. Jon rekommenderar att Hang Hang följer
 med, vilket han gör.
-</p>
-<p>
+
 De springer genom gatorna bort mot Norrdyn. Staden är kaotisk, med vissa hus som står i lågor, och folkmassor
 som springer runt förvirrade. Vissa grupper i hjältespelen verkar vara påväg mot draken.
-</p>
-<p>
+
 En person ropar plötsligt åt Odo, det är Bertil, och han informerar dem om att Skogshuggarn är vid värdshuset
 Törstiga Hästen tillsammans med resten av hans grupp “De Tre Fantasterna”. Frihetskämparna säger åt honom att de
 ska hämta alla deras saker och möta de vid norr om Dimmkvarters-platån.
-</p>
 
-<h2>
+[h2]
 Lootar Stormvinges Vapen
-</h2>
-<p>
+
 Innan de mötte Bertil så ville Odo loota magiska föremål från byggnader som blivit krossade. Hektor visar vägen
 till en magisk vapenbutik vid namn Stormvinges Vapen. Där ser de en dvärg som drar ut ägaren som Hektor mötte
 dagen innan, men nu medvetslös. Taket verkar ha fallit in helt, och insidan är fylld med brutna balkar och
 takpannor. Jon springer fram för att hjälpa dem, men även för att distrahera dem. Odo (med en nat 20 i Stealth)
 smyger in i huset och tar 4 stycken magiska vapen som sticker ut.
-</p>
 
 <p>Vapnet Odo tar:</p>
 <div class="magic-item">
@@ -320,12 +309,12 @@ Affärsplatån eller hoppa ner i hissen? Tillslut hoppar de in i hissen, och Jon
 den. Odo hoppar dock ut ur den, vilket Jon försöker stoppa. Jon säger att Odo inte behöver bevisa vem han är,
 till vilket Odo svarar:
 
-<div class="quote">
+[end_quote]
 “Det handlar inte om det, utan det har aldrig handlat om mig. Jag står kvar för att bevisa att jag inte är inte är versionen de ser mig att vara, jag är stolt över vem jag är. Tack vare er så inser jag nu att det är nu eller aldrig. Det här var skrivet, jag vill inte längre springa iväg från mina gamla minnen, jag vill bemöta dem. Nu gör jag exakt det. Gå ni nu.”
 
 - Odo Orgulas
 
-</div>
+[end_quote]
 
 Det sista Hektor och Jon ser är hur Odo står själv mot Maskar Jukil och 3 andra munkar. Jon tar då fram sin
 sista Scroll of Sending och skickar iväg ett meddelande till Bronn där han beskriver att Odo kommer slåss mot

@@ -1,0 +1,27 @@
+[h1]
+Rådet i Ba-sharin
+
+Ett råd som skapades av Frihetskämparna i Ba-sharin efter de besegrade Skatprinsen.
+ 
+Rådet ska enligt Frihetskämparna ha 2 medlemmar från alla samhällsklasser i staden.
+ 
+Arjonn Darbô är den nuvarande ledaren över rådet.
+
+[h2]
+Medlemmar
+
+[table]
+[Samhällsklass][Medlem]
+[Adelklass][]
+[Hantverksklass][@Golvor Kulliver]
+[Arbetarklass][]
+[Köpmänklass][@Forka Den Första]
+[Bondeklass][]
+[Lärdaklass][@Lissilja Darbô, @Wrankan Galo ]
+[end_table]
+
+[h2]
+Tidigare Medlemmar
+[list]
+Överstepräst Larnillafoll Njal, Lärdaklass. Han blev utbytt, några veckor efter rådet skapades, mot Lissilja Darbô.
+[end_list]

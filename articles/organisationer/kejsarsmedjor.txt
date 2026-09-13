@@ -1,0 +1,13 @@
+[h1]
+Kejsarsmedjor
+
+Kejsarsmedjor är stora smedjor som det finns en av i alla av Kejsarens provinser.
+ 
+I Tamagis kejsarsmedja smiddes @Ledvinden.
+
+[h2]
+Anmärkningsvärda Smedjor
+
+[list]
+@Tamagi
+[end_list]

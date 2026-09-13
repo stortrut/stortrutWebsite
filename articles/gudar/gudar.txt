@@ -1,0 +1,53 @@
+[h1]
+Gudar
+
+[h2]
+Världsdrakar
+Enligt historien skapade dessa drakar världen, och förkroppsligar olika naturlagar och koncept.
+
+[table]
+[Namn][Domän]
+[Diyans, Skaparen av Allt][Existens, Materia, Kunskap]
+[Ditieck, Skaparen av tid][Historien, Framtiden, Tid]
+[Disena, Skapare av sinne][Magi, Tankar, Sinnet]
+[Disiai, Skapare av liv][Liv, Själar, Växter]
+[end_table]
+
+
+[h2]
+Urgudar
+Folk i Kejsarriket följer och ber ofta till flera olika gudar. Vissa gör inte mer än att besöka sina lokala helgedomar några gånger i veckan, medans andra dyrkar och dekorerar sina hem och utstyrsel med heliga symboler och amuletter. Präster är ofta trogen till en specifik gud de känner en extra stark koppling till.
+
+[table]
+[Namn][Domän][Fjäll]
+[Tallas, Världsbäraren][Himlen, Stjärnor, Valven][Ditieck, Disena, Disiai]
+[Arasu, Folkens Moder][Solen, Ordning, Kejsaren][Disena, Disiai]
+[Tsukin, Målaren av Öden][Månen, Kaos/Möjlighet, Ödet][Ditieck, Disena]
+[Shamema, Själsregnaren][Andevalvet, Regn, Döden][Disiai]
+[Karoon, Frälsaren][Helighet, Skonande, Barmhärtighet][Disiai]
+[Belen, Hälsans Bevarare][Läkande, Bevarande, Återställande][Ditieck, Disiai]
+[Kayios, Havsguden][Havet, Djup, Sinnes][Disena]
+[end_table]
+
+[h2]
+Andra Anmärkningsvärda Gudar
+
+Kejsaren följs och beds till precis som en gud, men vare sig hen facktiskt är en är oklart, men många har trots det en stark åsikt om det.
+
+[table]
+[Namn][Domän][Fjäll]
+[Tinari][Jordbruk, Skördar, Te][-]
+[Kettei][Viljestyrka, Vandrare][-]
+[Derdao][Boskapsdjur][-]
+[Benherden][Förmultning, höst][-]
+[end_table]
+
+
+[h2]
+Mindre Gudar och väktare
+
+[table]
+[Namn][Domän][Plats]
+[Hinokaster][Eld, Fysiskt och kroppsligt renande][Purpurbergens Vulkan]
+[Kanihos Väktare][Bevaring, Försoning][Kaniho]
+[end_table]

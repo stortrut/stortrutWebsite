@@ -348,12 +348,12 @@
   },
   {
     "name": "Bertil",
-    "url": "/articles/characters/bertil.html",
+    "url": "/articles/characters/campaign_2/bertil.html",
     "shorthands": []
   },
   {
     "name": "Darná",
-    "url": "/articles/characters/darná.html",
+    "url": "/articles/characters/campaign_2/darná.html",
     "shorthands": []
   },
   {
@@ -383,17 +383,17 @@
   },
   {
     "name": "Forka Den Första",
-    "url": "/articles/characters/forka_den_första.html",
+    "url": "/articles/characters/campaign_2/forka_den_första.html",
     "shorthands": []
   },
   {
     "name": "Masi Klöver",
-    "url": "/articles/characters/masi_klöver.html",
+    "url": "/articles/characters/campaign_2/masi_klöver.html",
     "shorthands": []
   },
   {
     "name": "Oraklet I Ba-sharin",
-    "url": "/articles/characters/oraklet_i_ba-sharin.html",
+    "url": "/articles/characters/campaign_2/oraklet_i_ba-sharin.html",
     "shorthands": []
   },
   {
@@ -408,12 +408,12 @@
   },
   {
     "name": "Tricklen",
-    "url": "/articles/characters/tricklen.html",
+    "url": "/articles/characters/campaign_2/tricklen.html",
     "shorthands": []
   },
   {
     "name": "Zu Och Jaj",
-    "url": "/articles/characters/zu_och_jaj.html",
+    "url": "/articles/characters/campaign_2/zu_och_jaj.html",
     "shorthands": []
   },
   {
@@ -543,97 +543,97 @@
   },
   {
     "name": "Arjonn Darbô",
-    "url": "/articles/characters/arjonn_darbô.html",
+    "url": "/articles/characters/campaign_2/arjonn_darbô.html",
     "shorthands": []
   },
   {
     "name": "Baron Briljant",
-    "url": "/articles/characters/baron_briljant.html",
+    "url": "/articles/characters/campaign_2/baron_briljant.html",
     "shorthands": []
   },
   {
     "name": "Derek",
-    "url": "/articles/characters/derek.html",
+    "url": "/articles/characters/campaign_2/derek.html",
     "shorthands": []
   },
   {
     "name": "Gratun Truppenhos",
-    "url": "/articles/characters/gratun_truppenhos.html",
+    "url": "/articles/characters/campaign_2/gratun_truppenhos.html",
     "shorthands": []
   },
   {
     "name": "Gregol Sten",
-    "url": "/articles/characters/gregol_sten.html",
+    "url": "/articles/characters/campaign_2/gregol_sten.html",
     "shorthands": []
   },
   {
     "name": "Gruchal",
-    "url": "/articles/characters/gruchal.html",
+    "url": "/articles/characters/campaign_2/gruchal.html",
     "shorthands": []
   },
   {
     "name": "Hebhi",
-    "url": "/articles/characters/hebhi.html",
+    "url": "/articles/characters/campaign_2/hebhi.html",
     "shorthands": []
   },
   {
     "name": "Honmoyaki",
-    "url": "/articles/characters/honmoyaki.html",
+    "url": "/articles/characters/campaign_2/honmoyaki.html",
     "shorthands": []
   },
   {
     "name": "Lissilja Darbô",
-    "url": "/articles/characters/lissilja_darbô.html",
+    "url": "/articles/characters/campaign_2/lissilja_darbô.html",
     "shorthands": []
   },
   {
     "name": "Lugi",
-    "url": "/articles/characters/lugi.html",
+    "url": "/articles/characters/campaign_2/lugi.html",
     "shorthands": []
   },
   {
     "name": "Maskar Jukil",
-    "url": "/articles/characters/maskar_jukil.html",
+    "url": "/articles/characters/campaign_2/maskar_jukil.html",
     "shorthands": []
   },
   {
     "name": "Oraklet",
-    "url": "/articles/characters/oraklet.html",
+    "url": "/articles/characters/campaign_2/oraklet.html",
     "shorthands": []
   },
   {
     "name": "Pipfer Jordman",
-    "url": "/articles/characters/pipfer_jordman.html",
+    "url": "/articles/characters/campaign_2/pipfer_jordman.html",
     "shorthands": []
   },
   {
     "name": "Rannill Njal",
-    "url": "/articles/characters/rannill_njal.html",
+    "url": "/articles/characters/campaign_2/rannill_njal.html",
     "shorthands": []
   },
   {
     "name": "Rushap",
-    "url": "/articles/characters/rushap.html",
+    "url": "/articles/characters/campaign_2/rushap.html",
     "shorthands": []
   },
   {
     "name": "Sorna Levärgess",
-    "url": "/articles/characters/sorna_levärgess.html",
+    "url": "/articles/characters/campaign_2/sorna_levärgess.html",
     "shorthands": []
   },
   {
     "name": "Tarpax",
-    "url": "/articles/characters/tarpax.html",
+    "url": "/articles/characters/campaign_2/tarpax.html",
     "shorthands": []
   },
   {
     "name": "Waltruda",
-    "url": "/articles/characters/waltruda.html",
+    "url": "/articles/characters/campaign_2/waltruda.html",
     "shorthands": []
   },
   {
     "name": "Wrankan Galo",
-    "url": "/articles/characters/wrankan_galo.html",
+    "url": "/articles/characters/campaign_2/wrankan_galo.html",
     "shorthands": []
   },
   {
@@ -744,6 +744,176 @@
   {
     "name": "Kejsarträd",
     "url": "/articles/växter/kejsarträd.html",
+    "shorthands": []
+  },
+  {
+    "name": "Chisana-ki",
+    "url": "/articles/characters/campaign_1/chisana-ki.html",
+    "shorthands": []
+  },
+  {
+    "name": "Kanihos Väktare",
+    "url": "/articles/characters/campaign_1/kanihos_väktare.html",
+    "shorthands": []
+  },
+  {
+    "name": "Maklad",
+    "url": "/articles/characters/campaign_1/maklad.html",
+    "shorthands": []
+  },
+  {
+    "name": "Nisé",
+    "url": "/articles/characters/campaign_1/nisé.html",
+    "shorthands": []
+  },
+  {
+    "name": "Ondat Molinell",
+    "url": "/articles/characters/campaign_1/ondat_molinell.html",
+    "shorthands": []
+  },
+  {
+    "name": "Rasper Raspera",
+    "url": "/articles/characters/campaign_1/rasper_raspera.html",
+    "shorthands": []
+  },
+  {
+    "name": "Tagoia Mikeni",
+    "url": "/articles/characters/campaign_1/tagoia_mikeni.html",
+    "shorthands": []
+  },
+  {
+    "name": "Yagate Kami",
+    "url": "/articles/characters/campaign_1/yagate_kami.html",
+    "shorthands": []
+  },
+  {
+    "name": "Ôkina-ki",
+    "url": "/articles/characters/campaign_1/ôkina-ki.html",
+    "shorthands": []
+  },
+  {
+    "name": "Jidân Gôngjáng",
+    "url": "/articles/characters/tanshihjältarna/jidân_gôngjáng.html",
+    "shorthands": []
+  },
+  {
+    "name": "Koeda",
+    "url": "/articles/characters/tanshihjältarna/koeda.html",
+    "shorthands": []
+  },
+  {
+    "name": "Pong Pong",
+    "url": "/articles/characters/tanshihjältarna/pong_pong.html",
+    "shorthands": []
+  },
+  {
+    "name": "Kaniho",
+    "url": "/articles/geografi/provinser/Tanshi/kaniho.html",
+    "shorthands": []
+  },
+  {
+    "name": "Manghai",
+    "url": "/articles/geografi/provinser/Tanshi/manghai.html",
+    "shorthands": []
+  },
+  {
+    "name": "Nya Vilai",
+    "url": "/articles/geografi/provinser/Tanshi/nya_vilai.html",
+    "shorthands": []
+  },
+  {
+    "name": "Pauda",
+    "url": "/articles/geografi/provinser/Tanshi/pauda.html",
+    "shorthands": []
+  },
+  {
+    "name": "Tamagi",
+    "url": "/articles/geografi/provinser/Tanshi/tamagi.html",
+    "shorthands": []
+  },
+  {
+    "name": "Tamagifloden",
+    "url": "/articles/geografi/provinser/Tanshi/tamagifloden.html",
+    "shorthands": []
+  },
+  {
+    "name": "Zhǎngtani",
+    "url": "/articles/geografi/provinser/Tanshi/zhǎngtani.html",
+    "shorthands": []
+  },
+  {
+    "name": "Tanshi",
+    "url": "/articles/geografi/provinser/tanshi.html",
+    "shorthands": []
+  },
+  {
+    "name": "Oruk-klanen",
+    "url": "/articles/grupper/klaner/oruk-klanen.html",
+    "shorthands": []
+  },
+  {
+    "name": "Sangde'er-klanen",
+    "url": "/articles/grupper/klaner/sangde'er-klanen.html",
+    "shorthands": []
+  },
+  {
+    "name": "Shiroi-klanen",
+    "url": "/articles/grupper/klaner/shiroi-klanen.html",
+    "shorthands": []
+  },
+  {
+    "name": "Tanshihjältarna",
+    "url": "/articles/grupper/tanshihjältarna.html",
+    "shorthands": []
+  },
+  {
+    "name": "Densetsu Kage",
+    "url": "/articles/historia/historiska_personer/densetsu_kage.html",
+    "shorthands": []
+  },
+  {
+    "name": "Redel Sangue",
+    "url": "/articles/historia/historiska_personer/redel_sangue.html",
+    "shorthands": []
+  },
+  {
+    "name": "Zhǎngtani-slaget",
+    "url": "/articles/historia/zhǎngtani-slaget.html",
+    "shorthands": []
+  },
+  {
+    "name": "Kejsarsmedjor",
+    "url": "/articles/organisationer/kejsarsmedjor.html",
+    "shorthands": []
+  },
+  {
+    "name": "Folkslag",
+    "url": "/articles/varelser/folkslag/folkslag.html",
+    "shorthands": []
+  },
+  {
+    "name": "Hobbit",
+    "url": "/articles/varelser/folkslag/hobbit.html",
+    "shorthands": []
+  },
+  {
+    "name": "Kejsarfolk",
+    "url": "/articles/varelser/folkslag/kejsarfolk.html",
+    "shorthands": []
+  },
+  {
+    "name": "Snigelfolk",
+    "url": "/articles/varelser/folkslag/snigelfolk.html",
+    "shorthands": []
+  },
+  {
+    "name": "Rådet I Ba-sharin",
+    "url": "/articles/grupper/rådet_i_ba-sharin.html",
+    "shorthands": []
+  },
+  {
+    "name": "Gudar",
+    "url": "/articles/gudar/gudar.html",
     "shorthands": []
   }
 ]

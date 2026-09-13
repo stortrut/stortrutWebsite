@@ -1,0 +1,15 @@
+[h1]
+Glasriddarorden
+
+En order skapad av Greve Greshold. De verkar samla ihop olika typer av material med magiska effekter runt om i Farnesh. Medlemmar i orden verkar ta över stora områden, där materialet finns som resurs, och styr folket hårt.
+ 
+Orden har ett samarbete med Väggmossens Munkklosters munkar. De hjälpte Frukostbaronen och Fjärilsryttaren i Morgonängarna med att skydda Dotán, och att ta fram Målobsidian och Minneskåda. I utbyta ska ordern, och Greven, hjälpa munkarna att få tillbaka Purpurbergens Helgedom.
+
+[h2]
+Kända Medlemmar
+[list]
+@Skatprinsen
+@Fjärilsryttaren
+@Frukostbaronen
+@Svavelkungen
+[end_list]

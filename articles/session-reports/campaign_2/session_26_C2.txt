@@ -1,2 +1,41 @@
 [h1]
-Session 33
+Sesssion 26 - Downtime i Ba-sharin
+
+Spelad: 29 Oct 2024
+
+De diskuterar vad de ska göra: om de ska låta Hang Hang åka till Sunhural och återuppväcka Nappesha.
+ 
+De kommer överens om att Hang Hang ska lämna kvar kroppen i Dotán  och sedan åka till Sunhural för att ta reda på vad som händer, och sedan tillbaka till Dotán . Hang Hang är inte glad att Nappesha manipulerade honom genom att ta hans dröm och minnen, men är tydlig med att han inte står på Frihetskämparnas sida tills han får faktiska svar.
+ 
+Jon skickar även en fågel med ett brev till Waltruda, för att hon ska hålla ett öga på Hang Hang, och kontakta Arjonn Darbô om något förändras.
+ 
+Nappeshas dolkar tar Hektor, och även alla minnen som föll ut ur hennes påse.
+ 
+Munken som stred med Bronn följer med dem i luftbalongen. Hon och Odo pratar lite och Odo ger henne sedan ett brev med 50 guld som hon ska ge till Odos föräldrar.
+
+[h2]
+Ba-sharin
+När de kommer fram till Ba-sharin får de reda på att det har varit en massa Eldknektar i staden och letat efter Viljekristallerna. De har bränt stora delar av staden, men Arjonn Darbô berättar för dem att hans syster Lissilja Darbô kom till staden för att hjälpa dem att släcka eldarna.
+ 
+Arjonn Darbô berättar att Skatprinsen lyckades fly i tumultet, och att han lämnade ett brev:
+
+[quote]
+Det är med sorg i mitt hjärta, men även en glädje, jag lämnar Ba-sharin, förändringens stad. En liten skata viskade i mitt öra att några banditer stalt en säck med viljekristaller. Detta farliga material är en för stor risk i handen på vem som helst, och jag har begett mig ut för att hitta dem. Vad leken kommer med efter det, är utanför min kontroll.
+ 
+Tills vidare, den enda, Laric Putaji
+[end_quote]
+
+De får höra en pojke som jobbar för Tretemplet ropa ut följande för att få mer folk till templet:
+
+[quote]
+Domedagen närmar sig! Vår tid är kommen! Snart simmar vi alla över Skärsfloden! Kom till Tretemplet idag och låt Karoon skona din själ!
+Solglimtarna i Sunhural har inte setts på flera månader, och grevskapens familjer försvinner spårlöst. Domedagen är nära!
+[end_quote]
+
+Lissilja Darbô är väldigt intresserad av att gå med i Rådet i Ba-sharin, vilket Arjonn Darbô håller med om, då staden har haft problem med okontrollerad magiska användare i staden.
+ 
+De bestämmer att de ska kicka Överstepräst Larnillafoll Njal från sin position, och låter Wrankan Galo vara kvar i den "Lärda Klassen" i rådet.
+
+[h2]
+Jons träning
+Jon tränar med Lugi vid Purpurbergens Vulkan , medans de andra åkte till Ba-sharin. Han tränar vid värmen och elden och försöker lära sig att tåla den då han vet att Svavelkungen använder sig av eld. Han offrar 10 av sitt hp för att göra sin skill check DC lägre, och klarar den precis. Nu när han går in i sin "Rage" så är han resistent mot eld-skada.

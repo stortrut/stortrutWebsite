@@ -1,0 +1,9 @@
+[h1]
+Jons Familj
+
+[table]
+[Ambjörn][Farbror][Medelåldrig skogsfolk, stora buskiga ögonbryn, muskulös kraftig. Stora platta sandaler, och armar och nävar är täckta med stora beige-bruna fjäll.][Xerofythövdning, nära relation till Jon.]
+[Idun][Farmor][Äldre skogsfolkgumma, men står ståtligt med rak rygg - nästan längre än Jon.][Xerofythövdning]
+[Härmo][Gammelfarmor][Gammal och skröplig, snällt varmt leende. Olika torra mossor och lavar hängda längst med bältet.][Xerofythövdning]
+[Jon den äldre][Gammelgammelfarfar][Stort spretigt beige skägg, ett enda stort tjockt ögonbryn som skymmer ögonen. Stora läderskor, torkade frukter och väcter hängande från en stor stav som han lutar sig mot.][Föddes innan den Gröna Kejsaren, levde över 1000 år sedan. Xerofythövdning]
+[end_table]

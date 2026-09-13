@@ -1,0 +1,11 @@
+[h1]
+Snigelfolk
+
+Humanoida snigelliknande varelser med stora skal på ryggen. De är ytterst ovanligt att de reser bortom de träsk där de föds och lever sina liv i.
+
+[h2]
+Anmärkningsvärda Snigelfolk
+
+[list]
+Temästaren i @Tamagi
+[end_list]

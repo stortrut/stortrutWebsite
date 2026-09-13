@@ -1,0 +1,18 @@
+[h1]
+Kalender
+
+Kejsarens kalender består av 10 månader, med 3 stycken veckor som består av 10 dagar. Varje dygn är 27 timmar.
+
+[table]
+[Månad][Högtid]
+[1][Tallafton (15e)]
+[2][]
+[3][]
+[4][Solfestivalen (6e)]
+[5][Kejsardagen (6e)]
+[6][Regnets Kväll (30e)]
+[7][Månfestivalen (30e)]
+[8][Skördafton (20e)]
+[9][]
+[10][Nyår (30e)]
+[end_table]

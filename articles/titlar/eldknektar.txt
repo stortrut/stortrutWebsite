@@ -1,0 +1,22 @@
+[h1]
+Eldknektar
+
+Arbetar för Svavelkungen , som vakter och armé i Sunhural.
+ 
+Eldknektar verkar ha olika ranker:
+
+[h2]
+Röda Eldkektar
+Har en sotig titan-rustning med röda tyger och svingar svärd av titan. Deras rustning har ett stor inbränd svart symbol av Svavelkungen  på bröstet.
+
+[h2]
+Vita Eldkektar
+Har en sotig molybden-rustning med vita tyger och svingar svärd av molybden. Deras rustning har en stor silvrig symbol av Svavelkungen  på bröstet.
+
+[h2]
+Anmärkningsvärda Eldknektar
+
+[list]
+Narall, en Sandalv, dödades av @Jon.
+@Sorna Levärgess, en Vit Eldknekt
+[end_list]

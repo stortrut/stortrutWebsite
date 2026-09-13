@@ -39,12 +39,58 @@ async function readFile(filePath) {
     let insideList = false;
     let listItems = []; 
 
+    let insideTable = false;
+    let tableItems = []; 
+
 
     //Process every line
 
     for (const line of lines) {
 
-        //Check for list
+
+        //Check for table start
+
+        if (line.trim() === "[table]") {
+
+            insideTable = true;
+            tableItems = [];
+
+            continue;
+        }
+
+        //Check for list end
+
+        if (line.trim() === "[end_table]") {
+
+            if (insideTable) {
+
+                createAndAddTableElement(tableItems);
+
+                insideTable = false;
+                tableItems = [];
+            }
+
+            continue;
+        }
+
+        // In the table
+        if (insideTable) {
+
+            // Ignore empty lines
+            if (line.trim() !== "") {
+                tableItems.push(line);
+            }
+
+            continue;
+        }
+
+
+
+
+
+
+
+        //Check for list start
         if (line.trim() === "[list]") {
 
             insideList = true;
@@ -68,6 +114,7 @@ async function readFile(filePath) {
             continue;
         }
 
+
         // In the list
 
         if (insideList) {
@@ -79,6 +126,12 @@ async function readFile(filePath) {
 
             continue;
         }
+
+
+
+
+
+
 
 
         // Check for quote start
@@ -123,6 +176,14 @@ async function readFile(filePath) {
 
             continue;
         }
+
+
+
+
+
+
+
+
 
 
         // ------------------------------------------------------
@@ -440,4 +501,33 @@ function createAndAddListElement(items) {
 
 
     textHolder.appendChild(list);
+}
+
+
+function createAndAddTableElement(items) {
+
+    const table = document.createElement("table");
+    table.classList.add("custom-table");
+
+    for (const line of items) {
+
+        const row = document.createElement("tr");
+
+        // Extract everything between [ and ]
+        const cells = line.match(/\[([^\]]*)\]/g) || [];
+
+        for (const cellText of cells) {
+
+            const cell = document.createElement("td");
+
+            // Remove the surrounding [ ]
+            cell.textContent = cellText.slice(1, -1);
+
+            row.appendChild(cell);
+        }
+
+        table.appendChild(row);
+    }
+
+    textHolder.appendChild(table);
 }

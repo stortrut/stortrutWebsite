@@ -273,3 +273,26 @@ div>a {
 
 
 /* -------------------------------------- */
+.custom-table {
+    width: 70%;
+    border-collapse: collapse;
+    color: #000000;
+    table-layout: fixed;
+}
+
+.custom-table td {
+    padding: 14px 18px;
+    text-align: left;
+}
+
+.custom-table tr:nth-child(even) {
+    background: #dcd6cd;
+}
+
+.custom-table tr:nth-child(odd) {
+    background: #cbc4bb;
+}
+
+.custom-table tr:first-child {
+    font-weight: bold;
+}

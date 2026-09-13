@@ -1,2 +1,42 @@
 [h1]
-Session 33
+Session 20 - Frukostbaronens fall och flykt upp i torn
+
+Spelad: 13 Dec 2023
+
+[h2]
+Strid mot Frukostbaronen
+Frihetskämparna slåss mot Frukostbaronen i hans trädgård, utanför herrgårdsslottets torn.
+ 
+Baronen använder ett stort lila glassvärd och illusioner under stridens gång. Han får ner Odo Orgulas, och framkallar en stengolem från en av trädgårdens murar (men det är egentligen en illusion), och hotar att krossa [Odos] skalle om de inte ger upp.
+ 
+Jon ignorerar honom och skickar fram hans framkallade andra, som nu liknar Jon mycket mer än innan, och teleporterar Odo Orgulas till Jon, som helar upp honom.
+ 
+Frukostbaronen får via illusioner ut som att han drar till sig Hitachis pappa in i ett strypgrepp, och försöker sig på samma bluff som innan.
+ 
+Odo hoppar fram mot Hang, paralyserar honom och slår sedan sönder den lila glasrustningen och hjälmen i en tornado av virvelvind av kraftfulla slag.
+
+[h2]
+Flykt upp i tornet
+Under striden hade Odo Orgulas skrämt bort många av sork Fältfolket med pilbågar. De sprang ut från trädgården och anropade Väggmossens Munkkloster munkar, som tillsammans med den Flatvalda började springa mot tornet. Hektor Kostos stängde dörren och kedjade fast den.
+ 
+Frihetskämparna började fly upp för trapporna i tornet. Hektor och Jon bärde på Frukostbaronens kropp, medans Hitachi började plundra väggarna vid golvet.
+ 
+När de andra kommer upp till toppen, där två av himmelsfararna stod parkerade. Jon kastade ner ett rep som Hitachi hissades upp via, samtidigt som några munkar hoppade in genom fönstret.
+ 
+Odo hoppar på den mindre luftballongen och hugger av repen till ballongen vilket får korgen att falla ner och krossa ett antal sorkar som stod utanför den fastkedjade porten.
+
+[h2]
+Den Flatvalda följer efter
+Gruppen ser plötsligt hur den Flatvalda har börjat springa upp längst med väggen av tornet. De försöker kasta spells och skjuta pilar för att försöka stoppa honom men han undviker allt och tar sig upp till platformen med ballongen.
+ 
+Den Flatvalda står och iakttar ballongen ett tag, där Frihetskämparna och Viljekristallerna är, tills Hitachi kastar ett mynt mot honom, vilket han fångar och kastar tillbaka - och tar sedan ett snabbt hopp ut från tornet.
+ 
+Han försöker att hoppa ombord på ballongen samtidigt som de har börjat åka iväg - men Odo Orgulas hoppar ut med ett rep runt sig och lyckas paralysera honom i luften, men tar tag i honom och förhindrar att han faller ner.
+ 
+Samtidigt som de andra hissar upp dem så börjar Odo prata med den Flatvalda – och försöker förklara sin situation, han försöka få honom att förstår vem Odo Orgulas är - och att han inte är den som Väggmossens Munkkloster fått honom att verka.
+ 
+Den Flatvalda puttar sig bort från Odo och faller hela vägen ner till marken, men verkar klara sig (Slow Fall monk feature).
+ 
+De svävar högre och uppåt i himlen, och det sista de ser är hur den Flatvalda springer efter dem längs med marken. Och Odo kollar ut över Purpurbergen och känner Oraklets sanning inom sig, legenden Honmoyaki finns någon stans där ute.
+ 
+De går upp i Level 7.
