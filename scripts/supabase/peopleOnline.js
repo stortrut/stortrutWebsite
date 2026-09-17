@@ -72,12 +72,22 @@ window.addEventListener('beforeunload', () => {
 
 
 async function countWebsiteVisit() {
+    const visitKey = 'website-visit-counted';
+
+    // Do not count again during this tab session
+    if (sessionStorage.getItem(visitKey)) {
+        return;
+    }
+
     const { data, error } = await client.rpc('increment_site_visits');
 
     if (error) {
         console.error('Could not count website visit:', error);
         return;
     }
+
+    // Mark it only after the RPC succeeds
+    sessionStorage.setItem(visitKey, 'true');
 
     console.log('Total website visits:', data);
 
