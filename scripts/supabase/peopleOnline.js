@@ -73,9 +73,14 @@ window.addEventListener('beforeunload', () => {
 
 async function countWebsiteVisit() {
     const visitKey = 'website-visit-counted';
+    const savedTotal = sessionStorage.getItem('website-visit-total');
+    const counter = document.getElementById('website-visit-count');
 
-    // Do not count again during this tab session
+    // Already counted this tab session
     if (sessionStorage.getItem(visitKey)) {
+        if (counter && savedTotal) {
+            counter.textContent = Number(savedTotal).toLocaleString();
+        }
         return;
     }
 
@@ -86,16 +91,13 @@ async function countWebsiteVisit() {
         return;
     }
 
-    // Mark it only after the RPC succeeds
     sessionStorage.setItem(visitKey, 'true');
-
-    console.log('Total website visits:', data);
-
-    const counter = document.getElementById('website-visit-count');
+    sessionStorage.setItem('website-visit-total', data);
 
     if (counter) {
         counter.textContent = Number(data).toLocaleString();
     }
 }
+
 
 countWebsiteVisit();
