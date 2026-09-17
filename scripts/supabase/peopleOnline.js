@@ -66,3 +66,26 @@ observer.observe(document.documentElement, {
 window.addEventListener('beforeunload', () => {
   client.removeChannel(channel);
 });
+
+
+
+
+
+async function countWebsiteVisit() {
+    const { data, error } = await client.rpc('increment_site_visits');
+
+    if (error) {
+        console.error('Could not count website visit:', error);
+        return;
+    }
+
+    console.log('Total website visits:', data);
+
+    const counter = document.getElementById('website-visit-count');
+
+    if (counter) {
+        counter.textContent = Number(data).toLocaleString();
+    }
+}
+
+countWebsiteVisit();
