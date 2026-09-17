@@ -8,7 +8,7 @@
   },
   {
     "name": "Odo Orgulas",
-    "url": "/articles/characters/frihetskämparna/odo_orgulas.html",
+    "url": "/articles/characters/campaign_2/frihetskämparna/odo_orgulas.html",
     "shorthands": [
       "Odo",
       "Den misslyckade flatvalda"
@@ -324,7 +324,7 @@
   {
     "name": "Flatvald",
     "url": "/articles/titlar/flatvald.html",
-    "shorthands": []
+    "shorthands": ["Flatvalda"]
   },
   {
     "name": "Greve",

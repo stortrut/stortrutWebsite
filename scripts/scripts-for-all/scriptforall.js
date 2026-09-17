@@ -37,6 +37,12 @@ const hideDnD = script.dataset.hideDnd === "true";
       insertTopBar(hideDnD);
     }
 
+
+
+
+
+
+    
   } catch (err) {
     console.error(err);
   }

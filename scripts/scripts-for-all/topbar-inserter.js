@@ -1,3 +1,26 @@
+function loadScript(src, id) {
+    return new Promise((resolve, reject) => {
+        // Do not load the script more than once
+        if (document.getElementById(id)) {
+            resolve();
+            return;
+        }
+
+        const script = document.createElement('script');
+
+        script.id = id;
+        script.src = src;
+
+        script.onload = () => resolve();
+        script.onerror = () => {
+            reject(new Error(`Could not load ${src}`));
+        };
+
+        document.head.appendChild(script);
+    });
+}
+
+
 function insertTopBar(hideDnDStuff = false) {
 
     //We create and insert the top bar element
@@ -11,6 +34,22 @@ function insertTopBar(hideDnDStuff = false) {
         .then(html => {
             topBar.innerHTML = html;
             topBar.classList.add('loaded');
+
+            loadScript(
+                'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2',
+                'supabase-script'
+            )
+            .then(() => {
+                return loadScript(
+                    '/scripts/supabase/peopleOnline.js',
+                    'people-online-script'
+                );
+            })
+            .catch(error => {
+                console.error('Error loading Supabase scripts:', error);
+            });
+
+
 
             if (hideDnDStuff) {
                 document.getElementById('search-container').style.display = 'none';
