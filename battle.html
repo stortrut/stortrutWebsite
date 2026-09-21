@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>Battle Map</title>
+
+  <meta
+    name="description"
+    content="Shared realtime battle map."
+  >
+
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/dndstyle.css">
+  <link rel="stylesheet" href="/styles/battleMapStyle.css">
+</head>
+
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const SUPABASE_URL =
+      "https://ckcbrmdchbfvazmosqwm.supabase.co";
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_M9wbeEVtx8pDNPORz75l0A_BbCeI0nB";
+
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
+  </script>
+
+  <div id="room">
+    <div id="world">
+      <div id="map-grid"></div>
+
+  <svg
+      id="draw-layer"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="-50000 -50000 100000 100000"
+      preserveAspectRatio="none"
+  ></svg>
+    </div>
+  </div>
+
+
+
+  <div id="controls">
+
+    <label>
+      Map color
+      <input
+        id="background-color"
+        type="color"
+        value="#cf9975"
+      >
+    </label>
+
+    <button
+      id="upload-background"
+      type="button"
+    >
+      Insert background
+    </button>
+
+    <button
+      id="add-rectangle"
+      type="button"
+    >
+      Add rectangle
+    </button>
+
+    <button
+      id="draw-tool"
+      type="button"
+    >
+      Draw
+    </button>
+
+    <button
+      id="erase-tool"
+      type="button"
+    >
+      Eraser
+    </button>
+
+    <label>
+      Color
+      <input
+        id="brush-color"
+        type="color"
+        value="#ffffff"
+      >
+    </label>
+
+    <label>
+      Shape
+      <select id="brush-shape">
+        <option value="round">Round</option>
+        <option value="square">Square</option>
+      </select>
+    </label>
+
+    <button
+      id="clear-drawings"
+      class="danger"
+      type="button"
+    >
+      Remove drawings
+    </button>
+
+    <input
+      id="background-input"
+      type="file"
+      accept="image/*"
+      hidden
+    >
+
+    <span id="status-message"></span>
+  </div>
+
+  <div id="rectangle-menu">
+    <button
+      type="button"
+      data-action="delete"
+    >
+      Delete object
+    </button>
+
+    <button
+      type="button"
+      data-action="dim"
+    >
+      Gray and fade object
+    </button>
+
+    <button
+      type="button"
+      data-action="restore"
+    >
+      Restore object
+    </button>
+
+    <hr>
+
+    <button
+      type="button"
+      data-width="40"
+      data-height="40"
+    >
+      2 × 2 squares
+    </button>
+
+    <button
+      type="button"
+      data-width="80"
+      data-height="80"
+    >
+      4 × 4 squares
+    </button>
+
+    <button
+      type="button"
+      data-width="120"
+      data-height="120"
+    >
+      6 × 6 squares
+    </button>
+
+    <button
+      type="button"
+      data-width="160"
+      data-height="160"
+    >
+      8 × 8 squares
+    </button>
+  </div>
+
+  <script src="/scripts/supabase/battleMapScript.js"></script>
+</body>
+
+
+</html>

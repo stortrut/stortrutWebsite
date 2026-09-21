@@ -1,0 +1,232 @@
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #202020;
+}
+
+#room {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  cursor: default;
+  background: #252525;
+}
+
+#room.camera-dragging {
+  cursor: grabbing;
+}
+
+#room.drawing-mode {
+  cursor: crosshair;
+}
+
+#room.erasing-mode {
+  cursor: cell;
+}
+
+#world {
+  position: absolute;
+  
+isolation: isolate;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  transform-origin: 0 0;
+  z-index: 1;
+}
+
+#map-grid {
+  position: absolute;
+  left: -50000px;
+  top: -50000px;
+  width: 100000px;
+  height: 100000px;
+  pointer-events: none;
+  background-color: #cf9975;
+  background-image:
+    linear-gradient(#896b557c 1px, transparent 1px),
+    linear-gradient(90deg, #896b557c 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
+#draw-layer {
+  position: absolute;
+  left: -50000px;
+  top: -50000px;
+  width: 100000px;
+  height: 100000px;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.shared-image,
+.background-image-rectangle {
+  position: absolute;
+  box-sizing: border-box;
+  user-select: none;
+  touch-action: none;
+  z-index: 3;
+}
+
+.shared-image {
+  overflow: hidden;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 50%;
+  background: #c0392b;
+  cursor: grab;
+  box-shadow: 0 1px 2px #0008;
+}
+
+.shared-image:active {
+  cursor: grabbing;
+}
+
+.shared-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.background-image-rectangle {
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  cursor: default;
+  box-shadow: none;
+}
+
+.background-image-rectangle img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+body.menu-open .background-image-rectangle {
+  cursor: grab;
+}
+
+body.menu-open .background-image-rectangle:active {
+  cursor: grabbing;
+}
+
+#controls {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 10000;
+  display: none;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  max-width: calc(100vw - 32px);
+  padding: 10px;
+  border-radius: 8px;
+  background: #111c;
+  color: white;
+  font-family: sans-serif;
+  user-select: none;
+}
+
+body.menu-open #controls {
+  display: flex;
+}
+
+#controls button {
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  background: #2878d0;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#controls button:hover,
+#controls button.selected {
+  background: #4b9bea;
+}
+
+#controls button.danger {
+  background: #a93226;
+}
+
+#controls button.danger:hover {
+  background: #d04435;
+}
+
+#controls label {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 13px;
+}
+
+#brush-color {
+  width: 32px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+#brush-shape {
+  padding: 6px;
+  border: 0;
+  border-radius: 4px;
+}
+
+#status-message {
+  min-width: 100px;
+  color: #b9f6ca;
+  font-size: 13px;
+}
+
+#status-message.error {
+  color: #ff8a80;
+}
+
+#rectangle-menu {
+  position: fixed;
+  z-index: 20000;
+  display: none;
+  min-width: 145px;
+  padding: 6px;
+  border: 1px solid #555;
+  border-radius: 6px;
+  background: #181818;
+  box-shadow: 0 5px 18px #000b;
+  font-family: sans-serif;
+}
+
+#rectangle-menu.visible {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#rectangle-menu button {
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 4px;
+  color: white;
+  background: #303030;
+  cursor: pointer;
+  text-align: left;
+}
+
+#rectangle-menu button:hover {
+  background: #2878d0;
+}
+
