@@ -1,7 +1,7 @@
 [
   {
     "name": "Hektor Kostos",
-    "url": "/articles/characters/frihetskämparna/hektor_kostos.html",
+    "url": "/articles/characters/campaign_2/frihetskämparna/hektor_kostos.html",
     "shorthands": [
       "Hektor"
     ]
@@ -61,7 +61,7 @@
   },
   {
     "name": "Jon",
-    "url": "/articles/characters/frihetskämparna/jon.html",
+    "url": "/articles/characters/campaign_2/frihetskämparna/jon.html",
     "shorthands": []
   },
   {
@@ -241,7 +241,7 @@
   },
   {
     "name": "Hitachi",
-    "url": "/articles/characters/frihetskämparna/hitachi.html",
+    "url": "/articles/characters/campaign_2/frihetskämparna/hitachi.html",
     "shorthands": []
   },
   {
@@ -324,7 +324,9 @@
   {
     "name": "Flatvald",
     "url": "/articles/titlar/flatvald.html",
-    "shorthands": ["Flatvalda"]
+    "shorthands": [
+      "Flatvalda"
+    ]
   },
   {
     "name": "Greve",
@@ -398,7 +400,7 @@
   },
   {
     "name": "Skatprinsen",
-    "url": "/articles/characters/glasriddarorden/skatprinsen.html",
+    "url": "/articles/characters/campaign_2/glasriddarorden/skatprinsen.html",
     "shorthands": []
   },
   {
@@ -713,7 +715,7 @@
   },
   {
     "name": "Själskontrakt",
-    "url": "/articles/magi/själskontrakt.html",
+    "url": "/articles/magi_och_tekniker/själskontrakt.html",
     "shorthands": []
   },
   {
@@ -793,17 +795,17 @@
   },
   {
     "name": "Jidân Gôngjáng",
-    "url": "/articles/characters/tanshihjältarna/jidân_gôngjáng.html",
+    "url": "/articles/characters/campaign_1/tanshihjältarna/jidân_gôngjáng.html",
     "shorthands": []
   },
   {
     "name": "Koeda",
-    "url": "/articles/characters/tanshihjältarna/koeda.html",
+    "url": "/articles/characters/campaign_1/tanshihjältarna/koeda.html",
     "shorthands": []
   },
   {
     "name": "Pong Pong",
-    "url": "/articles/characters/tanshihjältarna/pong_pong.html",
+    "url": "/articles/characters/campaign_1/tanshihjältarna/pong_pong.html",
     "shorthands": []
   },
   {
@@ -914,6 +916,206 @@
   {
     "name": "Gudar",
     "url": "/articles/gudar/gudar.html",
+    "shorthands": []
+  },
+  {
+    "name": "Ankabuth",
+    "url": "/articles/characters/campaign_2/glasriddarorden/baron_briljants_befängda_cirkus/ankabuth.html",
+    "shorthands": []
+  },
+  {
+    "name": "Baron Briljants Befängda Cirkus",
+    "url": "/articles/characters/campaign_2/glasriddarorden/baron_briljants_befängda_cirkus/baron_briljants_befängda_cirkus.html",
+    "shorthands": []
+  },
+  {
+    "name": "Fólpiowik",
+    "url": "/articles/characters/campaign_2/glasriddarorden/baron_briljants_befängda_cirkus/fólpiowik.html",
+    "shorthands": []
+  },
+  {
+    "name": "Jätten Daidro",
+    "url": "/articles/characters/campaign_2/glasriddarorden/baron_briljants_befängda_cirkus/jätten_daidro.html",
+    "shorthands": []
+  },
+  {
+    "name": "Ronald",
+    "url": "/articles/characters/campaign_2/glasriddarorden/baron_briljants_befängda_cirkus/ronald.html",
+    "shorthands": []
+  },
+  {
+    "name": "Fjärilsryttaren",
+    "url": "/articles/characters/campaign_2/glasriddarorden/fjärilsryttaren.html",
+    "shorthands": []
+  },
+  {
+    "name": "Frukostbaronen",
+    "url": "/articles/characters/campaign_2/glasriddarorden/frukostbaronen.html",
+    "shorthands": []
+  },
+  {
+    "name": "Greve Greshold",
+    "url": "/articles/characters/campaign_2/glasriddarorden/greve_greshold.html",
+    "shorthands": []
+  },
+  {
+    "name": "Golvor Kulliver",
+    "url": "/articles/characters/campaign_2/golvor_kulliver.html",
+    "shorthands": []
+  },
+  {
+    "name": "Hjälten Jakapar",
+    "url": "/articles/characters/campaign_2/hjälten_jakapar.html",
+    "shorthands": []
+  },
+  {
+    "name": "Nardôzimafamiljen",
+    "url": "/articles/characters/campaign_2/nardôzimafamiljen.html",
+    "shorthands": []
+  },
+  {
+    "name": "Riff",
+    "url": "/articles/characters/campaign_2/riff.html",
+    "shorthands": []
+  },
+  {
+    "name": "Talja Lundkulle",
+    "url": "/articles/characters/campaign_2/talja_lundkulle.html",
+    "shorthands": []
+  },
+  {
+    "name": "Uing Zanto",
+    "url": "/articles/characters/campaign_2/uing_zanto.html",
+    "shorthands": []
+  },
+  {
+    "name": "Överstepräst Larnillafoll Njal",
+    "url": "/articles/characters/campaign_2/överstepräst_larnillafoll_njal.html",
+    "shorthands": []
+  },
+  {
+    "name": "Ba-sharins Rådhus",
+    "url": "/articles/geografi/provinser/farnesh/ba-sharin/ba-sharins_rådhus.html",
+    "shorthands": []
+  },
+  {
+    "name": "Bedövande Hålan",
+    "url": "/articles/geografi/provinser/farnesh/ba-sharin/bedövande_hålan.html",
+    "shorthands": []
+  },
+  {
+    "name": "Golgos Butik",
+    "url": "/articles/geografi/provinser/farnesh/ba-sharin/golgos_butik.html",
+    "shorthands": []
+  },
+  {
+    "name": "Bambugraven",
+    "url": "/articles/geografi/provinser/farnesh/bambugraven.html",
+    "shorthands": []
+  },
+  {
+    "name": "Dotán",
+    "url": "/articles/geografi/provinser/farnesh/dotán.html",
+    "shorthands": []
+  },
+  {
+    "name": "Fárnerdon",
+    "url": "/articles/geografi/provinser/farnesh/fárnerdon.html",
+    "shorthands": []
+  },
+  {
+    "name": "Istonik",
+    "url": "/articles/geografi/provinser/farnesh/istonik.html",
+    "shorthands": []
+  },
+  {
+    "name": "Morgonängarna",
+    "url": "/articles/geografi/provinser/farnesh/morgonängarna.html",
+    "shorthands": []
+  },
+  {
+    "name": "Muraskiborg",
+    "url": "/articles/geografi/provinser/farnesh/muraskiborg.html",
+    "shorthands": []
+  },
+  {
+    "name": "Obsidianskogen",
+    "url": "/articles/geografi/provinser/farnesh/obsidianskogen.html",
+    "shorthands": []
+  },
+  {
+    "name": "Sandskogen",
+    "url": "/articles/geografi/provinser/farnesh/sandskogen.html",
+    "shorthands": []
+  },
+  {
+    "name": "Spegelgrottorna",
+    "url": "/articles/geografi/provinser/farnesh/spegelgrottorna.html",
+    "shorthands": []
+  },
+  {
+    "name": "Stjärnplatåerna",
+    "url": "/articles/geografi/provinser/farnesh/stjärnplatåerna.html",
+    "shorthands": []
+  },
+  {
+    "name": "Tagghedarna",
+    "url": "/articles/geografi/provinser/farnesh/tagghedarna.html",
+    "shorthands": []
+  },
+  {
+    "name": "Tuggtorp",
+    "url": "/articles/geografi/provinser/farnesh/tuggtorp.html",
+    "shorthands": []
+  },
+  {
+    "name": "Purpurbergen",
+    "url": "/articles/geografi/purpurbergen.html",
+    "shorthands": []
+  },
+  {
+    "name": "Purpurbergens Helgedom",
+    "url": "/articles/geografi/purpurbergens_helgedom.html",
+    "shorthands": []
+  },
+  {
+    "name": "Purpurbergens Vulkan",
+    "url": "/articles/geografi/purpurbergens_vulkan.html",
+    "shorthands": []
+  },
+  {
+    "name": "Glasriddarorden",
+    "url": "/articles/grupper/glasriddarorden.html",
+    "shorthands": []
+  },
+  {
+    "name": "Jons Familj",
+    "url": "/articles/grupper/jons_familj.html",
+    "shorthands": []
+  },
+  {
+    "name": "Solglimtarna I Sunhural",
+    "url": "/articles/grupper/solglimtarna_i_sunhural.html",
+    "shorthands": []
+  },
+  {
+    "name": "Hjältespelen",
+    "url": "/articles/kultur/hjältespelen.html",
+    "shorthands": []
+  },
+  {
+    "name": "Kalender",
+    "url": "/articles/kultur/kalender.html",
+    "shorthands": []
+  },
+  {
+    "name": "De Tio Flatteknikerna",
+    "url": "/articles/magi_och_tekniker/de_tio_flatteknikerna.html",
+    "shorthands": []
+  },
+  {
+    "name": "Eldknektar",
+    "url": "/articles/titlar/eldknektar.html",
     "shorthands": []
   }
 ]
