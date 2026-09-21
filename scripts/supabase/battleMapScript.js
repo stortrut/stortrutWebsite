@@ -2,6 +2,8 @@ const room = document.getElementById("room");
 const world = document.getElementById("world");
 const drawLayer = document.getElementById("draw-layer");
 
+
+//Get elements from the html page
 const uploadBackgroundButton =
   document.getElementById("upload-background");
 
@@ -40,6 +42,11 @@ const clearDrawingsButton =
 
 
 
+
+
+
+
+
 //Variables
 const STORAGE_BUCKET = "battle-images";
 const clientId = crypto.randomUUID();
@@ -74,6 +81,9 @@ let activeTool = null;
 let activeDrawing = null;
 
 let imageInsertMode = "background";
+
+let mapBackgroundColor = backgroundColorInput?.value || "#cf9975";
+
 
 const roomChannel = supabaseClient.channel("room:main", {
   config: {
@@ -218,27 +228,17 @@ function applyRectangleStyles(rectangleData) {
   element.style.width = `${rectangleData.width}px`;
   element.style.height = `${rectangleData.height}px`;
 
+  element.className =
+    rectangleData.type === "background"
+      ? "background-image-rectangle"
+      : "shared-image";
+
   element.classList.toggle(
     "dimmed-object",
     rectangleData.dimmed === true
   );
 
-  if (rectangleData.type === "background") {
-    element.className =
-      "background-image-rectangle";
-
-    element.classList.toggle(
-      "dimmed-object",
-      rectangleData.dimmed === true
-    );
-  } else {
-    element.className = "shared-image";
-
-    element.classList.toggle(
-      "dimmed-object",
-      rectangleData.dimmed === true
-    );
-
+  if (rectangleData.type !== "background") {
     element.style.backgroundColor =
       rectangleData.color || "#c0392b";
   }

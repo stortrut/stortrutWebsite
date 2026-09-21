@@ -230,3 +230,11 @@ body.menu-open #controls {
   background: #2878d0;
 }
 
+.dimmed-object {
+  opacity: 0.35;
+  filter: grayscale(100%);
+  transition:
+    opacity 0.2s ease,
+    filter 0.2s ease;
+}
+
