@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Musik</title>
+  <meta name="description" content="Shared synchronized YouTube music player.">
+
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/dndstyle.css">
+  <link rel="stylesheet" href="/styles/music.css">
+</head>
+
+<body>
+    
+  <main class="music-page">
+    <section class="music-card" aria-label="Shared music player">
+
+      <h1>Delad Musik</h1>
+
+      <p class="room-status">
+        Alla hör samma ljud
+      </p>
+
+<div id="video-controls" class="video-controls" hidden>
+  <label for="youtube-url" class="visually-hidden">
+    YouTube video URL
+  </label>
+
+  <input
+    id="youtube-url"
+    type="url"
+    placeholder="Paste YouTube URL"
+    autocomplete="off"
+  >
+
+  <button id="load-video" type="button">
+    Play for everyone
+  </button>
+
+  <button id="pause-video" type="button">
+    Pause for everyone
+  </button>
+</div>
+
+      <div class="sound-section">
+        <p id="sound-status" class="sound-status" role="status">
+          🔇 Muted - touch the volume bar to enable sound wdawda
+        </p>
+        
+
+        <label for="volume-slider" class="visually-hidden">
+          Volume
+        </label>
+
+        <input
+          id="volume-slider"
+          class="volume-slider"
+          type="range"
+          min="0"
+          max="100"
+          value="80"
+          aria-label="Volume"
+        >
+      </div>
+
+      <div id="youtube-player" aria-hidden="true"></div>
+
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const SUPABASE_URL =
+      "https://ckcbrmdchbfvazmosqwm.supabase.co";
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_M9wbeEVtx8pDNPORz75l0A_BbCeI0nB";
+
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
+  </script>
+
+  <script src="/scripts/supabase/music.js"></script>
+</body>
+</html>
