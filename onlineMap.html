@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realtime Shared Image</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: #f4e7d3;
+    }
+
+    .toolbar {
+      position: relative;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      background: #6b5935;
+      border-bottom: 1px solid #000000;
+    }
+
+.toolbar strong {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  color: #fffbf2;
+  font-size: 44px;
+}
+
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-left: auto;
+    }
+
+    #status {
+      color: #9ca3af;
+      font-size: 13px;
+    }
+
+    .color-display {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #d1d5db;
+      font-size: 13px;
+    }
+
+    #your-color {
+      width: 14px;
+      height: 14px;
+      display: inline-block;
+      border-radius: 50%;
+      border: 1px solid #ffffffaa;
+      box-shadow: 0 0 3px #000;
+    }
+
+    #viewport {
+      position: relative;
+      width: 100vw;
+      height: calc(100vh - 56px);
+      overflow: hidden;
+      cursor: default;
+
+      background-size: 32px 32px;
+      background-position: 0 0, 0 16px, 16px -16px, -16px 0;
+    }
+
+    #viewport.dragging {
+      cursor: grabbing;
+    }
+
+    #world {
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform-origin: 0 0;
+      user-select: none;
+    }
+
+    #shared-image {
+      display: block;
+      max-width: none;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .remote-pointer {
+      position: absolute;
+      z-index: 5;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+      transition: left 80ms linear, top 80ms linear;
+    }
+
+    .remote-pointer::before {
+      content: "";
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      background: var(--pointer-color);
+      clip-path: polygon(
+        0 0,
+        0 100%,
+        28% 72%,
+        45% 100%,
+        58% 94%,
+        40% 65%,
+        100% 65%
+      );
+      filter: drop-shadow(0 1px 2px #000);
+    }
+
+    .help {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      z-index: 20;
+      padding: 8px 10px;
+      color: #d1d5db;
+      background: #111827dd;
+      border: 1px solid #374151;
+      border-radius: 6px;
+      font-size: 12px;
+      pointer-events: none;
+    }
+  </style>
+
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/dndstyle.css">
+</head>
+
+<body>
+  <div class="toolbar">
+    <strong>Kvillby</strong>
+
+    <div class="toolbar-right">
+      <div class="color-display">
+        Din Färg:
+        <span id="your-color"></span>
+      </div>
+
+      <span id="status">Connecting…</span>
+    </div>
+  </div>
+
+  <main id="viewport">
+    <div id="world">
+      <img
+        id="shared-image"
+        src="/images/maps/FarneshMap.jpg"
+        alt="Shared image"
+        draggable="false"
+      >
+    </div>
+  </main>
+
+  <script>
+    const SUPABASE_URL =
+      "https://ckcbrmdchbfvazmosqwm.supabase.co";
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_M9wbeEVtx8pDNPORz75l0A_BbCeI0nB";
+
+    const supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const viewport = document.getElementById("viewport");
+    const world = document.getElementById("world");
+    const image = document.getElementById("shared-image");
+    const statusElement = document.getElementById("status");
+    const yourColorElement = document.getElementById("your-color");
+
+    const clientId =
+      crypto.randomUUID?.() ||
+      `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+
+    const colors = [
+      "#ef4444",
+      "#f97316",
+      "#eab308",
+      "#22c55e",
+      "#06b6d4",
+      "#3b82f6",
+      "#8b5cf6",
+      "#ec4899"
+    ];
+
+    const userColor =
+      colors[Math.floor(Math.random() * colors.length)];
+
+    // Show this user's assigned color in the toolbar.
+    yourColorElement.style.backgroundColor = userColor;
+
+    const channel = supabaseClient.channel(
+      "shared-image:pointer-room",
+      {
+        config: {
+          broadcast: {
+            self: false,
+            ack: false
+          }
+        }
+      }
+    );
+
+    let zoom = 1;
+    let panX = 0;
+    let panY = 0;
+
+    let imageWidth = 0;
+    let imageHeight = 0;
+
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let initialPanX = 0;
+    let initialPanY = 0;
+
+    let latestPointer = null;
+    let pointerBroadcastScheduled = false;
+
+    const remotePointers = new Map();
+
+    function updateCamera() {
+      world.style.transform =
+        `translate(${panX}px, ${panY}px) scale(${zoom})`;
+    }
+
+    function fitImage() {
+      if (!imageWidth || !imageHeight) {
+        return;
+      }
+
+      const viewportWidth = viewport.clientWidth;
+      const viewportHeight = viewport.clientHeight;
+
+      zoom = Math.min(
+        viewportWidth / imageWidth,
+        viewportHeight / imageHeight
+      ) * 0.9;
+
+      panX = (viewportWidth - imageWidth * zoom) / 2;
+      panY = (viewportHeight - imageHeight * zoom) / 2;
+
+      updateCamera();
+    }
+
+    function getWorldPoint(clientX, clientY) {
+      const rect = viewport.getBoundingClientRect();
+
+      return {
+        x: (clientX - rect.left - panX) / zoom,
+        y: (clientY - rect.top - panY) / zoom
+      };
+    }
+
+    function zoomAt(clientX, clientY, factor) {
+      const rect = viewport.getBoundingClientRect();
+
+      const oldWorldX =
+        (clientX - rect.left - panX) / zoom;
+
+      const oldWorldY =
+        (clientY - rect.top - panY) / zoom;
+
+      const nextZoom = Math.max(
+        0.05,
+        Math.min(8, zoom * factor)
+      );
+
+      zoom = nextZoom;
+
+      panX =
+        clientX -
+        rect.left -
+        oldWorldX * zoom;
+
+      panY =
+        clientY -
+        rect.top -
+        oldWorldY * zoom;
+
+      updateCamera();
+    }
+
+    function createRemotePointer(id, payload) {
+      const element = document.createElement("div");
+
+      element.className = "remote-pointer";
+      element.dataset.userId = id;
+
+      // Every remote user's pointer uses the color assigned to them.
+      element.style.setProperty(
+        "--pointer-color",
+        payload.color || "#3b82f6"
+      );
+
+      world.appendChild(element);
+
+      remotePointers.set(id, {
+        element,
+        lastSeen: Date.now()
+      });
+
+      return remotePointers.get(id);
+    }
+
+    function updateRemotePointer(payload) {
+      if (!payload || payload.userId === clientId) {
+        return;
+      }
+
+      let pointer = remotePointers.get(payload.userId);
+
+      if (!pointer) {
+        pointer = createRemotePointer(
+          payload.userId,
+          payload
+        );
+      }
+
+      pointer.element.style.left = `${payload.x}px`;
+      pointer.element.style.top = `${payload.y}px`;
+      pointer.lastSeen = Date.now();
+    }
+
+    function removeInactivePointers() {
+      const now = Date.now();
+
+      for (const [id, pointer] of remotePointers) {
+        if (now - pointer.lastSeen > 5000) {
+          pointer.element.remove();
+          remotePointers.delete(id);
+        }
+      }
+    }
+
+    function broadcastPointer() {
+      pointerBroadcastScheduled = false;
+
+      if (!latestPointer) {
+        return;
+      }
+
+      channel.send({
+        type: "broadcast",
+        event: "pointer_move",
+        payload: latestPointer
+      });
+    }
+
+    function schedulePointerBroadcast(payload) {
+      latestPointer = payload;
+
+      if (pointerBroadcastScheduled) {
+        return;
+      }
+
+      pointerBroadcastScheduled = true;
+
+      requestAnimationFrame(broadcastPointer);
+    }
+
+    viewport.addEventListener("mousemove", (event) => {
+      if (isDragging) {
+        panX =
+          initialPanX +
+          event.clientX -
+          dragStartX;
+
+        panY =
+          initialPanY +
+          event.clientY -
+          dragStartY;
+
+        updateCamera();
+        return;
+      }
+
+      const point = getWorldPoint(
+        event.clientX,
+        event.clientY
+      );
+
+      schedulePointerBroadcast({
+        userId: clientId,
+        color: userColor,
+        x: point.x,
+        y: point.y
+      });
+    });
+
+    viewport.addEventListener("mousedown", (event) => {
+      if (event.button !== 1) {
+        return;
+      }
+
+      event.preventDefault();
+
+      isDragging = true;
+      dragStartX = event.clientX;
+      dragStartY = event.clientY;
+      initialPanX = panX;
+      initialPanY = panY;
+
+      viewport.classList.add("dragging");
+    });
+
+    window.addEventListener("mouseup", (event) => {
+      if (event.button !== 1) {
+        return;
+      }
+
+      isDragging = false;
+      viewport.classList.remove("dragging");
+    });
+
+    viewport.addEventListener(
+      "wheel",
+      (event) => {
+        event.preventDefault();
+
+        const factor = event.deltaY < 0 ? 1.12 : 0.89;
+
+        zoomAt(
+          event.clientX,
+          event.clientY,
+          factor
+        );
+      },
+      { passive: false }
+    );
+
+    viewport.addEventListener("contextmenu", (event) => {
+      event.preventDefault();
+    });
+
+    image.addEventListener("load", () => {
+      imageWidth = image.naturalWidth;
+      imageHeight = image.naturalHeight;
+
+      image.width = imageWidth;
+      image.height = imageHeight;
+
+      world.style.width = `${imageWidth}px`;
+      world.style.height = `${imageHeight}px`;
+
+      fitImage();
+    });
+
+    window.addEventListener("resize", fitImage);
+
+    channel
+      .on(
+        "broadcast",
+        { event: "pointer_move" },
+        ({ payload }) => {
+          updateRemotePointer(payload);
+        }
+      )
+      .subscribe((status, error) => {
+        if (status === "SUBSCRIBED") {
+          statusElement.textContent = "Connected";
+          statusElement.style.color = "#22c55e";
+        }
+
+        if (status === "CHANNEL_ERROR") {
+          statusElement.textContent = "Connection error";
+          statusElement.style.color = "#ef4444";
+          console.error(error);
+        }
+      });
+
+    setInterval(removeInactivePointers, 1000);
+  </script>
+</body>
+</html>
