@@ -404,11 +404,6 @@
     "shorthands": []
   },
   {
-    "name": "Vaxby",
-    "url": "/articles/geografi/vaxby.html",
-    "shorthands": []
-  },
-  {
     "name": "Tricklen",
     "url": "/articles/characters/campaign_2/tricklen.html",
     "shorthands": []
@@ -1116,6 +1111,11 @@
   {
     "name": "Eldknektar",
     "url": "/articles/titlar/eldknektar.html",
+    "shorthands": []
+  },
+  {
+    "name": "Kvillby",
+    "url": "/articles/geografi/kvillby.html",
     "shorthands": []
   }
 ]
