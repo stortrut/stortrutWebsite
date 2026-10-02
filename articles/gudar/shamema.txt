@@ -3,8 +3,17 @@ Shamema
 
 [h2]
 Själsregnaren
-Täcker värden med sitt regn för att föra alla själar i Kejsarriket till Skärsfloden.
+Täcker värden med sitt regn för att föra alla själar i @Kejsarriket till Skärsfloden.
  
 Man håller ofta begravningar när det regnar, för att vara på plats när den dödas själ går vidare.
  
 Brukar ofta symboliseras med ett svagt stearinljus.
+
+[h2]
+Regnet
+
+Folken runt om i @Kejsarriket både dyrkar och fruktar regnet.
+
+Under ett skyfall är livet och döden som närmast, och man går inte ut om man inte måste.
+
+(Man har disadvantage på death saving throws när det regnar, och spells som Revive fungerar ej...)

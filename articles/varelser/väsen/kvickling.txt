@@ -1,0 +1,11 @@
+﻿[h1]
+Kvicklingar
+Kvicklingar är humanoida snabba väsen med blå hy och spetsiga ansikten.
+De lever i djupa skogar.
+I @Kvillby verkar de va fiender med @Feer.
+
+[h2]
+Anmärkningsvärda kvicklingar
+[list]
+I @session 1 c3 så kidnappar en kvickling @Dorobo, och dödas sedan av @Varkaour.
+[end_list]

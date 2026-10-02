@@ -521,7 +521,9 @@
   {
     "name": "Formmärkt",
     "url": "/articles/titlar/formmärkt.html",
-    "shorthands": []
+    "shorthands": [
+      "formmärkta"
+    ]
   },
   {
     "name": "Själsbrännare",
@@ -706,7 +708,9 @@
   {
     "name": "Kettei Och Stigätaren",
     "url": "/articles/Legender/kettei_och_stigätaren.html",
-    "shorthands": []
+    "shorthands": [
+      "stigätare"
+    ]
   },
   {
     "name": "Själskontrakt",
@@ -1065,17 +1069,17 @@
   },
   {
     "name": "Purpurbergen",
-    "url": "/articles/geografi/purpurbergen.html",
+    "url": "/articles/geografi/provinser/farnesh/purpurbergen.html",
     "shorthands": []
   },
   {
     "name": "Purpurbergens Helgedom",
-    "url": "/articles/geografi/purpurbergens_helgedom.html",
+    "url": "/articles/geografi/provinser/farnesh/purpurbergens_helgedom.html",
     "shorthands": []
   },
   {
     "name": "Purpurbergens Vulkan",
-    "url": "/articles/geografi/purpurbergens_vulkan.html",
+    "url": "/articles/geografi/provinser/farnesh/purpurbergens_vulkan.html",
     "shorthands": []
   },
   {
@@ -1115,12 +1119,105 @@
   },
   {
     "name": "Kvillby",
-    "url": "/articles/geografi/kvillby.html",
+    "url": "/articles/geografi/provinser/bäckdal/kvillby.html",
     "shorthands": []
   },
   {
     "name": "Session 1 C3",
     "url": "/articles/session-reports/campaign_3/session_1_C3.html",
+    "shorthands": []
+  },
+  {
+    "name": "Himmel Tvint",
+    "url": "/articles/characters/campaign_3/kvillbys_kämpar/himmel_tvint.html",
+    "shorthands": [
+      "Himmel"
+    ]
+  },
+  {
+    "name": "Merízolás Feílner",
+    "url": "/articles/characters/campaign_3/kvillbys_kämpar/merízolás_feílner.html",
+    "shorthands": [
+      "Merízolás"
+    ]
+  },
+  {
+    "name": "Tälleseg",
+    "url": "/articles/characters/campaign_3/kvillbys_kämpar/tälleseg.html",
+    "shorthands": []
+  },
+  {
+    "name": "Varkaour Varkosh",
+    "url": "/articles/characters/campaign_3/kvillbys_kämpar/varkaour_varkosh.html",
+    "shorthands": [
+      "Varkaour"
+    ]
+  },
+  {
+    "name": "Dorobo",
+    "url": "/articles/characters/campaign_3/dorobo.html",
+    "shorthands": []
+  },
+  {
+    "name": "Garkot",
+    "url": "/articles/characters/campaign_3/garkot.html",
+    "shorthands": []
+  },
+  {
+    "name": "Rumlar Varkosh",
+    "url": "/articles/characters/campaign_3/rumlar_varkosh.html",
+    "shorthands": [
+      "Rumlar"
+    ]
+  },
+  {
+    "name": "Bäckdals Skola För Vägskapare",
+    "url": "/articles/geografi/provinser/bäckdal/bäckdals_skola_för_vägskapare.html",
+    "shorthands": []
+  },
+  {
+    "name": "Kavatsa",
+    "url": "/articles/geografi/provinser/bäckdal/kavatsa.html",
+    "shorthands": []
+  },
+  {
+    "name": "Bäckdal",
+    "url": "/articles/geografi/provinser/bäckdal.html",
+    "shorthands": []
+  },
+  {
+    "name": "Flodskaparna",
+    "url": "/articles/grupper/campaign_3/flodskaparna.html",
+    "shorthands": []
+  },
+  {
+    "name": "Kaosmagi",
+    "url": "/articles/magi_och_tekniker/kaosmagi.html",
+    "shorthands": []
+  },
+  {
+    "name": "~$ssion 1 C3",
+    "url": "/articles/session-reports/campaign_3/~$ssion_1_C3.html",
+    "shorthands": []
+  },
+  {
+    "name": "Syrsling",
+    "url": "/articles/varelser/väsen/syrsling.html",
+    "shorthands": []
+  },
+  {
+    "name": "La'mi",
+    "url": "/articles/gudar/la'mi.html",
+    "shorthands": []
+  },
+  {
+    "name": "Fe",
+    "url": "/articles/varelser/väsen/fe.html",
+    "shorthands": []
+  },
+  {
+    "name": "Kvickling",
+    "url": "/articles/varelser/väsen/kvickling.html",
     "shorthands": []
   }
 ]

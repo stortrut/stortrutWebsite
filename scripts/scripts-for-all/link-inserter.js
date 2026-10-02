@@ -1,19 +1,20 @@
 // Supported formats:
 //
 // @Jon
+//
 // @Jon Smith
+//
 // Jon@(Target)
+//
 // (Display Name)@(Target)
-// Jon@Target
 //
-// Examples:
+// Jon\@Target
 //
-// @Hektor
-// @Hektor Kostos
-// Hektor@(Hektor Kostos)
-// (Hektor)@(Hektor Kostos)
-// Hektor@Kostos
 
+
+// ==========================================================
+// Main link replacement
+// ==========================================================
 
 function replaceWordsWithLinks(rootNode = document.body) {
 
@@ -34,13 +35,23 @@ function replaceWordsWithLinks(rootNode = document.body) {
 
             for (const page of pages) {
 
+                // ------------------------------------------------------
+                // Full page name
+                // ------------------------------------------------------
+
                 if (page.name) {
 
                     const name =
-                        page.name.trim().toLowerCase();
+                        page.name
+                            .trim()
+                            .toLowerCase();
 
                     nameMap[name] = page.url;
                 }
+
+                // ------------------------------------------------------
+                // Shorthands
+                // ------------------------------------------------------
 
                 if (Array.isArray(page.shorthands)) {
 
@@ -49,7 +60,9 @@ function replaceWordsWithLinks(rootNode = document.body) {
                         if (sh) {
 
                             const shorthand =
-                                sh.trim().toLowerCase();
+                                sh
+                                    .trim()
+                                    .toLowerCase();
 
                             shorthandMap[shorthand] =
                                 page.url;
@@ -92,7 +105,10 @@ function replaceWordsWithLinks(rootNode = document.body) {
                     return url;
                 }
 
+                // ------------------------------------------------------
                 // Swedish plural -s
+                // ------------------------------------------------------
+
                 if (target.endsWith('s')) {
 
                     const singular =
@@ -123,7 +139,10 @@ function replaceWordsWithLinks(rootNode = document.body) {
                 target =
                     normalizeTarget(target);
 
+                // ------------------------------------------------------
                 // Full name first
+                // ------------------------------------------------------
+
                 let url =
                     nameMap[target];
 
@@ -131,7 +150,10 @@ function replaceWordsWithLinks(rootNode = document.body) {
                     return url;
                 }
 
+                // ------------------------------------------------------
                 // Swedish plural -s
+                // ------------------------------------------------------
+
                 if (target.endsWith('s')) {
 
                     const singular =
@@ -145,7 +167,10 @@ function replaceWordsWithLinks(rootNode = document.body) {
                     }
                 }
 
+                // ------------------------------------------------------
                 // Shorthand
+                // ------------------------------------------------------
+
                 url =
                     shorthandMap[target];
 
@@ -183,6 +208,30 @@ function replaceWordsWithLinks(rootNode = document.body) {
                     '\\$&'
                 );
             }
+
+
+            // ==========================================================
+            // Regex character definitions
+            // ==========================================================
+            //
+            // Supports:
+            //
+            //   Letters       \p{L}
+            //   Numbers       \p{N}
+            //   Underscore    _
+            //   Apostrophe    '
+            //   Curly         ’
+            //   Hyphen        -
+            //
+            // Unicode property escapes mean Swedish characters
+            // such as Å, Ä and Ö are supported automatically.
+            //
+
+            const nameChars =
+                String.raw`\p{L}\p{N}_'’\-`;
+
+            const nameToken =
+                `[${nameChars}]+`;
 
 
             // ==========================================================
@@ -232,13 +281,19 @@ function replaceWordsWithLinks(rootNode = document.body) {
                     return;
                 }
 
-
                 let result = text;
 
 
                 // ======================================================
                 // (Display Name)@(Target)
                 // ======================================================
+                //
+                // Examples:
+                //
+                // (Jon Smith)@(Jon O'Connor)
+                // (Åke)@(O’Connor)
+                // (Jean-Luc)@(Jean-Luc)
+                //
 
                 result = result.replace(
                     /\(([^()\n]+)\)@\(([^()\n]+)\)/gu,
@@ -263,9 +318,19 @@ function replaceWordsWithLinks(rootNode = document.body) {
                 // ======================================================
                 // Name@(Target)
                 // ======================================================
+                //
+                // Examples:
+                //
+                // Jon@(O'Connor)
+                // Åke@(Jean-Luc)
+                // O’Connor@(O’Connor)
+                //
 
                 result = result.replace(
-                    /([\p{L}\p{N}_-]+)@\(([^()\n]+)\)/gu,
+                    new RegExp(
+                        `(${nameToken})@\\(([^()\\n]+)\\)`,
+                        'gu'
+                    ),
                     (match, display, target) => {
 
                         const url =
@@ -287,9 +352,19 @@ function replaceWordsWithLinks(rootNode = document.body) {
                 // ======================================================
                 // Name@Target
                 // ======================================================
+                //
+                // Examples:
+                //
+                // Jon@O'Connor
+                // Åke@Jean-Luc
+                // O’Connor@O’Connor
+                //
 
                 result = result.replace(
-                    /([\p{L}\p{N}_-]+)@([\p{L}\p{N}_-]+)/gu,
+                    new RegExp(
+                        `(${nameToken})@(${nameToken})`,
+                        'gu'
+                    ),
                     (match, display, target) => {
 
                         const url =
@@ -318,6 +393,16 @@ function replaceWordsWithLinks(rootNode = document.body) {
                 // That means after @Odo Orgulas becomes a link,
                 // another regex cannot subsequently see the @Odo
                 // inside the generated HTML.
+                //
+                // Full names are checked before individual tokens.
+                // This allows:
+                //
+                // @Patrick O'Connor
+                //
+                // to be matched as one mention rather than:
+                //
+                // @Patrick
+                //
                 // ======================================================
 
                 let mentionRegex;
@@ -326,14 +411,17 @@ function replaceWordsWithLinks(rootNode = document.body) {
 
                     mentionRegex =
                         new RegExp(
-                            `@(${fullNamePattern}|[\\p{L}\\p{N}_-]+)(?=\\s|[.,!?;:]|$)`,
+                            `@(${fullNamePattern}|${nameToken})(?=\\s|[.,!?;:]|$)`,
                             'giu'
                         );
 
                 } else {
 
                     mentionRegex =
-                        /@([\p{L}\p{N}_-]+)(?=\s|[.,!?;:]|$)/gu;
+                        new RegExp(
+                            `@(${nameToken})(?=\\s|[.,!?;:]|$)`,
+                            'gu'
+                        );
                 }
 
 
@@ -503,6 +591,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
                     );
 
                 if (tooltip) {
+
                     tooltip.style.opacity =
                         '0';
                 }
@@ -592,6 +681,7 @@ function replaceWordsWithLinks(rootNode = document.body) {
                 });
 
         })
+
         .catch(err => {
 
             console.error(
@@ -627,8 +717,8 @@ function processEventDataTemplate() {
     const timeline =
         document.getElementById('timeline');
 
-
     if (timeline) {
+
         timeline.appendChild(fragment);
     }
 }
