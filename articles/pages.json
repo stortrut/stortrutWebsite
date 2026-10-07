@@ -1219,5 +1219,20 @@
     "name": "Kvickling",
     "url": "/articles/varelser/väsen/kvickling.html",
     "shorthands": []
+  },
+  {
+    "name": "Demonfolk",
+    "url": "/articles/varelser/folkslag/demonfolk.html",
+    "shorthands": []
+  },
+  {
+    "name": "Sköldpadsfolk",
+    "url": "/articles/varelser/folkslag/sköldpadsfolk.html",
+    "shorthands": []
+  },
+  {
+    "name": "Nattbambu",
+    "url": "/articles/växter/nattbambu.html",
+    "shorthands": []
   }
 ]
