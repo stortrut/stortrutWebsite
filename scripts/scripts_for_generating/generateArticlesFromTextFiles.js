@@ -49,9 +49,8 @@ getAllFilePaths(folder, (filePath) => {
         <script> 
             readFile("${webPath}");
         </script>
-
         <script 
-            src="/scripts/scripts-for-all/scriptforall.js" >
+            src="/scripts/scripts-for-all/scriptforall.js" defer>
         </script>
     </body>
     </html>
